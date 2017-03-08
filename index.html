@@ -108,7 +108,7 @@
 							
 								<a class="github" target="_blank" href="https://github.com/simonid" title="github">github</a>
 					        
-								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
 					        
 						</div>
 					</nav>
@@ -173,7 +173,7 @@
 					
 						<a class="github" target="_blank" href="https://github.com/simonid" title="github">github</a>
 			        
-						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
 			        
 				</div>
 			</nav>
@@ -283,11 +283,11 @@
     
         <div class="article-meta">
             <a href="/2017/03/08/记录一次NetworkManager与interfaces冲突的解决过程/" class="article-date">
-  	<time datetime="2017-03-08T04:46:35.827Z" itemprop="datePublished">2017-03-08</time>
+  	<time datetime="2017-03-08T05:54:22.800Z" itemprop="datePublished">2017-03-08</time>
 </a>
 
 <a href="/2017/03/08/记录一次NetworkManager与interfaces冲突的解决过程/" class="article-date">
-  	<time datetime="2017-03-08T04:46:35.827Z" itemprop="datePublished">2017-03-08</time>
+  	<time datetime="2017-03-08T05:54:22.800Z" itemprop="datePublished">2017-03-08</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkGray">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -307,72 +307,14 @@
                                            <!--
                                             
 
-                                                    <p class="toc-button">目录</p>
-<div id="toc" class="toc-article" style="display:none;">
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">记录一次NetworkManager与interfaces冲突的解决</span></a></li></ol>
-</div>
-<script>
-    $(function(){
-
-        var width = document.body.scrollWidth;
-        if (width <=550) {
-             $(".toc-button").css("display","none");
-        }
-        $(".toc-button").hover(function(){
-            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
-            $(".toc-article").css({
-                top:top +"px"
-            });
-            $("#toc").show(1000,function(){});
-           // $("#toc").animate({width:500;},3000);
-        },function(){
-
-        });
-        $(".toc-article").hover(function(){
-
-        },function(){
-            $("#toc").hide(1000,function(){});
-        });
-    })
-</script>
-
-                                                  
                                             
                                             -->
                                             
-                                                     <p>&nbsp;</p><h3>记录一次NetworkManager与interfaces冲突的解决</h3><br><br><br>&emsp;主机是ubuntu14.04，之前改过/etc/network/interfaces的配置内容（设置了静态ip），然后发现图形界面上的网络设置失效了，而且因为修改了interfaces之后还不能连接网络，ifconfig的时候不显示wlan0和eth0的信息，反而多了一个tun0-00。下面是一些解决的步骤：<p></p>
+                                                     <p>&nbsp;<h3>记录一次NetworkManager与interfaces冲突的解决</h3><br><br/><br>&emsp;主机是ubuntu14.04，之前改过/etc/network/interfaces的配置内容（设置了静态ip），然后发现图形界面上的网络设置失效了，而且因为修改了interfaces之后还不能连接网络，ifconfig的时候不显示wlan0和eth0的信息，反而多了一个tun0-00。下面是一些解决的步骤：</p>
 <p>&emsp;首先，重新编辑interfaces文件和/etc/resolv.conf文件，使他们恢复默认设置，然后重启，失败。先解决eth0的问题吧。网线接上电脑，手动开启eth0：</p>
 <p>sudo ip link set eth0 up 或 sudo ifconfig eth0 up</p>
-<p>&emsp;再查看一下，ifconfig，如果没有ipv4地址，尝试：<br></p>
-<font color="#DC143C"><br>sudo dhclient eth0<br></font><br><br>&emsp;然后ping一下同网段ip，失败的话，尝试nc命令<br><br>&emsp;如果ICMP被禁了，使用nc命令或者telnet更适合，且可以探测端口是否开放,虽然DHCP端口是67，不过通常DHCP和DNS服务器是同一台机器，因此顺便测试53端口：<br><br>nc -zv 192.168.1.1 67<br><br>nc -zv 192.168.1.1 53<br><br>&emsp;如果服务器的IP不是通过DHCP获取的动态IP，而是静态IP，则需要手动设置IP地址，使用ifconfig配置:<br><br>sudo ifconfig eth0 192.168.1.105/24 gw 192.168.1.1<br><br>或者<br><br>sudo ip addr add 172.16.0.2/24 dev eth0<br><br>sudo route add default gw 172.16.0.1 dev eth0<br><br>配置完eth0之后，查看wlan0。<br><br>&emsp;ubuntu上有两套管理网络的系统，一个是interfaces文件（网络设置由配置文件决定）和NetworkManager（网络设置由图形界面决定），它们二者之间只能使用一个，所以，在需要修改interfaces的时候（比如固定ip），要先把NetworkManager的服务屏蔽掉，service network-manager stop.之所以遇到这样的问题就是在修改interfaces之前没有对NetworkManager进行管理<br><br>wlan0比较复杂，先尝试开启并连上网络<br><br>1.. 打开无线网卡电源<br><br>iwconfig wlan0 txpower on 或者 sudo ip link set wlan0 up<br><br>列出区域内的无线网络<br>iwlist wlan0 scan 或者 sudo iw dev wlan0 scan | less<br><br>3.连接wifi<br><br>假如wifi没有加密：sudo iw dev wlan0 connect [网络 SSID]<br><br>假如是WEP加密：sudo iw dev wlan0 connect [网络 SSID] key 0:[WEP 密钥]<br><br>假如是WPA或者WPA2加密的话，就比较麻烦了，需要借助wpasupplicant这个工具<br><br>编辑_/etc/wpa_supplicant/wpa_supplicant.conf<br><br><font color="#0099ff"><br>network={<br><br>ssid=”[网络 ssid]“<br><br>psk=”[密码]“<br><br>priority=1<br><br>}<br></font>
-
-<p>重启网络</p>
-<p>后台开启：sudo wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf</p>
-<p>然后dhcp获取：sudo dhclient wlan0 或 sudo dhcpcd wlan0</p>
-<p>如果正常的话，查看wlan0信息，输入<br>iwconfig wlan0</p>
-<p>启用无线网卡<br>ifconfig wlan0 up</p>
-<p>如果是用DHCP获取IP的，那么用dhclient 或dhcpcd获取ip<br>dhclient wlan0</p>
-<p>或</p>
-<p>dhcpcd wlan0</p>
-<p>&emsp;通过interfaces适合修改server版的linux，对于平常个人使用不方便，因为假如要连接新的wifi，每次都要新增配置文件，那么如何恢复原来的图形界面，也就是NetworkManager呢</p>
-<p>首先要确保自己的图形界面设置没有修改过</p>
-<p>比如/etc/dbus-1/system.d/org.freedesktop.NetworkManager.conf</p>
-<font cokor="#DC143C"><br>cat /etc/dbus-1/system.d/org.freedesktop.NetworkManager.conf<br></font><br><font face="黑体" color="#0099ff"><br>&lt;!DOCTYPE busconfig PUBLIC<br><br>“-//freedesktop//DTD D-BUS Bus Configuration 1.0//EN”<br><br>“<a href="http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd&quot;&gt;" target="_blank" rel="external">http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd&quot;&gt;</a>;<br><br><busconfig><br><br>&lt;policy user=”root”&gt;<br><br>            &lt;allow own=”org.freedesktop.NetworkManager”/&gt;<br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager.PPP”/&gt;<br><br><br><br>            &lt;allow send_interface=”org.freedesktop.NetworkManager.SecretAgent”/&gt;<br><br><br><br>            &lt;!– Allow NM to talk to known VPN plugins; due to a bug in<br><br>                 the D-Bus daemon, when a plugin is installed and the user<br><br>                 immediately tries to use it, the VPN plugin’s rules aren’t<br><br>                 always loaded into dbus-daemon.  Those rules allow NM to<br><br>                 talk to the plugin.  Oops.  Work around that by explicitly<br><br>                 allowing NM to talk to VPN plugins here.<br><br>              –&gt;<br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager.openconnect”/&gt;<br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager.openswan”/&gt;<br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager.openvpn”/&gt;<br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager.pptp”/&gt;<br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager.vpnc”/&gt;<br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager.ssh”/&gt;<br><br><br><br>            &lt;!– Allow the custom name for the dnsmasq instance spawned by NM<br><br>                 from the dns dnsmasq plugin to own it’s dbus name, and for<br><br>                 messages to be sent to it.<br><br>             –&gt;<br><br>            &lt;allow own=”org.freedesktop.NetworkManager.dnsmasq”/&gt;<br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager.dnsmasq”/&gt;<br><br>    &lt;/policy&gt;<br><br>    &lt;policy at_console=”true”&gt;<br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.DBus.Introspectable”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.DBus.Properties”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager.AccessPoint”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager.Connection.Active”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager.Device.Modem”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager.Device.Wired”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager.Device.Serial”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager.Device.Wireless”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager.Device”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager.DHCP4Config”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager.IP4Config”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager.VPN.Connection”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager.AgentManager”/&gt;<br><br><br><br>            &lt;deny send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager”<br><br>                   send_member=”SetLogging”/&gt;<br><br><br><br>            &lt;deny send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager”<br><br>                   send_member=”Sleep”/&gt;<br><br><br><br>            &lt;deny send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager”<br><br>                   send_member=”sleep”/&gt;<br><br><br><br>            &lt;deny send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager”<br><br>                   send_member=”wake”/&gt;<br><br>    &lt;/policy&gt;<br><br>    &lt;policy user=”whoopsie”&gt;<br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.DBus.Introspectable”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.DBus.Properties”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager.Connection.Active”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager.Device”/&gt;<br><br>    &lt;/policy&gt;<br><br>    &lt;policy context=”default”&gt;<br><br>            &lt;deny own=”org.freedesktop.NetworkManager”/&gt;<br><br><br><br>            &lt;deny send_destination=”org.freedesktop.NetworkManager”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager.Settings”/&gt;<br><br><br><br>            &lt;allow send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager.AgentManager”/&gt;<br><br><br><br>            &lt;deny send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager”<br><br>                   send_member=”SetLogging”/&gt;<br><br><br><br>            &lt;deny send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager”<br><br>                   send_member=”Sleep”/&gt;<br><br><br><br>            &lt;deny send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager”<br><br>                   send_member=”sleep”/&gt;<br><br><br><br>            &lt;deny send_destination=”org.freedesktop.NetworkManager”<br><br>                   send_interface=”org.freedesktop.NetworkManager”<br><br>                   send_member=”wake”/&gt;<br><br><br><br>            &lt;deny own=”org.freedesktop.NetworkManager.dnsmasq”/&gt;<br><br>            &lt;deny send_destination=”org.freedesktop.NetworkManager.dnsmasq”/&gt;<br><br>    &lt;/policy&gt;<br></busconfig><br></font>
-
-<p>然后还有/etc/xdg/autostart/nm-applet.desktop：</p>
-<font color="#0099ff"><br>[Desktop Entry]<br><br>Name=Network<br><br>Comment=Manage your network connections<br><br>Icon=nm-device-wireless<br><br>Exec=nm-applet<br><br>Terminal=false<br><br>Type=Application<br><br>NoDisplay=true<br><br>NotShowIn=KDE;<br><br>X-GNOME-Bugzilla-Bugzilla=GNOME<br><br>X-GNOME-Bugzilla-Product=NetworkManager<br><br>X-GNOME-Bugzilla-Component=nm-applet<br><br>X-GNOME-UsesNotifications=true<br><br>AutostartCondition=GNOME3 unless-session gnome<br><br>X-Ubuntu-Gettext-Domain=nm-applet<br><br></font><br>网上有种说法：<a href="http://blog.csdn.net/cor\_twi/article/details/43836681" target="_blank" rel="external">http://blog.csdn.net/cor\_twi/article/details/43836681</a><br><br>但是按照这种做法没有用<br><br>如果要用图形界面，到/etc/NetworkManager/nm-system-settings.conf下，把<br><br>[ifupdown]<br><br>managed=false（应该是修改了interfaces之后自动改成false的）<br><br>中的false改成true<br><br>&emsp;上述的方法能够重新使用有线和无线，但是也有留下不少的问题没有解决，比如开机的时候就要比平时等多2–3分钟（猜测是修改了配置之后通过NetworkManager管理网络的话是不会保留上一次工作的网络信息，然后导致本次开机重新加载），而且要通过图形界面配置网络的话，要在开机的时候输入：<br><br>sudo service network-manager restart<br><br>而且，此时的图形控制栏是缺少了一些功能的，比如关闭wifi，比如vpn配置，假如要关闭wifi，就通过sudo ifdown wlan0。<br><br>假如是要配置vpn，也可以通过命令行实现，下面有两个方法：<br><br>方法1：<br><br>sudo pptpsetup –create testvpn –server 123.45.67.88 –username kk –password fku –encrypt –start<br><br>&emsp;–create 后的是创建的连接名称，可以为任意名称; –server 后接的是vpn服务器的IP; –username 是用户名 –password 是密码，在这也可以没这个参数，命令稍后会自动询问。这样可以保证账号安全 –encrypt 是表示需要加密，不必指定加密方式，命令会读取配置文件中的加密方式 –start 是表示创建连接完后马上连接，如果你不想连，就不写<br><br>连接：sudo pon vpnname<br><br>查看状态：plog<br><br>断开：sudo poff<br><br>方法2：<br><br>连接：<br><br>~$ sudo nmcli -p c up id VPN-Green<br><br>断开连接：<br><br>~$ sudo nmcli -p c down id VPN-Green<br><br>修改/etc/NetworkManagersystem-connections/VPN-Green<br><br><font color="#FF7F50"><br>password-flags=0<br><br>[vpn-secrets]<br><br>password=<strong><em>*</em></strong><br><br>[connection]<br><br>id=VPN-Green （名字）<br><br>uuid=9b17f157-fb28-42bf-b092-d3e4a56682f1<br><br>type=vpn<br><br>permissions=user:tomcat:;<br><br>autoconnect=false<br><br>timestamp=1444354237<br><br>[vpn]<br><br>service-type=org.freedesktop.NetworkManager.pptp<br><br>gateway=a.sggjsq.com<br><br>require-mppe=yes<br><br>user=<strong><em>*</em></strong><br><br>password-flags=0<br><br>[vpn-secrets]<br><br>password=<strong><em>*</em></strong><br><br>[ipv4]<br><br>method=auto<br><br></font>
-
-<p>参考：<a href="http://int32bit.me/2016/04/18/Linux%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E6%80%BB%E7%BB%93/" target="_blank" rel="external">http://int32bit.me/2016/04/18/Linux%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E6%80%BB%E7%BB%93/</a></p>
-<p><a href="https://linux.cn/article-4015-1.html" target="_blank" rel="external">https://linux.cn/article-4015-1.html</a></p>
-<p><a href="http://blog.chinaunix.net/uid-108431-id-4096909.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-108431-id-4096909.html</a></p>
-<p>vpn设置和命令：<a href="http://blog.sina.com.cn/s/blog_630d9b440100fjpu.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_630d9b440100fjpu.html</a></p>
-<p>（参照上面三个完成）</p>
-<p><a href="http://wiki.ubuntu.org.cn/UbuntuManual:%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE\#.E9.85.8D.E7.BD.AE.E6.97.A0.E7.BA.BF.E7.BD.91.E5.8D.A1.28Wi-Fi.29.E6.8E.A5.E5.8F.A3" target="_blank" rel="external">http://wiki.ubuntu.org.cn/UbuntuManual:%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE\#.E9.85.8D.E7.BD.AE.E6.97.A0.E7.BA.BF.E7.BD.91.E5.8D.A1.28Wi-Fi.29.E6.8E.A5.E5.8F.A3</a></p>
-<p><a href="https://wiki.debian.org/zh\_CN/NetworkConfiguration" target="_blank" rel="external">https://wiki.debian.org/zh\_CN/NetworkConfiguration</a></p>
-<p><a href="http://www.cnblogs.com/xuanfengling/p/3410551.html" target="_blank" rel="external">http://www.cnblogs.com/xuanfengling/p/3410551.html</a></p>
-<p><a href="http://blog.csdn.net/pkueecser/article/details/7165865" target="_blank" rel="external">http://blog.csdn.net/pkueecser/article/details/7165865</a></p>
-<p>来源： <a href="https://www.gitbook.com/book/simonid/linux/edit#/edit/master/记录一次关于networkmanager和interfaces的问题.md?_k=qmiwfi" target="_blank" rel="external">https://www.gitbook.com/book/simonid/linux/edit#/edit/master/记录一次关于networkmanager和interfaces的问题.md?_k=qmiwfi</a></p>
-
+<p>&emsp;再查看一下，ifconfig，如果没有ipv4地址，尝试：<br/></p>
+<font color=#DC143C><br>sudo dhclient eth0<br></font><br/><br>&emsp;然后ping一下同网段ip，失败的话，尝试nc命令<br><br>&emsp;如果ICMP被禁了，使用nc命令或者telnet更适合，且可以探测端口是否开放,虽然DHCP端口是67，不过通常DHCP和DNS服务器是同一台机器，因此顺便测试53端口：<br><br>nc -zv 192.168.1.1 67<br><br>nc -zv 192.168.1.1 53<br><br>
                                             
                                         </div>
 
@@ -383,6 +325,10 @@
                                                     
 
                                                         
+                                                            <p class="article-more-link">
+                                                                <a  href="/2017/03/08/记录一次NetworkManager与interfaces冲突的解决过程/#more">More >></a>
+                                                            </p>
+                                                            
                                                                 <div class="clearfix"></div>
                                             </div>
                                             
@@ -416,11 +362,11 @@
     
         <div class="article-meta">
             <a href="/2017/03/08/hello-world/" class="article-date">
-  	<time datetime="2017-03-08T04:46:35.773Z" itemprop="datePublished">2017-03-08</time>
+  	<time datetime="2017-03-08T05:54:22.750Z" itemprop="datePublished">2017-03-08</time>
 </a>
 
 <a href="/2017/03/08/hello-world/" class="article-date">
-  	<time datetime="2017-03-08T04:46:35.773Z" itemprop="datePublished">2017-03-08</time>
+  	<time datetime="2017-03-08T05:54:22.750Z" itemprop="datePublished">2017-03-08</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkGray">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -690,161 +636,17 @@
                                            <!--
                                             
 
-                                                    <p class="toc-button">目录</p>
-<div id="toc" class="toc-article" style="display:none;">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">MarkDown常用技巧</span></a></li></ol>
-</div>
-<script>
-    $(function(){
-
-        var width = document.body.scrollWidth;
-        if (width <=550) {
-             $(".toc-button").css("display","none");
-        }
-        $(".toc-button").hover(function(){
-            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
-            $(".toc-article").css({
-                top:top +"px"
-            });
-            $("#toc").show(1000,function(){});
-           // $("#toc").animate({width:500;},3000);
-        },function(){
-
-        });
-        $(".toc-article").hover(function(){
-
-        },function(){
-            $("#toc").hide(1000,function(){});
-        });
-    })
-</script>
-
-                                                  
                                             
                                             -->
                                             
-                                                     <font size="4" face="黑体" color="#8B008B"><strong><strong></strong></strong></font><br><font size="3" face="黑体" color="#8B008B"></font>
+                                                     <font size=4 face="黑体" color=#8B008B><strong><strong></font><br><font size=3 face="黑体" color=#8B008B></strong></strong></font>
 
-<center><h1>MarkDown常用技巧</h1></center><br>可参考:<br><br><a href="http://www.markdown.cn/" target="_blank" rel="external"><font size="4">markdown中文网</font></a><br><br><a href="https://www.zhihu.com/question/19963642" target="_blank" rel="external">知乎：markdown是什么</a><br><br><br><a href="http://blog.csdn.net/column/details/markdown.html" target="_blank" rel="external">CSDN markdown专栏</a><br><strong><em>
-</em></strong><br>MarkDown作者Aaron Swartz:<br><br><br><center>![MarkDown作者] (<a href="https://pic4.zhimg.com/606e14127233ca0a935032b19b5df3a7_b.jpg" target="_blank" rel="external">https://pic4.zhimg.com/606e14127233ca0a935032b19b5df3a7_b.jpg</a>  )</center>
+<center><h1>MarkDown常用技巧</h1></center><br>可参考:<br><br><a href="http://www.markdown.cn/"><font size=4>markdown中文网</font></a><br><br><a href="https://www.zhihu.com/question/19963642">知乎：markdown是什么</a><br><br><br><a href="http://blog.csdn.net/column/details/markdown.html">CSDN markdown专栏</a><br><strong><em>
+</em></strong><br>MarkDown作者Aaron Swartz:<br><br><br><center>![MarkDown作者] (“<a href="https://pic4.zhimg.com/606e14127233ca0a935032b19b5df3a7_b.jpg">https://pic4.zhimg.com/606e14127233ca0a935032b19b5df3a7_b.jpg</a>“)</center>
 
-<p><a href="http://www.rememberaaronsw.com/memories/" target="_blank" rel="external">纪念斯沃茨的网站(markdown编写)</a></p>
-<p>###标题<br>标题共有6级，用<strong><font size="4" face="黑体" color="#8B008B">#</font></strong>表示，后面接内容，<strong><font size="4" face="黑体" color="#8B008B">#</font></strong>越多代表级别越高，尺寸越小</p>
-<p>###加粗，斜体<br>在需要加粗的文字两端加入<strong><font size="3" face="黑体" color="#8B008B">`</font></strong>加粗文字<strong>`</strong><br>或者<font size="3" face="黑体" color="#8B008B"><strong><code>_加粗文字_</code></strong></font><br>如果要输出斜体效果，那么就是单个的<font size="4" face="黑体" color="#8B008B"><strong><code>*</code></strong></font>或者是单个的<font size="4" face="黑体" color="#8B008B"><strong><code>_</code></strong></font><br>而且，加粗和斜体标识最好都是放在<font size="4" face="黑体" color="#8B008B"><strong><code>&lt;font&gt;</code></strong></font>内</p>
-<p>###使排版更有层次<br>比如你需要下面的结果<br><br>1. 第一节</p>
-<ul>
-<li>第二节(你不用敲 “2”，自动就有了）<ul>
-<li>第一小节（推荐每层次缩进四个空格）<ul>
-<li>小小节 1</li>
-<li>小小节 2</li>
-</ul>
-</li>
-<li>第二小节</li>
-</ul>
-</li>
-</ul>
-<p>那么就像下面那样输入：<br></p>
-<ol>
-<li>第一节</li>
-</ol>
-<ul>
-<li>第二节(你不用敲 “2”，自动就有了）`<ul>
-<li>第一小节（推荐每层次缩进四个空格）<ul>
-<li>小小节 1</li>
-<li>小小节 2</li>
-</ul>
-</li>
-<li>第二小节</li>
-</ul>
-</li>
-</ul>
-<p><br><br>换行后的<strong><font size="4" face="黑体" color="#8B008B">*</font></strong>和前面持平的一行的一个元素效果相同，比如第一行的1.。第二行如果缩进与第一行持平，那么保持这种结构持续下去显示2.。假如要和前面的效果不同，那么就输入一个<strong><font size="3" face="黑体" color="#8B008B">tab</font></strong>不和前面持平<br><br>更好的方法：</p>
-<font size="4" face="黑体" color="#8B008B"><strong><br><code>&lt;ol&gt;</code><br><br><code>&lt;li&gt;</code>有序列表第一项<code>&lt;/li&gt;</code><br><br><code>&lt;li&gt;</code>有序列表第二项<code>&lt;/li&gt;</code><br><br><code>&lt;li&gt;</code>有序列表第三项<code>&lt;/li&gt;</code><br><br><code>&lt;/ol&gt;</code><br><br><code>&lt;ul&gt;</code>
-</strong></font><br><br>输出效果：<br><ol><br><li>有序列表第一项</li><br><li>有序列表第二项</li><br><li>有序列表第三项</li><br></ol><br>又比如：<br><font size="4" face="黑体" color="#8B008B"><strong><br><br><code>&lt;li&gt;&lt;p&gt;这是一个列表项&lt;/p&gt;</code><br><br><code>&lt;p&gt;这是第一列表项中的第二个段落&lt;/p&gt;&lt;/li&gt;</code><br><br><code>&lt;li&gt;&lt;p&gt;这是列表的另一个项&lt;/p&gt;&lt;/li&gt;</code><br><br><code>&lt;/ul&gt;</code>
-</strong></font><br><br><br>输出效果：<br><ul><br><li><p>这是一个列表项</p><br><p>这是第一列表项中的第二个段落</p></li><br><li><p>这是列表的另一个项目</p></li><br></ul><br><br>###居中:<br>用<strong><font size="4" face="黑体" color="#8B008B"><code>&lt;center&gt;</code></font></strong>标签扩起来<br>###换行：<br>&emsp;方法1：连续两个以上空格+回车<br><br>&emsp;方法2：使用html语言换行标签:<strong><font size="4" face="黑体" color="#8B008B"><code>&lt;br&gt;</code></font> </strong>（假如要输出<strong><font size="4" face="黑体" color="#8B008B"><code>&lt;br&gt;</code></font> </strong>这样的文字，那么在左右用<code>`` </code>扩起来）<br><br><font size="4" face="黑体" color="#8B008B"><strong><code>&lt;br&gt;</code></strong></font> 符号要在行首输入<br><br><br>####首行缩进两个字符：(每个表示一个空格，连续使用两个)<br>半方大的空白<font size="4" face="黑体" color="#8B008B"><strong><code>&amp;ensp;</code></strong></font>或<font size="4" face="黑体" color="#8B008B"><strong><code>&amp;#8194;</code></strong></font><br><br><br>全方大的空白<font size="4" face="黑体" color="#8B008B"><strong><code>&amp;emsp;</code></strong></font>或<font size="4" face="黑体" color="#8B008B"><strong><code>&amp;#8195;</code></strong></font><br><br><br>不断行的空白格<font size="4" face="黑体" color="#8B008B"><strong><code>&amp;nbsp;</code></strong></font>或<font size="4" face="黑体" color="#8B008B"><strong><code>&amp;#160;</code></strong></font>
-
-<p>###字体颜色、大小、字型</p>
-<p><code>&lt;font face=&quot;黑体&quot;&gt;我是黑体字&lt;/font&gt;</code> <br><br><code>&lt;font face=&quot;微软雅黑&quot;&gt;我是微软雅黑&lt;/font&gt;</code><br><br><code>&lt;font face=&quot;STCAIYUN&quot;&gt;我是华文彩云&lt;/font&gt;</code><br><br><code>&lt;font color=#0099ff size=7 face=&quot;黑体&quot;&gt;color=#0099ff size=72 face=&quot;黑体&quot;&lt;/font&gt;</code><br><br><code>&lt;font color=#00ffff size=72&gt;color=#00ffff&lt;/font&gt;</code><br><br><code>&lt;font color=gray size=72&gt;color=gray&lt;/font&gt;</code></p>
-<p><td><table><tr><td bgcolor="AliceBlue">也可以把颜色代号换成颜色名称</td></tr></table><br><br></td></p>
-<p><font color="#000099">字体效果：</font><br><br><font face="黑体">我是黑体</font><br><br><font face="微软雅黑">我是微软雅黑</font><br><br><font face="华文彩云">我是华文彩云</font><br><br></p>
-<p>###背景颜色：<br><strong><font size="4" face="黑体" color="#8B008B"><code>&lt;td&gt;&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=Chartreuse&gt;Chartreuse&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</code></font></strong><br><br></p>
-<p><td><table><tr><td bgcolor="AliceBlue">也可以把颜色名称换成颜色代号</td></tr></table><br><br></td></p>
-<p><font color="#00099">颜色效果：</font></p>
-<hr>
-<p><br><table class="table table-bordered table-striped table-condensed"><br> <tr><br>    <td><font color="#F0F8FF"><code>#F0F8FF</code></font></td><br>    <td><font color="#FAEBD7"><code>#FAEBD7</code></font></td><br>    <td><font color="#00FFFF"><code>#00FFFF</code></font></td><br>    <td><font color="#7FFFD4"><code>#7FFFD4</code></font></td><br>    <td><font color="#F0FFFF"><code>#F0FFFF</code></font></td><br>    <td><font color="#F5F5DC"><code>#F5F5DC</code></font></td><br>    <td><font color="#FFE4C4"><code>#FFE4C4</code></font></td><br>    <td><font color="#FFEBCD"><code>#FFEBCD</code></font></td><br>    <td><font color="#0000FF"><code>#0000FF</code></font></td><br>    <td><font color="#8A2BE2"><code>#8A2BE2</code></font></td><br>    <td><font color="#A52A2A"><code>#A52A2A</code></font></td><br> </tr><br> <tr><br>    <td><table><tr><td bgcolor="AliceBlue">AliceBlue</td></tr></table><br>    </td><td><table><tr><td bgcolor="AntiqueWhite">AntiqueWhite</td></tr></table><br>    </td><td><table><tr><td bgcolor="Aqua">Aqua</td></tr></table><br>    </td><td><table><tr><td bgcolor="Aquamarine">Aquamarine</td></tr></table><br>    </td><td><table><tr><td bgcolor="Azure">Azure</td></tr></table><br>    </td><td><table><tr><td bgcolor="Beige">Beige</td></tr></table><br>    </td><td><table><tr><td bgcolor="Bisque">Bisque</td></tr></table><br>    </td><td><table><tr><td bgcolor="BlanchedAlmond">BlanchedAlmond</td></tr></table><br>    </td><td><table><tr><td bgcolor="Blue">Blue</td></tr></table><br>    </td><td><table><tr><td bgcolor="BlueViolet">BlueViolet</td></tr></table><br>    </td><td><table><tr><td bgcolor="Brown">Brown</td></tr></table><br></td></tr></table></p>
-<p><tr><br>    <td><font color="#DEB887"><code>#DEB887</code></font></td><br>    <td><font color="#5F9EA0"><code>#5F9EA0</code></font></td><br>    <td><font color="#7FFF00"><code>#7FFF00</code></font></td><br>    <td><font color="#D2691E"><code>#D2691E</code></font></td><br>    <td><font color="#FF7F50"><code>#FF7F50</code></font></td><br>    <td><font color="#6495ED"><code>#6495ED</code></font></td><br>    <td><font color="#FFF8DC"><code>#FFF8DC</code></font></td><br>    <td><font color="#DC143C"><code>#DC143C</code></font></td><br>    <td><font color="#00FFFF"><code>#00FFFF</code></font></td><br>    <td><font color="#00008B"><code>#00008B</code></font></td><br>    <td><font color="#008B8B"><code>#008B8B</code></font></td><br> </tr><br> <tr><br>    <td><table><tr><td bgcolor="BurlyWood">BurlyWood</td></tr></table><br>    </td><td><table><tr><td bgcolor="CadetBlue">CadetBlue</td></tr></table><br>    </td><td><table><tr><td bgcolor="Chartreuse">Chartreuse</td></tr></table><br>    </td><td><table><tr><td bgcolor="Chocolate">Chocolate</td></tr></table><br>    </td><td><table><tr><td bgcolor="Coral">Coral</td></tr></table><br>    </td><td><table><tr><td bgcolor="CornflowerBlue">CornflowerBlue</td></tr></table><br>    </td><td><table><tr><td bgcolor="Cornsilk">Cornsilk</td></tr></table><br>    </td><td><table><tr><td bgcolor="Crimson">Crimson</td></tr></table><br>    </td><td><table><tr><td bgcolor="Cyan">Cyan</td></tr></table><br>    </td><td><table><tr><td bgcolor="DarkBlue">DarkBlue</td></tr></table><br>    </td><td><table><tr><td bgcolor="DarkCyan">DarkCyan</td></tr></table><br></td></tr><br></p>
-<hr>
-<p><br>假如要在<code>`` </code>扩起来的字符当中输入内嵌符号而且不要转义，还是要用<code>`` </code>扩起来<br>一般情况下，当<code>`` </code>成对出现的时候，要在反引号两边在加一对反引号，并且外边的要和里面的保持一个空格<br></p>
-<p>###代码区块<br>代码区块的建立是在每行加上4个空格或者一个制表符（如同写代码一样）。如<br>普通段落：<br><br>void main()<br><br>{<br><br>printf(“Hello, Markdown.”);<br><br>}</p>
-<pre><code>void main()
-{
-    printf(&quot;Hello, Markdown.&quot;);
-} 
-</code></pre><p>也可以用<font size="6" face="黑体" color="#8B008B">**` <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">&lt;br&gt;</div><div class="line">或者也可以使用&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**`&lt;pre&gt;&lt;code&gt;代码段&lt;/code&gt;&lt;/pre&gt;`**&lt;/font&gt;</div><div class="line"></div><div class="line">###分割线</div><div class="line">最常使用的分割线用3个或以上的`*`,还可以用`-`和`_`</div><div class="line">******</div><div class="line">###链接</div><div class="line">链接分作下列形式</div><div class="line">####1.行内式</div><div class="line">&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**`[名称](链接)`**&lt;/font&gt;</div><div class="line">&lt;br&gt;比如：[百度](https://www.baidu.com)</div><div class="line">####2.参考式</div><div class="line">&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**`[名称1][1]`**&lt;/font&gt;</div><div class="line">&lt;br&gt;&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**`[名称2][2]`**&lt;/font&gt;</div><div class="line">&lt;br&gt;&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**`[1]:链接1`**&lt;/font&gt;</div><div class="line">&lt;br&gt;&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**`[2]:链接2`**&lt;/font&gt;</div><div class="line">&lt;br&gt;比如：[百度][1]</div><div class="line">[1]:https://www.baidu.com</div><div class="line">####3.自动链接式</div><div class="line">&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**</div><div class="line">`&lt;a href=&quot;http://example.com/&quot;&gt;http://example.com/&lt;/a&gt;`</div><div class="line">**&lt;/font&gt;</div><div class="line">&lt;br&gt;效果就是：</div><div class="line">&lt;a href=&quot;http://example.com/&quot;&gt;http://example.com/&lt;/a&gt;</div><div class="line">###图片</div><div class="line">&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**`![Alt text](/path/to/img.jpg)`**&lt;/font&gt;</div><div class="line"></div><div class="line">&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**`![Alt text](/path/to/img.jpg &quot;Optional title&quot;)`**&lt;/font&gt;</div><div class="line"></div><div class="line">一个感叹号!开头；</div><div class="line">其后紧跟一对中括号，中括号内存放图片的alt`属性；</div><div class="line">其后紧跟一对小括号，小括号内存放图片的URL或路径，及可选的用双引号或单引号或小括号括起来的图片title</div><div class="line">这里 &quot;id&quot; 是图片引用标识。图片引用定义的语法与链接定义完全相同：</div><div class="line">&lt;br&gt;</div><div class="line">####插入外链接图片：</div><div class="line">&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**</div><div class="line">`![说明]:(url/to/image)`</div><div class="line">**&lt;/font&gt;</div><div class="line">###表格</div><div class="line">制作表格有两种方法:</div><div class="line">####1.html原生表格</div></pre></td></tr></table></figure></font></p>
-<p><table><br> <tr><br>     <td>时间</td><br>     <td>地点</td><br>     <td>人物</td><br> </tr><br>  <tr><br>     <td>1.1</td><br>     <td>深圳</td><br>     <td>马化腾</td><br> </tr><br>  <tr><br>     <td>1.2</td><br>     <td>北京</td><br>     <td>雷军</td><br> </tr><br></table><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;br&gt;</div><div class="line">&lt;div class=&quot;row&quot;&gt;</div><div class="line">    &lt;div class=&quot;span4&quot;&gt;</div><div class="line">        &lt;table&gt;</div><div class="line">            &lt;tr&gt;</div><div class="line"> 	&lt;td&gt;时间&lt;/td&gt;</div><div class="line"> 	&lt;td&gt;地点&lt;/td&gt;</div><div class="line"> 	&lt;td&gt;人物&lt;/td&gt;</div><div class="line"> &lt;/tr&gt;</div><div class="line">  &lt;tr&gt;</div><div class="line"> 	&lt;td&gt;1.1&lt;/td&gt;</div><div class="line"> 	&lt;td&gt;深圳&lt;/td&gt;</div><div class="line"> 	&lt;td&gt;马化腾&lt;/td&gt;</div><div class="line"> &lt;/tr&gt;</div><div class="line">  &lt;tr&gt;</div><div class="line"> 	&lt;td&gt;1.2&lt;/td&gt;</div><div class="line"> 	&lt;td&gt;北京&lt;/td&gt;</div><div class="line"> 	&lt;td&gt;雷军&lt;/td&gt;</div><div class="line"> &lt;/tr&gt;</div><div class="line">        &lt;/table&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;</div></pre></td></tr></table></figure></p>
-<p><div class="row"><br>    <div class="span4"><br>        <table><br>            …<br>        </table><br>    </div><br></div><br>```<br><br>如果想占更多或更少的宽度，把<font size="4" face="黑体" color="#8B008B">span4</font>修改为其他值，如<font size="4" face="黑体" color="#8B008B">span6</font>（总宽度是<font size="4" face="黑体" color="#8B008B">span8</font>，按比例算下就行）<br><br></p>
-<p>####2.markdown原生表格<br>或者像下面那样:<br><code>`&lt;br&gt;</code>|水果|价格|数量|<br><code>&lt;br&gt;</code>|:-|:-:|-:|<br><code>&lt;br&gt;</code>|香蕉|$1|5|<br><code>&lt;br&gt;</code>|苹果|$1|6|<br><code>&lt;br&gt;</code>|草莓|$1|7|<br>`<br><br><br><br><br>效果：<br><br></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">水果</th>
-<th style="text-align:center">价格</th>
-<th style="text-align:right">数量</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">香蕉</td>
-<td style="text-align:center">$1</td>
-<td style="text-align:right">5</td>
-</tr>
-<tr>
-<td style="text-align:left">苹果</td>
-<td style="text-align:center">$1</td>
-<td style="text-align:right">6</td>
-</tr>
-<tr>
-<td style="text-align:left">草莓</td>
-<td style="text-align:center">$1</td>
-<td style="text-align:right">7</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<p>又比如下面的效果：</p>
-<table>
-<thead>
-<tr>
-<th>函数名称</th>
-<th>说明</th>
-<th>ID</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>help()</code></td>
-<td>展示帮助窗口</td>
-</tr>
-<tr>
-<td><code>delete()</code></td>
-<td><strong>删除文件</strong></td>
-<td>2</td>
-</tr>
-<tr>
-<td><code>copy()</code></td>
-<td><em>复制文件</em></td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-<p>实现方式:<br><code>`&lt;br&gt;</code>| 函数名称 | 说明 | ID|<br><code>&lt;br&gt;</code>| ——–| ——– ||<br><code>&lt;br&gt;</code>| <code>help()</code> | 展示帮助窗口 |<br><code>&lt;br&gt;</code>| <code>delete()</code> | <strong>删除文件</strong> |2|<br><code>&lt;br&gt;</code>| <code>copy()</code>  | <em>复制文件</em> | 3|<br>`<br><br></p>
-<p>可以看出，实际上表格的输入不一定要是对称的，并且首行一定是加粗，作者也可以在表格内自定义表格内容的文字效果</p>
-<p>另外，如果需要表头跟内容不一样，可以将<font size="4" face="黑体" color="#8B008B"><strong><code>&lt;td&gt;</code>表头内容<code>&lt;/td&gt;</code></strong></font>换成<font size="4" face="黑体" color="#8B008B"><strong><code>&lt;th&gt;</code>表头内容<code>&lt;/th&gt;</code></strong></font>。</p>
-<p>如果表格内文需要换行，可以在要换行的内容后加入</p>
-<p><font size="4" face="黑体" color="#8B008B"><strong><code>&lt;br&gt;</code></strong></font>，后面的内容就会跑到下一行。</p>
-<p>如果有跨行或者跨列的单元格，可用<font size="4" face="黑体" color="#8B008B"><strong><code>&lt;th colspan=&quot;跨列数&quot;&gt;内容&lt;/th&gt;</code></strong></font>。<br>跨行则是用rowspan=”跨行数”。</p>
-<p>如果要调整某一列的宽度，可使用：<font size="4" face="黑体" color="#8B008B"><strong><code>&lt;th width=&quot;宽度值或百分比&quot;&gt;表头内容&lt;/th&gt;</code></strong></font>。</p>
-
+<p><a href="http://www.rememberaaronsw.com/memories/">纪念斯沃茨的网站(markdown编写)</a></p>
+<p>###标题<br>标题共有6级，用<strong><font size=4 face="黑体" color=#8B008B>#</font></strong>表示，后面接内容，<strong><font size=4 face="黑体" color=#8B008B>#</font></strong>越多代表级别越高，尺寸越小</p>
+<p>###加粗，斜体<br>在需要加粗的文字两端加入<strong><font size=3 face="黑体" color=#8B008B>`</strong>加粗文字<strong>`</font></strong><br>或者<font size=3 face="黑体" color=#8B008B><strong><code>_加粗文字_</code></strong></font><br>如果要输出斜体效果，那么就是单个的<font size=4 face="黑体" color=#8B008B><strong><code>*</code></strong></font>或者是单个的<font size=4 face="黑体" color=#8B008B><strong><code>_</code></strong></font><br>而且，加粗和斜体标识最好都是放在<font size=4 face="黑体" color=#8B008B><strong><code>&lt;font&gt;</code></strong></font>内<br>
                                             
                                         </div>
 
@@ -859,6 +661,10 @@
                                                     
 
                                                         
+                                                            <p class="article-more-link">
+                                                                <a  href="/2017/01/17/Use-MarkDown/#more">More >></a>
+                                                            </p>
+                                                            
                                                                 <div class="clearfix"></div>
                                             </div>
                                             
@@ -928,90 +734,15 @@
                                            <!--
                                             
 
-                                                    <p class="toc-button">目录</p>
-<div id="toc" class="toc-article" style="display:none;">
-    
-</div>
-<script>
-    $(function(){
-
-        var width = document.body.scrollWidth;
-        if (width <=550) {
-             $(".toc-button").css("display","none");
-        }
-        $(".toc-button").hover(function(){
-            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
-            $(".toc-article").css({
-                top:top +"px"
-            });
-            $("#toc").show(1000,function(){});
-           // $("#toc").animate({width:500;},3000);
-        },function(){
-
-        });
-        $(".toc-article").hover(function(){
-
-        },function(){
-            $("#toc").hide(1000,function(){});
-        });
-    })
-</script>
-
-                                                  
                                             
                                             -->
                                             
-                                                     <p><center><font face="黑体" color="#0000ff" size="10">HEXO与Github.io搭建个人博客</font></center></p>
+                                                     <p><center><font face="黑体" color=#0000ff size=10>HEXO与Github.io搭建个人博客</font></center></p>
 <p>###HEXO搭建<br>&nbsp;&nbsp;&nbsp;&nbsp;HEXO是基于Node.JS的一款简单快速的博客框架，能够支持多线程，支持markdown，可以将生成的静态网页发布到github.io以及coding上。<br>要使用搭建HEXO博客，先安装hexo<br>1.安装node.js</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>sudo apt-get install -y python-software-properties software-properties-common<br>sudo add-apt-repository ppa:chris-lea/node.js<br>sudo apt-get update<br>sudo apt-get install nodejs<br></font></td></tr></table><br>2.安装npm<br>&nbsp;&nbsp;&nbsp;&nbsp;npm全名：Node Package Manager，是Nodejs的包管理器。<br>ubuntu16.04LTS自带nodejs和npm，但是版本较低，假如要安装最新的，先移除自带的。</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>sudo apt-get remove nodejs &amp;&amp; sudo apt-get remove npm<br></font></td></tr></table><br>再清理依赖包：</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>sudo apt-get  autoremove<br></font></td></tr></table><br><br><br>官网上下载nodejs：</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>cd /opt &amp;&amp; wget <a href="https://nodejs.org/dist/v4.4.5/node-v4.4.5-linux-x64.tar.xz" target="_blank" rel="external">https://nodejs.org/dist/v4.4.5/node-v4.4.5-linux-x64.tar.xz</a><br>xz -d node-v4.4.5-linux-x64.tar.xz &amp;&amp; tar vxf node-v4.4.5-linux-x64.tar<br></font></td></tr></table><br>让任意目录可以访问，先配置环境变量</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>sudo vim /etc/profile<br></font></td></tr></table><br>文件最后加上</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>export PATH=$PATH:/opt/node-v4.4.5-linux-x64/bin<br></font></td></tr></table><br>也可以通过软链接，使得任意目录可访问<br>将node和npm链接到系统默认的PATH目录下的一个，软链接方式如下</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>ln -s /home/simon/node-v4.4.5-linux-x64/bin/node /usr/local/bin/node<br>ln -s /home/simon/node-v4.4.5-linux-x64/bin/npm /usr/local/bin/npm<br></font></td></tr></table><br>同步文件配置：</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>source /etc/profile<br></font></td></tr></table><br>查看版本：</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>node –version &amp;&amp; npm –version<br></font></td></tr></table><br>3.安装hexo<br>国外站点网速较慢，建议换成淘宝站点</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>npm install -g npm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a><br>npm –version<br></font></td></tr></table><br>接下来安装hexo-cli<br>切换到一个合适的目录下</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>npm install -g hexo-cli<br></font></td></tr></table><br>下载完毕之后可以检测一下：<br>hexo –version<br>4.配置<br>hexo本地文件在安装插件的时候，最好都是用root身份执行，不然经常遇到一些问题<br>初始化本地路径</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>cd /home/simon/hexo &amp;&amp; hexo init<br></font></td></tr></table><br>生成node_modules</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>npm install<br></font></td></tr></table><br>生成本地博客</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>hexo g<br><br>hexo server<br></font></td></tr></table><br>在浏览器下输入<font color="#0000ff"><a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></font>，成功的话就生成hexo的标准界面</p>
-<p>###部署到github<br>&nbsp;&nbsp;&nbsp;&nbsp;新建一个repository，例如web（网上说要把名字设置成your_github_name.github.io这种格式，否则会404，但是我没有采用，也能生成）<br>修改hexo根目录下的_config.yml，新增关联仓库<br>deploy:<br>  type: git<br>  repository: <a href="https://github.com/simonid/web.git" target="_blank" rel="external">https://github.com/simonid/web.git</a><br>  branch: master<br>注意了，变量名之前要有两个空格，参数值前要有一个空格，通过:分割<br>假如格式不对，不能被识别，比如：<br>You should configure deployment settings in _config.yml first!</p>
-<p>Available deployer plugins:<br>  git</p>
-<p>这样的错误<br>或者：FATAL remote: Repository not found.<br>完成之后，到github上完成部署<br>在项目的setting项找到Github Pages，生成项目<br>回到终端<br></p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>hexo deploy<br></font></td></tr></table><br>如果报错说缺少deployer：npm install hexo-deployer-git –save<br>打开 <a href="https://simonid.github.io/web/">https://simonid.github.io/web/</a> 就可以看到效果，同时自己的github项目也会有文件更新<br>注：中途可能遇到github的配置问题，请尝试用ssh<br>ssh-keygen -C “username@email.com” -t rsa</p>
-<p>Note: “username@email.com”需要更换成你在Github上注册的Email地址或者是Username<br>这样会在家目录生成一个公钥文件夹.ssh，其中id_rsa.pub是Github需要的SSH公钥文件。复制后粘贴到github上<br>hexo简写命令格式：</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>hexo g == hexo generate(生成静态网页)<br><br><br><br>hexo d == hexo deploy（部署）<br><br><br><br>hexo s == hexo server（测试）<br><br><br><br>hexo n xxx （new article）<br><br><br><br>hexo clean<br><br><br><br>hexo help<br></font></td></tr></table><br>&nbsp;&nbsp;&nbsp;&nbsp;还有其他选项：<br>init 创建一个hexo项目<br>migrate 从其他系统向hexo迁移<br>version 查看hexo的版本<br>–config参数，指定配置文件，代替默认的_config.yml<br>–debug参数，调试模式，输出所有日志信息<br>–safe参数，安全模式，禁用所有的插件和脚本<br>–silent参数，无日志输出模式<br>hexo有许多的主题和插件，可以通过npm、git工具来进行下载，放在theme下<br>hexo根目录的目录及文件说明：</p>
-<pre><code>scaffolds 脚手架，也就是一个工具模板
-scripts 写文件的js，扩展hexo的功能
-source 存放博客正文内容
-source/_drafts 草稿箱
-source/_posts 文件箱
-themes 存放皮肤的目录
-themes/landscape 默认的皮肤
-_config.yml 全局的配置文件
-db.json 静态常量
-</code></pre><p>_posts目录：Hexo是一个静态博客框架，因此没有数据库。文章内容都是以文本文件方式进行存储的，直接存储在_posts的目录。Hexo天生集成了markdown，我们可以直接使用markdown语法格式写博客，例如:hello-world.md。新增加一篇文章，就在_posts目录，新建一个xxx.md的文件。</p>
-<p>themes目录：是存放皮肤的，包括一套Javascript+CSS样式和基于EJS的模板设置。通过在themes目录下，新建一个子目录，就可以创建一套新的皮肤，当然我们也可以直接在landscape上面修改。</p>
-<p>###全局配置</p>
-<p>_config.yml是全局的配置文件：很多的网站配置都在这个文件中定义。</p>
-<pre><code>站点信息: 定义标题，作者，语言
-URL: URL访问路径
-文件目录: 正文的存储目录
-写博客配置：文章标题，文章类型，外部链接等
-目录和标签：默认分类，分类图，标签图
-归档设置：归档的类型
-服务器设置：IP，访问端口，日志输出
-时间和日期格式： 时间显示格式，日期显示格式
-分页设置：每页显示数量
-评论：外挂的Disqus评论系统
-插件和皮肤：换皮肤，安装插件
-Markdown语言：markdown的标准
-CSS的stylus格式：是否允许压缩
-部署配置：github发布
-</code></pre><p><a href="http://www.tuicool.com/articles/y6JJV3Z" target="_blank" rel="external"><font color="#DC143C">最详细的资料</font><br></a><br><br><br><a href="http://www.cnblogs.com/purediy/archive/2013/03/07/2948892.html" target="_blank" rel="external">其他资料1</a><br><br><br><a href="http://www.aichengxu.com/other/10706481.htm" target="_blank" rel="external">其他资料2</a></p>
-
+<p><table><tr><td bgcolor=blanchedAlmond><font color=#dc143c><br>sudo apt-get install -y python-software-properties software-properties-common<br>sudo add-apt-repository ppa:chris-lea/node.js<br>sudo apt-get update<br>sudo apt-get install nodejs<br></font></td></tr></table><br>2.安装npm<br>&nbsp;&nbsp;&nbsp;&nbsp;npm全名：Node Package Manager，是Nodejs的包管理器。<br>ubuntu16.04LTS自带nodejs和npm，但是版本较低，假如要安装最新的，先移除自带的。</p>
+<p><table><tr><td bgcolor=blanchedAlmond><font color=#dc143c><br>sudo apt-get remove nodejs &amp;&amp; sudo apt-get remove npm<br></font></td></tr></table><br>再清理依赖包：</p>
+<p><table><tr><td bgcolor=blanchedAlmond><font color=#dc143c><br>sudo apt-get  autoremove<br></font></td></tr></table><br><br/><br>官网上下载nodejs：</p>
+<p><table><tr><td bgcolor=blanchedAlmond><font color=#dc143c><br>cd /opt &amp;&amp; wget <a href="https://nodejs.org/dist/v4.4.5/node-v4.4.5-linux-x64.tar.xz">https://nodejs.org/dist/v4.4.5/node-v4.4.5-linux-x64.tar.xz</a><br>xz -d node-v4.4.5-linux-x64.tar.xz &amp;&amp; tar vxf node-v4.4.5-linux-x64.tar<br></font></td></tr></table><br>
                                             
                                         </div>
 
@@ -1030,6 +761,10 @@ CSS的stylus格式：是否允许压缩
 
 
                                                         
+                                                            <p class="article-more-link">
+                                                                <a  href="/2017/01/17/hexo与github搭建个人博客/#more">More >></a>
+                                                            </p>
+                                                            
                                                                 <div class="clearfix"></div>
                                             </div>
                                             

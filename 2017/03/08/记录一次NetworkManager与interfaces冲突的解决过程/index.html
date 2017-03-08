@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://simonid.github.io/2017/03/08/记录一次NetworkManager与interfaces冲突的解决过程/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="&amp;nbsp;记录一次NetworkManager与interfaces冲突的解决&amp;emsp;主机是ubuntu14.04，之前改过/etc/network/interfaces的配置内容（设置了静态ip），然后发现图形界面上的网络设置失效了，而且因为修改了interfaces之后还不能连接网络，ifconfig的时候不显示wlan0和eth0的信息，反而多了一个tun0-00。下面是一些解决的步骤">
-<meta property="og:updated_time" content="2017-01-16T06:55:29.000Z">
+<meta property="og:updated_time" content="2017-03-08T05:19:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
 <meta name="twitter:description" content="&amp;nbsp;记录一次NetworkManager与interfaces冲突的解决&amp;emsp;主机是ubuntu14.04，之前改过/etc/network/interfaces的配置内容（设置了静态ip），然后发现图形界面上的网络设置失效了，而且因为修改了interfaces之后还不能连接网络，ifconfig的时候不显示wlan0和eth0的信息，反而多了一个tun0-00。下面是一些解决的步骤">
@@ -112,7 +112,7 @@
 							
 								<a class="github" target="_blank" href="https://github.com/simonid" title="github">github</a>
 					        
-								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
 					        
 						</div>
 					</nav>
@@ -177,7 +177,7 @@
 					
 						<a class="github" target="_blank" href="https://github.com/simonid" title="github">github</a>
 			        
-						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
 			        
 				</div>
 			</nav>
@@ -207,11 +207,11 @@
     
         <div class="article-meta">
             <a href="/2017/03/08/记录一次NetworkManager与interfaces冲突的解决过程/" class="article-date">
-  	<time datetime="2017-03-08T04:46:35.827Z" itemprop="datePublished">2017-03-08</time>
+  	<time datetime="2017-03-08T05:54:22.800Z" itemprop="datePublished">2017-03-08</time>
 </a>
 
 <a href="/2017/03/08/记录一次NetworkManager与interfaces冲突的解决过程/" class="article-date">
-  	<time datetime="2017-03-08T04:46:35.827Z" itemprop="datePublished">2017-03-08</time>
+  	<time datetime="2017-03-08T05:54:22.800Z" itemprop="datePublished">2017-03-08</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkGray">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -268,7 +268,7 @@
 <p>&emsp;首先，重新编辑interfaces文件和/etc/resolv.conf文件，使他们恢复默认设置，然后重启，失败。先解决eth0的问题吧。网线接上电脑，手动开启eth0：</p>
 <p>sudo ip link set eth0 up 或 sudo ifconfig eth0 up</p>
 <p>&emsp;再查看一下，ifconfig，如果没有ipv4地址，尝试：<br></p>
-<font color="#DC143C"><br>sudo dhclient eth0<br></font><br><br>&emsp;然后ping一下同网段ip，失败的话，尝试nc命令<br><br>&emsp;如果ICMP被禁了，使用nc命令或者telnet更适合，且可以探测端口是否开放,虽然DHCP端口是67，不过通常DHCP和DNS服务器是同一台机器，因此顺便测试53端口：<br><br>nc -zv 192.168.1.1 67<br><br>nc -zv 192.168.1.1 53<br><br>&emsp;如果服务器的IP不是通过DHCP获取的动态IP，而是静态IP，则需要手动设置IP地址，使用ifconfig配置:<br><br>sudo ifconfig eth0 192.168.1.105/24 gw 192.168.1.1<br><br>或者<br><br>sudo ip addr add 172.16.0.2/24 dev eth0<br><br>sudo route add default gw 172.16.0.1 dev eth0<br><br>配置完eth0之后，查看wlan0。<br><br>&emsp;ubuntu上有两套管理网络的系统，一个是interfaces文件（网络设置由配置文件决定）和NetworkManager（网络设置由图形界面决定），它们二者之间只能使用一个，所以，在需要修改interfaces的时候（比如固定ip），要先把NetworkManager的服务屏蔽掉，service network-manager stop.之所以遇到这样的问题就是在修改interfaces之前没有对NetworkManager进行管理<br><br>wlan0比较复杂，先尝试开启并连上网络<br><br>1.. 打开无线网卡电源<br><br>iwconfig wlan0 txpower on 或者 sudo ip link set wlan0 up<br><br>列出区域内的无线网络<br>iwlist wlan0 scan 或者 sudo iw dev wlan0 scan | less<br><br>3.连接wifi<br><br>假如wifi没有加密：sudo iw dev wlan0 connect [网络 SSID]<br><br>假如是WEP加密：sudo iw dev wlan0 connect [网络 SSID] key 0:[WEP 密钥]<br><br>假如是WPA或者WPA2加密的话，就比较麻烦了，需要借助wpasupplicant这个工具<br><br>编辑_/etc/wpa_supplicant/wpa_supplicant.conf<br><br><font color="#0099ff"><br>network={<br><br>ssid=”[网络 ssid]“<br><br>psk=”[密码]“<br><br>priority=1<br><br>}<br></font>
+<font color="#DC143C"><br>sudo dhclient eth0<br></font><br><br>&emsp;然后ping一下同网段ip，失败的话，尝试nc命令<br><br>&emsp;如果ICMP被禁了，使用nc命令或者telnet更适合，且可以探测端口是否开放,虽然DHCP端口是67，不过通常DHCP和DNS服务器是同一台机器，因此顺便测试53端口：<br><br>nc -zv 192.168.1.1 67<br><br>nc -zv 192.168.1.1 53<br><br><a id="more"></a><br>&emsp;如果服务器的IP不是通过DHCP获取的动态IP，而是静态IP，则需要手动设置IP地址，使用ifconfig配置:<br><br>sudo ifconfig eth0 192.168.1.105/24 gw 192.168.1.1<br><br>或者<br><br>sudo ip addr add 172.16.0.2/24 dev eth0<br><br>sudo route add default gw 172.16.0.1 dev eth0<br><br>配置完eth0之后，查看wlan0。<br><br>&emsp;ubuntu上有两套管理网络的系统，一个是interfaces文件（网络设置由配置文件决定）和NetworkManager（网络设置由图形界面决定），它们二者之间只能使用一个，所以，在需要修改interfaces的时候（比如固定ip），要先把NetworkManager的服务屏蔽掉，service network-manager stop.之所以遇到这样的问题就是在修改interfaces之前没有对NetworkManager进行管理<br><br>wlan0比较复杂，先尝试开启并连上网络<br><br>1.. 打开无线网卡电源<br><br>iwconfig wlan0 txpower on 或者 sudo ip link set wlan0 up<br><br>列出区域内的无线网络<br>iwlist wlan0 scan 或者 sudo iw dev wlan0 scan | less<br><br>3.连接wifi<br><br>假如wifi没有加密：sudo iw dev wlan0 connect [网络 SSID]<br><br>假如是WEP加密：sudo iw dev wlan0 connect [网络 SSID] key 0:[WEP 密钥]<br><br>假如是WPA或者WPA2加密的话，就比较麻烦了，需要借助wpasupplicant这个工具<br><br>编辑_/etc/wpa_supplicant/wpa_supplicant.conf<br><br><font color="#0099ff"><br>network={<br><br>ssid=”[网络 ssid]“<br><br>psk=”[密码]“<br><br>priority=1<br><br>}<br></font>
 
 <p>重启网络</p>
 <p>后台开启：sudo wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf</p>

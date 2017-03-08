@@ -16,7 +16,7 @@ sudo apt-get install -y python-softwa">
 <meta property="og:description" content="HEXO与Github.io搭建个人博客
 ###HEXO搭建&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;HEXO是基于Node.JS的一款简单快速的博客框架，能够支持多线程，支持markdown，可以将生成的静态网页发布到github.io以及coding上。要使用搭建HEXO博客，先安装hexo1.安装node.js
 sudo apt-get install -y python-softwa">
-<meta property="og:updated_time" content="2017-01-17T08:22:27.000Z">
+<meta property="og:updated_time" content="2017-03-08T05:21:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo与github搭建个人博客">
 <meta name="twitter:description" content="HEXO与Github.io搭建个人博客
@@ -118,7 +118,7 @@ sudo apt-get install -y python-softwa">
 							
 								<a class="github" target="_blank" href="https://github.com/simonid" title="github">github</a>
 					        
-								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
 					        
 						</div>
 					</nav>
@@ -183,7 +183,7 @@ sudo apt-get install -y python-softwa">
 					
 						<a class="github" target="_blank" href="https://github.com/simonid" title="github">github</a>
 			        
-						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
 			        
 				</div>
 			</nav>
@@ -303,7 +303,7 @@ sudo apt-get install -y python-softwa">
 <p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>sudo apt-get install -y python-software-properties software-properties-common<br>sudo add-apt-repository ppa:chris-lea/node.js<br>sudo apt-get update<br>sudo apt-get install nodejs<br></font></td></tr></table><br>2.安装npm<br>&nbsp;&nbsp;&nbsp;&nbsp;npm全名：Node Package Manager，是Nodejs的包管理器。<br>ubuntu16.04LTS自带nodejs和npm，但是版本较低，假如要安装最新的，先移除自带的。</p>
 <p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>sudo apt-get remove nodejs &amp;&amp; sudo apt-get remove npm<br></font></td></tr></table><br>再清理依赖包：</p>
 <p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>sudo apt-get  autoremove<br></font></td></tr></table><br><br><br>官网上下载nodejs：</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>cd /opt &amp;&amp; wget <a href="https://nodejs.org/dist/v4.4.5/node-v4.4.5-linux-x64.tar.xz" target="_blank" rel="external">https://nodejs.org/dist/v4.4.5/node-v4.4.5-linux-x64.tar.xz</a><br>xz -d node-v4.4.5-linux-x64.tar.xz &amp;&amp; tar vxf node-v4.4.5-linux-x64.tar<br></font></td></tr></table><br>让任意目录可以访问，先配置环境变量</p>
+<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>cd /opt &amp;&amp; wget <a href="https://nodejs.org/dist/v4.4.5/node-v4.4.5-linux-x64.tar.xz" target="_blank" rel="external">https://nodejs.org/dist/v4.4.5/node-v4.4.5-linux-x64.tar.xz</a><br>xz -d node-v4.4.5-linux-x64.tar.xz &amp;&amp; tar vxf node-v4.4.5-linux-x64.tar<br></font></td></tr></table><br><a id="more"></a><br>让任意目录可以访问，先配置环境变量</p>
 <p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>sudo vim /etc/profile<br></font></td></tr></table><br>文件最后加上</p>
 <p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>export PATH=$PATH:/opt/node-v4.4.5-linux-x64/bin<br></font></td></tr></table><br>也可以通过软链接，使得任意目录可访问<br>将node和npm链接到系统默认的PATH目录下的一个，软链接方式如下</p>
 <p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>ln -s /home/simon/node-v4.4.5-linux-x64/bin/node /usr/local/bin/node<br>ln -s /home/simon/node-v4.4.5-linux-x64/bin/npm /usr/local/bin/npm<br></font></td></tr></table><br>同步文件配置：</p>
