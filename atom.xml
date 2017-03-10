@@ -17,9 +17,9 @@
   
   <entry>
     <title></title>
-    <link href="https://simonid.github.io/2017/03/08/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1NetworkManager%E4%B8%8Einterfaces%E5%86%B2%E7%AA%81%E7%9A%84%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/"/>
-    <id>https://simonid.github.io/2017/03/08/记录一次NetworkManager与interfaces冲突的解决过程/</id>
-    <published>2017-03-08T05:54:22.800Z</published>
+    <link href="https://simonid.github.io/2017/03/10/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1NetworkManager%E4%B8%8Einterfaces%E5%86%B2%E7%AA%81%E7%9A%84%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/"/>
+    <id>https://simonid.github.io/2017/03/10/记录一次NetworkManager与interfaces冲突的解决过程/</id>
+    <published>2017-03-10T11:45:13.106Z</published>
     <updated>2017-03-08T05:19:48.000Z</updated>
     
     <content type="html"><![CDATA[<p>&nbsp;</p><h3>记录一次NetworkManager与interfaces冲突的解决</h3><br><br><br>&emsp;主机是ubuntu14.04，之前改过/etc/network/interfaces的配置内容（设置了静态ip），然后发现图形界面上的网络设置失效了，而且因为修改了interfaces之后还不能连接网络，ifconfig的时候不显示wlan0和eth0的信息，反而多了一个tun0-00。下面是一些解决的步骤：<p></p>
@@ -71,9 +71,9 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://simonid.github.io/2017/03/08/hello-world/"/>
-    <id>https://simonid.github.io/2017/03/08/hello-world/</id>
-    <published>2017-03-08T05:54:22.750Z</published>
+    <link href="https://simonid.github.io/2017/03/10/hello-world/"/>
+    <id>https://simonid.github.io/2017/03/10/hello-world/</id>
+    <published>2017-03-10T11:45:13.025Z</published>
     <updated>2017-01-16T06:15:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
@@ -93,6 +93,220 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>c语言存储空间</title>
+    <link href="https://simonid.github.io/2017/03/10/c%E8%AF%AD%E8%A8%80%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4/"/>
+    <id>https://simonid.github.io/2017/03/10/c语言存储空间/</id>
+    <published>2017-03-09T16:03:06.000Z</published>
+    <updated>2017-03-10T11:44:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h2><center>c语言存储空间</center></h2><p></p>
+<font color="red"><h3>内存分布</h3></font><br><table><tr><td bgcolor="#7FFFD4">栈区(stack):</td></tr></table><br><font color="#0000ff">分配和释放方式：</font>有编译器自动分配和释放<br><br><font color="#0000ff">存放的内容：</font>局部变量，参数<br><br><font color="#0000ff">特点：</font>后进先出，可以用于现场保护<br><br><table><tr><td bgcolor="#7FFFD4">堆区(heap):</td></tr></table><br><font color="#0000ff">分配和释放方式：</font>用户手动分配和释放，程序退出会自动释放<br><br><font color="#0000ff">存放的内容：</font>动态分配内存的内容<br><br><font color="#0000ff">特点：</font>可以自由划分大小，可以动态调整内存大小<br><br><font color="#0000ff">堆内存申请：</font>系统有记录空闲内存地址的链表，用户申请内存的时候就会找到空间大于用户申请内存大小的节点，所以分配的地址是随机的<br><br><a id="more"></a><br><font color="#0000ff">剩余内存的处理</font>多余部分经系统重新回收放到空闲内存链表<br><br><font color="#0000ff">首地址记录大小</font>分配内存的首地址存放该堆的大小<br><br><table><tr><td bgcolor="#7FFFD4">全局区/静态区:</td></tr></table><br><font color="#0000ff">分配和释放方式：</font>编译器分配内存，程序退出时系统自动释放内存<br><br><font color="#0000ff">存放的内容：</font>全局变量，静态变量<br><br><font color="#0000ff">特点：</font>全局和静态变量都是存储在同个区，初始化的两种变量和未初始化的变量存储在不同的两个区域，但是这两个区间相邻<br><br><table><tr><td bgcolor="#7FFFD4">常量区:</td></tr></table><br><font color="#0000ff">分配和释放方式：</font>退出程序时系统自动释放<br><br><font color="#0000ff">存放内容：</font>常量<br><br><table><tr><td bgcolor="#7FFFD4">代码区:</td></tr></table><br><font color="#0000ff">分配和释放方式：</font>编译器分配，程序退出时系统自动释放<br><br><font color="#0000ff">存放内容</font>二进制代码和特殊变量<br><br><br><font color="pink">内存存放法顺序（高到低）：栈=&gt;堆=&gt;全局区=&gt;常量区=&gt;代码区</font>
+
+<p><font color="red"><h3>变量类型</h3></font><br></p>
+<p><table><tr><td bgcolor="#7FFFD4">register变量:</td></tr></table><br>使用场景:如果一个变量使用的频率很高，可以用register修饰，提高访问速度<br>–修饰限制：只有局部变量和参数可以被声明为register变量，全局变量和静态变量不可以<br>–数量限制：register修饰的变量直接存放在cpu寄存器中，资源宝贵，不可以定义太多</p>
+<p><table><tr><td bgcolor="#7FFFD4">extern变量:</td></tr></table><br>&ensp;&ensp;同以外部变量只能被定义一次，声明为外部变量（就是在函数外部定义的变量），在本函数中使用。一般可以省略掉extern<br>–作用域：&ensp;&ensp;单文件：在本文件开头声明extern A，后面某行中定义int A=1；A的作用域就是本文件从开头一直到结尾。<br>多文件：在任意文件定义int A1；在本文件声明extern A，那么从当前位置到文件末尾都可以使用。<br>–存放位置：存放在全局区</p>
+<p><table><tr><td bgcolor="#7FFFD4">static变量:</td></tr></table><br>&ensp;&ensp;&ensp;&ensp;静态变量，修饰符是static。（静态变量属于静态存储方式，但是属于静态存储方式的变量不一定是静态变量，比如外部变量倏然属于静态存储方式，但是不一定是静态变量，要加上static就是才能成为静态全局变量）。<br><br>&ensp;&ensp;&ensp;&ensp;局部变量经过static修饰之后就变成静态局部变量，它的生存期为整个源文件，但是作用域还是局限于本函数，只能在该函数使用，一旦退出函数，尽管变量还在，但是不能使用。<br><br>&ensp;&ensp;&ensp;&ensp;全局变量用static就是静态全局变量，原本全局变量的作用域是多个源文件，但是static修饰之后该变量值在该源文件内有效，其他源文件不能使用。<br></p>
+<p><font color="red">总结</font>： 把局部变量改变为静态变量后是改变了它的存储方式即改变了它的生存期；把全局变量改变为静态变量 后是改变了它的作用域， 限制了它的使用范围<br><br>&ensp;&ensp;&ensp;&ensp;当static修饰函数时，函数的作用域就限制在了本文件中</p>
+<p>参考：<a href="http://blog.csdn.net/shulianghan/article/details/20472269" target="_blank" rel="external">http://blog.csdn.net/shulianghan/article/details/20472269</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;h2&gt;&lt;center&gt;c语言存储空间&lt;/center&gt;&lt;/h2&gt;&lt;/p&gt;
+&lt;font color=red&gt;&lt;h3&gt;内存分布&lt;/h3&gt;&lt;/font&gt;&lt;br&gt;&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=#7FFFD4&gt;栈区(stack):&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;&lt;font color=#0000ff&gt;分配和释放方式：&lt;/font&gt;有编译器自动分配和释放&lt;br/&gt;&lt;br&gt;&lt;font color=#0000ff&gt;存放的内容：&lt;/font&gt;局部变量，参数&lt;br/&gt;&lt;br&gt;&lt;font color=#0000ff&gt;特点：&lt;/font&gt;后进先出，可以用于现场保护&lt;br/&gt;&lt;br&gt;&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=#7FFFD4&gt;堆区(heap):&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;&lt;font color=#0000ff&gt;分配和释放方式：&lt;/font&gt;用户手动分配和释放，程序退出会自动释放&lt;br/&gt;&lt;br&gt;&lt;font color=#0000ff&gt;存放的内容：&lt;/font&gt;动态分配内存的内容&lt;br/&gt;&lt;br&gt;&lt;font color=#0000ff&gt;特点：&lt;/font&gt;可以自由划分大小，可以动态调整内存大小&lt;br/&gt;&lt;br&gt;&lt;font color=#0000ff&gt;堆内存申请：&lt;/font&gt;系统有记录空闲内存地址的链表，用户申请内存的时候就会找到空间大于用户申请内存大小的节点，所以分配的地址是随机的&lt;br/&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="c" scheme="https://simonid.github.io/tags/c/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>c和指针</title>
+    <link href="https://simonid.github.io/2017/03/09/c%E5%92%8C%E6%8C%87%E9%92%88/"/>
+    <id>https://simonid.github.io/2017/03/09/c和指针/</id>
+    <published>2017-03-09T09:31:12.000Z</published>
+    <updated>2017-03-09T16:12:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h3><center>C和指针</center></h3><br>&ensp;&ensp;大一学了c语言，但是发现实际上自己对c语言的掌握程度还是不足，特别是指针部分，所以再来复习一下。<br><br>&ensp;&ensp;首先指明，指针的实质是地址，如果一个变量存储了一份数据的指针，我们就称它为指针变量。在c语言中可以用一个变量来存放指针，这个变量就是指针变量，指针变量的值就是某个数据的地址。<br><br>&ensp;&ensp;假设我们有一个int型变量a，它存储的是整型数字1，并且占用0x10b的地址，另外还有一个指针变量p，它的值是0x10b，这样我们就可以说p指向了a，或者p是指向变量a的指针<br><br><a id="more"></a><p></p>
+<p><font color="#999ds">定义指针变量</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">type *name;   type *name=val;</div></pre></td></tr></table></figure></p>
+<p><em>表示这是一个指针变量，我们可以用</em>去获取地址上的数据，type表示该指针变量指向的数据的类型。<br><br>再举一个例子：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int a=10;</div><div class="line">int *t;</div><div class="line">int *p=&amp;a;</div><div class="line">t=&amp;a;(*t=&amp;a也是一样效果，加上*显多余，因为前面已经声明了是一个指针)</div></pre></td></tr></table></figure></p>
+<p>此时，p指向a，注意p是一个指针变量，它的值应该是一个数据的地址，我们需要将变量a的地址赋予它<br>又比如：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">int **p;</div><div class="line">int *a=10;</div><div class="line">*p=a;</div><div class="line">int b=9;</div><div class="line">int c=8;</div><div class="line">int *pp;</div><div class="line">*p=&amp;b;</div><div class="line">p=&amp;c;</div></pre></td></tr></table></figure></p>
+<p>上面我们定义了一个二级指针，二级指针最终的指向是10，我们需要将10对应的地址（也就是a这个指针变量）赋予指针变量*p。</p>
+<p>我们可以简单地总结一下指针的创建和赋值：<br>定义指针的时候必须带有<em>,让指针变量指向对应值的时候等号后面应该是一个地址。当已经定义了一个指针变量后，后面的赋值不用</em>也可以。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int x, y, *px = &amp;x, *py = &amp;y;</div><div class="line">y = *px + 5;  //表示把x的内容加5并赋给y，*px+5相当于(*px)+5</div><div class="line">y = ++*px;  //px的内容加上1之后赋给y，++*px相当于++(*px)</div><div class="line">y = *px++;  //相当于y=(*px)++</div></pre></td></tr></table></figure></p>
+<p>明确概念<a href="https://www.douban.com/note/176671788/" target="_blank" rel="external">参考</a>：<br><br>&ensp;&ensp;这里分析一下静态内存，栈内存和动态分配的内存(也就是堆内存)的区别：<nr><br>&ensp;&ensp;(1) 从静态存储区域分配。在程序编译的时候内存就已经分配好，这块内存在程序的整个运行期间都存在。例如全局变量，static变量。<nr><br>&ensp;&ensp;(2) 在栈上创建。在执行函数的时侯(无论何时到达一个特殊的执行点(左花括号)时，存储单元都可以在栈上被创建。出了执行点(右花括号)，这个存储单元自动被释放)，函数内局部变量的存储单元都可以在栈上创建，函数执行结束时这些存储单元自动被释放。栈内存分配运算内置于处理器的指令集中，效率很高，但是分配的内存容量有限。<br><br>&ensp;&ensp;(3) 从堆上分配，亦称动态内存分配。程序在运行的时候用malloc或new申请任意多少的内存，程序员自己负责在何时用free或delete释放内存。动态内存的生存期由我们决定，使用非常灵活，但问题也最多。<br>字符数组和字符指针的区别：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">char p[]=&quot;abc&quot;; //相当于局部变量，在堆内存存放</div><div class="line">char *p=&quot;abc&quot;;  //相当于常量，在静态内存存放</div></pre></td></tr></table></figure></nr></nr></p>
+<p><font color="#999ds">指针用在参数传递</font><br><br>&ensp;&ensp;当我们在a函数定义了一对实参，然后在a函数中调用b函数（b函数中的形参来源是a函数的一对实参，并且b函数要对传入的数据进行互换），如果我们只是使用简单的变量，那么最终在a函数中不能得到互换的数据。这是因为在a函数定义局部变量的时候，实参本身会生成一份副本传入到b函数中，但是b函数在引入形参的时候实际上引用的是a函数实参的副本，在b函数中对副本进行运算之后，修改的只是副本的数据，并没有影响到实参。所以，要达到互换的目的，我们需要在函数当中引入指针的概念。<br></p>
+<p><font color="red">指针参数如何传递内存?</font><br><br><a href="http://www.cnblogs.com/kaituorensheng/p/3246900.html" target="_blank" rel="external">http://www.cnblogs.com/kaituorensheng/p/3246900.html</a></p>
+<p>&ensp;&ensp;如果函数的参数是一个指针，不要指望用该指针去申请动态内存。比如下面：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">void GetMemory(char *p, int num)</div><div class="line">&#123;</div><div class="line">    p = (char *)malloc(sizeof(char) * num);</div><div class="line">&#125;</div><div class="line">void Test(void)</div><div class="line">&#123;</div><div class="line">    char *str = NULL;</div><div class="line">    GetMemory(str, 100);    // str 仍然为 NULL </div><div class="line">    strcpy(str, &quot;hello&quot;);   // 运行错误</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;Test函数的语句GetMemory(str,200)并没有使得str获得期望的内存，str依然是NULL，why？<br>问题就在GetMemory函数上。编译器总是要为每个参数制作临时副本，指针参数p的副本设做_p，编译器是_p=p，如果函数体内（就是动态分配内存）的程序修改了_p的内容，就会导致参数p的内容作相应的修改，这就是指针可以作为输出参数的原因。在这里，_p申请了新内存，只是把_p所指向的内存地址改变了，但是p还是没有改动，所以GetMemory不能输出任何东西，而且这样很容易造成内存泄漏。<br><img src="http://i1.piimg.com/567571/7a5d7b5f32167a50.png" alt="image1"><br>开始的时候和_p都是指向同一块内存，当修改地址1的内容时，实际上也就是修改了p所指向的内存的内容，这和我们平常使用指针参数的情况是一样的。然而当我们修改_p的值时（为它分配动态内存），只是将_p指向另外一地址（地址2），而p还是指向地址1，相当于值传递，无法改变变量内容。<br>如果要用指针传递内存，我们要引用二级指针<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">void GetMemory2(char **p, int num)</div><div class="line">&#123;</div><div class="line">    *p = (char *)malloc(sizeof(char) * num);</div><div class="line">&#125;</div><div class="line">void Test2(void)</div><div class="line">&#123;</div><div class="line">    char *str = NULL;</div><div class="line">    GetMemory2(&amp;str, 100);  // 注意参数是 &amp;str，而不是str</div><div class="line">    strcpy(str, &quot;hello&quot;);  </div><div class="line">    cout&lt;&lt; str &lt;&lt; endl;</div><div class="line">    free(str); </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://p1.bqimg.com/567571/c62d8a1b83fda05b.png" alt="image2"></p>
+<p><font color="red">sizeof和指针</font><br><br>举例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">char str[]=&quot;abcd&quot;，sizeof(str)==5,str类型是char[5];</div><div class="line">sizeof(&quot;abcd&quot;)==5，因为&quot;abcd&quot;的类型是const char[5]；</div><div class="line">char str[10]=&quot;abcd&quot;，sizeof(str)==10，此时str类型是char[10];</div><div class="line">void func(char a[10],int b[20],char *p)，</div><div class="line">sizeof(a)==sizeof(b)==sizeof(p)==4，因为a的类型是char*,b的类型是int*,p的类型是char*。</div></pre></td></tr></table></figure></p>
+<p><font color="red">另外我们提一下出现频率很高的const指针</font><br><br>首先先明确，const限定符修饰的变量只能被读<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">const  int a=2;</div><div class="line">int b=3;</div><div class="line">a=b;  //非法</div><div class="line">b=a;   //合法</div><div class="line">extern const i;  //合法</div><div class="line">extern const int j=2;//非法，不能再次赋值</div></pre></td></tr></table></figure></p>
+<p>但是，我们还是有途径修改const定义的常量的值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const int i=0;</div><div class="line">int *p=(int*)&amp;i;</div><div class="line">i=10;  //通过强制类型转换，把地址赋给变量，再次修改就可以改变const常量值</div></pre></td></tr></table></figure></p>
+<p>const char <em>p/char const </em>p：这个时候const用来修饰指针所指向的变量，即指针指向的内容为常量，不能修改其内容，但是可以修改其指向（地址）。当用户想要传入一个指针参数给一个外部函数时，又不想外部函数对这个参数的修改会影响到本身作用域里原先的值，而且又要让外部函数能够对这个传入的参数进行修改用在自身，那么就要引入这个概念，实际上，我们的strcpy函数原型中有一个参数就是这种格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">const char *t=0;</div><div class="line">*t=1; //非法</div><div class="line">t++; //合法</div><div class="line">char *p;</div><div class="line">const char *pp=p;  //正确</div><div class="line">char **pa;</div><div class="line">const char **pt=pa;  //错误，无法从char **转换为const char **</div></pre></td></tr></table></figure></p>
+<p>char *const p:这时候const修饰指针本身，指针是常量，不能修改其指向，但是可以修改其内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">char* const p=0;</div><div class="line">*p=1;  //合法</div><div class="line">p++;  //非法</div></pre></td></tr></table></figure></p>
+<p>如果要设置指向和内容都不能改写，类似这样char const * const a;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//const char ** 的赋值过程  </div><div class="line">const char c1=&apos;x&apos;;  </div><div class="line">const char * p0=&amp;c1;  </div><div class="line">const char ** p1=&amp;p0;  </div><div class="line">// char ** 的赋值过程  </div><div class="line">char c2=&apos;y&apos;;  </div><div class="line">char * p2=&amp;c2;  </div><div class="line">char ** p3=&amp;p2;  </div><div class="line">char * const * p4=p3;// 注意：char * const * 就是char ** 的赋值兼容类型</div></pre></td></tr></table></figure>
+<p><font color="#9032ds">形参中引用指针和引用数组</font><br><br>&ensp;&ensp;实际上，在形参中定义数组和定义指针的效果是一样的，数组作为参数传递的时候会被弱化为指针，传递进去的是数组的首元素地址</p>
+<p><font color="0000ff">void <code>*</code></font><br><br>void<em>是通用指针类型，即指向void的指针，可以指向任意类型的地址。如果函数的参数和返回值可以是任意类型，就可以用void</em>作为参数或返回值。<br></p>
+<p><font color="red">注意：</font><br><br>void<em>和其他类型不能相互复制，比如int</em>变量可以复制给void<em>变量，但是void</em>变量要赋值给int<em>变量就要强制转换为int</em>类型。<br>void<em>类型不能进行加减乘除运算。<br>GNU中void</em>等价与char*</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;h3&gt;&lt;center&gt;C和指针&lt;/center&gt;&lt;/h3&gt;&lt;br&gt;&amp;ensp;&amp;ensp;大一学了c语言，但是发现实际上自己对c语言的掌握程度还是不足，特别是指针部分，所以再来复习一下。&lt;br/&gt;&lt;br&gt;&amp;ensp;&amp;ensp;首先指明，指针的实质是地址，如果一个变量存储了一份数据的指针，我们就称它为指针变量。在c语言中可以用一个变量来存放指针，这个变量就是指针变量，指针变量的值就是某个数据的地址。&lt;br/&gt;&lt;br&gt;&amp;ensp;&amp;ensp;假设我们有一个int型变量a，它存储的是整型数字1，并且占用0x10b的地址，另外还有一个指针变量p，它的值是0x10b，这样我们就可以说p指向了a，或者p是指向变量a的指针&lt;br/&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="c" scheme="https://simonid.github.io/tags/c/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>了解hexo主题的布局</title>
+    <link href="https://simonid.github.io/2017/03/09/%E4%BA%86%E8%A7%A3hexo%E4%B8%BB%E9%A2%98%E7%9A%84%E5%B8%83%E5%B1%80/"/>
+    <id>https://simonid.github.io/2017/03/09/了解hexo主题的布局/</id>
+    <published>2017-03-09T01:09:47.000Z</published>
+    <updated>2017-03-09T06:02:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h3><center>了解hexo主题的布局</center></h3><br>很棒的一本小书：<a href="https://pengloo53.gitbooks.io/hexo/content/" target="_blank" rel="external">https://pengloo53.gitbooks.io/hexo/content/</a><br><br>&ensp;&ensp;&ensp;hexo的主题在theme目录下，以本人使用的yilia主题来说，它的一个基本内容是这样的：<p></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">yilia/</div><div class="line">├── _config.yml</div><div class="line">├── languages/</div><div class="line">├── source/</div><div class="line">└── layout/</div><div class="line">    ├── _partial/</div><div class="line">    ├── _widget/</div><div class="line">    ├── archive.ejs</div><div class="line">    ├── category.ejs</div><div class="line">    ├── index.ejs</div><div class="line">    ├── layout.ejs</div><div class="line">    ├── page.ejs</div><div class="line">    ├── post.ejs</div><div class="line">    └── tag.ejs</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><font size="4" color="#89qawh">文件夹的解释：</font><br></p>
+<p><font size="4" color="#89dasjk">language</font><br>语言文件夹<br></p>
+<p><font size="4" color="#89dasjk">layout</font><br>布局文件夹，hexo默认使用swig模板引擎，用户可以安装插件来获取EJS、Haml或Jade支持，hexo根据模板文件的扩展名来决定所使用的模板引擎，比如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">layout.ejs  --使用EJS</div><div class="line">layout.swig --使用swig</div></pre></td></tr></table></figure>
+<p><font size="4" color="#89dasjk">source</font><br>资源文件夹，除了模板之外的文件，比如css、js都应该放在这里。如果文件或文件夹的名称以_开头或.隐藏文件就会被忽略。如果文件可以被渲染，会经过解析然后存到public目录，否则直接拷贝到public</p>
+<p><font size="4" color="#89dasjk">_partial</font><br>局部模板目录，局部模板的设计可以让你在不同模板之间进行分享，比如你的header、footer等等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">partial/header.ejs</div><div class="line">&lt;h1 id=&quot;logo&quot;&gt;&lt;%= config.title %&gt;&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">index.ejs</div><div class="line">&lt;%- partial(&apos;_partial/header.ejs&apos;,&#123;config.title:&apos;Hello&apos;&#125;) %&gt;</div><div class="line">&lt;div id=&quot;content&quot;&gt;Home page&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>最后生成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;h1 id=&quot;logo&quot;&gt;Hello&lt;/h1&gt;</div><div class="line">&lt;div id=&quot;content&quot;&gt;Home page&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>前面的配置还引入了局部变量的概念,局部变量就是config.title</p>
+<h4>默认布局</h4><br>layout.ejs是hexo的默认布局模板文件，里面的内容：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;%- partial(&apos;_partial/head&apos;) %&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">  &lt;div id=&quot;container&quot;&gt;</div><div class="line">    &lt;div class=&quot;left-col&quot;&gt;</div><div class="line">    &lt;%- partial(&apos;_partial/left-col&apos;, null, &#123;cache: !config.relative_link&#125;) %&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;mid-col&quot;&gt;</div><div class="line">      &lt;%- partial(&apos;_partial/mobile-nav&apos;, null, &#123;cache: !config.relative_link&#125;) %&gt;</div><div class="line">          &lt;!--是否开启最近通知--&gt;</div><div class="line">          &lt;% if(theme.recent)&#123;%&gt;</div><div class="line">          &lt;%- partial(&apos;_partial/recent&apos;,null,&#123;cache: !config.relative_link&#125;) %&gt;</div><div class="line">          &lt;% &#125; %&gt;</div><div class="line">      &lt;div class=&quot;body-wrap&quot;&gt;&lt;%- body %&gt;&lt;/div&gt;</div><div class="line">      &lt;!--&lt;%- partial(&apos;_partial/footer&apos;) %&gt;--&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;%- partial(&apos;_partial/after-footer&apos;) %&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure><br><br>&ensp;&ensp;可以看到文件里面包含了许多其他模板，其中很多是来自_partial目录下的，这说明了layout.ejs就是一个完整的页面。<br>&ensp;&ensp;每个hexo站点基本可以分为<font color="#0000ff">index(首页)</font>、<font color="#0000ff">post（文章详细页）</font>、<font color="#0000ff">page（导航标签页）</font>、<font color="#0000ff">archive（归档页）</font>、<font color="#0000ff">category（类别页）</font>还有<font color="#0000ff">tag（标签页）</font>，它们都可以在layout.ejs找到对应文件。它们的每一个都是一种布局，用以替换掉前面layout.ejs文件中的<font color="#0000ff">&lt;%- body%&gt;</font>。<br>随便打开其中的一些文件，比如category.ejs和archive.ejs：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">category:</div><div class="line">&lt;%- partial(&apos;_partial/archive&apos;, &#123;pagination: config.category, index: true&#125;) %&gt;</div><div class="line"></div><div class="line">archive:</div><div class="line">&lt;%- partial(&apos;_partial/archive&apos;, &#123;pagination: config.category, index: true&#125;) %&gt;</div></pre></td></tr></table></figure><br><br>对比起来没有任何区别，都使用_partial/archive局部模块。<br><br><h4>首页布局</h4>
+
+
+<p>参考：<br><a href="https://hexo.io/zh-cn/docs/themes.html" target="_blank" rel="external">hexo官方文档</a><br><a href="http://www.codeblocq.com/2016/03/Create-an-Hexo-Theme-Part-1-Index/" target="_blank" rel="external">Create an Hexo Theme - Part 1: Index</a><br></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;h3&gt;&lt;center&gt;了解hexo主题的布局&lt;/center&gt;&lt;/h3&gt;&lt;br&gt;很棒的一本小书：&lt;a href=&quot;https://pengloo53.gitbooks.io/hexo/content/&quot;&gt;https://pengloo53.gitbooks.io/hexo/content/&lt;/a&gt;&lt;br/&gt;&lt;br&gt;&amp;ensp;&amp;ensp;&amp;ensp;hexo的主题在theme目录下，以本人使用的yilia主题来说，它的一个基本内容是这样的：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;yilia/&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;├── _config.yml&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;├── languages/&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;├── source/&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;└── layout/&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    ├── _partial/&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    ├── _widget/&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    ├── archive.ejs&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    ├── category.ejs&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    ├── index.ejs&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    ├── layout.ejs&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    ├── page.ejs&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    ├── post.ejs&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    └── tag.ejs&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="博客" scheme="https://simonid.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="hexo" scheme="https://simonid.github.io/tags/hexo/"/>
+    
+      <category term="博客" scheme="https://simonid.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="theme" scheme="https://simonid.github.io/tags/theme/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Text开发环境搭建</title>
+    <link href="https://simonid.github.io/2017/03/08/Sublime%20Text%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <id>https://simonid.github.io/2017/03/08/Sublime Text开发环境搭建/</id>
+    <published>2017-03-08T12:36:25.000Z</published>
+    <updated>2017-03-08T14:44:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h3><center>Sublime Text开发环境搭建</center></h3><br>&nbsp;&nbsp;&emsp;Sublime text是一个很强的跨平台编辑器，如果你只认为它和普通编辑器一样那就误解了，实际上，它有很多丰富的插件，我们可以通过拓展插件的方法来搭建一个非常完备的开发环境。甚至，很多时候，它可以替代IDE的很多工作（好多IDE真的是内存杀手，尽管它们有很多功能）。<br><br><br>官网：<a href="http://www.sublimetext.com/" target="_blank" rel="external">http://www.sublimetext.com/</a><br><br>&nbsp;&nbsp;&emsp;安装插件之前，我们要先安装package control包管理器：<br>依次点开<b>view-&gt;show control</b>(快捷键 Ctrl+`),在控制台下输入:<br><br><br><a id="more"></a><p></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import urllib.request,os,hashlib; h =                           &apos;df21e130d211cfc94d9b0905775a7c0f&apos; + &apos;1e3d39e33b79698005270310898eea76&apos;; pf = &apos;Package          Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)</div></pre></td></tr></table></figure>
+<p>可以参考：<a href="https://packagecontrol.io/installation" target="_blank" rel="external">https://packagecontrol.io/installation</a><br><br>安装完插件管理之后，通过菜单 <strong>Preferences&gt; Package Control （快捷键 Ctrl+Shift+P） </strong>来开启安装插件，在打开的输入框中输入<strong>install</strong> ，从提示的待选项中选择<strong> Install Package</strong>。<br>这里提一下，本人在ubuntu14.04上安装sublime text3插件的时候，当进行到install package那个步骤的时候，系统提示了错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Package Control</div><div class="line"></div><div class="line">There are no packages available for installation</div><div class="line"></div><div class="line">Please see https://packagecontrol.io/docs/troubleshooting for help</div></pre></td></tr></table></figure>
+<p>网络出现了问题。。。<br>解决：<br>1.在终端输入：<font color="#d2691e">dig @8.8.8.8 -t A sublime.wbond.net +noall +answer</font><br><br>然后找到类似下面的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">; &lt;&lt;&gt;&gt; DiG 9.9.5-3-Ubuntu &lt;&lt;&gt;&gt; @8.8.8.8 -t A sublime.wbond.net +noall +answer</div><div class="line">; (1 server found)</div><div class="line">;; global options: +cmd</div><div class="line">sublime.wbond.net.  82  IN  A 50.116.34.243</div></pre></td></tr></table></figure>
+<p>2.后面的数字就是你需要改的host，在/etc/hosts下，填入：<br></p>
+<p><font color="#d2691e">50.116.34.243 sublime.wbond.net</font><br><br>原文：<a href="http://stackoverflow.com/questions/25105139/sublime-text-2-there-are-no-packages-available-for-installation" target="_blank" rel="external">http://stackoverflow.com/questions/25105139/sublime-text-2-there-are-no-packages-available-for-installation</a><br><br>安装完毕之后可以根据Package Control Messages这个文件查看插件信息。<br>当然你也可以删除插件，在前面提到的package control中输入<b>remove package</b>，选择要删除的插件<br><br><br></p>
+<p><font size="4" color="#8b008b"><b>前端的插件</b></font><br></p>
+<p><font color="#0000ff">Tag:</font>Html/xml代码格式化 <br></p>
+<p><font color="#0000ff">CSScomb:</font>CSS属性排序 <br></p>
+<p><font color="#0000ff">JsFormat:</font>JS代码格式化 <br></p>
+<p><font color="#0000ff">Emmet：</font>快速生成HTML代码段的插件 <br></p>
+<p><font color="#0000ff">jQuery:</font> 智能提示jQuery代码<br></p>
+<p><font color="#0000ff">HTML5:</font>HTML5 bundle <br></p>
+<p><font color="#0000ff">Js​Format: </font>JS代码格式化<br></p>
+<p><hr></p>
+<p><font size="4" color="#8b008b"><b>PHP的插件</b></font><br></p>
+<p><font color="#0000ff">sublimelinter + sublimelinter-php:</font>PHP代码语法检测，在写的时候就可以知道是否符合PHP语法，及时修改 <br></p>
+<p><font color="#0000ff">SublimeCodeIntel:</font> PHP代码自动补全工具<br></p>
+<p><font color="#0000ff">Xdebug Client：</font>调试插件，可以对PHP代码设置断点、单步、步入、步出、步进等调试，以及查看实时变量值 <br></p>
+<p><font color="#0000ff">DocBlockr：</font> 可以自动生成PHPDoc风格的注释<br></p>
+<p><hr></p>
+<p><font size="4" color="#8b008b"><b>C/C++的插件</b></font><br></p>
+<p><hr></p>
+<p><font size="4" color="#8b008b"><b>Python的插件</b></font><br></p>
+<p><hr></p>
+<p><font size="4" color="#8b008b"><b>其他的插件</b></font><br></p>
+<p><font color="#0000ff">Alignment:</font>代码对齐 <br></p>
+<p><font color="#0000ff">Bracket​Highlighter:</font>括号高亮<br></p>
+<p><font color="#0000ff">ConvertToUTF8:</font>：支持Sublime打开 GBK, BIG5, EUC-KR, EUC-JP, Shift_JIS 等编码文件的插件<br></p>
+<p><font color="#0000ff">Bracket Highlighter</font>：用于匹配括号，引号和html标签。对于很长的代码很有用<br></p>
+<p><font color="#0000ff">SideBar Enhancements:</font>这个插件改进了侧边栏，增加了许多侧边栏的右键功能<br></p>
+<p><font color="#0000ff">Themr：</font>主题管理，切换主题的时候，不用自己修改配置文件了，用这个可以方便的切换主题 <br></p>
+<p><font color="#0000ff">SFTP:</font> ftp插件<br></p>
+<p><font color="#0000ff">GBK to UTF8:</font>GBK转换为UTF8 <br></p>
+<p><font color="#0000ff">Clipboard History:</font>剪切板历史记录<br></p>
+<p><font color="#0000ff">Git:</font>整合git<br></p>
+<p><font color="#0000ff">Sublimall:</font>同步其他设备的ST<br></p>
+<p><font color="#0000ff">AutoFileName:</font>补全文件路径<br></p>
+<p><font color="#0000ff"></font> <br></p>
+<p><font color="#0000ff"></font> <br></p>
+<p><font color="#0000ff"></font> <br></p>
+<p><font color="#0000ff"></font> <br></p>
+<p><font color="#0000ff"></font> <br></p>
+<p><font color="#0000ff"></font> <br></p>
+<p>参考牛人的经验：<br><a href="https://github.com/jikeytang/sublime-text" target="_blank" rel="external">https://github.com/jikeytang/sublime-text</a><br><br><a href="http://www.awaimai.com/940.html" target="_blank" rel="external">http://www.awaimai.com/940.html</a><br><br><a href="https://segmentfault.com/a/1190000000382934" target="_blank" rel="external">https://segmentfault.com/a/1190000000382934</a><br><br><a href="http://blog.jobbole.com/79326/" target="_blank" rel="external">http://blog.jobbole.com/79326/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;h3&gt;&lt;center&gt;Sublime Text开发环境搭建&lt;/center&gt;&lt;/h3&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;emsp;Sublime text是一个很强的跨平台编辑器，如果你只认为它和普通编辑器一样那就误解了，实际上，它有很多丰富的插件，我们可以通过拓展插件的方法来搭建一个非常完备的开发环境。甚至，很多时候，它可以替代IDE的很多工作（好多IDE真的是内存杀手，尽管它们有很多功能）。&lt;br/&gt;&lt;br/&gt;&lt;br&gt;官网：&lt;a href=&quot;http://www.sublimetext.com/&quot;&gt;http://www.sublimetext.com/&lt;/a&gt;&lt;br/&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;emsp;安装插件之前，我们要先安装package control包管理器：&lt;br&gt;依次点开&lt;b&gt;view-&amp;gt;show control&lt;/b&gt;(快捷键 Ctrl+`),在控制台下输入:&lt;br/&gt;&lt;br/&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="tool" scheme="https://simonid.github.io/tags/tool/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HEXO主题定制</title>
+    <link href="https://simonid.github.io/2017/03/08/HEXO%E4%B8%BB%E9%A2%98%E5%AE%9A%E5%88%B6/"/>
+    <id>https://simonid.github.io/2017/03/08/HEXO主题定制/</id>
+    <published>2017-03-08T11:06:40.000Z</published>
+    <updated>2017-03-08T16:02:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h2><center>hexo主题定制</center></h2><p></p>
+<p><hr></p>
+<p><font size="3"><em><b>后续也会更新…</b></em></font></p>
+<p><hr><br><br><br>其实也就是在网上找的一些定制hexo主题的链接，废话不多说，直接放出来：<br><br>通过这篇文章先大致了解Hexo的布局<a href="http://www.ituring.com.cn/article/199325" target="_blank" rel="external">初步了解Hexo站点布局</a><br><br><br><br>Landscape主题定制：<br><br><a href="http://blog.sunnyxx.com/2014/03/07/hexo_customize/" target="_blank" rel="external"><font size="4" color="#8B008B">hexo私人定制</font></a><br><br><a href="http://hialex.cn/2014/05/18/%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84hexo%E4%B8%BB%E9%A2%98/" target="_blank" rel="external"><font size="4" color="#8b008b">定制自己的hexo主题</font></a><br><br><a href="http://www.codertian.com/2016/03/14/change-landscape-theme-by-yourself/" target="_blank" rel="external"><font size="4" color="#8b008b">【实用技能】教你定制Hexo的landscape打造自己的主题</font></a><br><a id="more"></a><br><a href="http://hanhailong.com/2015/09/17/Hexo%E4%B8%BB%E9%A2%98-%E5%9C%A8%E5%8D%9A%E5%AE%A2%E5%B7%A6%E4%B8%8A%E8%A7%92%E6%B7%BB%E5%8A%A0ForkMeOnGithub%E5%8A%9F%E8%83%BD/" target="_blank" rel="external"><font size="4" color="#8b008b">Hexo主题-在博客左上角添加ForkMeOnGithub功能</font></a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;h2&gt;&lt;center&gt;hexo主题定制&lt;/center&gt;&lt;/h2&gt;&lt;/p&gt;
+&lt;p&gt;&lt;hr/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font size=3&gt;&lt;em&gt;&lt;b&gt;后续也会更新…&lt;/b&gt;&lt;/em&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;hr/&gt;&lt;br&gt;&lt;br/&gt;&lt;br&gt;其实也就是在网上找的一些定制hexo主题的链接，废话不多说，直接放出来：&lt;br/&gt;&lt;br&gt;通过这篇文章先大致了解Hexo的布局&lt;a href=&quot;http://www.ituring.com.cn/article/199325&quot;&gt;初步了解Hexo站点布局&lt;/a&gt;&lt;br/&gt;&lt;br&gt;&lt;br/&gt;&lt;br&gt;Landscape主题定制：&lt;br/&gt;&lt;br&gt;&lt;a href=&quot;http://blog.sunnyxx.com/2014/03/07/hexo_customize/&quot;&gt;&lt;font size=4 color=#8B008B&gt;hexo私人定制&lt;/font&gt;&lt;/a&gt;&lt;br/&gt;&lt;br&gt;&lt;a href=&quot;http://hialex.cn/2014/05/18/%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84hexo%E4%B8%BB%E9%A2%98/&quot;&gt;&lt;font size=4 color=#8b008b&gt;定制自己的hexo主题&lt;/font&gt;&lt;/a&gt;&lt;br&gt;&lt;/br/&gt;&lt;br&gt;&lt;a href=&quot;http://www.codertian.com/2016/03/14/change-landscape-theme-by-yourself/&quot;&gt;&lt;font size=4 color=#8b008b&gt;【实用技能】教你定制Hexo的landscape打造自己的主题&lt;/font&gt;&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="博客" scheme="https://simonid.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="hexo" scheme="https://simonid.github.io/tags/hexo/"/>
+    
+      <category term="博客" scheme="https://simonid.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   

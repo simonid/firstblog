@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+  
+  <title>c和指针 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="C和指针&amp;ensp;&amp;ensp;大一学了c语言，但是发现实际上自己对c语言的掌握程度还是不足，特别是指针部分，所以再来复习一下。&amp;ensp;&amp;ensp;首先指明，指针的实质是地址，如果一个变量存储了一份数据的指针，我们就称它为指针变量。在c语言中可以用一个变量来存放指针，这个变量就是指针变量，指针变量的值就是某个数据的地址。&amp;ensp;&amp;ensp;假设我们有一个int型变量a，它存储的是整型数字1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c和指针">
+<meta property="og:url" content="https://simonid.github.io/2017/03/09/c和指针/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="C和指针&amp;ensp;&amp;ensp;大一学了c语言，但是发现实际上自己对c语言的掌握程度还是不足，特别是指针部分，所以再来复习一下。&amp;ensp;&amp;ensp;首先指明，指针的实质是地址，如果一个变量存储了一份数据的指针，我们就称它为指针变量。在c语言中可以用一个变量来存放指针，这个变量就是指针变量，指针变量的值就是某个数据的地址。&amp;ensp;&amp;ensp;假设我们有一个int型变量a，它存储的是整型数字1">
+<meta property="og:image" content="http://i1.piimg.com/567571/7a5d7b5f32167a50.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/c62d8a1b83fda05b.png">
+<meta property="og:updated_time" content="2017-03-09T16:12:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="c和指针">
+<meta name="twitter:description" content="C和指针&amp;ensp;&amp;ensp;大一学了c语言，但是发现实际上自己对c语言的掌握程度还是不足，特别是指针部分，所以再来复习一下。&amp;ensp;&amp;ensp;首先指明，指针的实质是地址，如果一个变量存储了一份数据的指针，我们就称它为指针变量。在c语言中可以用一个变量来存放指针，这个变量就是指针变量，指针变量的值就是某个数据的地址。&amp;ensp;&amp;ensp;假设我们有一个int型变量a，它存储的是整型数字1">
+<meta name="twitter:image" content="http://i1.piimg.com/567571/7a5d7b5f32167a50.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/leaves.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://simonid.github.io/js/jquery1.8.2.min.js"></script>
+  <script src="https://simonid.github.io/js/jquery.nicescroll.js"></script>
+  <script src="https://simonid.github.io/js/jquery.qrcode.min.js"></script>
+  <script src="https://simonid.github.io/js/ug-theme-default.js"></script>
+  <script src="https://simonid.github.io/js/unitegallery.js"></script>
+  <!--
+  <script src="../../../../.deploy_git/js/jquery1.8.2.min.js"></script>
+  <script src="../../../../.deploy_git/js/jquery.nicescroll.js"></script>
+  <script src="../../../../.deploy_git/js/jquery.qrcode.min.js"></script>
+  <script src="../../../../.deploy_git/js/jquery">
+-->
+
+</head>
+
+<body>
+
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="https://avatars0.githubusercontent.com/u/19177986?v=3&amp;s=460" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/" class="alluraregular">simon</a></h1>
+		</hgroup>
+        <!--
+		
+        -->
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/categories/blog">博客</a></li>
+				        
+							<li><a href="/categories/front">开发</a></li>
+				        
+							<li><a href="/categories/work">工作日志</a></li>
+				        
+							<li><a href="/categories/life">点滴生活</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/simonid" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/c/" style="font-size: 15px;">c</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/theme/" style="font-size: 10px;">theme</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a>
+					</div>
+				</section>
+				
+
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">好好学习，天天向上！！！</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">simon</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="https://avatars0.githubusercontent.com/u/19177986?v=3&amp;s=460" class="js-avatar">
+				<hgroup>
+				  <h1 class="header-author">simon</h1>
+				</hgroup>
+			</div>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/blog">博客</a></li>
+		        
+					<li><a href="/categories/front">开发</a></li>
+		        
+					<li><a href="/categories/work">工作日志</a></li>
+		        
+					<li><a href="/categories/life">点滴生活</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/simonid" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+	  <!--是否开启最近通知-->
+	  
+	  <div class="recent">
+    ......
+</div>
+
+	  
+      <div class="body-wrap"><article id="post-c和指针" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2017/03/09/c和指针/" class="article-date">
+  	<time datetime="2017-03-09T09:31:12.000Z" itemprop="datePublished">2017-03-09</time>
+</a>
+
+<a href="/2017/03/09/c和指针/" class="article-date">
+  	<time datetime="2017-03-09T09:31:12.000Z" itemprop="datePublished">2017-03-09</time>
+  	<span id="busuanzi_container_page_pv" style="color:DarkGray">
+      view <span id="busuanzi_value_page_pv"></span> times
+    </span>
+</a>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 class="article-title" itemprop="name">
+      c和指针
+    </h1>
+  
+
+
+                            </header>
+                            
+                                <div class="article-info article-info-post">
+                                    
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
+	</div>
+
+
+                                        
+
+                                            <div class="clearfix"></div>
+                                </div>
+                                
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+                                           <!--
+                                            
+
+                                                    <p class="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">C和指针</span></a></li></ol>
+</div>
+<script>
+    $(function(){
+
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
+
+        });
+        $(".toc-article").hover(function(){
+
+        },function(){
+            $("#toc").hide(1000,function(){});
+        });
+    })
+</script>
+
+                                                  
+                                            
+                                            -->
+                                            
+                                                     <p></p><h3><center>C和指针</center></h3><br>&ensp;&ensp;大一学了c语言，但是发现实际上自己对c语言的掌握程度还是不足，特别是指针部分，所以再来复习一下。<br><br>&ensp;&ensp;首先指明，指针的实质是地址，如果一个变量存储了一份数据的指针，我们就称它为指针变量。在c语言中可以用一个变量来存放指针，这个变量就是指针变量，指针变量的值就是某个数据的地址。<br><br>&ensp;&ensp;假设我们有一个int型变量a，它存储的是整型数字1，并且占用0x10b的地址，另外还有一个指针变量p，它的值是0x10b，这样我们就可以说p指向了a，或者p是指向变量a的指针<br><br><a id="more"></a><p></p>
+<p><font color="#999ds">定义指针变量</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">type *name;   type *name=val;</div></pre></td></tr></table></figure></p>
+<p><em>表示这是一个指针变量，我们可以用</em>去获取地址上的数据，type表示该指针变量指向的数据的类型。<br><br>再举一个例子：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int a=10;</div><div class="line">int *t;</div><div class="line">int *p=&amp;a;</div><div class="line">t=&amp;a;(*t=&amp;a也是一样效果，加上*显多余，因为前面已经声明了是一个指针)</div></pre></td></tr></table></figure></p>
+<p>此时，p指向a，注意p是一个指针变量，它的值应该是一个数据的地址，我们需要将变量a的地址赋予它<br>又比如：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">int **p;</div><div class="line">int *a=10;</div><div class="line">*p=a;</div><div class="line">int b=9;</div><div class="line">int c=8;</div><div class="line">int *pp;</div><div class="line">*p=&amp;b;</div><div class="line">p=&amp;c;</div></pre></td></tr></table></figure></p>
+<p>上面我们定义了一个二级指针，二级指针最终的指向是10，我们需要将10对应的地址（也就是a这个指针变量）赋予指针变量*p。</p>
+<p>我们可以简单地总结一下指针的创建和赋值：<br>定义指针的时候必须带有<em>,让指针变量指向对应值的时候等号后面应该是一个地址。当已经定义了一个指针变量后，后面的赋值不用</em>也可以。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int x, y, *px = &amp;x, *py = &amp;y;</div><div class="line">y = *px + 5;  //表示把x的内容加5并赋给y，*px+5相当于(*px)+5</div><div class="line">y = ++*px;  //px的内容加上1之后赋给y，++*px相当于++(*px)</div><div class="line">y = *px++;  //相当于y=(*px)++</div></pre></td></tr></table></figure></p>
+<p>明确概念<a href="https://www.douban.com/note/176671788/" target="_blank" rel="external">参考</a>：<br><br>&ensp;&ensp;这里分析一下静态内存，栈内存和动态分配的内存(也就是堆内存)的区别：<nr><br>&ensp;&ensp;(1) 从静态存储区域分配。在程序编译的时候内存就已经分配好，这块内存在程序的整个运行期间都存在。例如全局变量，static变量。<nr><br>&ensp;&ensp;(2) 在栈上创建。在执行函数的时侯(无论何时到达一个特殊的执行点(左花括号)时，存储单元都可以在栈上被创建。出了执行点(右花括号)，这个存储单元自动被释放)，函数内局部变量的存储单元都可以在栈上创建，函数执行结束时这些存储单元自动被释放。栈内存分配运算内置于处理器的指令集中，效率很高，但是分配的内存容量有限。<br><br>&ensp;&ensp;(3) 从堆上分配，亦称动态内存分配。程序在运行的时候用malloc或new申请任意多少的内存，程序员自己负责在何时用free或delete释放内存。动态内存的生存期由我们决定，使用非常灵活，但问题也最多。<br>字符数组和字符指针的区别：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">char p[]=&quot;abc&quot;; //相当于局部变量，在堆内存存放</div><div class="line">char *p=&quot;abc&quot;;  //相当于常量，在静态内存存放</div></pre></td></tr></table></figure></nr></nr></p>
+<p><font color="#999ds">指针用在参数传递</font><br><br>&ensp;&ensp;当我们在a函数定义了一对实参，然后在a函数中调用b函数（b函数中的形参来源是a函数的一对实参，并且b函数要对传入的数据进行互换），如果我们只是使用简单的变量，那么最终在a函数中不能得到互换的数据。这是因为在a函数定义局部变量的时候，实参本身会生成一份副本传入到b函数中，但是b函数在引入形参的时候实际上引用的是a函数实参的副本，在b函数中对副本进行运算之后，修改的只是副本的数据，并没有影响到实参。所以，要达到互换的目的，我们需要在函数当中引入指针的概念。<br></p>
+<p><font color="red">指针参数如何传递内存?</font><br><br><a href="http://www.cnblogs.com/kaituorensheng/p/3246900.html" target="_blank" rel="external">http://www.cnblogs.com/kaituorensheng/p/3246900.html</a></p>
+<p>&ensp;&ensp;如果函数的参数是一个指针，不要指望用该指针去申请动态内存。比如下面：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">void GetMemory(char *p, int num)</div><div class="line">&#123;</div><div class="line">    p = (char *)malloc(sizeof(char) * num);</div><div class="line">&#125;</div><div class="line">void Test(void)</div><div class="line">&#123;</div><div class="line">    char *str = NULL;</div><div class="line">    GetMemory(str, 100);    // str 仍然为 NULL </div><div class="line">    strcpy(str, &quot;hello&quot;);   // 运行错误</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;Test函数的语句GetMemory(str,200)并没有使得str获得期望的内存，str依然是NULL，why？<br>问题就在GetMemory函数上。编译器总是要为每个参数制作临时副本，指针参数p的副本设做_p，编译器是_p=p，如果函数体内（就是动态分配内存）的程序修改了_p的内容，就会导致参数p的内容作相应的修改，这就是指针可以作为输出参数的原因。在这里，_p申请了新内存，只是把_p所指向的内存地址改变了，但是p还是没有改动，所以GetMemory不能输出任何东西，而且这样很容易造成内存泄漏。<br><img src="http://i1.piimg.com/567571/7a5d7b5f32167a50.png" alt="image1"><br>开始的时候和_p都是指向同一块内存，当修改地址1的内容时，实际上也就是修改了p所指向的内存的内容，这和我们平常使用指针参数的情况是一样的。然而当我们修改_p的值时（为它分配动态内存），只是将_p指向另外一地址（地址2），而p还是指向地址1，相当于值传递，无法改变变量内容。<br>如果要用指针传递内存，我们要引用二级指针<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">void GetMemory2(char **p, int num)</div><div class="line">&#123;</div><div class="line">    *p = (char *)malloc(sizeof(char) * num);</div><div class="line">&#125;</div><div class="line">void Test2(void)</div><div class="line">&#123;</div><div class="line">    char *str = NULL;</div><div class="line">    GetMemory2(&amp;str, 100);  // 注意参数是 &amp;str，而不是str</div><div class="line">    strcpy(str, &quot;hello&quot;);  </div><div class="line">    cout&lt;&lt; str &lt;&lt; endl;</div><div class="line">    free(str); </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://p1.bqimg.com/567571/c62d8a1b83fda05b.png" alt="image2"></p>
+<p><font color="red">sizeof和指针</font><br><br>举例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">char str[]=&quot;abcd&quot;，sizeof(str)==5,str类型是char[5];</div><div class="line">sizeof(&quot;abcd&quot;)==5，因为&quot;abcd&quot;的类型是const char[5]；</div><div class="line">char str[10]=&quot;abcd&quot;，sizeof(str)==10，此时str类型是char[10];</div><div class="line">void func(char a[10],int b[20],char *p)，</div><div class="line">sizeof(a)==sizeof(b)==sizeof(p)==4，因为a的类型是char*,b的类型是int*,p的类型是char*。</div></pre></td></tr></table></figure></p>
+<p><font color="red">另外我们提一下出现频率很高的const指针</font><br><br>首先先明确，const限定符修饰的变量只能被读<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">const  int a=2;</div><div class="line">int b=3;</div><div class="line">a=b;  //非法</div><div class="line">b=a;   //合法</div><div class="line">extern const i;  //合法</div><div class="line">extern const int j=2;//非法，不能再次赋值</div></pre></td></tr></table></figure></p>
+<p>但是，我们还是有途径修改const定义的常量的值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const int i=0;</div><div class="line">int *p=(int*)&amp;i;</div><div class="line">i=10;  //通过强制类型转换，把地址赋给变量，再次修改就可以改变const常量值</div></pre></td></tr></table></figure></p>
+<p>const char <em>p/char const </em>p：这个时候const用来修饰指针所指向的变量，即指针指向的内容为常量，不能修改其内容，但是可以修改其指向（地址）。当用户想要传入一个指针参数给一个外部函数时，又不想外部函数对这个参数的修改会影响到本身作用域里原先的值，而且又要让外部函数能够对这个传入的参数进行修改用在自身，那么就要引入这个概念，实际上，我们的strcpy函数原型中有一个参数就是这种格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">const char *t=0;</div><div class="line">*t=1; //非法</div><div class="line">t++; //合法</div><div class="line">char *p;</div><div class="line">const char *pp=p;  //正确</div><div class="line">char **pa;</div><div class="line">const char **pt=pa;  //错误，无法从char **转换为const char **</div></pre></td></tr></table></figure></p>
+<p>char *const p:这时候const修饰指针本身，指针是常量，不能修改其指向，但是可以修改其内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">char* const p=0;</div><div class="line">*p=1;  //合法</div><div class="line">p++;  //非法</div></pre></td></tr></table></figure></p>
+<p>如果要设置指向和内容都不能改写，类似这样char const * const a;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//const char ** 的赋值过程  </div><div class="line">const char c1=&apos;x&apos;;  </div><div class="line">const char * p0=&amp;c1;  </div><div class="line">const char ** p1=&amp;p0;  </div><div class="line">// char ** 的赋值过程  </div><div class="line">char c2=&apos;y&apos;;  </div><div class="line">char * p2=&amp;c2;  </div><div class="line">char ** p3=&amp;p2;  </div><div class="line">char * const * p4=p3;// 注意：char * const * 就是char ** 的赋值兼容类型</div></pre></td></tr></table></figure>
+<p><font color="#9032ds">形参中引用指针和引用数组</font><br><br>&ensp;&ensp;实际上，在形参中定义数组和定义指针的效果是一样的，数组作为参数传递的时候会被弱化为指针，传递进去的是数组的首元素地址</p>
+<p><font color="0000ff">void <code>*</code></font><br><br>void<em>是通用指针类型，即指向void的指针，可以指向任意类型的地址。如果函数的参数和返回值可以是任意类型，就可以用void</em>作为参数或返回值。<br></p>
+<p><font color="red">注意：</font><br><br>void<em>和其他类型不能相互复制，比如int</em>变量可以复制给void<em>变量，但是void</em>变量要赋值给int<em>变量就要强制转换为int</em>类型。<br>void<em>类型不能进行加减乘除运算。<br>GNU中void</em>等价与char*</p>
+
+                                            
+                                        </div>
+
+                                        
+            </div>
+            
+                <div id="socialShare" style="margin-left:40px;display:none;">
+                </div>
+                <script>
+                    $(function() {
+                        var width = document.body.scrollWidth;
+                        if (width > 550) {
+                            $("#socialShare").css("display", "block");
+                            $("#socialShare").socialShare({
+                                content: 'Nice!不错的资源...',
+                                url: window.location.href,
+                                titile: ''
+                            });
+                        }
+                    });
+                </script>
+                
+                    
+                        
+<nav id="article-nav">
+  
+    <a href="/2017/03/10/c语言存储空间/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          c语言存储空间
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/09/了解hexo主题的布局/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">了解hexo主题的布局</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+                            
+                                <!-- 多说评论框 start -->
+                                
+                                    <div class="ds-thread" data-thread-key="post-c和指针" data-title="c和指针" data-url="https://simonid.github.io/2017/03/09/c和指针/"></div>
+                                    <!-- 多说评论框 end -->
+                                    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                                    <script type="text/javascript">
+                                        var duoshuoQuery = {
+                                            short_name: "undefined"
+                                        };
+                                        (function() {
+                                            var ds = document.createElement('script');
+                                            ds.type = 'text/javascript';
+                                            ds.async = true;
+                                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                            ds.charset = 'UTF-8';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                                        })();
+                                    </script>
+                                    <!-- 多说公共JS代码 end -->
+                                    
+</article>
+
+<!--
+
+    <div style="width:100%;background-color:#fff;">
+        <div id="uyan_frame" style="margin:auto 10px 10px 10px;"></div>
+    </div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
+    
+-->
+<!--
+
+-->
+
+</div>
+      <!--
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 simon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten<br/>Designed by <a href="https://github.com/Kiritor/hexo-theme-yilia-l" target="_blank">Kiritor's gitbub</a>
+      	</div>
+    </div>
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
+</script>
+  </div>
+</footer>
+-->
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/mobile.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/prefixfree.js"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">
+    <a title="返回顶部" style="opacity: 100%;">
+        <img src="/img/scrollup.png" />
+    </a>
+</div>
+
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 simon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten<br/>Designed by <a href="https://github.com/Kiritor/hexo-theme-yilia-l" target="_blank">Kiritor's gitbub</a>
+      	</div>
+    </div>
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
+</script>
+  </div>
+</footer>
+
+<script src="/js/totop.js"></script>
+<script src="/js/share.js"></script>
+
+<!-- calendar widget -->
+
+  <script src="/js/calendar.js"></script>
+  <script src="/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:undefined, root:'undefined'});
+    
+    });
+  </script>
+})}
+
+    
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 simon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten<br/>Designed by <a href="https://github.com/Kiritor/hexo-theme-yilia-l" target="_blank">Kiritor's gitbub</a>
+      	</div>
+    </div>
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
+</script>
+  </div>
+</footer>
+
+  </div>
+</body>
+</html>

@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://simonid.github.io/index.html">
+<meta property="og:url" content="https://simonid.github.io/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
@@ -268,7 +268,7 @@
 
 
   
-    <article id="post-记录一次NetworkManager与interfaces冲突的解决过程" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-HEXO主题定制" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -282,12 +282,12 @@
     </script>
     
         <div class="article-meta">
-            <a href="/2017/03/10/记录一次NetworkManager与interfaces冲突的解决过程/" class="article-date">
-  	<time datetime="2017-03-10T11:45:13.106Z" itemprop="datePublished">2017-03-10</time>
+            <a href="/2017/03/08/HEXO主题定制/" class="article-date">
+  	<time datetime="2017-03-08T11:06:40.000Z" itemprop="datePublished">2017-03-08</time>
 </a>
 
-<a href="/2017/03/10/记录一次NetworkManager与interfaces冲突的解决过程/" class="article-date">
-  	<time datetime="2017-03-10T11:45:13.106Z" itemprop="datePublished">2017-03-10</time>
+<a href="/2017/03/08/HEXO主题定制/" class="article-date">
+  	<time datetime="2017-03-08T11:06:40.000Z" itemprop="datePublished">2017-03-08</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkGray">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -302,6 +302,18 @@
                     <input type="hidden" class="isFancy" />
                     
                         
+                            <header class="article-header">
+                                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/08/HEXO主题定制/">HEXO主题定制</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
 
                                         <div class="article-entry" itemprop="articleBody">
                                            <!--
@@ -310,23 +322,30 @@
                                             
                                             -->
                                             
-                                                     <p>&nbsp;<h3>记录一次NetworkManager与interfaces冲突的解决</h3><br><br/><br>&emsp;主机是ubuntu14.04，之前改过/etc/network/interfaces的配置内容（设置了静态ip），然后发现图形界面上的网络设置失效了，而且因为修改了interfaces之后还不能连接网络，ifconfig的时候不显示wlan0和eth0的信息，反而多了一个tun0-00。下面是一些解决的步骤：</p>
-<p>&emsp;首先，重新编辑interfaces文件和/etc/resolv.conf文件，使他们恢复默认设置，然后重启，失败。先解决eth0的问题吧。网线接上电脑，手动开启eth0：</p>
-<p>sudo ip link set eth0 up 或 sudo ifconfig eth0 up</p>
-<p>&emsp;再查看一下，ifconfig，如果没有ipv4地址，尝试：<br/></p>
-<font color=#DC143C><br>sudo dhclient eth0<br></font><br/><br>&emsp;然后ping一下同网段ip，失败的话，尝试nc命令<br><br>&emsp;如果ICMP被禁了，使用nc命令或者telnet更适合，且可以探测端口是否开放,虽然DHCP端口是67，不过通常DHCP和DNS服务器是同一台机器，因此顺便测试53端口：<br><br>nc -zv 192.168.1.1 67<br><br>nc -zv 192.168.1.1 53<br><br>
+                                                     <p><h2><center>hexo主题定制</center></h2></p>
+<p><hr/></p>
+<p><font size=3><em><b>后续也会更新…</b></em></font></p>
+<p><hr/><br><br/><br>其实也就是在网上找的一些定制hexo主题的链接，废话不多说，直接放出来：<br/><br>通过这篇文章先大致了解Hexo的布局<a href="http://www.ituring.com.cn/article/199325">初步了解Hexo站点布局</a><br/><br><br/><br>Landscape主题定制：<br/><br><a href="http://blog.sunnyxx.com/2014/03/07/hexo_customize/"><font size=4 color=#8B008B>hexo私人定制</font></a><br/><br><a href="http://hialex.cn/2014/05/18/%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84hexo%E4%B8%BB%E9%A2%98/"><font size=4 color=#8b008b>定制自己的hexo主题</font></a><br></br/><br><a href="http://www.codertian.com/2016/03/14/change-landscape-theme-by-yourself/"><font size=4 color=#8b008b>【实用技能】教你定制Hexo的landscape打造自己的主题</font></a><br>
                                             
                                         </div>
 
                                         
                                             <div class="article-info article-info-index">
                                                 
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
+	</div>
+
 
                                                     
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/博客/">博客</a>
+	</div>
+
 
                                                         
                                                             <p class="article-more-link">
-                                                                <a  href="/2017/03/10/记录一次NetworkManager与interfaces冲突的解决过程/#more">More >></a>
+                                                                <a  href="/2017/03/08/HEXO主题定制/#more">More >></a>
                                                             </p>
                                                             
                                                                 <div class="clearfix"></div>
@@ -347,7 +366,7 @@
 -->
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-分析openwrt内部交换机设置" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -361,12 +380,12 @@
     </script>
     
         <div class="article-meta">
-            <a href="/2017/03/10/hello-world/" class="article-date">
-  	<time datetime="2017-03-10T11:45:13.025Z" itemprop="datePublished">2017-03-10</time>
+            <a href="/2017/01/18/分析openwrt内部交换机设置/" class="article-date">
+  	<time datetime="2017-01-18T05:52:55.000Z" itemprop="datePublished">2017-01-18</time>
 </a>
 
-<a href="/2017/03/10/hello-world/" class="article-date">
-  	<time datetime="2017-03-10T11:45:13.025Z" itemprop="datePublished">2017-03-10</time>
+<a href="/2017/01/18/分析openwrt内部交换机设置/" class="article-date">
+  	<time datetime="2017-01-18T05:52:55.000Z" itemprop="datePublished">2017-01-18</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkGray">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -385,7 +404,7 @@
                                 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/10/hello-world/">Hello World</a>
+      <a class="article-title" href="/2017/01/18/分析openwrt内部交换机设置/">分析openwrt内部交换机设置</a>
     </h1>
   
 
@@ -400,7 +419,7 @@
 
                                                     <p class="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">分析openwrt内部交换机设置</span></a></li></ol>
 </div>
 <script>
     $(function(){
@@ -431,15 +450,9 @@
                                             
                                             -->
                                             
-                                                     <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+                                                     <p><cneter><h2>分析openwrt内部交换机设置</h2><br>先放出一张openwrt内部的网络结构图：<br><img src="http://www.wuweixin.com/wp-content/uploads/2015/12/003dXSUazy6Lmn4r2tzb9690.png" alt="openwrt"><br>上述路由是MT7620芯片<br><br></cneter></p>
+<p><font color="#0000ff"><strong><br>eth0（LAN）  eth1（WAN）
+</strong></font><br><br><br>路由可分成两部分，一个是路由部分，另外一个是交换机部分。一个交换机可分成6个端口，其中5个是用户可视，如上面的Port0-4，不可视的是Port5，和路由器的eth0相连。所以，家用路由多数是5口。<br>路由器上的wan和lan口其实都是一个交换机上的不同端口而已，用户可以通过VLAN技术来划分wan和lan的数目和位置，通过VLAN设置，可以对交换机进行端口隔离，抑制广播风暴。<br>通过VLAN划分，可以使eth0区分不同端口的数据包，在路由上建立起虚拟接口eth0，eth0.1，通过控制两个虚拟接口</p>
 
                                             
                                         </div>
@@ -469,7 +482,7 @@
 -->
 
   
-    <article id="post-c语言存储空间" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Use-MarkDown" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -483,12 +496,12 @@
     </script>
     
         <div class="article-meta">
-            <a href="/2017/03/10/c语言存储空间/" class="article-date">
-  	<time datetime="2017-03-09T16:03:06.000Z" itemprop="datePublished">2017-03-10</time>
+            <a href="/2017/01/17/Use-MarkDown/" class="article-date">
+  	<time datetime="2017-01-17T08:55:55.000Z" itemprop="datePublished">2017-01-17</time>
 </a>
 
-<a href="/2017/03/10/c语言存储空间/" class="article-date">
-  	<time datetime="2017-03-09T16:03:06.000Z" itemprop="datePublished">2017-03-10</time>
+<a href="/2017/01/17/Use-MarkDown/" class="article-date">
+  	<time datetime="2017-01-17T08:55:55.000Z" itemprop="datePublished">2017-01-17</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkGray">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -507,7 +520,7 @@
                                 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/10/c语言存储空间/">c语言存储空间</a>
+      <a class="article-title" href="/2017/01/17/Use-MarkDown/">Use_MarkDown</a>
     </h1>
   
 
@@ -523,8 +536,14 @@
                                             
                                             -->
                                             
-                                                     <p><h2><center>c语言存储空间</center></h2></p>
-<font color=red><h3>内存分布</h3></font><br><table><tr><td bgcolor=#7FFFD4>栈区(stack):</td></tr></table><br><font color=#0000ff>分配和释放方式：</font>有编译器自动分配和释放<br/><br><font color=#0000ff>存放的内容：</font>局部变量，参数<br/><br><font color=#0000ff>特点：</font>后进先出，可以用于现场保护<br/><br><table><tr><td bgcolor=#7FFFD4>堆区(heap):</td></tr></table><br><font color=#0000ff>分配和释放方式：</font>用户手动分配和释放，程序退出会自动释放<br/><br><font color=#0000ff>存放的内容：</font>动态分配内存的内容<br/><br><font color=#0000ff>特点：</font>可以自由划分大小，可以动态调整内存大小<br/><br><font color=#0000ff>堆内存申请：</font>系统有记录空闲内存地址的链表，用户申请内存的时候就会找到空间大于用户申请内存大小的节点，所以分配的地址是随机的<br/><br>
+                                                     <font size=4 face="黑体" color=#8B008B><strong><strong></font><br><font size=3 face="黑体" color=#8B008B></strong></strong></font>
+
+<center><h1>MarkDown常用技巧</h1></center><br>可参考:<br><br><a href="http://www.markdown.cn/"><font size=4>markdown中文网</font></a><br><br><a href="https://www.zhihu.com/question/19963642">知乎：markdown是什么</a><br><br><br><a href="http://blog.csdn.net/column/details/markdown.html">CSDN markdown专栏</a><br><strong><em>
+</em></strong><br>MarkDown作者Aaron Swartz:<br><br><br><center>![MarkDown作者] (“<a href="https://pic4.zhimg.com/606e14127233ca0a935032b19b5df3a7_b.jpg">https://pic4.zhimg.com/606e14127233ca0a935032b19b5df3a7_b.jpg</a>“)</center>
+
+<p><a href="http://www.rememberaaronsw.com/memories/">纪念斯沃茨的网站(markdown编写)</a></p>
+<p>###标题<br>标题共有6级，用<strong><font size=4 face="黑体" color=#8B008B>#</font></strong>表示，后面接内容，<strong><font size=4 face="黑体" color=#8B008B>#</font></strong>越多代表级别越高，尺寸越小</p>
+<p>###加粗，斜体<br>在需要加粗的文字两端加入<strong><font size=3 face="黑体" color=#8B008B>`</strong>加粗文字<strong>`</font></strong><br>或者<font size=3 face="黑体" color=#8B008B><strong><code>_加粗文字_</code></strong></font><br>如果要输出斜体效果，那么就是单个的<font size=4 face="黑体" color=#8B008B><strong><code>*</code></strong></font>或者是单个的<font size=4 face="黑体" color=#8B008B><strong><code>_</code></strong></font><br>而且，加粗和斜体标识最好都是放在<font size=4 face="黑体" color=#8B008B><strong><code>&lt;font&gt;</code></strong></font>内<br>
                                             
                                         </div>
 
@@ -532,7 +551,7 @@
                                             <div class="article-info article-info-index">
                                                 
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MarkDown/">MarkDown</a></li></ul>
 	</div>
 
 
@@ -540,7 +559,7 @@
 
                                                         
                                                             <p class="article-more-link">
-                                                                <a  href="/2017/03/10/c语言存储空间/#more">More >></a>
+                                                                <a  href="/2017/01/17/Use-MarkDown/#more">More >></a>
                                                             </p>
                                                             
                                                                 <div class="clearfix"></div>
@@ -561,7 +580,7 @@
 -->
 
   
-    <article id="post-c和指针" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-hexo与github搭建个人博客" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -575,12 +594,12 @@
     </script>
     
         <div class="article-meta">
-            <a href="/2017/03/09/c和指针/" class="article-date">
-  	<time datetime="2017-03-09T09:31:12.000Z" itemprop="datePublished">2017-03-09</time>
+            <a href="/2017/01/17/hexo与github搭建个人博客/" class="article-date">
+  	<time datetime="2017-01-17T08:08:08.000Z" itemprop="datePublished">2017-01-17</time>
 </a>
 
-<a href="/2017/03/09/c和指针/" class="article-date">
-  	<time datetime="2017-03-09T09:31:12.000Z" itemprop="datePublished">2017-03-09</time>
+<a href="/2017/01/17/hexo与github搭建个人博客/" class="article-date">
+  	<time datetime="2017-01-17T08:08:08.000Z" itemprop="datePublished">2017-01-17</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkGray">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -599,7 +618,7 @@
                                 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/09/c和指针/">c和指针</a>
+      <a class="article-title" href="/2017/01/17/hexo与github搭建个人博客/">hexo与github搭建个人博客</a>
     </h1>
   
 
@@ -615,7 +634,12 @@
                                             
                                             -->
                                             
-                                                     <p><h3><center>C和指针</center></h3><br>&ensp;&ensp;大一学了c语言，但是发现实际上自己对c语言的掌握程度还是不足，特别是指针部分，所以再来复习一下。<br/><br>&ensp;&ensp;首先指明，指针的实质是地址，如果一个变量存储了一份数据的指针，我们就称它为指针变量。在c语言中可以用一个变量来存放指针，这个变量就是指针变量，指针变量的值就是某个数据的地址。<br/><br>&ensp;&ensp;假设我们有一个int型变量a，它存储的是整型数字1，并且占用0x10b的地址，另外还有一个指针变量p，它的值是0x10b，这样我们就可以说p指向了a，或者p是指向变量a的指针<br/><br>
+                                                     <p><center><font face="黑体" color=#0000ff size=10>HEXO与Github.io搭建个人博客</font></center></p>
+<p>###HEXO搭建<br>&nbsp;&nbsp;&nbsp;&nbsp;HEXO是基于Node.JS的一款简单快速的博客框架，能够支持多线程，支持markdown，可以将生成的静态网页发布到github.io以及coding上。<br>要使用搭建HEXO博客，先安装hexo<br>1.安装node.js</p>
+<p><table><tr><td bgcolor=blanchedAlmond><font color=#dc143c><br>sudo apt-get install -y python-software-properties software-properties-common<br>sudo add-apt-repository ppa:chris-lea/node.js<br>sudo apt-get update<br>sudo apt-get install nodejs<br></font></td></tr></table><br>2.安装npm<br>&nbsp;&nbsp;&nbsp;&nbsp;npm全名：Node Package Manager，是Nodejs的包管理器。<br>ubuntu16.04LTS自带nodejs和npm，但是版本较低，假如要安装最新的，先移除自带的。</p>
+<p><table><tr><td bgcolor=blanchedAlmond><font color=#dc143c><br>sudo apt-get remove nodejs &amp;&amp; sudo apt-get remove npm<br></font></td></tr></table><br>再清理依赖包：</p>
+<p><table><tr><td bgcolor=blanchedAlmond><font color=#dc143c><br>sudo apt-get  autoremove<br></font></td></tr></table><br><br/><br>官网上下载nodejs：</p>
+<p><table><tr><td bgcolor=blanchedAlmond><font color=#dc143c><br>cd /opt &amp;&amp; wget <a href="https://nodejs.org/dist/v4.4.5/node-v4.4.5-linux-x64.tar.xz">https://nodejs.org/dist/v4.4.5/node-v4.4.5-linux-x64.tar.xz</a><br>xz -d node-v4.4.5-linux-x64.tar.xz &amp;&amp; tar vxf node-v4.4.5-linux-x64.tar<br></font></td></tr></table><br>
                                             
                                         </div>
 
@@ -623,99 +647,7 @@
                                             <div class="article-info article-info-index">
                                                 
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
-	</div>
-
-
-                                                    
-
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2017/03/09/c和指针/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
-            
-                    
-                                <!-- 多说评论框 start -->
-                                
-</article>
-
-<!--
-
--->
-<!--
-
--->
-
-  
-    <article id="post-了解hexo主题的布局" class="article article-type-post" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
-        });
-    </script>
-    
-        <div class="article-meta">
-            <a href="/2017/03/09/了解hexo主题的布局/" class="article-date">
-  	<time datetime="2017-03-09T01:09:47.000Z" itemprop="datePublished">2017-03-09</time>
-</a>
-
-<a href="/2017/03/09/了解hexo主题的布局/" class="article-date">
-  	<time datetime="2017-03-09T01:09:47.000Z" itemprop="datePublished">2017-03-09</time>
-  	<span id="busuanzi_container_page_pv" style="color:DarkGray">
-      view <span id="busuanzi_value_page_pv"></span> times
-    </span>
-</a>
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-        </div>
-        
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/09/了解hexo主题的布局/">了解hexo主题的布局</a>
-    </h1>
-  
-
-
-                            </header>
-                            
-                                    
-
-                                        <div class="article-entry" itemprop="articleBody">
-                                           <!--
-                                            
-
-                                            
-                                            -->
-                                            
-                                                     <p><h3><center>了解hexo主题的布局</center></h3><br>很棒的一本小书：<a href="https://pengloo53.gitbooks.io/hexo/content/">https://pengloo53.gitbooks.io/hexo/content/</a><br/><br>&ensp;&ensp;&ensp;hexo的主题在theme目录下，以本人使用的yilia主题来说，它的一个基本内容是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">yilia/</div><div class="line">├── _config.yml</div><div class="line">├── languages/</div><div class="line">├── source/</div><div class="line">└── layout/</div><div class="line">    ├── _partial/</div><div class="line">    ├── _widget/</div><div class="line">    ├── archive.ejs</div><div class="line">    ├── category.ejs</div><div class="line">    ├── index.ejs</div><div class="line">    ├── layout.ejs</div><div class="line">    ├── page.ejs</div><div class="line">    ├── post.ejs</div><div class="line">    └── tag.ejs</div></pre></td></tr></table></figure>
-                                            
-                                        </div>
-
-                                        
-                                            <div class="article-info article-info-index">
-                                                
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/theme/">theme</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
 	</div>
 
 
@@ -727,98 +659,7 @@
 
                                                         
                                                             <p class="article-more-link">
-                                                                <a  href="/2017/03/09/了解hexo主题的布局/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
-            
-                    
-                                <!-- 多说评论框 start -->
-                                
-</article>
-
-<!--
-
--->
-<!--
-
--->
-
-  
-    <article id="sublime-Sublime Text开发环境搭建" class="article article-type-sublime" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
-        });
-    </script>
-    
-        <div class="article-meta">
-            <a href="/2017/03/08/Sublime Text开发环境搭建/" class="article-date">
-  	<time datetime="2017-03-08T12:36:25.000Z" itemprop="datePublished">2017-03-08</time>
-</a>
-
-<a href="/2017/03/08/Sublime Text开发环境搭建/" class="article-date">
-  	<time datetime="2017-03-08T12:36:25.000Z" itemprop="datePublished">2017-03-08</time>
-  	<span id="busuanzi_container_page_pv" style="color:DarkGray">
-      view <span id="busuanzi_value_page_pv"></span> times
-    </span>
-</a>
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-        </div>
-        
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/08/Sublime Text开发环境搭建/">Text开发环境搭建</a>
-    </h1>
-  
-
-
-                            </header>
-                            
-                                    
-
-                                        <div class="article-entry" itemprop="articleBody">
-                                           <!--
-                                            
-
-                                            
-                                            -->
-                                            
-                                                     <p><h3><center>Sublime Text开发环境搭建</center></h3><br>&nbsp;&nbsp;&emsp;Sublime text是一个很强的跨平台编辑器，如果你只认为它和普通编辑器一样那就误解了，实际上，它有很多丰富的插件，我们可以通过拓展插件的方法来搭建一个非常完备的开发环境。甚至，很多时候，它可以替代IDE的很多工作（好多IDE真的是内存杀手，尽管它们有很多功能）。<br/><br/><br>官网：<a href="http://www.sublimetext.com/">http://www.sublimetext.com/</a><br/><br>&nbsp;&nbsp;&emsp;安装插件之前，我们要先安装package control包管理器：<br>依次点开<b>view-&gt;show control</b>(快捷键 Ctrl+`),在控制台下输入:<br/><br/><br>
-                                            
-                                        </div>
-
-                                        
-                                            <div class="article-info article-info-index">
-                                                
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/">tool</a></li></ul>
-	</div>
-
-
-                                                    
-
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2017/03/08/Sublime Text开发环境搭建/#more">More >></a>
+                                                                <a  href="/2017/01/17/hexo与github搭建个人博客/#more">More >></a>
                                                             </p>
                                                             
                                                                 <div class="clearfix"></div>
@@ -841,7 +682,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
     </nav>
   
 
