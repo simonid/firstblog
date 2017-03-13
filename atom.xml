@@ -17,9 +17,9 @@
   
   <entry>
     <title></title>
-    <link href="https://simonid.github.io/2017/03/10/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1NetworkManager%E4%B8%8Einterfaces%E5%86%B2%E7%AA%81%E7%9A%84%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/"/>
-    <id>https://simonid.github.io/2017/03/10/记录一次NetworkManager与interfaces冲突的解决过程/</id>
-    <published>2017-03-10T11:45:13.106Z</published>
+    <link href="https://simonid.github.io/2017/03/13/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1NetworkManager%E4%B8%8Einterfaces%E5%86%B2%E7%AA%81%E7%9A%84%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/"/>
+    <id>https://simonid.github.io/2017/03/13/记录一次NetworkManager与interfaces冲突的解决过程/</id>
+    <published>2017-03-13T09:20:04.805Z</published>
     <updated>2017-03-08T05:19:48.000Z</updated>
     
     <content type="html"><![CDATA[<p>&nbsp;</p><h3>记录一次NetworkManager与interfaces冲突的解决</h3><br><br><br>&emsp;主机是ubuntu14.04，之前改过/etc/network/interfaces的配置内容（设置了静态ip），然后发现图形界面上的网络设置失效了，而且因为修改了interfaces之后还不能连接网络，ifconfig的时候不显示wlan0和eth0的信息，反而多了一个tun0-00。下面是一些解决的步骤：<p></p>
@@ -71,9 +71,9 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://simonid.github.io/2017/03/10/hello-world/"/>
-    <id>https://simonid.github.io/2017/03/10/hello-world/</id>
-    <published>2017-03-10T11:45:13.025Z</published>
+    <link href="https://simonid.github.io/2017/03/13/hello-world/"/>
+    <id>https://simonid.github.io/2017/03/13/hello-world/</id>
+    <published>2017-03-13T09:20:04.746Z</published>
     <updated>2017-01-16T06:15:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
@@ -93,6 +93,167 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>网络设备及协议</title>
+    <link href="https://simonid.github.io/2017/03/13/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%8F%8A%E5%8D%8F%E8%AE%AE/"/>
+    <id>https://simonid.github.io/2017/03/13/网络设备及协议/</id>
+    <published>2017-03-13T08:54:32.000Z</published>
+    <updated>2017-03-13T08:55:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h2><center>网络设备及协议</center></h2><br>MAC地址分类：<br><p></p>
+<p><font color="red">单播MAC地址：</font>单播MAC地址唯一标识以太网上的一个终端，该地址固化在硬件(如网卡)内部。<br></p>
+<p><font color="red">组播MAC地址：</font>首字节最后一位为1(通常以0x01开头)的MAC地址，标志一组设备。<br></p>
+<p><font color="red">广播MAC地址：</font>48位全1的MAC地址，标志本网段内所有设备。<br><br>网络中按照大字节序传输报文(即先传输高字节)，而字节内先传输低位比特。因此，若发送的首位比特为0就是单播，否则为组播或广播。<br><br><br>MAC地址按生存期也可分为：<br></p>
+<p><font color="red">动态MAC地址：</font>交换机在网络中通过数据帧学习到，有老化时间，MAC地址和端口的对应关系会随着设备所连的交换机的端口的变化而变化。交换机关电重启后会消失，需重新学习。<br></p>
+<p><font color="red">静态MAC地址：</font>通过配置产生，不会被老化，MAC地址和端口的对应关系始终不变，但交换机关电重启后也会消失，需重新配置。<br></p>
+<p><font color="red">永久MAC地址：</font>通过配置产生，不会被老化，MAC地址和端口的对应关系始终不变，且交换机关电重启后也不会消失。<br><br>根据OSI模型，从下到上进行阐述：<br><br><a id="more"></a></p>
+<p><font color="#8943ds" size="4"><strong>集线器（Hub）：</strong></font><br><br>&ensp;&ensp;对于物理层，就是将网线集中到一起的设备，以太网集线器(HUB)从任一端口收到以太网数据帧后，都会将该帧广播到其它所有端口，如果不同端口连接的设备同时传输数据会引起冲突，故其冲突域和广播域是所有端口，既不能隔离冲突域也不能隔离广播域。<br></p>
+<p><font color="#32cjkn"><strong>冲突域和广播域：</strong></font><br><br>冲突域是指网段上的一台设备发送分组时，改物理网段上其他所有设备都需要侦探它。集线器连接的各设备就是一个典型冲突域。广播域是指，网络的一组设备侦听在该网段上发送的所有广播。<br></p>
+<p><font color="#8943ds" size="4"><strong>网桥和交换机(Switch)：</strong></font><br><br>都属于数据链路层，基于mac地址进行数据转发，网桥和交换机的每个物理端口属于一个冲突域，所有端口处于一个广播域，二者均能隔离冲突域但不能隔离广播域。<br><br><br>区别：<br><br>网桥主要由软件实现，交换机主要由硬件实现<br><br>网桥只有少数几个端口；交换机可以有上百个；<br><br>由于交换机才有硬件ASIC芯片进行线速转发交换，网桥速度慢于交换机。<br>网桥使用存储转发机制，等收到了全部数据才转发；交换机除了存储机制外还有直接转发机制，只需要帧头到达处理后就可以转发，也是交换机处理快于网桥的原因之一。<br><br><br>简单的说网桥就是个硬件网络协议翻译器，假设你有2台电脑，一台兼容机安装windows，一台是Apple安装OS2，那么两台电脑之间是默认网络协议是不同的<br></p>
+<p><font color="#8943ds" size="4"><strong>路由器</strong></font><br><br>位于网络层，扮演三层交换机角色，可隔离冲突和广播域，每个子网就属于一个广播域，不同子网间不能发送广播，要对广播进行控制就要使用路由器（或具有路由功能的三层交换机）。可以以路由器上的LAN口为单位分割广播域。<br><br><br>路由器的基本功能是，把数据（IP 报文）传送到正确的网络，细分则包括：1、IP 数据报的转发，包括数据报的寻径和传送；2、子网隔离，抑制广播风暴；3、维护路由表，并与其它路由器交换路由信息，这是 IP 报文转发的基础；4、IP 数据报的差错处理及简单的拥塞控制；5、实现对 IP 数据报的过滤和记帐。 <br></p>
+<p>最后提一下网关，网关是一个很宽泛的概念，OSI各层几乎都有网关，但是通常是指路由器。<br></p>
+<p><font color="#8943ds" size="4"><strong>网关</strong></font>（协议转换器）是互连网络中操作在OSI网络层之上的具有协议转换功能设施，所以称为设施，是因为网关不一定是一台设备，有可能在一台主机中实现网关功能。<br>　　网关用于以下几种场合的异构网络互连： <br><br>　　1).异构型局域网，如互联专用交换网PBX与遵循IEEE802标准的局域网。<br><br>　　2).局域网与广域网的互联。<br><br>　　3).广域网与广域网的互联。<br><br>　　4).局域网与主机的互联（当主机的操作系统与网络操作系统不兼容时，可以通过网关连接）。<br><br>　　<font color="#dsa08"><strong>网关的分类</strong></font><br><br>　　1)协议网关：协议网关通常在使用不同协议的网络区域间做协议转换。<br><br>　　2)应用网关：应用网关是在使用不同数据格式间翻译数据的系统。<br><br>　　3)安全网关：安全网关是各种技术的融合，具有重要且独特的保护作用，其范围从协议级过滤到十分复杂的应用级过滤<br></p>
+<p><br><br><br>参考：<a href="http://network.51cto.com/art/201406/443304_all.htm" target="_blank" rel="external">http://network.51cto.com/art/201406/443304_all.htm</a><br><a href="http://www.cnblogs.com/imapla/archive/2013/03/12/2955931.html" target="_blank" rel="external">http://www.cnblogs.com/imapla/archive/2013/03/12/2955931.html</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;h2&gt;&lt;center&gt;网络设备及协议&lt;/center&gt;&lt;/h2&gt;&lt;br&gt;MAC地址分类：&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=red&gt;单播MAC地址：&lt;/font&gt;单播MAC地址唯一标识以太网上的一个终端，该地址固化在硬件(如网卡)内部。&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=red&gt;组播MAC地址：&lt;/font&gt;首字节最后一位为1(通常以0x01开头)的MAC地址，标志一组设备。&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=red&gt;广播MAC地址：&lt;/font&gt;48位全1的MAC地址，标志本网段内所有设备。&lt;br/&gt;&lt;br&gt;网络中按照大字节序传输报文(即先传输高字节)，而字节内先传输低位比特。因此，若发送的首位比特为0就是单播，否则为组播或广播。&lt;br/&gt;&lt;br/&gt;&lt;br&gt;MAC地址按生存期也可分为：&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=red&gt;动态MAC地址：&lt;/font&gt;交换机在网络中通过数据帧学习到，有老化时间，MAC地址和端口的对应关系会随着设备所连的交换机的端口的变化而变化。交换机关电重启后会消失，需重新学习。&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=red&gt;静态MAC地址：&lt;/font&gt;通过配置产生，不会被老化，MAC地址和端口的对应关系始终不变，但交换机关电重启后也会消失，需重新配置。&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=red&gt;永久MAC地址：&lt;/font&gt;通过配置产生，不会被老化，MAC地址和端口的对应关系始终不变，且交换机关电重启后也不会消失。&lt;br/&gt;&lt;br&gt;根据OSI模型，从下到上进行阐述：&lt;br/&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="network" scheme="https://simonid.github.io/tags/network/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>桥接与二层转发的概念</title>
+    <link href="https://simonid.github.io/2017/03/13/%E6%A1%A5%E6%8E%A5%E4%B8%8E%E4%BA%8C%E5%B1%82%E8%BD%AC%E5%8F%91%E7%9A%84%E6%A6%82%E5%BF%B5/"/>
+    <id>https://simonid.github.io/2017/03/13/桥接与二层转发的概念/</id>
+    <published>2017-03-13T08:51:07.000Z</published>
+    <updated>2017-03-13T08:51:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h2><center>桥接和二层转发的概念</center></h2><p></p>
+<p><font color="#8943ds" size="4"><strong>二层转发：</strong></font><br><br>&ensp;&ensp;在链路层中，根据报文的目的MAC地址来对报文进行转发，由于数据链路层位于osi模型中的第二层，所以就称为二层转发。在二层转发中，不用对报文的头部做任何修改，但是在三层转发则是根据报文的IP地址来进行转发，同时要对报文的二层头部进行修改。<br><br>&ensp;&ensp;实现机制：<br><br>学习线程和报文转发线程，二层转发只和mac地址有关，和IP无关。<br></p>
+<p><font color="#8943ds" size="4"><strong>桥接的概念:</strong></font><br><br>&ensp;&ensp;把两台处于同一网段的设备通过网桥(实质就是交换机)连接在一起，网桥是一个二层转发的设备，通俗地说就是根据目的MAC地址把一台设备上的报文原封不动转发到对应的另外一台设备，网桥在整个转发过程中是透明的。<br><br><a id="more"></a></p>
+<p><font color="#8943ds" size="4"><strong>FDB表:</strong></font><br><br>信息转发表的缩写，每个网桥内都会维护一张信息转发表，会定时清理这些表中数据，称为FDB表项的老化，内容包含以下信息：<br></p>
+<p><font color="#0000ff">MAC：</font>设备mac地址<br></p>
+<p><font color="#0000ff">port：</font>设备连接在交换机哪个接口<br><br>网桥在收到报文后根据目的MAC查到的表项就知道报文的出端口，直接转发出去。利用mac地址学习，网桥设备每接收到一个报文就会根据报文的mac地址以及报文接收端口更新FDB表<br></p>
+<p><font color="red"><strong>路由桥接和中继有什么区别：</strong></font><br><br>中继：可以让一个主机路由连接多个从机路由，多路转发。需要更大内存<br><br>桥接：只能一个路由连接另外一个路由，单对单通信<br></p>
+<p><font color="red"><strong>二层广播(帧广播)和三层广播(路由广播)的区别：</strong></font><br><br>举例：<br><br>三层交换机下游两个网段，对应设备为a和b，a要和b通信，过程如下：<br><br>1.首先根据网卡的ip地址和子网掩码计算出两个设备是否在一个网段，如果是就直接二层转发了，如果不是就跨网段转发<br><br>2.如果是跨网段，要将数据包发送到网关进行三层转发<br><br>3.a设备到网关的通信是二层转发，需要知道对方b的mac，所以a先读取电脑的arp缓存，看看网关ip和mac地址的关系，如果有关系就直接转发，如果没有就是用arp协议，将携带自己的ip地址和mac地址，目的地址为网关ip，mac地址为ffff-ffff-ffff的包发送给网关。网关接收到arp广播后，回复自己的mac，数据包为源网关ip和mac，目的地址为a的ip和mac。<br><br>4.a接收到数据包后将ip和mac写入arp缓存表，并直接封装数据包，三层ip头为a的ip，目的ip为b的ip，二层帧格式为a的mac，目的为网关mac<br><br>5.网关接收到a发来数据，拆包后根据目的ip进行寻址(路由表)，找到对应路径。三层交换机根据目的ip地址对本机的arp缓存表进行查找，找到ip和mac的对应关系就直接封装转发，如果没有就发送arp广播包获取目的ip的mac（只在b网段转发），b接收到之后就响应，发送自己的mac给三层交换机，和b同网段其他设备接收的话就丢弃。三层交换机知道b的包后转发包返回给b，三层数据包头为a的ip，目的ip是b的，二层数据帧包头是b网段的网关mac，目的mac为b的mac。b收到三层交换的数据包，拆包后获取数据，按照前面类似的过程通过三层交换机转发回a。<br><br></p>
+<p><font color="red">前面提到的网关就是路由或者带路由功能的交换机</font><br></p>
+<p>参考：<a href="http://blog.csdn.net/duhf_think/article/details/41483153" target="_blank" rel="external">http://blog.csdn.net/duhf_think/article/details/41483153</a><br><br><a href="http://bbs.51cto.com/thread-888177-1.html" target="_blank" rel="external">http://bbs.51cto.com/thread-888177-1.html</a><br><br><a href="http://iomem.com/index.php?archives/4-Ethernet-Bridges-under-Linux.html&amp;serendipity%5Bentrypage%5D=3&amp;serendipity%5Bentrypage%5D=all&amp;serendipity%5Bentrypage%5D=all" target="_blank" rel="external">http://iomem.com/index.php?archives/4-Ethernet-Bridges-under-Linux.html&amp;serendipity%5Bentrypage%5D=3&amp;serendipity%5Bentrypage%5D=all&amp;serendipity%5Bentrypage%5D=all</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;h2&gt;&lt;center&gt;桥接和二层转发的概念&lt;/center&gt;&lt;/h2&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=#8943ds size=4&gt;&lt;strong&gt;二层转发：&lt;/strong&gt;&lt;/font&gt;&lt;br/&gt;&lt;br&gt;&amp;ensp;&amp;ensp;在链路层中，根据报文的目的MAC地址来对报文进行转发，由于数据链路层位于osi模型中的第二层，所以就称为二层转发。在二层转发中，不用对报文的头部做任何修改，但是在三层转发则是根据报文的IP地址来进行转发，同时要对报文的二层头部进行修改。&lt;br/&gt;&lt;br&gt;&amp;ensp;&amp;ensp;实现机制：&lt;br/&gt;&lt;br&gt;学习线程和报文转发线程，二层转发只和mac地址有关，和IP无关。&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=#8943ds size=4&gt;&lt;strong&gt;桥接的概念:&lt;/strong&gt;&lt;/font&gt;&lt;br/&gt;&lt;br&gt;&amp;ensp;&amp;ensp;把两台处于同一网段的设备通过网桥(实质就是交换机)连接在一起，网桥是一个二层转发的设备，通俗地说就是根据目的MAC地址把一台设备上的报文原封不动转发到对应的另外一台设备，网桥在整个转发过程中是透明的。&lt;br/&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="network" scheme="https://simonid.github.io/tags/network/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>c中的预处理</title>
+    <link href="https://simonid.github.io/2017/03/13/c%E4%B8%AD%E7%9A%84%E9%A2%84%E5%A4%84%E7%90%86/"/>
+    <id>https://simonid.github.io/2017/03/13/c中的预处理/</id>
+    <published>2017-03-13T05:08:30.000Z</published>
+    <updated>2017-03-13T09:19:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h2><center>c中的预处理</center></h2><p></p>
+<p><font color="red">#define的作用：</font><br><br>可以用来简化操作，交由预处理器处理速度一般要快于函数<br><br>得到一个字的高位和低位字节</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#define WORD_LOW(xxx) ((byte) ((word)(xxx) &amp; 255))</div><div class="line">#define WORD_HIGH(xxx) ((byte) ((word)(xxx) &gt;&gt; 8))</div></pre></td></tr></table></figure>
+<p>值得一提的是C语言下struct+typedef+函数指针可以做到面向对象的继承，重载和多态<br><br><a id="more"></a></p>
+<p><font color="red">&ensp;#define&ensp;归预处理器管理，typedef归编译器管理。</font>举个例子来阐述它们之间的不同：<br><br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#define func void (*)(char)</div><div class="line">typedef void (*function)(int); //定义一个函数指针，参数类型为char，返回值是void</div><div class="line"></div><div class="line">void a(function f);  //true</div><div class="line">void b(func f);      //error</div></pre></td></tr></table></figure>
+<p>取消之前的&ensp;#define&ensp;定义：&ensp;<font color="red">#undef</font>&ensp;</p>
+<p><font color="red">#ifndef的作用：</font><br><br>防止头文件中相互嵌套重复定义，比如，定义了a.h文件和b.h头文件，其中在b.h中引入了a.h，然后在一个源文件d.c中同时引入了a.h和b.h，那么a.h就重复定义；了。这时候要引入#ifndef<br>格式：&ensp;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#ifndef _XXX_H</div><div class="line">#define _XXX_H</div><div class="line">...</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<p><font color="red">#ifdef的作用：</font><br><br>&ensp;#ifdef&ensp;一般形式：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#ifdef macro_name</div><div class="line">　　　 代码段　1</div><div class="line">#else</div><div class="line">　　　 代码段　2</div><div class="line">#endif</div></pre></td></tr></table></figure></p>
+<p>首先：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#ifdef identifier本质上等价于#if defined( identifier).</div><div class="line">#ifndef identifier本质上等价于#if !defined( identifier).</div></pre></td></tr></table></figure></p>
+<p>加入在前面定义了#define  macro_name<br>那么就会执行代码段1，否则执行2.<br><br>注意无论&ensp;#define&ensp;后面的是什么(比如&ensp;#define macro_name后面无论加什么)，只要有&ensp;#define条件编译&ensp;就会执行&ensp;#ifdef&ensp;里面的代码<br>在嵌入式中的应用：<br><br>针对一些可以移植到不同平台设备的代码，你会看到类似：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#ifdef _ARM_</div><div class="line">#define func() armbar()</div><div class="line">#else //such as X86</div><div class="line">#define func() x86bar()</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<p>另外附上一个参考：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">#define ABCD 2</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line"> </div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line"> </div><div class="line">#ifdef ABCD</div><div class="line">    printf(&quot;1: yes\n&quot;);</div><div class="line">#else</div><div class="line">    printf(&quot;1: no\n&quot;);</div><div class="line">#endif</div><div class="line"> </div><div class="line">#ifndef ABCD</div><div class="line">    printf(&quot;2: no1\n&quot;);</div><div class="line">#elif ABCD == 2</div><div class="line">    printf(&quot;2: yes\n&quot;);</div><div class="line">#else</div><div class="line">    printf(&quot;2: no2\n&quot;);</div><div class="line">#endif</div><div class="line"> </div><div class="line">#if !defined(DCBA) &amp;&amp; (ABCD &lt; 2*4-3)</div><div class="line">    printf(&quot;3: yes\n&quot;);</div><div class="line">#endif</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1: yes</div><div class="line">2: yes</div><div class="line">3: yes</div></pre></td></tr></table></figure>
+<p><font color="red">#if的作用：</font><br><br>它和前面提到的&ensp;#ifdef&ensp;的主要区别就是：<br><br>&ensp;#ifdef&ensp;是检查条件编译的，只要它前面有&ensp;#define&ensp;就会执行条件内的内容；<br></p>
+<p>#if是当宏定义为1时才执行(当然你也可以让宏定义等于特定值执行，比如#if macro==3)，类似于if<br>可以简化前面提到的&ensp;#ifdef&ensp;的操作，怎么简化呢，比如你需要设置两个宏的判断：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#ifndef macro1</div><div class="line">#ifndef macro2</div><div class="line">  代码</div><div class="line">#endif</div><div class="line">#endif</div><div class="line">//当两个宏都满足才执行代码</div></pre></td></tr></table></figure>
+<p>简化:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#if define(macro1)&amp;&amp;define(macro2)</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<p>但是简化的方法不一定适用于旧版本编译器(C99支持)，如果要兼容旧版本编译器还是用前面比较繁琐的方法。<br></p>
+<p><font color="red">#error：</font><br><br>&ensp;#error&ensp;宏用于在编译时提示一个错误并且会停止编译<br><br>比如像前面的例子，我们在使用&ensp;#ifdef&ensp;检测宏是否定义的时候，可以在后面加&ensp;#error(“have not define\n”)&ensp;作为错误提示<br></p>
+<p><font color="red">#和##操作符：</font><br><br>demo：<br><br>针对#举个例子：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define PRINT_INT(n) printf(#n &quot; = %d\n&quot;,n)</div></pre></td></tr></table></figure></p>
+<p>当我们调用&ensp;PRINT_INT(i+j);&ensp;，就会变成&ensp;printf(“i+j””=%d\n”,i+j);&ensp;，等价于&ensp;printf(“i+j=%d\n”,i+j);&ensp;<br></p>
+<p>对于&ensp;<font color="red">##</font>&ensp;：<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#define xname(n) x ## n  &lt;==&gt;</div><div class="line">//xname(2) 就展开成x4</div><div class="line">再比如：</div><div class="line">int xname(2)=10;</div><div class="line">//就展开为int x2=10；</div></pre></td></tr></table></figure>
+<p>demo：<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line"> </div><div class="line">//制造函数工厂并使用之</div><div class="line">#define FUNCTION(name, a) int fun_##name(int x) &#123; return (a)*x;&#125;</div><div class="line"> </div><div class="line">FUNCTION(quadruple, 4)</div><div class="line">FUNCTION(double, 2)</div><div class="line"> </div><div class="line">#undef FUNCTION</div><div class="line">#define FUNCTION 34</div><div class="line">#define OUTPUT(a) puts( #a )</div><div class="line"> </div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">    printf(&quot;quadruple(13): %d\n&quot;, fun_quadruple(13) );</div><div class="line">    printf(&quot;double(21): %d\n&quot;, fun_double(21) );</div><div class="line">    printf(&quot;%d\n&quot;, FUNCTION);</div><div class="line">    OUTPUT(million);               //注意缺少引号</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出：<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">quadruple(13): 52</div><div class="line">double(21): 42</div><div class="line">34</div><div class="line">million</div></pre></td></tr></table></figure>
+<p>参考：<a href="http://zh.cppreference.com/w/c/preprocessor" target="_blank" rel="external">http://zh.cppreference.com/w/c/preprocessor</a><br><br><a href="http://blog.sina.com.cn/s/blog_4b4b54da0100r2l6.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_4b4b54da0100r2l6.html</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;h2&gt;&lt;center&gt;c中的预处理&lt;/center&gt;&lt;/h2&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=red&gt;#define的作用：&lt;/font&gt;&lt;br/&gt;&lt;br&gt;可以用来简化操作，交由预处理器处理速度一般要快于函数&lt;br/&gt;&lt;br&gt;得到一个字的高位和低位字节&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;#define WORD_LOW(xxx) ((byte) ((word)(xxx) &amp;amp; 255))&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;#define WORD_HIGH(xxx) ((byte) ((word)(xxx) &amp;gt;&amp;gt; 8))&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;值得一提的是C语言下struct+typedef+函数指针可以做到面向对象的继承，重载和多态&lt;br/&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="c" scheme="https://simonid.github.io/tags/c/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mooc_python爬虫学习</title>
+    <link href="https://simonid.github.io/2017/03/10/Mooc-python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://simonid.github.io/2017/03/10/Mooc-python爬虫学习/</id>
+    <published>2017-03-10T12:53:35.000Z</published>
+    <updated>2017-03-10T16:04:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h2><center>Mooc_python爬虫学习</center></h2><br>&ensp;&ensp;在中国大学mooc上的python爬虫教程<br><br>爬虫设计规模介绍：<br><br>对于小型爬虫，只是少量扒取网页上的资源，使用request库就能够解决；<br>对于中型爬虫，要引入scrapy库来解决<br>对于大型爬虫，比如谷歌、百度的搜索引擎，就需要公司自身定制<br><br>&ensp;&ensp;python爬虫过度扒取网站上的资源会对网站造成不小的压力，所以有些网站会对爬虫进行限制。限制的方式：<br>1.通过识别自身允许访问的uer-agent来限制爬虫的行为(但是稍微高级的爬虫可以伪造uer-agent)<br><br>2.通过robots协议来警告用户什么资源不能扒取<br><br><a id="more"></a><p></p>
+<p></p><h3>爬虫初实践：</h3><p></p>
+<p><font color="#0000ff">扒取京东商品信息：</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import requestss</div><div class="line">url=&quot;...&quot;</div><div class="line">try:</div><div class="line">    r=requests.get(url)</div><div class="line">    r.raise_for_status()//错误就退出</div><div class="line">    r.encoding=r.apparent_encoding</div><div class="line">    print r.text[0:1000]</div><div class="line">except:</div><div class="line">    print &quot;something wrong&quot;</div></pre></td></tr></table></figure></p>
+<p><font color="#0000ff">扒取亚马逊商品信息：</font><br><br>假如我们使用前面京东爬虫的方式扒取亚马逊的商品信息，就会报503错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;import requests</div><div class="line">&gt;r=requests.get(&quot;...&quot;)</div><div class="line">&gt;r.status_code()  //提示503</div></pre></td></tr></table></figure></p>
+<p>下面来分析一下问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;r.encoding</div><div class="line">&apos;ISO-8859-1&apos;</div><div class="line">&gt;r.encoding=r.apparent_encoding</div><div class="line">&gt;r.text  //会提示api错误</div><div class="line">&gt;r.requests.headers  //显示python的来源，亚马逊不运行访问</div><div class="line">&gt;k=&#123;&apos;user-agent&apos;:&apos;MOzilla/5.0&apos;&#125;//伪造头</div><div class="line">&gt;url=&quot;...&quot;</div><div class="line">&gt;r.requests.get(url,headers=k)</div><div class="line">&gt;r.status_code</div><div class="line">200</div><div class="line">&gt;r.requests.headers //显示Mozilla头</div><div class="line">&gt;r.text[:500] //获取</div></pre></td></tr></table></figure></p>
+<p>图片扒取：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import os</div><div class="line">&gt;&gt;&gt;import requests url=&quot;http://imgsize.ph.126.net/?enlarge=true&amp;imgurl=http://edu-image.nosdn.1</div><div class="line">27.net/9AD94813F74DFDE716B49C10A481CEE3.jpg?imageView&amp;amp;thumbnail=426y240&amp;amp;</div><div class="line">quality=100_230x130x1x95.png&quot;</div><div class="line">&gt;&gt;&gt; root=&quot;/home/simon/vscode/sublime/py/spider//&quot;</div><div class="line">&gt;&gt;&gt; path=root+url.split(&apos;/&apos;)[-1]</div><div class="line">&gt;&gt;&gt; try:</div><div class="line">...     if not os.path.exists(root):</div><div class="line">...         os.mkdir(root)</div><div class="line">...     if not os.path.exists(path):</div><div class="line">...         r=requests.get(url)</div><div class="line">...         with open(path,&apos;wb&apos;) as f:</div><div class="line">...             f.write(r.content)</div><div class="line">...             f.close()</div><div class="line">...             print &apos;save successfully&apos;</div><div class="line">...     else:</div><div class="line">...         print &apos;file already exists&apos;</div><div class="line">... except:</div><div class="line">...     print &apos;failed&apos;</div><div class="line">...     </div><div class="line">... </div><div class="line">save successfully</div></pre></td></tr></table></figure></p>
+<p>最后指定的目录下保存了名为9AD94813F74DFDE716B49C10A481CEE3.jpg?imageView&amp;thumbnail=426y240&amp;<br>quality=100_230x130x1x95.png的图片</p>
+<p><font color="#0000ff">BeautifulSoup的使用</font><br><br>bs4这个库可以解析html和xml，帮助我们解析链接的资源（只要是带标签的资源都能解析），假如不引入，单纯打印text文本内容的时候，会显示很多杂乱无章的信息，加入bs4可以解决<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;from bs4 import BeautifulSoup</div><div class="line">&gt;url=&quot;...&quot;</div><div class="line">&gt;r=requests.get(url)</div><div class="line">&gt;demo=r.text  //假如直接打印demo会显示和乱的内容</div><div class="line">&gt;soup=BeautifulSoup(demo,&quot;html.parser&quot;)</div><div class="line">&gt;print soup.prettify()</div></pre></td></tr></table></figure></p>
+<p><font color="#0000ff">BeautifulSoup基本元素</font><br><br>bs4有4个解析器，前面提到的html解析器是其中一种<br>基本元素：<br>tag标签：最基本的信息组织单元，分别用&lt;&gt;和&lt;/&gt;表面开头和结尾<br><br>name标签：标签名字，<code>&lt;p&gt;</code>名字就是p<br><br>attributes：标签属性，字典形式组织<br><br>navigablestring：标签内非属性字符串<br><br>comment：标签内字符串注释部分<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">还是前面的例子</div><div class="line">&gt;&gt;&gt; soup.title</div><div class="line">&lt;title&gt;Python\u7f51\u7edc\u722c\u866b\u4e0e\u4fe1\u606f\u63d0\u53d6_\u4e2d\u56fd</div><div class="line">\u5927\u5b66MOOC(\u6155\u8bfe)&lt;/title&gt;</div><div class="line">&gt;&gt;&gt; tag=soup.a</div><div class="line">&gt;&gt;&gt; print tag</div><div class="line">&lt;a class=&quot;navLeft-func-f_div203_div204_a205&quot; href=&quot;http://www.icourse163.org&quot; ta</div><div class="line">rget=&quot;_top&quot;&gt;&lt;img alt=&quot;&quot; class=&quot;navLeft-func-f_div203_div204_a205_img206&quot; height=</div><div class="line">&quot;28&quot; src=&quot;http://edu-image.nosdn.127.net/C0124E0336721FF65563B76A16A8143F.png?im</div><div class="line">ageView&amp;amp;thumbnail=190y28&amp;amp;quality=100&quot; width=&quot;190&quot;/&gt;&lt;/a&gt;</div><div class="line">&gt;&gt;&gt; tag.attrs</div><div class="line">&#123;u&apos;href&apos;: u&apos;http://www.icourse163.org&apos;, u&apos;target&apos;: u&apos;_top&apos;, u&apos;class&apos;: [u&apos;navLeft</div><div class="line">-func-f_div203_div204_a205&apos;]&#125;</div><div class="line">&gt;&gt;&gt; tag.attrs[&apos;class&apos;]</div><div class="line">[u&apos;navLeft-func-f_div203_div204_a205&apos;]</div><div class="line">&gt;&gt;&gt; tag.attrs[&apos;href&apos;]</div><div class="line">u&apos;http://www.icourse163.org&apos;</div><div class="line">&gt;&gt;&gt; print soup.p.string</div><div class="line">扫码下载APP</div></pre></td></tr></table></figure></p>
+<p><font color="#0000ff">通过bs4解析器获取网页上的所有链接</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">url=&quot;...&quot;</div><div class="line">from bs4 import BeautifulSoup</div><div class="line">r.requests.get(url)</div><div class="line">demo=r.text</div><div class="line">soup=BeautifulSoup(demo,&quot;html.parser&quot;)</div><div class="line">for link in soup.find_all(&apos;a&apos;):</div><div class="line">    print link.get(&apos;href&apos;)</div></pre></td></tr></table></figure></p>
+<p>bs4中的find_all方法：<br>.find_all(name,attrs,recursive,string,**kwargs)<br>返回一个列表类型，存储查找结果<br>name：对标签名称的检索字符串<br>attrs：对标签属性值的检索字符串<br>recursive：是否对子孙全部检索，默认是True<br>string：&lt;&gt;…<code>&lt;/&gt;</code>中字符串区域的检索字符串</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;h2&gt;&lt;center&gt;Mooc_python爬虫学习&lt;/center&gt;&lt;/h2&gt;&lt;br&gt;&amp;ensp;&amp;ensp;在中国大学mooc上的python爬虫教程&lt;br/&gt;&lt;br&gt;爬虫设计规模介绍：&lt;br/&gt;&lt;br&gt;对于小型爬虫，只是少量扒取网页上的资源，使用request库就能够解决；&lt;br/&gt;对于中型爬虫，要引入scrapy库来解决&lt;br/&gt;对于大型爬虫，比如谷歌、百度的搜索引擎，就需要公司自身定制&lt;br/&gt;&lt;br&gt;&amp;ensp;&amp;ensp;python爬虫过度扒取网站上的资源会对网站造成不小的压力，所以有些网站会对爬虫进行限制。限制的方式：&lt;br&gt;1.通过识别自身允许访问的uer-agent来限制爬虫的行为(但是稍微高级的爬虫可以伪造uer-agent)&lt;br/&gt;&lt;br&gt;2.通过robots协议来警告用户什么资源不能扒取&lt;br/&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://simonid.github.io/tags/python/"/>
+    
+      <category term="spider" scheme="https://simonid.github.io/tags/spider/"/>
     
   </entry>
   
@@ -131,7 +292,7 @@
     <link href="https://simonid.github.io/2017/03/09/c%E5%92%8C%E6%8C%87%E9%92%88/"/>
     <id>https://simonid.github.io/2017/03/09/c和指针/</id>
     <published>2017-03-09T09:31:12.000Z</published>
-    <updated>2017-03-09T16:12:27.000Z</updated>
+    <updated>2017-03-11T06:10:05.000Z</updated>
     
     <content type="html"><![CDATA[<p></p><h3><center>C和指针</center></h3><br>&ensp;&ensp;大一学了c语言，但是发现实际上自己对c语言的掌握程度还是不足，特别是指针部分，所以再来复习一下。<br><br>&ensp;&ensp;首先指明，指针的实质是地址，如果一个变量存储了一份数据的指针，我们就称它为指针变量。在c语言中可以用一个变量来存放指针，这个变量就是指针变量，指针变量的值就是某个数据的地址。<br><br>&ensp;&ensp;假设我们有一个int型变量a，它存储的是整型数字1，并且占用0x10b的地址，另外还有一个指针变量p，它的值是0x10b，这样我们就可以说p指向了a，或者p是指向变量a的指针<br><br><a id="more"></a><p></p>
 <p><font color="#999ds">定义指针变量</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">type *name;   type *name=val;</div></pre></td></tr></table></figure></p>
@@ -155,6 +316,9 @@
 <p><font color="#9032ds">形参中引用指针和引用数组</font><br><br>&ensp;&ensp;实际上，在形参中定义数组和定义指针的效果是一样的，数组作为参数传递的时候会被弱化为指针，传递进去的是数组的首元素地址</p>
 <p><font color="0000ff">void <code>*</code></font><br><br>void<em>是通用指针类型，即指向void的指针，可以指向任意类型的地址。如果函数的参数和返回值可以是任意类型，就可以用void</em>作为参数或返回值。<br></p>
 <p><font color="red">注意：</font><br><br>void<em>和其他类型不能相互复制，比如int</em>变量可以复制给void<em>变量，但是void</em>变量要赋值给int<em>变量就要强制转换为int</em>类型。<br>void<em>类型不能进行加减乘除运算。<br>GNU中void</em>等价与char*</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">char s[3][10],(*k)[3],*p;</div><div class="line">p=s;</div><div class="line">p=k;</div><div class="line">p=s[0]; //正确</div><div class="line">k=s;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">struct ord </div><div class="line">&#123;</div><div class="line">int x,y;&#125; dt[2]=&#123;1,2,3,4&#125;;</div><div class="line">main()</div><div class="line">&#123;struct ord *p=dt;</div><div class="line">printf(&quot;%d,&quot;,++p-&gt;x);</div><div class="line">printf(&quot;%d,&quot;,++p-&gt;y);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>定义了一个结构体，里面有两个整型变量，dt是一个数组，里面有两个元素，每个元素都是一个结构体，并且对两个元素都进行初始化，第一个元素作为一个结构体里面的两个整数值为x=1，y=2，第二个为x=3，y=4</p>
 ]]></content>
     
     <summary type="html">

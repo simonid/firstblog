@@ -4,18 +4,27 @@
   <meta charset="utf-8">
   <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
   
-  <title>Text开发环境搭建 | Hexo</title>
+  <title>c中的预处理 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Sublime Text开发环境搭建&amp;nbsp;&amp;nbsp;&amp;emsp;Sublime text是一个很强的跨平台编辑器，如果你只认为它和普通编辑器一样那就误解了，实际上，它有很多丰富的插件，我们可以通过拓展插件的方法来搭建一个非常完备的开发环境。甚至，很多时候，它可以替代IDE的很多工作（好多IDE真的是内存杀手，尽管它们有很多功能）。官网：http://www.sublimetext.com/">
+  <meta name="description" content="c中的预处理
+#define的作用：可以用来简化操作，交由预处理器处理速度一般要快于函数得到一个字的高位和低位字节
+12#define WORD_LOW(xxx) ((byte) ((word)(xxx) &amp;amp; 255))#define WORD_HIGH(xxx) ((byte) ((word)(xxx) &amp;gt;&amp;gt; 8))
+值得一提的是C语言下struct+typedef+函数指针">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Text开发环境搭建">
-<meta property="og:url" content="https://simonid.github.io/2017/03/08/Sublime Text开发环境搭建/index.html">
+<meta property="og:title" content="c中的预处理">
+<meta property="og:url" content="https://simonid.github.io/2017/03/13/c中的预处理/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Sublime Text开发环境搭建&amp;nbsp;&amp;nbsp;&amp;emsp;Sublime text是一个很强的跨平台编辑器，如果你只认为它和普通编辑器一样那就误解了，实际上，它有很多丰富的插件，我们可以通过拓展插件的方法来搭建一个非常完备的开发环境。甚至，很多时候，它可以替代IDE的很多工作（好多IDE真的是内存杀手，尽管它们有很多功能）。官网：http://www.sublimetext.com/">
-<meta property="og:updated_time" content="2017-03-08T14:44:02.000Z">
+<meta property="og:description" content="c中的预处理
+#define的作用：可以用来简化操作，交由预处理器处理速度一般要快于函数得到一个字的高位和低位字节
+12#define WORD_LOW(xxx) ((byte) ((word)(xxx) &amp;amp; 255))#define WORD_HIGH(xxx) ((byte) ((word)(xxx) &amp;gt;&amp;gt; 8))
+值得一提的是C语言下struct+typedef+函数指针">
+<meta property="og:updated_time" content="2017-03-13T09:19:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Text开发环境搭建">
-<meta name="twitter:description" content="Sublime Text开发环境搭建&amp;nbsp;&amp;nbsp;&amp;emsp;Sublime text是一个很强的跨平台编辑器，如果你只认为它和普通编辑器一样那就误解了，实际上，它有很多丰富的插件，我们可以通过拓展插件的方法来搭建一个非常完备的开发环境。甚至，很多时候，它可以替代IDE的很多工作（好多IDE真的是内存杀手，尽管它们有很多功能）。官网：http://www.sublimetext.com/">
+<meta name="twitter:title" content="c中的预处理">
+<meta name="twitter:description" content="c中的预处理
+#define的作用：可以用来简化操作，交由预处理器处理速度一般要快于函数得到一个字的高位和低位字节
+12#define WORD_LOW(xxx) ((byte) ((word)(xxx) &amp;amp; 255))#define WORD_HIGH(xxx) ((byte) ((word)(xxx) &amp;gt;&amp;gt; 8))
+值得一提的是C语言下struct+typedef+函数指针">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -192,7 +201,7 @@
 </div>
 
 	  
-      <div class="body-wrap"><article id="sublime-Sublime Text开发环境搭建" class="article article-type-sublime" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-c中的预处理" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -206,12 +215,12 @@
     </script>
     
         <div class="article-meta">
-            <a href="/2017/03/08/Sublime Text开发环境搭建/" class="article-date">
-  	<time datetime="2017-03-08T12:36:25.000Z" itemprop="datePublished">2017-03-08</time>
+            <a href="/2017/03/13/c中的预处理/" class="article-date">
+  	<time datetime="2017-03-13T05:08:30.000Z" itemprop="datePublished">2017-03-13</time>
 </a>
 
-<a href="/2017/03/08/Sublime Text开发环境搭建/" class="article-date">
-  	<time datetime="2017-03-08T12:36:25.000Z" itemprop="datePublished">2017-03-08</time>
+<a href="/2017/03/13/c中的预处理/" class="article-date">
+  	<time datetime="2017-03-13T05:08:30.000Z" itemprop="datePublished">2017-03-13</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkGray">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -230,7 +239,7 @@
                                 
   
     <h1 class="article-title" itemprop="name">
-      Text开发环境搭建
+      c中的预处理
     </h1>
   
 
@@ -240,7 +249,7 @@
                                 <div class="article-info article-info-post">
                                     
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/">tool</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
 	</div>
 
 
@@ -257,7 +266,7 @@
 
                                                     <p class="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Sublime Text开发环境搭建</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">c中的预处理</span></a></li></ol>
 </div>
 <script>
     $(function(){
@@ -288,53 +297,39 @@
                                             
                                             -->
                                             
-                                                     <p></p><h3><center>Sublime Text开发环境搭建</center></h3><br>&nbsp;&nbsp;&emsp;Sublime text是一个很强的跨平台编辑器，如果你只认为它和普通编辑器一样那就误解了，实际上，它有很多丰富的插件，我们可以通过拓展插件的方法来搭建一个非常完备的开发环境。甚至，很多时候，它可以替代IDE的很多工作（好多IDE真的是内存杀手，尽管它们有很多功能）。<br><br><br>官网：<a href="http://www.sublimetext.com/" target="_blank" rel="external">http://www.sublimetext.com/</a><br><br>&nbsp;&nbsp;&emsp;安装插件之前，我们要先安装package control包管理器：<br>依次点开<b>view-&gt;show control</b>(快捷键 Ctrl+`),在控制台下输入:<br><br><br><a id="more"></a><p></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import urllib.request,os,hashlib; h =                           &apos;df21e130d211cfc94d9b0905775a7c0f&apos; + &apos;1e3d39e33b79698005270310898eea76&apos;; pf = &apos;Package          Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)</div></pre></td></tr></table></figure>
-<p>可以参考：<a href="https://packagecontrol.io/installation" target="_blank" rel="external">https://packagecontrol.io/installation</a><br><br>安装完插件管理之后，通过菜单 <strong>Preferences&gt; Package Control （快捷键 Ctrl+Shift+P） </strong>来开启安装插件，在打开的输入框中输入<strong>install</strong> ，从提示的待选项中选择<strong> Install Package</strong>。<br>这里提一下，本人在ubuntu14.04上安装sublime text3插件的时候，当进行到install package那个步骤的时候，系统提示了错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Package Control</div><div class="line"></div><div class="line">There are no packages available for installation</div><div class="line"></div><div class="line">Please see https://packagecontrol.io/docs/troubleshooting for help</div></pre></td></tr></table></figure>
-<p>网络出现了问题。。。<br>解决：<br>1.在终端输入：<font color="#d2691e">dig @8.8.8.8 -t A sublime.wbond.net +noall +answer</font><br><br>然后找到类似下面的结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">; &lt;&lt;&gt;&gt; DiG 9.9.5-3-Ubuntu &lt;&lt;&gt;&gt; @8.8.8.8 -t A sublime.wbond.net +noall +answer</div><div class="line">; (1 server found)</div><div class="line">;; global options: +cmd</div><div class="line">sublime.wbond.net.  82  IN  A 50.116.34.243</div></pre></td></tr></table></figure>
-<p>2.后面的数字就是你需要改的host，在/etc/hosts下，填入：<br></p>
-<p><font color="#d2691e">50.116.34.243 sublime.wbond.net</font><br><br>原文：<a href="http://stackoverflow.com/questions/25105139/sublime-text-2-there-are-no-packages-available-for-installation" target="_blank" rel="external">http://stackoverflow.com/questions/25105139/sublime-text-2-there-are-no-packages-available-for-installation</a><br><br>安装完毕之后可以根据Package Control Messages这个文件查看插件信息。<br>当然你也可以删除插件，在前面提到的package control中输入<b>remove package</b>，选择要删除的插件<br><br><br></p>
-<p><font size="4" color="#8b008b"><b>前端的插件</b></font><br></p>
-<p><font color="#0000ff">Tag:</font>Html/xml代码格式化 <br></p>
-<p><font color="#0000ff">CSScomb:</font>CSS属性排序 <br></p>
-<p><font color="#0000ff">JsFormat:</font>JS代码格式化 <br></p>
-<p><font color="#0000ff">Emmet：</font>快速生成HTML代码段的插件 <br></p>
-<p><font color="#0000ff">jQuery:</font> 智能提示jQuery代码<br></p>
-<p><font color="#0000ff">HTML5:</font>HTML5 bundle <br></p>
-<p><font color="#0000ff">Js​Format: </font>JS代码格式化<br></p>
-<p><hr></p>
-<p><font size="4" color="#8b008b"><b>PHP的插件</b></font><br></p>
-<p><font color="#0000ff">sublimelinter + sublimelinter-php:</font>PHP代码语法检测，在写的时候就可以知道是否符合PHP语法，及时修改 <br></p>
-<p><font color="#0000ff">SublimeCodeIntel:</font> PHP代码自动补全工具<br></p>
-<p><font color="#0000ff">Xdebug Client：</font>调试插件，可以对PHP代码设置断点、单步、步入、步出、步进等调试，以及查看实时变量值 <br></p>
-<p><font color="#0000ff">DocBlockr：</font> 可以自动生成PHPDoc风格的注释<br></p>
-<p><hr></p>
-<p><font size="4" color="#8b008b"><b>C/C++的插件</b></font><br></p>
-<p><hr></p>
-<p><font size="4" color="#8b008b"><b>Python的插件</b></font><br></p>
-<p><hr></p>
-<p><font size="4" color="#8b008b"><b>其他的插件</b></font><br></p>
-<p><font color="#0000ff">Alignment:</font>代码对齐 <br></p>
-<p><font color="#0000ff">Bracket​Highlighter:</font>括号高亮<br></p>
-<p><font color="#0000ff">ConvertToUTF8:</font>：支持Sublime打开 GBK, BIG5, EUC-KR, EUC-JP, Shift_JIS 等编码文件的插件<br></p>
-<p><font color="#0000ff">Bracket Highlighter</font>：用于匹配括号，引号和html标签。对于很长的代码很有用<br></p>
-<p><font color="#0000ff">SideBar Enhancements:</font>这个插件改进了侧边栏，增加了许多侧边栏的右键功能<br></p>
-<p><font color="#0000ff">Themr：</font>主题管理，切换主题的时候，不用自己修改配置文件了，用这个可以方便的切换主题 <br></p>
-<p><font color="#0000ff">SFTP:</font> ftp插件<br></p>
-<p><font color="#0000ff">GBK to UTF8:</font>GBK转换为UTF8 <br></p>
-<p><font color="#0000ff">Clipboard History:</font>剪切板历史记录<br></p>
-<p><font color="#0000ff">Git:</font>整合git<br></p>
-<p><font color="#0000ff">Sublimall:</font>同步其他设备的ST<br></p>
-<p><font color="#0000ff">AutoFileName:</font>补全文件路径<br></p>
-<p><font color="#0000ff"></font> <br></p>
-<p><font color="#0000ff"></font> <br></p>
-<p><font color="#0000ff"></font> <br></p>
-<p><font color="#0000ff"></font> <br></p>
-<p><font color="#0000ff"></font> <br></p>
-<p><font color="#0000ff"></font> <br></p>
-<p>参考牛人的经验：<br><a href="https://github.com/jikeytang/sublime-text" target="_blank" rel="external">https://github.com/jikeytang/sublime-text</a><br><br><a href="http://www.awaimai.com/940.html" target="_blank" rel="external">http://www.awaimai.com/940.html</a><br><br><a href="https://segmentfault.com/a/1190000000382934" target="_blank" rel="external">https://segmentfault.com/a/1190000000382934</a><br><br><a href="http://blog.jobbole.com/79326/" target="_blank" rel="external">http://blog.jobbole.com/79326/</a></p>
+                                                     <p></p><h2><center>c中的预处理</center></h2><p></p>
+<p><font color="red">#define的作用：</font><br><br>可以用来简化操作，交由预处理器处理速度一般要快于函数<br><br>得到一个字的高位和低位字节</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#define WORD_LOW(xxx) ((byte) ((word)(xxx) &amp; 255))</div><div class="line">#define WORD_HIGH(xxx) ((byte) ((word)(xxx) &gt;&gt; 8))</div></pre></td></tr></table></figure>
+<p>值得一提的是C语言下struct+typedef+函数指针可以做到面向对象的继承，重载和多态<br><br><a id="more"></a></p>
+<p><font color="red">&ensp;#define&ensp;归预处理器管理，typedef归编译器管理。</font>举个例子来阐述它们之间的不同：<br><br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#define func void (*)(char)</div><div class="line">typedef void (*function)(int); //定义一个函数指针，参数类型为char，返回值是void</div><div class="line"></div><div class="line">void a(function f);  //true</div><div class="line">void b(func f);      //error</div></pre></td></tr></table></figure>
+<p>取消之前的&ensp;#define&ensp;定义：&ensp;<font color="red">#undef</font>&ensp;</p>
+<p><font color="red">#ifndef的作用：</font><br><br>防止头文件中相互嵌套重复定义，比如，定义了a.h文件和b.h头文件，其中在b.h中引入了a.h，然后在一个源文件d.c中同时引入了a.h和b.h，那么a.h就重复定义；了。这时候要引入#ifndef<br>格式：&ensp;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#ifndef _XXX_H</div><div class="line">#define _XXX_H</div><div class="line">...</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<p><font color="red">#ifdef的作用：</font><br><br>&ensp;#ifdef&ensp;一般形式：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#ifdef macro_name</div><div class="line">　　　 代码段　1</div><div class="line">#else</div><div class="line">　　　 代码段　2</div><div class="line">#endif</div></pre></td></tr></table></figure></p>
+<p>首先：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#ifdef identifier本质上等价于#if defined( identifier).</div><div class="line">#ifndef identifier本质上等价于#if !defined( identifier).</div></pre></td></tr></table></figure></p>
+<p>加入在前面定义了#define  macro_name<br>那么就会执行代码段1，否则执行2.<br><br>注意无论&ensp;#define&ensp;后面的是什么(比如&ensp;#define macro_name后面无论加什么)，只要有&ensp;#define条件编译&ensp;就会执行&ensp;#ifdef&ensp;里面的代码<br>在嵌入式中的应用：<br><br>针对一些可以移植到不同平台设备的代码，你会看到类似：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#ifdef _ARM_</div><div class="line">#define func() armbar()</div><div class="line">#else //such as X86</div><div class="line">#define func() x86bar()</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<p>另外附上一个参考：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">#define ABCD 2</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line"> </div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line"> </div><div class="line">#ifdef ABCD</div><div class="line">    printf(&quot;1: yes\n&quot;);</div><div class="line">#else</div><div class="line">    printf(&quot;1: no\n&quot;);</div><div class="line">#endif</div><div class="line"> </div><div class="line">#ifndef ABCD</div><div class="line">    printf(&quot;2: no1\n&quot;);</div><div class="line">#elif ABCD == 2</div><div class="line">    printf(&quot;2: yes\n&quot;);</div><div class="line">#else</div><div class="line">    printf(&quot;2: no2\n&quot;);</div><div class="line">#endif</div><div class="line"> </div><div class="line">#if !defined(DCBA) &amp;&amp; (ABCD &lt; 2*4-3)</div><div class="line">    printf(&quot;3: yes\n&quot;);</div><div class="line">#endif</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1: yes</div><div class="line">2: yes</div><div class="line">3: yes</div></pre></td></tr></table></figure>
+<p><font color="red">#if的作用：</font><br><br>它和前面提到的&ensp;#ifdef&ensp;的主要区别就是：<br><br>&ensp;#ifdef&ensp;是检查条件编译的，只要它前面有&ensp;#define&ensp;就会执行条件内的内容；<br></p>
+<p>#if是当宏定义为1时才执行(当然你也可以让宏定义等于特定值执行，比如#if macro==3)，类似于if<br>可以简化前面提到的&ensp;#ifdef&ensp;的操作，怎么简化呢，比如你需要设置两个宏的判断：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#ifndef macro1</div><div class="line">#ifndef macro2</div><div class="line">  代码</div><div class="line">#endif</div><div class="line">#endif</div><div class="line">//当两个宏都满足才执行代码</div></pre></td></tr></table></figure>
+<p>简化:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#if define(macro1)&amp;&amp;define(macro2)</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<p>但是简化的方法不一定适用于旧版本编译器(C99支持)，如果要兼容旧版本编译器还是用前面比较繁琐的方法。<br></p>
+<p><font color="red">#error：</font><br><br>&ensp;#error&ensp;宏用于在编译时提示一个错误并且会停止编译<br><br>比如像前面的例子，我们在使用&ensp;#ifdef&ensp;检测宏是否定义的时候，可以在后面加&ensp;#error(“have not define\n”)&ensp;作为错误提示<br></p>
+<p><font color="red">#和##操作符：</font><br><br>demo：<br><br>针对#举个例子：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define PRINT_INT(n) printf(#n &quot; = %d\n&quot;,n)</div></pre></td></tr></table></figure></p>
+<p>当我们调用&ensp;PRINT_INT(i+j);&ensp;，就会变成&ensp;printf(“i+j””=%d\n”,i+j);&ensp;，等价于&ensp;printf(“i+j=%d\n”,i+j);&ensp;<br></p>
+<p>对于&ensp;<font color="red">##</font>&ensp;：<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#define xname(n) x ## n  &lt;==&gt;</div><div class="line">//xname(2) 就展开成x4</div><div class="line">再比如：</div><div class="line">int xname(2)=10;</div><div class="line">//就展开为int x2=10；</div></pre></td></tr></table></figure>
+<p>demo：<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line"> </div><div class="line">//制造函数工厂并使用之</div><div class="line">#define FUNCTION(name, a) int fun_##name(int x) &#123; return (a)*x;&#125;</div><div class="line"> </div><div class="line">FUNCTION(quadruple, 4)</div><div class="line">FUNCTION(double, 2)</div><div class="line"> </div><div class="line">#undef FUNCTION</div><div class="line">#define FUNCTION 34</div><div class="line">#define OUTPUT(a) puts( #a )</div><div class="line"> </div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">    printf(&quot;quadruple(13): %d\n&quot;, fun_quadruple(13) );</div><div class="line">    printf(&quot;double(21): %d\n&quot;, fun_double(21) );</div><div class="line">    printf(&quot;%d\n&quot;, FUNCTION);</div><div class="line">    OUTPUT(million);               //注意缺少引号</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出：<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">quadruple(13): 52</div><div class="line">double(21): 42</div><div class="line">34</div><div class="line">million</div></pre></td></tr></table></figure>
+<p>参考：<a href="http://zh.cppreference.com/w/c/preprocessor" target="_blank" rel="external">http://zh.cppreference.com/w/c/preprocessor</a><br><br><a href="http://blog.sina.com.cn/s/blog_4b4b54da0100r2l6.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_4b4b54da0100r2l6.html</a></p>
 
                                             
                                         </div>
@@ -362,18 +357,18 @@
                         
 <nav id="article-nav">
   
-    <a href="/2017/03/09/了解hexo主题的布局/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/13/桥接与二层转发的概念/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          了解hexo主题的布局
+          桥接与二层转发的概念
         
       </div>
     </a>
   
   
-    <a href="/2017/03/08/HEXO主题定制/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">HEXO主题定制</div>
+    <a href="/2017/03/10/Mooc-python爬虫学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mooc_python爬虫学习</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -383,7 +378,7 @@
                             
                                 <!-- 多说评论框 start -->
                                 
-                                    <div class="ds-thread" data-thread-key="sublime-Sublime Text开发环境搭建" data-title="Text开发环境搭建" data-url="https://simonid.github.io/2017/03/08/Sublime Text开发环境搭建/"></div>
+                                    <div class="ds-thread" data-thread-key="post-c中的预处理" data-title="c中的预处理" data-url="https://simonid.github.io/2017/03/13/c中的预处理/"></div>
                                     <!-- 多说评论框 end -->
                                     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
                                     <script type="text/javascript">

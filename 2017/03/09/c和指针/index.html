@@ -14,7 +14,7 @@
 <meta property="og:description" content="C和指针&amp;ensp;&amp;ensp;大一学了c语言，但是发现实际上自己对c语言的掌握程度还是不足，特别是指针部分，所以再来复习一下。&amp;ensp;&amp;ensp;首先指明，指针的实质是地址，如果一个变量存储了一份数据的指针，我们就称它为指针变量。在c语言中可以用一个变量来存放指针，这个变量就是指针变量，指针变量的值就是某个数据的地址。&amp;ensp;&amp;ensp;假设我们有一个int型变量a，它存储的是整型数字1">
 <meta property="og:image" content="http://i1.piimg.com/567571/7a5d7b5f32167a50.png">
 <meta property="og:image" content="http://p1.bqimg.com/567571/c62d8a1b83fda05b.png">
-<meta property="og:updated_time" content="2017-03-09T16:12:27.000Z">
+<meta property="og:updated_time" content="2017-03-11T06:10:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c和指针">
 <meta name="twitter:description" content="C和指针&amp;ensp;&amp;ensp;大一学了c语言，但是发现实际上自己对c语言的掌握程度还是不足，特别是指针部分，所以再来复习一下。&amp;ensp;&amp;ensp;首先指明，指针的实质是地址，如果一个变量存储了一份数据的指针，我们就称它为指针变量。在c语言中可以用一个变量来存放指针，这个变量就是指针变量，指针变量的值就是某个数据的地址。&amp;ensp;&amp;ensp;假设我们有一个int型变量a，它存储的是整型数字1">
@@ -124,7 +124,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/c/" style="font-size: 15px;">c</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/theme/" style="font-size: 10px;">theme</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a>
+						<a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/c/" style="font-size: 20px;">c</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/network/" style="font-size: 15px;">network</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/spider/" style="font-size: 10px;">spider</a> <a href="/tags/theme/" style="font-size: 10px;">theme</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a>
 					</div>
 				</section>
 				
@@ -313,6 +313,9 @@
 <p><font color="#9032ds">形参中引用指针和引用数组</font><br><br>&ensp;&ensp;实际上，在形参中定义数组和定义指针的效果是一样的，数组作为参数传递的时候会被弱化为指针，传递进去的是数组的首元素地址</p>
 <p><font color="0000ff">void <code>*</code></font><br><br>void<em>是通用指针类型，即指向void的指针，可以指向任意类型的地址。如果函数的参数和返回值可以是任意类型，就可以用void</em>作为参数或返回值。<br></p>
 <p><font color="red">注意：</font><br><br>void<em>和其他类型不能相互复制，比如int</em>变量可以复制给void<em>变量，但是void</em>变量要赋值给int<em>变量就要强制转换为int</em>类型。<br>void<em>类型不能进行加减乘除运算。<br>GNU中void</em>等价与char*</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">char s[3][10],(*k)[3],*p;</div><div class="line">p=s;</div><div class="line">p=k;</div><div class="line">p=s[0]; //正确</div><div class="line">k=s;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">struct ord </div><div class="line">&#123;</div><div class="line">int x,y;&#125; dt[2]=&#123;1,2,3,4&#125;;</div><div class="line">main()</div><div class="line">&#123;struct ord *p=dt;</div><div class="line">printf(&quot;%d,&quot;,++p-&gt;x);</div><div class="line">printf(&quot;%d,&quot;,++p-&gt;y);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>定义了一个结构体，里面有两个整型变量，dt是一个数组，里面有两个元素，每个元素都是一个结构体，并且对两个元素都进行初始化，第一个元素作为一个结构体里面的两个整数值为x=1，y=2，第二个为x=3，y=4</p>
 
                                             
                                         </div>
