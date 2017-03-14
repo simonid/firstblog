@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
+  
+  <title>Linux-Command | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Linux Command
+查找相同的文件：首先要下载fdupes工具:123sudo apt-get install fdupes# yum install fdupes# dnf install fdupes //fedora22之后
+12345fdupes directory/  查找目录下相同的文件fdupes directory/ -r -d 递归查找出重复名的文件，并且删除掉重复的，删">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux-Command">
+<meta property="og:url" content="https://simonid.github.io/2017/03/14/Linux-Command/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Linux Command
+查找相同的文件：首先要下载fdupes工具:123sudo apt-get install fdupes# yum install fdupes# dnf install fdupes //fedora22之后
+12345fdupes directory/  查找目录下相同的文件fdupes directory/ -r -d 递归查找出重复名的文件，并且删除掉重复的，删">
+<meta property="og:updated_time" content="2017-03-14T11:21:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux-Command">
+<meta name="twitter:description" content="Linux Command
+查找相同的文件：首先要下载fdupes工具:123sudo apt-get install fdupes# yum install fdupes# dnf install fdupes //fedora22之后
+12345fdupes directory/  查找目录下相同的文件fdupes directory/ -r -d 递归查找出重复名的文件，并且删除掉重复的，删">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/leaves.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://simonid.github.io/js/jquery1.8.2.min.js"></script>
+  <script src="https://simonid.github.io/js/jquery.nicescroll.js"></script>
+  <script src="https://simonid.github.io/js/jquery.qrcode.min.js"></script>
+  <script src="https://simonid.github.io/js/ug-theme-default.js"></script>
+  <script src="https://simonid.github.io/js/unitegallery.js"></script>
+  <!--
+  <script src="../../../../.deploy_git/js/jquery1.8.2.min.js"></script>
+  <script src="../../../../.deploy_git/js/jquery.nicescroll.js"></script>
+  <script src="../../../../.deploy_git/js/jquery.qrcode.min.js"></script>
+  <script src="../../../../.deploy_git/js/jquery">
+-->
+
+</head>
+
+<body>
+
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="https://avatars0.githubusercontent.com/u/19177986?v=3&amp;s=460" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/" class="alluraregular">simon</a></h1>
+		</hgroup>
+        <!--
+		
+        -->
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/categories/blog">博客</a></li>
+				        
+							<li><a href="/categories/front">开发</a></li>
+				        
+							<li><a href="/categories/work">工作日志</a></li>
+				        
+							<li><a href="/categories/life">点滴生活</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/simonid" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/c/" style="font-size: 20px;">c</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/network/" style="font-size: 13.33px;">network</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/spider/" style="font-size: 10px;">spider</a> <a href="/tags/theme/" style="font-size: 10px;">theme</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博客/" style="font-size: 16.67px;">博客</a>
+					</div>
+				</section>
+				
+
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">好好学习，天天向上！！！</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">simon</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="https://avatars0.githubusercontent.com/u/19177986?v=3&amp;s=460" class="js-avatar">
+				<hgroup>
+				  <h1 class="header-author">simon</h1>
+				</hgroup>
+			</div>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/blog">博客</a></li>
+		        
+					<li><a href="/categories/front">开发</a></li>
+		        
+					<li><a href="/categories/work">工作日志</a></li>
+		        
+					<li><a href="/categories/life">点滴生活</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/simonid" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+	  <!--是否开启最近通知-->
+	  
+	  <div class="recent">
+    ......
+</div>
+
+	  
+      <div class="body-wrap"><article id="post-Linux-Command" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2017/03/14/Linux-Command/" class="article-date">
+  	<time datetime="2017-03-14T05:29:14.000Z" itemprop="datePublished">2017-03-14</time>
+</a>
+
+<a href="/2017/03/14/Linux-Command/" class="article-date">
+  	<time datetime="2017-03-14T05:29:14.000Z" itemprop="datePublished">2017-03-14</time>
+  	<span id="busuanzi_container_page_pv" style="color:DarkGray">
+      view <span id="busuanzi_value_page_pv"></span> times
+    </span>
+</a>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 class="article-title" itemprop="name">
+      Linux-Command
+    </h1>
+  
+
+
+                            </header>
+                            
+                                <div class="article-info article-info-post">
+                                    
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux-Command/">Linux Command</a></li></ul>
+	</div>
+
+
+                                        
+
+                                            <div class="clearfix"></div>
+                                </div>
+                                
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+                                           <!--
+                                            
+
+                                                    <p class="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Linux Command</span></a></li></ol>
+</div>
+<script>
+    $(function(){
+
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
+
+        });
+        $(".toc-article").hover(function(){
+
+        },function(){
+            $("#toc").hide(1000,function(){});
+        });
+    })
+</script>
+
+                                                  
+                                            
+                                            -->
+                                            
+                                                     <p></p><h2><center>Linux Command</center></h2><p></p>
+<p><font color="red">查找相同的文件：</font><br><br>首先要下载fdupes工具:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install fdupes</div><div class="line"># yum install fdupes</div><div class="line"># dnf install fdupes //fedora22之后</div></pre></td></tr></table></figure></p>
+<p><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fdupes directory/  查找目录下相同的文件</div><div class="line">fdupes directory/ -r -d 递归查找出重复名的文件，并且删除掉重复的，删除哪个文件可以根据编号确定，也可以设置范围，注意如果如果只是名字相同内容不同会导致误删。</div><div class="line">下面是别的参数：</div><div class="line">-S：显示重复文件的大小</div><div class="line">-f：忽略掉每个匹配集中的首个文件</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p><font color="red">通过名字查找进程ID</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps aux | awk &apos;/name/ &#123;print $2&#125;&apos;</div></pre></td></tr></table></figure></p>
+<p><font color="red">以适合的方式(显示m或k…)输出当前目录下的各个子目录大小</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du -h --max-depth=1</div></pre></td></tr></table></figure></p>
+<p><font color="red">使用dd备份硬盘</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dd -f=/dev/sda of=/media/disk/backup/sda.backup</div></pre></td></tr></table></figure></p>
+<p><font color="red">创建指定大小的文件</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dd if=/dev/zero of=aa.txt bs=1M count=1</div></pre></td></tr></table></figure></p>
+<p><font color="red">找到默认网关</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -rn | grep UG | tr -s &quot; &quot; | cut -d&quot; &quot; -f2</div></pre></td></tr></table></figure></p>
+<p><font color="red">scp远程复制</font><br><br>格式：scp 参数 原路径 目标路径<br>参数：-v —详细显示输出的具体情况<br>     -r —递归复制整个目录<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">复制文件：</div><div class="line">scp local_file remote_username@remote_ip:remote_folder  </div><div class="line">或者  </div><div class="line">scp local_file remote_username@remote_ip:remote_file  </div><div class="line">或者  </div><div class="line">scp local_file remote_ip:remote_folder  </div><div class="line">或者  </div><div class="line">scp local_file remote_ip:remote_file</div><div class="line">注解：</div><div class="line">第1,2个指定了用户名，命令执行后需要输入用户密码，第1个仅指定了远程的目录，文件名字不变，第2个指定了文件名 ;</div><div class="line"></div><div class="line">第3,4个没有指定用户名，命令执行后需要输入用户名和密码，第3个仅指定了远程的目录，文件名字不变，第4个指定了文件名;</div><div class="line"></div><div class="line">复制目录：</div><div class="line">scp -r local_folder remote_username@remote_ip:remote_folder  </div><div class="line">或者  </div><div class="line">scp -r local_folder remote_ip:remote_folder</div></pre></td></tr></table></figure></p>
+<p><font color="red">通过搜寻数据库快速查找文件和目录，加上-r引入正则</font><br></p>
+<p><font color="red">find查找</font><br><br>格式：<br><br>find [PATH] [option] [action]<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">和时间相关的option：</div><div class="line">-mtime n ：n 为数字，意义为在 n 天之前的『一天之内』被更动过内容的档案；</div><div class="line">    -mtime +n ：列出在 n 天之前(不含 n 天本身)被更动过内容的档案档名；</div><div class="line">    -mtime -n ：列出在 n 天之内(含 n 天本身)被更动过内容的档案档名。</div><div class="line">    -newer file ：file 为一个存在的档案，列出比 file 还要新的档案档名</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">和当单权限还有名称相关的option：</div><div class="line"> -uid n ：n 为数字，这个数字是用户的账号 ID，亦即 UID</div><div class="line">    -gid n ：n 为数字，这个数字是组名的 ID，亦即 GID</div><div class="line">    -user name ：name 为使用者账号名称！例如 dmtsai</div><div class="line">    -group name：name 为组名，例如 users ；</div><div class="line">    -nouser ：寻找档案的拥有者不存在 /etc/passwd 的人！</div><div class="line">    -nogroup ：寻找档案的拥有群组不存在于 /etc/group 的档案</div></pre></td></tr></table></figure>
+<p><font color="red">将deb转到rpm</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alien -r -c file.deb</div></pre></td></tr></table></figure></p>
+<p><font color="red">curl下载命令</font><br><br>下载单个文件:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl url</div><div class="line">curl -C url //断点续传</div></pre></td></tr></table></figure></p>
+<p>-o/-O选项将下载的文件重命名并保存到指定位置：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -o a.txt url</div><div class="line">curl -O url1 -O url2  //同时下载多个文件</div></pre></td></tr></table></figure></p>
+<p>限制下载速度:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl --limit-rate  200k -O url</div></pre></td></tr></table></figure></p>
+<p>从FTP服务器上下载或上传文件:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -u ftpuser:ftppwd -O url //下载</div><div class="line">curl -u ftpuser:ftppwd -T filename url//下载</div></pre></td></tr></table></figure></p>
+<p>传递请求:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//GET</div><div class="line">curl -u username https://api.github.com/user?access_token=XXXXX</div><div class="line">//POST</div><div class="line">curl -u username --data &quot;param1=value1&amp;param2=value&quot; https://api.github.com</div><div class="line">//如果post的数据中带特殊字符要进行转义，--data-urlencode选项可以做到</div><div class="line">curl --data-urlencode &quot;value 1&quot; http://hostname.com</div><div class="line">//也可以指定一个文件，将该文件中的内容当作数据传递给服务器端</div><div class="line">curl --data @filename https://github.api.com/authorizations</div></pre></td></tr></table></figure></p>
+<p>这个命令还可以设置代理等等功能<br></p>
+<p><font color="red">sftp传输</font><br><br>连接上服务器:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sftp rserver_name@server_ip</div></pre></td></tr></table></figure></p>
+<p>登录后可以后续操作：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sftp&gt; ls            #list directory </div><div class="line">sftp&gt; pwd           #print working directory on remote host</div><div class="line">sftp&gt; lpwd          #print working directory on local host</div><div class="line">sftp&gt; mkdir uploads     #create a new directory</div></pre></td></tr></table></figure></p>
+<p>上传：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sftp&gt; put -r file</div><div class="line">//要保留修改时间、访问时间以及被传输的文件的模式，请使用 -p 标志</div><div class="line">sftp&gt; put -pr file</div></pre></td></tr></table></figure></p>
+<p>下载：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sftp&gt; get -r file</div></pre></td></tr></table></figure></p>
+<p>退出：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sftp&gt; bye</div><div class="line">或者</div><div class="line">sftp&gt; exit</div></pre></td></tr></table></figure></p>
+<p><font color="red">找出最近修改的N个文件</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -1t | head -n N</div></pre></td></tr></table></figure></p>
+<p><font color="red">显示所有使用tcp和udp进程</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -plantu</div></pre></td></tr></table></figure></p>
+<p><font color="red">按照后缀查找文件</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//比如查找cpp和h后缀</div><div class="line">find . regex &apos;.*\(h\|cpp\)&apos;</div></pre></td></tr></table></figure></p>
+<p><font color="red">输出文件指定行范围内容</font><br><br>默认head命令打印其相应文件的开头10行<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">head -n 20 file | tail  //显示10到20行内容</div></pre></td></tr></table></figure></p>
+<p>另外再提一下head其他用途：<br><br>相关参数：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-q :隐藏文件名</div><div class="line">-v ：显示文件名</div><div class="line">-c N：显示前N个字节 比如head -c 20 file。另外如果是head -c -20 file就是显示除了最后20个字节以外的内容</div><div class="line">-n N：显示前N行  head -n -10 file显示最后10行内容</div></pre></td></tr></table></figure></p>
+<p><font color="red"></font><br></p>
+<p><font color="red"></font><br></p>
+<p><font color="red"></font><br><br>参考：<a href="http://blog.csdn.net/qwe6112071/article/details/50806734" target="_blank" rel="external">http://blog.csdn.net/qwe6112071/article/details/50806734</a><br><br><a href="https://linux.cn/article-8253-1.html?utm_source=weibo&amp;utm_medium=weibo" target="_blank" rel="external">https://linux.cn/article-8253-1.html?utm_source=weibo&amp;utm_medium=weibo</a></p>
+
+                                            
+                                        </div>
+
+                                        
+            </div>
+            
+                <div id="socialShare" style="margin-left:40px;display:none;">
+                </div>
+                <script>
+                    $(function() {
+                        var width = document.body.scrollWidth;
+                        if (width > 550) {
+                            $("#socialShare").css("display", "block");
+                            $("#socialShare").socialShare({
+                                content: 'Nice!不错的资源...',
+                                url: window.location.href,
+                                titile: ''
+                            });
+                        }
+                    });
+                </script>
+                
+                    
+                        
+<nav id="article-nav">
+  
+    <a href="/2017/03/14/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/13/css3学习1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">css3学习1</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+                            
+                                <!-- 多说评论框 start -->
+                                
+                                    <div class="ds-thread" data-thread-key="post-Linux-Command" data-title="Linux-Command" data-url="https://simonid.github.io/2017/03/14/Linux-Command/"></div>
+                                    <!-- 多说评论框 end -->
+                                    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                                    <script type="text/javascript">
+                                        var duoshuoQuery = {
+                                            short_name: "undefined"
+                                        };
+                                        (function() {
+                                            var ds = document.createElement('script');
+                                            ds.type = 'text/javascript';
+                                            ds.async = true;
+                                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                            ds.charset = 'UTF-8';
+                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                                        })();
+                                    </script>
+                                    <!-- 多说公共JS代码 end -->
+                                    
+</article>
+
+<!--
+
+    <div style="width:100%;background-color:#fff;">
+        <div id="uyan_frame" style="margin:auto 10px 10px 10px;"></div>
+    </div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
+    
+-->
+<!--
+
+-->
+
+</div>
+      <!--
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 simon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten<br/>Designed by <a href="https://github.com/Kiritor/hexo-theme-yilia-l" target="_blank">Kiritor's gitbub</a>
+      	</div>
+    </div>
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
+</script>
+  </div>
+</footer>
+-->
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/mobile.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/prefixfree.js"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;z-index:9999;opacity: 100%;">
+    <a title="返回顶部" style="opacity: 100%;">
+        <img src="/img/scrollup.png" />
+    </a>
+</div>
+
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 simon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten<br/>Designed by <a href="https://github.com/Kiritor/hexo-theme-yilia-l" target="_blank">Kiritor's gitbub</a>
+      	</div>
+    </div>
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
+</script>
+  </div>
+</footer>
+
+<script src="/js/totop.js"></script>
+<script src="/js/share.js"></script>
+
+<!-- calendar widget -->
+
+  <script src="/js/calendar.js"></script>
+  <script src="/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:undefined, root:'undefined'});
+    
+    });
+  </script>
+})}
+
+    
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 simon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten<br/>Designed by <a href="https://github.com/Kiritor/hexo-theme-yilia-l" target="_blank">Kiritor's gitbub</a>
+      	</div>
+    </div>
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
+</script>
+  </div>
+</footer>
+
+  </div>
+</body>
+</html>

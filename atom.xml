@@ -17,9 +17,9 @@
   
   <entry>
     <title></title>
-    <link href="https://simonid.github.io/2017/03/13/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1NetworkManager%E4%B8%8Einterfaces%E5%86%B2%E7%AA%81%E7%9A%84%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/"/>
-    <id>https://simonid.github.io/2017/03/13/记录一次NetworkManager与interfaces冲突的解决过程/</id>
-    <published>2017-03-13T09:20:04.805Z</published>
+    <link href="https://simonid.github.io/2017/03/14/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1NetworkManager%E4%B8%8Einterfaces%E5%86%B2%E7%AA%81%E7%9A%84%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/"/>
+    <id>https://simonid.github.io/2017/03/14/记录一次NetworkManager与interfaces冲突的解决过程/</id>
+    <published>2017-03-14T15:10:38.950Z</published>
     <updated>2017-03-08T05:19:48.000Z</updated>
     
     <content type="html"><![CDATA[<p>&nbsp;</p><h3>记录一次NetworkManager与interfaces冲突的解决</h3><br><br><br>&emsp;主机是ubuntu14.04，之前改过/etc/network/interfaces的配置内容（设置了静态ip），然后发现图形界面上的网络设置失效了，而且因为修改了interfaces之后还不能连接网络，ifconfig的时候不显示wlan0和eth0的信息，反而多了一个tun0-00。下面是一些解决的步骤：<p></p>
@@ -71,9 +71,9 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://simonid.github.io/2017/03/13/hello-world/"/>
-    <id>https://simonid.github.io/2017/03/13/hello-world/</id>
-    <published>2017-03-13T09:20:04.746Z</published>
+    <link href="https://simonid.github.io/2017/03/14/hello-world/"/>
+    <id>https://simonid.github.io/2017/03/14/hello-world/</id>
+    <published>2017-03-14T15:10:38.891Z</published>
     <updated>2017-01-16T06:15:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
@@ -93,6 +93,134 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>Linux-Command</title>
+    <link href="https://simonid.github.io/2017/03/14/Linux-Command/"/>
+    <id>https://simonid.github.io/2017/03/14/Linux-Command/</id>
+    <published>2017-03-14T05:29:14.000Z</published>
+    <updated>2017-03-14T11:21:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h2><center>Linux Command</center></h2><p></p>
+<p><font color="red">查找相同的文件：</font><br><br>首先要下载fdupes工具:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install fdupes</div><div class="line"># yum install fdupes</div><div class="line"># dnf install fdupes //fedora22之后</div></pre></td></tr></table></figure></p>
+<p><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fdupes directory/  查找目录下相同的文件</div><div class="line">fdupes directory/ -r -d 递归查找出重复名的文件，并且删除掉重复的，删除哪个文件可以根据编号确定，也可以设置范围，注意如果如果只是名字相同内容不同会导致误删。</div><div class="line">下面是别的参数：</div><div class="line">-S：显示重复文件的大小</div><div class="line">-f：忽略掉每个匹配集中的首个文件</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p><font color="red">通过名字查找进程ID</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps aux | awk &apos;/name/ &#123;print $2&#125;&apos;</div></pre></td></tr></table></figure></p>
+<p><font color="red">以适合的方式(显示m或k…)输出当前目录下的各个子目录大小</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du -h --max-depth=1</div></pre></td></tr></table></figure></p>
+<p><font color="red">使用dd备份硬盘</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dd -f=/dev/sda of=/media/disk/backup/sda.backup</div></pre></td></tr></table></figure></p>
+<p><font color="red">创建指定大小的文件</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dd if=/dev/zero of=aa.txt bs=1M count=1</div></pre></td></tr></table></figure></p>
+<p><font color="red">找到默认网关</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -rn | grep UG | tr -s &quot; &quot; | cut -d&quot; &quot; -f2</div></pre></td></tr></table></figure></p>
+<p><font color="red">scp远程复制</font><br><br>格式：scp 参数 原路径 目标路径<br>参数：-v —详细显示输出的具体情况<br>     -r —递归复制整个目录<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">复制文件：</div><div class="line">scp local_file remote_username@remote_ip:remote_folder  </div><div class="line">或者  </div><div class="line">scp local_file remote_username@remote_ip:remote_file  </div><div class="line">或者  </div><div class="line">scp local_file remote_ip:remote_folder  </div><div class="line">或者  </div><div class="line">scp local_file remote_ip:remote_file</div><div class="line">注解：</div><div class="line">第1,2个指定了用户名，命令执行后需要输入用户密码，第1个仅指定了远程的目录，文件名字不变，第2个指定了文件名 ;</div><div class="line"></div><div class="line">第3,4个没有指定用户名，命令执行后需要输入用户名和密码，第3个仅指定了远程的目录，文件名字不变，第4个指定了文件名;</div><div class="line"></div><div class="line">复制目录：</div><div class="line">scp -r local_folder remote_username@remote_ip:remote_folder  </div><div class="line">或者  </div><div class="line">scp -r local_folder remote_ip:remote_folder</div></pre></td></tr></table></figure></p>
+<p><font color="red">通过搜寻数据库快速查找文件和目录，加上-r引入正则</font><br></p>
+<p><font color="red">find查找</font><br><br>格式：<br><br>find [PATH] [option] [action]<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">和时间相关的option：</div><div class="line">-mtime n ：n 为数字，意义为在 n 天之前的『一天之内』被更动过内容的档案；</div><div class="line">    -mtime +n ：列出在 n 天之前(不含 n 天本身)被更动过内容的档案档名；</div><div class="line">    -mtime -n ：列出在 n 天之内(含 n 天本身)被更动过内容的档案档名。</div><div class="line">    -newer file ：file 为一个存在的档案，列出比 file 还要新的档案档名</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">和当单权限还有名称相关的option：</div><div class="line"> -uid n ：n 为数字，这个数字是用户的账号 ID，亦即 UID</div><div class="line">    -gid n ：n 为数字，这个数字是组名的 ID，亦即 GID</div><div class="line">    -user name ：name 为使用者账号名称！例如 dmtsai</div><div class="line">    -group name：name 为组名，例如 users ；</div><div class="line">    -nouser ：寻找档案的拥有者不存在 /etc/passwd 的人！</div><div class="line">    -nogroup ：寻找档案的拥有群组不存在于 /etc/group 的档案</div></pre></td></tr></table></figure>
+<p><font color="red">将deb转到rpm</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alien -r -c file.deb</div></pre></td></tr></table></figure></p>
+<p><font color="red">curl下载命令</font><br><br>下载单个文件:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl url</div><div class="line">curl -C url //断点续传</div></pre></td></tr></table></figure></p>
+<p>-o/-O选项将下载的文件重命名并保存到指定位置：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -o a.txt url</div><div class="line">curl -O url1 -O url2  //同时下载多个文件</div></pre></td></tr></table></figure></p>
+<p>限制下载速度:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl --limit-rate  200k -O url</div></pre></td></tr></table></figure></p>
+<p>从FTP服务器上下载或上传文件:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -u ftpuser:ftppwd -O url //下载</div><div class="line">curl -u ftpuser:ftppwd -T filename url//下载</div></pre></td></tr></table></figure></p>
+<p>传递请求:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//GET</div><div class="line">curl -u username https://api.github.com/user?access_token=XXXXX</div><div class="line">//POST</div><div class="line">curl -u username --data &quot;param1=value1&amp;param2=value&quot; https://api.github.com</div><div class="line">//如果post的数据中带特殊字符要进行转义，--data-urlencode选项可以做到</div><div class="line">curl --data-urlencode &quot;value 1&quot; http://hostname.com</div><div class="line">//也可以指定一个文件，将该文件中的内容当作数据传递给服务器端</div><div class="line">curl --data @filename https://github.api.com/authorizations</div></pre></td></tr></table></figure></p>
+<p>这个命令还可以设置代理等等功能<br></p>
+<p><font color="red">sftp传输</font><br><br>连接上服务器:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sftp rserver_name@server_ip</div></pre></td></tr></table></figure></p>
+<p>登录后可以后续操作：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sftp&gt; ls            #list directory </div><div class="line">sftp&gt; pwd           #print working directory on remote host</div><div class="line">sftp&gt; lpwd          #print working directory on local host</div><div class="line">sftp&gt; mkdir uploads     #create a new directory</div></pre></td></tr></table></figure></p>
+<p>上传：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sftp&gt; put -r file</div><div class="line">//要保留修改时间、访问时间以及被传输的文件的模式，请使用 -p 标志</div><div class="line">sftp&gt; put -pr file</div></pre></td></tr></table></figure></p>
+<p>下载：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sftp&gt; get -r file</div></pre></td></tr></table></figure></p>
+<p>退出：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sftp&gt; bye</div><div class="line">或者</div><div class="line">sftp&gt; exit</div></pre></td></tr></table></figure></p>
+<p><font color="red">找出最近修改的N个文件</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -1t | head -n N</div></pre></td></tr></table></figure></p>
+<p><font color="red">显示所有使用tcp和udp进程</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -plantu</div></pre></td></tr></table></figure></p>
+<p><font color="red">按照后缀查找文件</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//比如查找cpp和h后缀</div><div class="line">find . regex &apos;.*\(h\|cpp\)&apos;</div></pre></td></tr></table></figure></p>
+<p><font color="red">输出文件指定行范围内容</font><br><br>默认head命令打印其相应文件的开头10行<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">head -n 20 file | tail  //显示10到20行内容</div></pre></td></tr></table></figure></p>
+<p>另外再提一下head其他用途：<br><br>相关参数：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-q :隐藏文件名</div><div class="line">-v ：显示文件名</div><div class="line">-c N：显示前N个字节 比如head -c 20 file。另外如果是head -c -20 file就是显示除了最后20个字节以外的内容</div><div class="line">-n N：显示前N行  head -n -10 file显示最后10行内容</div></pre></td></tr></table></figure></p>
+<p><font color="red"></font><br></p>
+<p><font color="red"></font><br></p>
+<p><font color="red"></font><br><br>参考：<a href="http://blog.csdn.net/qwe6112071/article/details/50806734" target="_blank" rel="external">http://blog.csdn.net/qwe6112071/article/details/50806734</a><br><br><a href="https://linux.cn/article-8253-1.html?utm_source=weibo&amp;utm_medium=weibo" target="_blank" rel="external">https://linux.cn/article-8253-1.html?utm_source=weibo&amp;utm_medium=weibo</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;h2&gt;&lt;center&gt;Linux Command&lt;/center&gt;&lt;/h2&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=red&gt;查找相同的文件：&lt;/font&gt;&lt;br/&gt;&lt;br&gt;首先要下载fdupes工具:&lt;br/&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install fdupes&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;# yum install fdupes&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;# dnf install fdupes //fedora22之后&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;fdupes directory/  查找目录下相同的文件&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;fdupes directory/ -r -d 递归查找出重复名的文件，并且删除掉重复的，删除哪个文件可以根据编号确定，也可以设置范围，注意如果如果只是名字相同内容不同会导致误删。&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;下面是别的参数：&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;-S：显示重复文件的大小&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;-f：忽略掉每个匹配集中的首个文件&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://simonid.github.io/tags/Linux/"/>
+    
+      <category term="Linux Command" scheme="https://simonid.github.io/tags/Linux-Command/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>css3学习1</title>
+    <link href="https://simonid.github.io/2017/03/13/css3%E5%AD%A6%E4%B9%A01/"/>
+    <id>https://simonid.github.io/2017/03/13/css3学习1/</id>
+    <published>2017-03-13T10:42:32.000Z</published>
+    <updated>2017-03-13T15:33:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h2><center>CSS3学习1</center></h2><br><strong>imooc学习笔记</strong><br><br>首先放出一张盒子模型：<br><br><img src="http://phtot-1253289359.cosgz.myqcloud.com/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B.JPG" alt="盒子模型"><p></p>
+<p><font color="#8092ds">边框圆角效果border-radius</font><br><br>比如：border-radius:10px;所有角都使用半径为10px的圆角<br><br>boder-radius:5px 4px 3px 2px;四个半径值分别是左上角、右上角、右下角和左下角，顺时针顺序<br><br>不仅可以使用px作为单位，也可以用百分比或者em，但是兼容性不好<br></p>
+<p><font color="#8092ds">圆的效果</font><br>实心上半圆：<br><br>方法：把高度(height)设为宽度（width）的一半，并且只设置左上角和右上角的半径与元素的高度一致（大于也是可以的）。<br><br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    height:50px;/*是width的一半*/</div><div class="line">    width:100px;</div><div class="line">    background:#9da;</div><div class="line">    border-radius:50px 50px 0 0;/*半径至少设置为height的值*/</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>实心圆：<br><br>方法：把宽度（width）与高度(height)值设置为一致（也就是正方形），并且四个圆角值都设置为它们值的一半。如下代码：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    height:100px;/*与width设置一致*/</div><div class="line">    width:100px;</div><div class="line">    background:#9da;</div><div class="line">    border-radius:50px;/*四个圆角值都设置为宽度或高度值的一半*/</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>左半圆：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">div&#123; </div><div class="line">    height:100px;</div><div class="line">    width:50px;</div><div class="line">    background:#9da;</div><div class="line">    border-radius:50px 0 0 50px;  &#125;</div></pre></td></tr></table></figure></p>
+<p><font color="#8092ds">边框阴影box-shadow</font><br>box-shadow: X轴偏移量 Y轴偏移量 [阴影模糊半径] [阴影扩展半径] [阴影颜色] [投影方式];<br><br><img src="http://phtot-1253289359.cosgz.myqcloud.com/box-shadow.jpg" alt="参数"><br>注意：inset 可以写在参数的第一个或最后一个，其它位置是无效的。<br><br>元素设置外阴影：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box_shadow&#123;</div><div class="line">  box-shadow:4px 2px 6px #333333; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://phtot-1253289359.cosgz.myqcloud.com/%E5%A4%96%E9%98%B4%E5%BD%B1.jpg" alt="外阴影"><br><br>元素设置内阴影：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box_shadow&#123;</div><div class="line">  box-shadow:4px 2px 6px #333333 inset; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://phtot-1253289359.cosgz.myqcloud.com/%E5%86%85%E9%98%B4%E5%BD%B1.jpg" alt="内阴影"><br><br>添加多个阴影：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box_shadow&#123;</div><div class="line">    box-shadow:4px 2px 6px #f00, -4px -2px 6px #000, 0px 0px 12px 5px #33CC00 inset;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://phtot-1253289359.cosgz.myqcloud.com/%E5%A4%9A%E9%98%B4%E5%BD%B1.jpg" alt="多阴影"><br></p>
+<p><font color="#8932jh">1.阴影模糊半径和阴影扩展半径的区别</font><br><br>阴影模糊半径：此参数可选，只能是正值，如果为0，表示阴影不具有模糊效果，其值越大阴影边缘就越模糊<br><br>阴影扩展半径：此参数可选，其值可以是正负值，如果为正，则整个阴影都延展扩大，反之值为负数就缩小<br></p>
+<p><font color="#8932jh">2.x轴偏移量和Y轴偏移量值可以设置为负数:</font><br><br>box-shadow: X轴偏移量 Y轴偏移量 [阴影模糊半径] [阴影扩展半径] [阴影颜色] [投影方式];<br><br>x轴偏移量和y轴偏移量值可以设置为负数：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.boxshadow-outset&#123;</div><div class="line">    width:100px;</div><div class="line">    height:100px;</div><div class="line">    box-shadow:-4px 4px 6px #666;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>效果：<br><br><img src="http://phtot-1253289359.cosgz.myqcloud.com/photo/%E9%98%B4%E5%BD%B12.jpg" alt="阴影2"><br><br>Y轴偏移量为负数：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.boxshadow-outset&#123;</div><div class="line">    width:100px;</div><div class="line">    height:100px;</div><div class="line">    box-shadow:4px -4px 6px #666;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://phtot-1253289359.cosgz.myqcloud.com/photo/%E9%98%B4%E5%BD%B13.jpg" alt="阴影3"></p>
+<p><font color="#8092ds">边框应用图片border-image</font><br>格式：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background:url(xx.jpg) 10px 20px no-repeat;</div></pre></td></tr></table></figure></p>
+<p><img src="http://phtot-1253289359.cosgz.myqcloud.com/photo/border-image.jpg" alt="border-image"><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#border-image&#123;</div><div class="line">   background:#F4FFFA;</div><div class="line">   width:210px; height:210px; border:70px solid #ddd;</div><div class="line">   border-image:url(borderimg.png) 70 repeat  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>repeat的意思就是重复，目前因为是刚好被整除，效果看不出来。如果改下DIV的宽高，再来看重复的效果：<br><br>边角部分为裁掉了，可见repeat就是一直重复，然后超出部分剪裁掉，而且是居中开始重复。<br><br><img src="http://phtot-1253289359.cosgz.myqcloud.com/photo/borderimage3.jpg" alt="borderimage3"></p>
+<p>Round 参数：Round可以理解为圆满的铺满。为了实现圆满所以会压缩（或拉伸）；<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#border-image &#123;</div><div class="line"></div><div class="line">     width:170px;</div><div class="line"></div><div class="line">     height:170px;</div><div class="line"></div><div class="line">     border:70px solid;</div><div class="line"></div><div class="line">     border-image:url(borderimg.png) 70 round;</div><div class="line"></div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://phtot-1253289359.cosgz.myqcloud.com/photo/borderimage4.jpg" alt="borderimage4"></p>
+<p>streth是拉伸的意思：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">border-image:url(...)  70  stretch</div></pre></td></tr></table></figure></p>
+<p><img src="http://phtot-1253289359.cosgz.myqcloud.com/photo/borderimage5.jpg" alt="borderimage5"></p>
+<p>注意：Chrome下，中间部分也会被拉伸，webkit浏览器对于round属性和repeat属性似乎没有区分，显示效果是一样的。<br><br>Firefox 26.0 下是可以准确区分的。<br></p>
+<p><font color="#8092ds"></font></p>
+<p><font color="#8092ds"></font></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;h2&gt;&lt;center&gt;CSS3学习1&lt;/center&gt;&lt;/h2&gt;&lt;br&gt;&lt;strong&gt;imooc学习笔记&lt;/strong&gt;&lt;br/&gt;&lt;br&gt;首先放出一张盒子模型：&lt;br/&gt;&lt;br&gt;&lt;img src=&quot;http://phtot-1253289359.cosgz.myqcloud.com/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B.JPG&quot; alt=&quot;盒子模型&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=&quot;#8092ds&quot;&gt;边框圆角效果border-radius&lt;/font&gt;&lt;br/&gt;&lt;br&gt;比如：border-radius:10px;所有角都使用半径为10px的圆角&lt;br/&gt;&lt;br&gt;boder-radius:5px 4px 3px 2px;四个半径值分别是左上角、右上角、右下角和左下角，顺时针顺序&lt;br/&gt;&lt;br&gt;不仅可以使用px作为单位，也可以用百分比或者em，但是兼容性不好&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=&quot;#8092ds&quot;&gt;圆的效果&lt;/font&gt;&lt;/br/&gt;&lt;br&gt;实心上半圆：&lt;br/&gt;&lt;br&gt;方法：把高度(height)设为宽度（width）的一半，并且只设置左上角和右上角的半径与元素的高度一致（大于也是可以的）。&lt;br/&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://simonid.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="css3" scheme="https://simonid.github.io/tags/css3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>c中的void</title>
+    <link href="https://simonid.github.io/2017/03/13/c%E4%B8%AD%E7%9A%84void/"/>
+    <id>https://simonid.github.io/2017/03/13/c中的void/</id>
+    <published>2017-03-13T09:32:40.000Z</published>
+    <updated>2017-03-13T16:07:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h2><center>c中的void</center></h2><br>假如我们定义了一个变量(比如int a)，然后在后面没有使用，那么在编译的时候就会显示warning，要消除这个warning，我们可以用这样的格式：a=a;但是现在更流行的写法是：(void)a;<br><br>void型指针可以指向任意类型数据，也可以用任意数据类型指针对void指针赋值，比如函数：void <em> memset(void</em>buffer,intc,size_tnum); 又比如:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">int *a;</div><div class="line">void *b;</div><div class="line">b=a;  //true</div><div class="line">a=b;  //error</div><div class="line">a=(int*)b; //true</div></pre></td></tr></table></figure><p></p>
+<p>ANSIC标准中不能对void指针进行算术运算，比如b++，但是在GNU中却可以，因为GNU会认为void<em>和char</em>一样<br><br>任何类型的指针都可以显式转换为void类型指针，且不会丢失数据<br><br>任何表达式均可转换为 void，但 void 类型的表达式不能强制转换为其他类型。 例如，带有 void 返回类型的函数不能将其返回值强制转换为另一类型。<br></p>
+<p>顺便提合法的类型强制转换：<br><br>|目标类型 |可能的源|<br>|整型     |整数类型或浮点类型，或者指向对象的指针|<br>浮点    任何算术类型<br>指向对象的指针或 (void <em>)    任何整数类型、(void </em>)、指向对象的指针或函数指针<br>函数指针    任何整数类型、指向对象的指针或函数指针<br>结构、联合或数组    无<br>Void 类型    任何类型</p>
+<p>最后要指明：如果函数没有返回值或参数，一定要声明为void类型函数或者形参<br></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;/p&gt;&lt;h2&gt;&lt;center&gt;c中的void&lt;/center&gt;&lt;/h2&gt;&lt;br&gt;假如我们定义了一个变量(比如int a)，然后在后面没有使用，那么在编译的时候就会显示warning，要消除这个warning，我们可以用这样的格式：a=a;但是现在更流行的写法是：(void
+    
+    </summary>
+    
+    
+      <category term="c" scheme="https://simonid.github.io/tags/c/"/>
     
   </entry>
   

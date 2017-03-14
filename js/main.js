@@ -20,6 +20,34 @@ var Tips = (function(){
 	}
 })();
 
+var BackPic = (function(){
+	var pics = ['http://7ximdq.com1.z0.glb.clouddn.com/1429618334309?imageView2/2/w/400/format/jpg',
+				'http://7ximdq.com1.z0.glb.clouddn.com/1429538559889?imageView2/2/w/400/format/jpg',
+				'http://7ximdq.com1.z0.glb.clouddn.com/1429536892299?imageView2/2/w/400/format/jpg',
+				'http://7ximdq.com1.z0.glb.clouddn.com/1429536552889?imageView2/2/w/400/format/jpg',
+                'http://7ximdq.com1.z0.glb.clouddn.com/1432456940456?imageView2/2/w/640/format/jpg',
+                'http://7ximdq.com1.z0.glb.clouddn.com/1432458593460?imageView2/2/w/600/format/jpg',
+                ];
+	var num = Math.floor(Math.random()*pics.length);
+	var url = pics[num];
+	return {
+		init: function(){
+			//$('.left-col').css('background', 'url('+ url +') center no-repeat');
+			$.ajax({
+				url: 'http://weiboxb.sinaapp.com/background',
+				type: 'POST',
+				data: { bg: 'bg'},
+				success: function(url) {
+					$('.left-col').css('background', 'url('+ url +') no-repeat center');
+				},
+				error: function(e) {
+					$('.left-col').css('background', 'url('+ url +') no-repeat center');
+				}
+			})
+		}
+	}
+})();
+
 var Main = (function(){
 
 	var resetTags = function(){
@@ -144,6 +172,7 @@ var Main = (function(){
 			enterAnm();
 			fancyInit();
 			Tips.init();
+			BackPic.init();
 			new Mobile({
 				ctn: document.getElementsByClassName("slider-trigger")[0]
 			});
