@@ -769,6 +769,7 @@ a {
 #header .header-menu li a {
   min-width: 300px;
   font-family: '微软雅黑';
+  color: #000;
 }
 #header .switch-area {
   position: relative;
@@ -2339,7 +2340,7 @@ pre .javascript .function {
   left: 2px;
 }
 .tagcloud a.color1 {
-  background: #8aabca;
+  background: #fff;
 }
 .tagcloud a.color1:before {
   border-right-color: #8aabca;

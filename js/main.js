@@ -22,11 +22,12 @@ var Tips = (function(){
 
 var BackPic = (function(){
 	var pics = ['http://7ximdq.com1.z0.glb.clouddn.com/1429618334309?imageView2/2/w/400/format/jpg',
-				'http://7ximdq.com1.z0.glb.clouddn.com/1429538559889?imageView2/2/w/400/format/jpg',
 				'http://7ximdq.com1.z0.glb.clouddn.com/1429536892299?imageView2/2/w/400/format/jpg',
 				'http://7ximdq.com1.z0.glb.clouddn.com/1429536552889?imageView2/2/w/400/format/jpg',
                 'http://7ximdq.com1.z0.glb.clouddn.com/1432456940456?imageView2/2/w/640/format/jpg',
                 'http://7ximdq.com1.z0.glb.clouddn.com/1432458593460?imageView2/2/w/600/format/jpg',
+                'http://7ximdq.com1.z0.glb.clouddn.com/1429536555889?imageView2/2/w/400/format/jpg'
+
                 ];
 	var num = Math.floor(Math.random()*pics.length);
 	var url = pics[num];

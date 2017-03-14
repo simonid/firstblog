@@ -17,9 +17,9 @@
   
   <entry>
     <title></title>
-    <link href="https://simonid.github.io/2017/03/14/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1NetworkManager%E4%B8%8Einterfaces%E5%86%B2%E7%AA%81%E7%9A%84%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/"/>
-    <id>https://simonid.github.io/2017/03/14/记录一次NetworkManager与interfaces冲突的解决过程/</id>
-    <published>2017-03-14T15:10:38.950Z</published>
+    <link href="https://simonid.github.io/2017/03/15/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1NetworkManager%E4%B8%8Einterfaces%E5%86%B2%E7%AA%81%E7%9A%84%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/"/>
+    <id>https://simonid.github.io/2017/03/15/记录一次NetworkManager与interfaces冲突的解决过程/</id>
+    <published>2017-03-14T16:02:08.342Z</published>
     <updated>2017-03-08T05:19:48.000Z</updated>
     
     <content type="html"><![CDATA[<p>&nbsp;</p><h3>记录一次NetworkManager与interfaces冲突的解决</h3><br><br><br>&emsp;主机是ubuntu14.04，之前改过/etc/network/interfaces的配置内容（设置了静态ip），然后发现图形界面上的网络设置失效了，而且因为修改了interfaces之后还不能连接网络，ifconfig的时候不显示wlan0和eth0的信息，反而多了一个tun0-00。下面是一些解决的步骤：<p></p>
@@ -71,9 +71,9 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://simonid.github.io/2017/03/14/hello-world/"/>
-    <id>https://simonid.github.io/2017/03/14/hello-world/</id>
-    <published>2017-03-14T15:10:38.891Z</published>
+    <link href="https://simonid.github.io/2017/03/15/hello-world/"/>
+    <id>https://simonid.github.io/2017/03/15/hello-world/</id>
+    <published>2017-03-14T16:02:08.289Z</published>
     <updated>2017-01-16T06:15:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
