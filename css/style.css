@@ -923,7 +923,7 @@ a {
 }
 #header .switch-part3 .switch-friends-link:hover {
   background: #88acdb;
-  color: #fff;
+  color: #0f0f11;
 }
 #header .switch-part4 {
   left: 300%;
@@ -2340,10 +2340,10 @@ pre .javascript .function {
   left: 2px;
 }
 .tagcloud a.color1 {
-  background: #fff;
+  background: #eb1033;
 }
 .tagcloud a.color1:before {
-  border-right-color: #8aabca;
+  border-right-color: #eb1033;
 }
 .tagcloud a.color2 {
   background: #3ee197;
