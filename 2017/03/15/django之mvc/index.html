@@ -4,21 +4,24 @@
   <meta charset="utf-8">
   <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
   
-  <title>Hello World | Hexo</title>
+  <title>django之mvc | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="django之mvc推荐：http://morningchen.com/tags/Django/
+MVC(Model View Controller 模型-视图-控制器)是一种web架构模型，将业务逻辑、模型数据、用户界面分离，前端开发只要负责页面部分，后端开发只要负责后台管理和数据库。model:将客观实物抽象为对象，由类产生多种方法。view:视图，呈现的内容基于model，也负责收集用户输入">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://simonid.github.io/2017/03/15/hello-world/index.html">
+<meta property="og:title" content="django之mvc">
+<meta property="og:url" content="https://simonid.github.io/2017/03/15/django之mvc/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2017-01-16T06:15:42.000Z">
+<meta property="og:description" content="django之mvc推荐：http://morningchen.com/tags/Django/
+MVC(Model View Controller 模型-视图-控制器)是一种web架构模型，将业务逻辑、模型数据、用户界面分离，前端开发只要负责页面部分，后端开发只要负责后台管理和数据库。model:将客观实物抽象为对象，由类产生多种方法。view:视图，呈现的内容基于model，也负责收集用户输入">
+<meta property="og:image" content="http://photo1-1253196505.cosgz.myqcloud.com/photo/mvc%E6%A8%A1%E5%9E%8B.png?sign=L7kmnGC91ys7AlJ8eUI4ABC09SlhPTEyNTMxOTY1MDUmaz1BS0lESFVaUzkwUU5CZjRRbjlFdjA3QktPV2RueXZ6c2F3blcmZT0xNDkyMTg0OTIxJnQ9MTQ4OTU5MjkyMSZyPTg1NTU2NjY3NCZmPS9waG90by9tdmMlRTYlQTglQTElRTUlOUUlOEIucG5nJmI9cGhvdG8x">
+<meta property="og:image" content="http://photo1-1253196505.cosgz.myqcloud.com/photo/django-mvc.png?sign=xb99fWUduf6Fl2z68sTFfCskKb9hPTEyNTMxOTY1MDUmaz1BS0lESFVaUzkwUU5CZjRRbjlFdjA3QktPV2RueXZ6c2F3blcmZT0xNDkyMTg1MDg2JnQ9MTQ4OTU5MzA4NiZyPTE0OTk0MTIzNDAmZj0vcGhvdG8vZGphbmdvLW12Yy5wbmcmYj1waG90bzE=">
+<meta property="og:updated_time" content="2017-03-15T15:53:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="django之mvc">
+<meta name="twitter:description" content="django之mvc推荐：http://morningchen.com/tags/Django/
+MVC(Model View Controller 模型-视图-控制器)是一种web架构模型，将业务逻辑、模型数据、用户界面分离，前端开发只要负责页面部分，后端开发只要负责后台管理和数据库。model:将客观实物抽象为对象，由类产生多种方法。view:视图，呈现的内容基于model，也负责收集用户输入">
+<meta name="twitter:image" content="http://photo1-1253196505.cosgz.myqcloud.com/photo/mvc%E6%A8%A1%E5%9E%8B.png?sign=L7kmnGC91ys7AlJ8eUI4ABC09SlhPTEyNTMxOTY1MDUmaz1BS0lESFVaUzkwUU5CZjRRbjlFdjA3QktPV2RueXZ6c2F3blcmZT0xNDkyMTg0OTIxJnQ9MTQ4OTU5MjkyMSZyPTg1NTU2NjY3NCZmPS9waG90by9tdmMlRTYlQTglQTElRTUlOUUlOEIucG5nJmI9cGhvdG8x">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -47,24 +50,34 @@ Quick">
     <div class="overlay"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
-		<!--<div id="site_search">
-  			<input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control"/>
-  		<div id="local-search-result"></div>
-		</div>
-		-->
-<!-- 以下是新增的搜索框代码-->
-		<script>
-  (function() {
-    var cx = '004948365178013608556:kdhqmpbznam';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-<gcse:searchbox-only></gcse:searchbox-only>
+		
+		<!-- search -->
+		<!--
+		<div class="overlay"></div>
+<div class="intrude-less">
+    
+<form id="search-form" class="search">  搜索框相关 
+    <input type="text" id="st-search-input" name="q" results="0" class="st-default-search-input" maxlength="30" placeholder="Search..." autocomplete="off" autocorrect="off">
+    <i class="fa fa-times" onclick="resetSearch()"></i>
+</form>
+
+<header id="header" class="inner">
+    <a href="/" class="profilepic">
+        
+        <img src="https://avatars0.githubusercontent.com/u/19177986?v=3&amp;s=460" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+        
+    </a>
+
+    <hgroup>
+      <h1 class="header-author"><a href="/">simon</a></h1>
+    </hgroup>
+    
+
+    
+    
+    <div id="local-search-result"></div> 搜索结果区 
+    <p class='no-result'>No results found </p>  无匹配时显示，注意请在 CSS 中设置默认隐藏 
+	-->
 
 		<a href="/" class="profilepic">
 			<img lazy-src="https://avatars0.githubusercontent.com/u/19177986?v=3&amp;s=460" class="js-avatar">
@@ -110,6 +123,11 @@ Quick">
 						
 						<li>关于我</li>
 						
+					<!--
+						<nav class="header-smart-menu">
+    						<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">Search</a>
+    					</nav>
+    				-->
 					</ul>
 				</div>
 			</div>
@@ -147,7 +165,7 @@ Quick">
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/c/" style="font-size: 20px;">c</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/network/" style="font-size: 13.33px;">network</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/spider/" style="font-size: 10px;">spider</a> <a href="/tags/theme/" style="font-size: 10px;">theme</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博客/" style="font-size: 16.67px;">博客</a>
+						<a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/c/" style="font-size: 16.67px;">c</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/network/" style="font-size: 13.33px;">network</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/spider/" style="font-size: 10px;">spider</a> <a href="/tags/theme/" style="font-size: 10px;">theme</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a>
 					</div>
 				</section>
 				
@@ -218,7 +236,7 @@ Quick">
 </div>
 
 	  
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-django之mvc" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -232,12 +250,12 @@ Quick">
     </script>
     
         <div class="article-meta">
-            <a href="/2017/03/15/hello-world/" class="article-date">
-  	<time datetime="2017-03-15T04:39:12.374Z" itemprop="datePublished">2017-03-15</time>
+            <a href="/2017/03/15/django之mvc/" class="article-date">
+  	<time datetime="2017-03-15T15:05:57.000Z" itemprop="datePublished">2017-03-15</time>
 </a>
 
-<a href="/2017/03/15/hello-world/" class="article-date">
-  	<time datetime="2017-03-15T04:39:12.374Z" itemprop="datePublished">2017-03-15</time>
+<a href="/2017/03/15/django之mvc/" class="article-date">
+  	<time datetime="2017-03-15T15:05:57.000Z" itemprop="datePublished">2017-03-15</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkRed">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -256,7 +274,7 @@ Quick">
                                 
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      django之mvc
     </h1>
   
 
@@ -265,6 +283,10 @@ Quick">
                             
                                 <div class="article-info article-info-post">
                                     
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/">django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
 
                                         
 
@@ -279,7 +301,7 @@ Quick">
 
                                                     <p class="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">django之mvc</span></a></li></ol>
 </div>
 <script>
     $(function(){
@@ -310,15 +332,16 @@ Quick">
                                             
                                             -->
                                             
-                                                     <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+                                                     <p></p><h2><center>django之mvc</center></h2><br>推荐：<a href="http://morningchen.com/tags/Django/" target="_blank" rel="external">http://morningchen.com/tags/Django/</a><br><p></p>
+<p><hr><br>MVC(Model View Controller 模型-视图-控制器)是一种web架构模型，将业务逻辑、模型数据、用户界面分离，前端开发只要负责页面部分，后端开发只要负责后台管理和数据库。<br><br>model:将客观实物抽象为对象，由类产生多种方法。<br><br>view:视图，呈现的内容基于model，也负责收集用户输入。<br><br>controller：model和view之间的媒介。<br><br><a id="more"></a><br>MVC是单向的，过程：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">浏览器发起请求</div><div class="line">controller和model交互获取数据</div><div class="line">controller调用view</div><div class="line">view渲染数据返回</div></pre></td></tr></table></figure></p>
+<p>开发web需要的组件：<br></p>
+<pre><code>数据库的对象关系映射（ORM,Object-Relation Maping）&lt;br/&gt;
+动态内容管理的模板系统&lt;br/&gt;
+丰富自动化的管理界面&lt;br/&gt;
+</code></pre><p>模型图：<br><br><img src="http://photo1-1253196505.cosgz.myqcloud.com/photo/mvc%E6%A8%A1%E5%9E%8B.png?sign=L7kmnGC91ys7AlJ8eUI4ABC09SlhPTEyNTMxOTY1MDUmaz1BS0lESFVaUzkwUU5CZjRRbjlFdjA3QktPV2RueXZ6c2F3blcmZT0xNDkyMTg0OTIxJnQ9MTQ4OTU5MjkyMSZyPTg1NTU2NjY3NCZmPS9waG90by9tdmMlRTYlQTglQTElRTUlOUUlOEIucG5nJmI9cGhvdG8x" alt="mvc"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">优点：</div><div class="line"></div><div class="line">    可以为一个模型在运行的同时建立和使用多个视图</div><div class="line">    视图与控制器的可插拔性</div><div class="line">    模型的可移植性</div><div class="line">    潜在的框架结构</div><div class="line"></div><div class="line">缺点：</div><div class="line"></div><div class="line">    增加了系统结构和实现的复杂性</div><div class="line">    视图与控制器连接过于紧密</div><div class="line">    视图对模型数据的低效率访问</div><div class="line">    高级界面工具不支持MVC模式</div></pre></td></tr></table></figure></p>
+<p>Django框架中的 MVC实现方式：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">    当URL被请求 ➜ 调用指定的Python方法 ➜ 通过业务逻辑(model)处理 ➜ 经过模板(template) ➜ 呈现页面(view)</div><div class="line"></div><div class="line">这种实现方式在Django中称为 MVT(Model-View-Template)</div></pre></td></tr></table></figure></p>
+<p><img src="http://photo1-1253196505.cosgz.myqcloud.com/photo/django-mvc.png?sign=xb99fWUduf6Fl2z68sTFfCskKb9hPTEyNTMxOTY1MDUmaz1BS0lESFVaUzkwUU5CZjRRbjlFdjA3QktPV2RueXZ6c2F3blcmZT0xNDkyMTg1MDg2JnQ9MTQ4OTU5MzA4NiZyPTE0OTk0MTIzNDAmZj0vcGhvdG8vZGphbmdvLW12Yy5wbmcmYj1waG90bzE=" alt="django-mvc"></p>
+<p>参考链接:<a href="http://morningchen.com/2015/04/08/Django-MVC/" target="_blank" rel="external">http://morningchen.com/2015/04/08/Django-MVC/</a></p>
 
                                             
                                         </div>
@@ -346,18 +369,18 @@ Quick">
                         
 <nav id="article-nav">
   
-    <a href="/2017/03/15/记录一次NetworkManager与interfaces冲突的解决过程/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/16/Linux创建共享目录/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          (no title)
+          Linux创建共享目录
         
       </div>
     </a>
   
   
-    <a href="/2017/03/14/Linux-Command/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Linux-Command</div>
+    <a href="/2017/03/15/hexo主题定制2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo主题定制2</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -367,7 +390,7 @@ Quick">
                             
                                 <!-- 多说评论框 start -->
                                 
-                                    <div class="ds-thread" data-thread-key="post-hello-world" data-title="Hello World" data-url="https://simonid.github.io/2017/03/15/hello-world/"></div>
+                                    <div class="ds-thread" data-thread-key="post-django之mvc" data-title="django之mvc" data-url="https://simonid.github.io/2017/03/15/django之mvc/"></div>
                                     <!-- 多说评论框 end -->
                                     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
                                     <script type="text/javascript">
@@ -405,7 +428,7 @@ Quick">
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 simon
+    		&copy; <!--2017 simon -->
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten<br/>Designed by <a href="https://github.com/Kiritor/hexo-theme-yilia-l" target="_blank">Kiritor's gitbub</a>
@@ -419,6 +442,12 @@ Quick">
 
   _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
 </script>
+
+        <div class="theme-info">
+          <div class="powered-by"></div>
+          <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
+        </div>
+
   </div>
 </footer>
 -->
@@ -470,7 +499,7 @@ MathJax.Hub.Queue(function() {
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 simon
+    		&copy; <!--2017 simon -->
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten<br/>Designed by <a href="https://github.com/Kiritor/hexo-theme-yilia-l" target="_blank">Kiritor's gitbub</a>
@@ -484,6 +513,12 @@ MathJax.Hub.Queue(function() {
 
   _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
 </script>
+
+        <div class="theme-info">
+          <div class="powered-by"></div>
+          <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
+        </div>
+
   </div>
 </footer>
 
@@ -508,7 +543,7 @@ MathJax.Hub.Queue(function() {
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 simon
+    		&copy; <!--2017 simon -->
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten<br/>Designed by <a href="https://github.com/Kiritor/hexo-theme-yilia-l" target="_blank">Kiritor's gitbub</a>
@@ -522,6 +557,12 @@ MathJax.Hub.Queue(function() {
 
   _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
 </script>
+
+        <div class="theme-info">
+          <div class="powered-by"></div>
+          <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
+        </div>
+
   </div>
 </footer>
 

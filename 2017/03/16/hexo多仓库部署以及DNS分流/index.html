@@ -4,26 +4,24 @@
   <meta charset="utf-8">
   <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
   
-  <title>分析openwrt内部交换机设置 | Hexo</title>
+  <title>hexo多仓库部署以及DNS分流 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="分析openwrt内部交换机设置先放出一张openwrt内部的网络结构图：上述路由是MT7620芯片
-eth0（LAN）  eth1（WAN）
-路由可分成两部分，一个是路由部分，另外一个是交换机部分。一个交换机可分成6个端口，其中5个是用户可视，如上面的Port0-4，不可视的是Port5，和路由器的eth0相连。所以，家用路由多数是5口。路由器上的wan和lan口其实都是一个交换机上的不同端口而">
+  <meta name="description" content="hexo多仓库部署以及DNS分流参考原文
+hexo可以搭配github page搭建博客，但是github在国内的访问速度有限，我们可以考虑将hexo项目同时部署到oschina或者coding这些国内代码托管平台，通过DNSPod分流访问。要发布到代码托管平台，首先安装组件:1npm install hexo-deployer-git –save
+在根目录配置文件下修改deploy,格式：123">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分析openwrt内部交换机设置">
-<meta property="og:url" content="https://simonid.github.io/2017/01/18/分析openwrt内部交换机设置/index.html">
+<meta property="og:title" content="hexo多仓库部署以及DNS分流">
+<meta property="og:url" content="https://simonid.github.io/2017/03/16/hexo多仓库部署以及DNS分流/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="分析openwrt内部交换机设置先放出一张openwrt内部的网络结构图：上述路由是MT7620芯片
-eth0（LAN）  eth1（WAN）
-路由可分成两部分，一个是路由部分，另外一个是交换机部分。一个交换机可分成6个端口，其中5个是用户可视，如上面的Port0-4，不可视的是Port5，和路由器的eth0相连。所以，家用路由多数是5口。路由器上的wan和lan口其实都是一个交换机上的不同端口而">
-<meta property="og:image" content="http://www.wuweixin.com/wp-content/uploads/2015/12/003dXSUazy6Lmn4r2tzb9690.png">
-<meta property="og:updated_time" content="2017-01-18T17:25:56.000Z">
+<meta property="og:description" content="hexo多仓库部署以及DNS分流参考原文
+hexo可以搭配github page搭建博客，但是github在国内的访问速度有限，我们可以考虑将hexo项目同时部署到oschina或者coding这些国内代码托管平台，通过DNSPod分流访问。要发布到代码托管平台，首先安装组件:1npm install hexo-deployer-git –save
+在根目录配置文件下修改deploy,格式：123">
+<meta property="og:updated_time" content="2017-03-16T01:27:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分析openwrt内部交换机设置">
-<meta name="twitter:description" content="分析openwrt内部交换机设置先放出一张openwrt内部的网络结构图：上述路由是MT7620芯片
-eth0（LAN）  eth1（WAN）
-路由可分成两部分，一个是路由部分，另外一个是交换机部分。一个交换机可分成6个端口，其中5个是用户可视，如上面的Port0-4，不可视的是Port5，和路由器的eth0相连。所以，家用路由多数是5口。路由器上的wan和lan口其实都是一个交换机上的不同端口而">
-<meta name="twitter:image" content="http://www.wuweixin.com/wp-content/uploads/2015/12/003dXSUazy6Lmn4r2tzb9690.png">
+<meta name="twitter:title" content="hexo多仓库部署以及DNS分流">
+<meta name="twitter:description" content="hexo多仓库部署以及DNS分流参考原文
+hexo可以搭配github page搭建博客，但是github在国内的访问速度有限，我们可以考虑将hexo项目同时部署到oschina或者coding这些国内代码托管平台，通过DNSPod分流访问。要发布到代码托管平台，首先安装组件:1npm install hexo-deployer-git –save
+在根目录配置文件下修改deploy,格式：123">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -238,7 +236,7 @@ eth0（LAN）  eth1（WAN）
 </div>
 
 	  
-      <div class="body-wrap"><article id="post-分析openwrt内部交换机设置" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-hexo多仓库部署以及DNS分流" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -252,12 +250,12 @@ eth0（LAN）  eth1（WAN）
     </script>
     
         <div class="article-meta">
-            <a href="/2017/01/18/分析openwrt内部交换机设置/" class="article-date">
-  	<time datetime="2017-01-18T05:52:55.000Z" itemprop="datePublished">2017-01-18</time>
+            <a href="/2017/03/16/hexo多仓库部署以及DNS分流/" class="article-date">
+  	<time datetime="2017-03-16T01:08:56.000Z" itemprop="datePublished">2017-03-16</time>
 </a>
 
-<a href="/2017/01/18/分析openwrt内部交换机设置/" class="article-date">
-  	<time datetime="2017-01-18T05:52:55.000Z" itemprop="datePublished">2017-01-18</time>
+<a href="/2017/03/16/hexo多仓库部署以及DNS分流/" class="article-date">
+  	<time datetime="2017-03-16T01:08:56.000Z" itemprop="datePublished">2017-03-16</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkRed">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -276,7 +274,7 @@ eth0（LAN）  eth1（WAN）
                                 
   
     <h1 class="article-title" itemprop="name">
-      分析openwrt内部交换机设置
+      hexo多仓库部署以及DNS分流
     </h1>
   
 
@@ -285,6 +283,10 @@ eth0（LAN）  eth1（WAN）
                             
                                 <div class="article-info article-info-post">
                                     
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
+	</div>
+
 
                                         
 
@@ -299,7 +301,7 @@ eth0（LAN）  eth1（WAN）
 
                                                     <p class="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">分析openwrt内部交换机设置</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">hexo多仓库部署以及DNS分流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">DNS分流</span></a></li></ol></li></ol>
 </div>
 <script>
     $(function(){
@@ -330,9 +332,25 @@ eth0（LAN）  eth1（WAN）
                                             
                                             -->
                                             
-                                                     <p><cneter><h2>分析openwrt内部交换机设置</h2><br>先放出一张openwrt内部的网络结构图：<br><img src="http://www.wuweixin.com/wp-content/uploads/2015/12/003dXSUazy6Lmn4r2tzb9690.png" alt="openwrt"><br>上述路由是MT7620芯片<br><br></cneter></p>
-<p><font color="#0000ff"><strong><br>eth0（LAN）  eth1（WAN）
-</strong></font><br><br><br>路由可分成两部分，一个是路由部分，另外一个是交换机部分。一个交换机可分成6个端口，其中5个是用户可视，如上面的Port0-4，不可视的是Port5，和路由器的eth0相连。所以，家用路由多数是5口。<br>路由器上的wan和lan口其实都是一个交换机上的不同端口而已，用户可以通过VLAN技术来划分wan和lan的数目和位置，通过VLAN设置，可以对交换机进行端口隔离，抑制广播风暴。<br>通过VLAN划分，可以使eth0区分不同端口的数据包，在路由上建立起虚拟接口eth0，eth0.1，通过控制两个虚拟接口</p>
+                                                     <p></p><h2><center>hexo多仓库部署以及DNS分流</center></h2><br><a href="http://www.xyzardq.com/2016/11/14/Hexo%E5%A4%9Arepositories%E9%83%A8%E7%BD%B2%E5%8F%8ADNS%E5%88%86%E6%B5%81/" target="_blank" rel="external">参考原文</a><br><br><p></p>
+<p><hr><br><br><br>hexo可以搭配github page搭建博客，但是github在国内的访问速度有限，我们可以考虑将hexo项目同时部署到oschina或者coding这些国内代码托管平台，通过DNSPod分流访问。<br><br>要发布到代码托管平台，首先安装组件:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git –save</div></pre></td></tr></table></figure></p>
+<p>在根目录配置文件下修改deploy,格式：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: &lt;repository url&gt;</div><div class="line">  branch: [branch]</div><div class="line">  message: [message]</div></pre></td></tr></table></figure></p>
+<p>参数描述：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">repo 	库(Repository)地址</div><div class="line">branch 	分支名称。如果您使用的是 GitHub 或 GitCafe 的话，程序会尝试自动检测</div><div class="line">message 	自定义提交信息 (默认为 Site updated: &#123;&#123; now(’YYYY-MM-DD HH:mm:ss’) &#125;&#125;)</div></pre></td></tr></table></figure></p>
+<p>如果是发布到多个平台：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">- type: git</div><div class="line">  repo: &lt;repository url&gt;,[branch]</div><div class="line">- type: git</div><div class="line">  repo: &lt;repository url&gt;,[branch]</div></pre></td></tr></table></figure></p>
+<p>其中，repositories（仓库）的地址有两种形式：<br>第一种是https，类似<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://github.com/xyzardq/xyzardq.github.io.git</div></pre></td></tr></table></figure></p>
+<p>第二种是SSH，类似<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git@github.com:xyzardq/xyzardq.github.io.git</div></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;这两种仓库地址有什么区别呢？https是在部署时直接通过https协议push到对应的repositories，所以在push的时候需要输入仓库所对应的代码托管平台的账号密码。而SSH是在部署时用云端的公匙解锁本地的私匙，如果对应就直接push到对应的repositories，从而不用输入账户密码。本人比较推荐用SSH，毕竟不用输入密码比较方便。<br></p>
+<p></p><h3><center>DNS分流</center></h3><br>注册DNSPod：<a href="https://www.dnspod.cn/" target="_blank" rel="external">DNSPod</a><br><br>&ensp;&ensp;&ensp;&ensp;现在，我们已经把Blog部署到了两个以上的平台上，那么，怎样才能根据访客不同的线路类型解析到不同的page上呢？这时就需要域名的DNS解析分流了。据我所知，目前DNSPod和cloudxds都支持DNS分流。DNSPod的免费版就支持DNS解析分流，但是缺点是免费版显性转址需要网站正常代理满30天….30天过去黄花菜都凉了，不过CNAME不受此限制。cloudxds的免费版号称DNSPod的收费版，但是缺点是没备案的域名用不了…所以如果是没备案的域名只能使用DNSPod了。下面以DNSpod为例。<br><br><p></p>
+<p><font color="darkgreen" size="4">添加CNAME记录</font></p>
+<p><ul></ul></p>
+<p><li>添加要解析的域名</li><br>ps:填写的域名不要带www前缀</p>
+<p><li>添加CNAME记录</li><br>由于我们要进行DNS分流解析，所以一般来说需要添加两条以上的CNAME记录，下面以分为国外和国内两条线路为例<br><br>ps:除了国外和国内，DNSPod还提供电信移动联通等运营商和谷歌百度等搜索引擎的线路提供<br><br>修改NS记录<br></p>
+<p><font color="darkgreen" size="4">什么是NS记录？</font><br></p>
+<pre><code>NS记录（name server）即域名服务器记录，用于指定该域名由哪个 DNS 服务器进行域名解析。注册域名时，总会有默认的 NS 记录。
+</code></pre><p><br><br>ps:如果是在DNSPod注册的域名，请跳过此步。<br></p>
+<p><ul><br>    <li>记下DNSPod的域名服务器</li><br>    DNSPod的域名服务器存储在控制台的DNS记录中，默认为<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">f1g1ns1.dnspod.net</div><div class="line">f1g1ns2.dnspod.net</div></pre></td></tr></table></figure></ul></p>
+<p>   <li>修改所用域名注册商的域名服务器</li><br>    登录所用域名的域名注册商，进入DNS管理，将域名服务器（有的注册商为DNS记录中的NS记录）修改为DNSPod的域名服务器<br></p>
+<p>   <li>测试DNS解析是否生效</li><br>    打开<a href="http://tool.chinaz.com/dns/" target="_blank" rel="external">Dns检测|Dns查询- 站长工具</a>，输入你的域名，选择CNAME类型，检测。如果国内国外的响应IP分别为你设置的两个记录值，则DNS分流设置成功<br><br> <br><br><br><br><br>另附上参考：<br><br><a href="http://ppting.me/2015/02/08/gitcafe/" target="_blank" rel="external">同时将博客部署在Github和Gitcafe上，并通过DNSPOD分流</a><br><a href="http://www.cnblog.me/2015/04/26/dnspod/" target="_blank" rel="external">使用 DNSPod 解决 GoDaddy 域名解析不稳定的问题</a></p>
 
                                             
                                         </div>
@@ -360,18 +378,18 @@ eth0（LAN）  eth1（WAN）
                         
 <nav id="article-nav">
   
-    <a href="/2017/03/08/HEXO主题定制/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/16/单个git工具配置多个代码托管账号/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          HEXO主题定制
+          单个git工具配置多个代码托管账号
         
       </div>
     </a>
   
   
-    <a href="/2017/01/17/Use-MarkDown/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Use_MarkDown</div>
+    <a href="/2017/03/16/Linux创建共享目录/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux创建共享目录</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -381,7 +399,7 @@ eth0（LAN）  eth1（WAN）
                             
                                 <!-- 多说评论框 start -->
                                 
-                                    <div class="ds-thread" data-thread-key="post-分析openwrt内部交换机设置" data-title="分析openwrt内部交换机设置" data-url="https://simonid.github.io/2017/01/18/分析openwrt内部交换机设置/"></div>
+                                    <div class="ds-thread" data-thread-key="post-hexo多仓库部署以及DNS分流" data-title="hexo多仓库部署以及DNS分流" data-url="https://simonid.github.io/2017/03/16/hexo多仓库部署以及DNS分流/"></div>
                                     <!-- 多说评论框 end -->
                                     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
                                     <script type="text/javascript">

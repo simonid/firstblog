@@ -40,24 +40,34 @@
     <div class="overlay"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
-		<!--<div id="site_search">
-  			<input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control"/>
-  		<div id="local-search-result"></div>
-		</div>
-		-->
-<!-- 以下是新增的搜索框代码-->
-		<script>
-  (function() {
-    var cx = '004948365178013608556:kdhqmpbznam';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-<gcse:searchbox-only></gcse:searchbox-only>
+		
+		<!-- search -->
+		<!--
+		<div class="overlay"></div>
+<div class="intrude-less">
+    
+<form id="search-form" class="search">  搜索框相关 
+    <input type="text" id="st-search-input" name="q" results="0" class="st-default-search-input" maxlength="30" placeholder="Search..." autocomplete="off" autocorrect="off">
+    <i class="fa fa-times" onclick="resetSearch()"></i>
+</form>
+
+<header id="header" class="inner">
+    <a href="/" class="profilepic">
+        
+        <img src="https://avatars0.githubusercontent.com/u/19177986?v=3&amp;s=460" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+        
+    </a>
+
+    <hgroup>
+      <h1 class="header-author"><a href="/">simon</a></h1>
+    </hgroup>
+    
+
+    
+    
+    <div id="local-search-result"></div> 搜索结果区 
+    <p class='no-result'>No results found </p>  无匹配时显示，注意请在 CSS 中设置默认隐藏 
+	-->
 
 		<a href="/" class="profilepic">
 			<img lazy-src="https://avatars0.githubusercontent.com/u/19177986?v=3&amp;s=460" class="js-avatar">
@@ -103,6 +113,11 @@
 						
 						<li>关于我</li>
 						
+					<!--
+						<nav class="header-smart-menu">
+    						<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">Search</a>
+    					</nav>
+    				-->
 					</ul>
 				</div>
 			</div>
@@ -140,7 +155,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/c/" style="font-size: 20px;">c</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/network/" style="font-size: 13.33px;">network</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/spider/" style="font-size: 10px;">spider</a> <a href="/tags/theme/" style="font-size: 10px;">theme</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博客/" style="font-size: 16.67px;">博客</a>
+						<a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/c/" style="font-size: 16.67px;">c</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/network/" style="font-size: 13.33px;">network</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/spider/" style="font-size: 10px;">spider</a> <a href="/tags/theme/" style="font-size: 10px;">theme</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a>
 					</div>
 				</section>
 				
@@ -409,7 +424,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 simon
+    		&copy; <!--2017 simon -->
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten<br/>Designed by <a href="https://github.com/Kiritor/hexo-theme-yilia-l" target="_blank">Kiritor's gitbub</a>
@@ -423,6 +438,12 @@
 
   _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
 </script>
+
+        <div class="theme-info">
+          <div class="powered-by"></div>
+          <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
+        </div>
+
   </div>
 </footer>
 -->
@@ -474,7 +495,7 @@ MathJax.Hub.Queue(function() {
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 simon
+    		&copy; <!--2017 simon -->
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten<br/>Designed by <a href="https://github.com/Kiritor/hexo-theme-yilia-l" target="_blank">Kiritor's gitbub</a>
@@ -488,6 +509,12 @@ MathJax.Hub.Queue(function() {
 
   _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
 </script>
+
+        <div class="theme-info">
+          <div class="powered-by"></div>
+          <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
+        </div>
+
   </div>
 </footer>
 
@@ -512,7 +539,7 @@ MathJax.Hub.Queue(function() {
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 simon
+    		&copy; <!--2017 simon -->
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten<br/>Designed by <a href="https://github.com/Kiritor/hexo-theme-yilia-l" target="_blank">Kiritor's gitbub</a>
@@ -526,6 +553,12 @@ MathJax.Hub.Queue(function() {
 
   _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
 </script>
+
+        <div class="theme-info">
+          <div class="powered-by"></div>
+          <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
+        </div>
+
   </div>
 </footer>
 

@@ -4,26 +4,14 @@
   <meta charset="utf-8">
   <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
   
-  <title>分析openwrt内部交换机设置 | Hexo</title>
+  <title>Tag: git | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="分析openwrt内部交换机设置先放出一张openwrt内部的网络结构图：上述路由是MT7620芯片
-eth0（LAN）  eth1（WAN）
-路由可分成两部分，一个是路由部分，另外一个是交换机部分。一个交换机可分成6个端口，其中5个是用户可视，如上面的Port0-4，不可视的是Port5，和路由器的eth0相连。所以，家用路由多数是5口。路由器上的wan和lan口其实都是一个交换机上的不同端口而">
-<meta property="og:type" content="article">
-<meta property="og:title" content="分析openwrt内部交换机设置">
-<meta property="og:url" content="https://simonid.github.io/2017/01/18/分析openwrt内部交换机设置/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://simonid.github.io/tags/git/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="分析openwrt内部交换机设置先放出一张openwrt内部的网络结构图：上述路由是MT7620芯片
-eth0（LAN）  eth1（WAN）
-路由可分成两部分，一个是路由部分，另外一个是交换机部分。一个交换机可分成6个端口，其中5个是用户可视，如上面的Port0-4，不可视的是Port5，和路由器的eth0相连。所以，家用路由多数是5口。路由器上的wan和lan口其实都是一个交换机上的不同端口而">
-<meta property="og:image" content="http://www.wuweixin.com/wp-content/uploads/2015/12/003dXSUazy6Lmn4r2tzb9690.png">
-<meta property="og:updated_time" content="2017-01-18T17:25:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分析openwrt内部交换机设置">
-<meta name="twitter:description" content="分析openwrt内部交换机设置先放出一张openwrt内部的网络结构图：上述路由是MT7620芯片
-eth0（LAN）  eth1（WAN）
-路由可分成两部分，一个是路由部分，另外一个是交换机部分。一个交换机可分成6个端口，其中5个是用户可视，如上面的Port0-4，不可视的是Port5，和路由器的eth0相连。所以，家用路由多数是5口。路由器上的wan和lan口其实都是一个交换机上的不同端口而">
-<meta name="twitter:image" content="http://www.wuweixin.com/wp-content/uploads/2015/12/003dXSUazy6Lmn4r2tzb9690.png">
+<meta name="twitter:title" content="Hexo">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -238,26 +226,29 @@ eth0（LAN）  eth1（WAN）
 </div>
 
 	  
-      <div class="body-wrap"><article id="post-分析openwrt内部交换机设置" class="article article-type-post" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
-        });
-    </script>
+      <div class="body-wrap">
+  
+  
     
-        <div class="article-meta">
-            <a href="/2017/01/18/分析openwrt内部交换机设置/" class="article-date">
-  	<time datetime="2017-01-18T05:52:55.000Z" itemprop="datePublished">2017-01-18</time>
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/03/16/单个git工具配置多个代码托管账号/" class="archive-article-date">
+  	<time datetime="2017-03-16T01:36:45.000Z" itemprop="datePublished">3月 16</time>
 </a>
 
-<a href="/2017/01/18/分析openwrt内部交换机设置/" class="article-date">
-  	<time datetime="2017-01-18T05:52:55.000Z" itemprop="datePublished">2017-01-18</time>
+<a href="/2017/03/16/单个git工具配置多个代码托管账号/" class="archive-article-date">
+  	<time datetime="2017-03-16T01:36:45.000Z" itemprop="datePublished">3月 16</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkRed">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -266,152 +257,34 @@ eth0（LAN）  eth1（WAN）
 </script>
 
         </div>
-        
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
+    	 
   
-    <h1 class="article-title" itemprop="name">
-      分析openwrt内部交换机设置
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/03/16/单个git工具配置多个代码托管账号/">单个git工具配置多个代码托管账号</a>
     </h1>
   
 
 
-                            </header>
-                            
-                                <div class="article-info article-info-post">
-                                    
-
-                                        
-
-                                            <div class="clearfix"></div>
-                                </div>
-                                
-                                    
-
-                                        <div class="article-entry" itemprop="articleBody">
-                                           <!--
-                                            
-
-                                                    <p class="toc-button">目录</p>
-<div id="toc" class="toc-article" style="display:none;">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">分析openwrt内部交换机设置</span></a></li></ol>
-</div>
-<script>
-    $(function(){
-
-        var width = document.body.scrollWidth;
-        if (width <=550) {
-             $(".toc-button").css("display","none");
-        }
-        $(".toc-button").hover(function(){
-            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
-            $(".toc-article").css({
-                top:top +"px"
-            });
-            $("#toc").show(1000,function(){});
-           // $("#toc").animate({width:500;},3000);
-        },function(){
-
-        });
-        $(".toc-article").hover(function(){
-
-        },function(){
-            $("#toc").hide(1000,function(){});
-        });
-    })
-</script>
-
-                                                  
-                                            
-                                            -->
-                                            
-                                                     <p><cneter><h2>分析openwrt内部交换机设置</h2><br>先放出一张openwrt内部的网络结构图：<br><img src="http://www.wuweixin.com/wp-content/uploads/2015/12/003dXSUazy6Lmn4r2tzb9690.png" alt="openwrt"><br>上述路由是MT7620芯片<br><br></cneter></p>
-<p><font color="#0000ff"><strong><br>eth0（LAN）  eth1（WAN）
-</strong></font><br><br><br>路由可分成两部分，一个是路由部分，另外一个是交换机部分。一个交换机可分成6个端口，其中5个是用户可视，如上面的Port0-4，不可视的是Port5，和路由器的eth0相连。所以，家用路由多数是5口。<br>路由器上的wan和lan口其实都是一个交换机上的不同端口而已，用户可以通过VLAN技术来划分wan和lan的数目和位置，通过VLAN设置，可以对交换机进行端口隔离，抑制广播风暴。<br>通过VLAN划分，可以使eth0区分不同端口的数据包，在路由上建立起虚拟接口eth0，eth0.1，通过控制两个虚拟接口</p>
-
-                                            
-                                        </div>
-
-                                        
-            </div>
-            
-                <div id="socialShare" style="margin-left:40px;display:none;">
-                </div>
-                <script>
-                    $(function() {
-                        var width = document.body.scrollWidth;
-                        if (width > 550) {
-                            $("#socialShare").css("display", "block");
-                            $("#socialShare").socialShare({
-                                content: 'Nice!不错的资源...',
-                                url: window.location.href,
-                                titile: ''
-                            });
-                        }
-                    });
-                </script>
-                
-                    
-                        
-<nav id="article-nav">
-  
-    <a href="/2017/03/08/HEXO主题定制/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          HEXO主题定制
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/01/17/Use-MarkDown/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Use_MarkDown</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+	</div>
 
 
-                            
-                                <!-- 多说评论框 start -->
-                                
-                                    <div class="ds-thread" data-thread-key="post-分析openwrt内部交换机设置" data-title="分析openwrt内部交换机设置" data-url="https://simonid.github.io/2017/01/18/分析openwrt内部交换机设置/"></div>
-                                    <!-- 多说评论框 end -->
-                                    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-                                    <script type="text/javascript">
-                                        var duoshuoQuery = {
-                                            short_name: "undefined"
-                                        };
-                                        (function() {
-                                            var ds = document.createElement('script');
-                                            ds.type = 'text/javascript';
-                                            ds.async = true;
-                                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-                                            ds.charset = 'UTF-8';
-                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-                                        })();
-                                    </script>
-                                    <!-- 多说公共JS代码 end -->
-                                    
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
 </article>
 
-<!--
+  
+  
+    </div></section>
+  
 
-    <div style="width:100%;background-color:#fff;">
-        <div id="uyan_frame" style="margin:auto 10px 10px 10px;"></div>
-    </div>
-    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2017540"></script>
-    
--->
-<!--
-
--->
 
 </div>
       <!--

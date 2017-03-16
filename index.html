@@ -40,24 +40,34 @@
     <div class="overlay"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
-		<!--<div id="site_search">
-  			<input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control"/>
-  		<div id="local-search-result"></div>
-		</div>
-		-->
-<!-- 以下是新增的搜索框代码-->
-		<script>
-  (function() {
-    var cx = '004948365178013608556:kdhqmpbznam';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-<gcse:searchbox-only></gcse:searchbox-only>
+		
+		<!-- search -->
+		<!--
+		<div class="overlay"></div>
+<div class="intrude-less">
+    
+<form id="search-form" class="search">  搜索框相关 
+    <input type="text" id="st-search-input" name="q" results="0" class="st-default-search-input" maxlength="30" placeholder="Search..." autocomplete="off" autocorrect="off">
+    <i class="fa fa-times" onclick="resetSearch()"></i>
+</form>
+
+<header id="header" class="inner">
+    <a href="/" class="profilepic">
+        
+        <img src="https://avatars0.githubusercontent.com/u/19177986?v=3&amp;s=460" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+        
+    </a>
+
+    <hgroup>
+      <h1 class="header-author"><a href="/">simon</a></h1>
+    </hgroup>
+    
+
+    
+    
+    <div id="local-search-result"></div> 搜索结果区 
+    <p class='no-result'>No results found </p>  无匹配时显示，注意请在 CSS 中设置默认隐藏 
+	-->
 
 		<a href="/" class="profilepic">
 			<img lazy-src="https://avatars0.githubusercontent.com/u/19177986?v=3&amp;s=460" class="js-avatar">
@@ -103,6 +113,11 @@
 						
 						<li>关于我</li>
 						
+					<!--
+						<nav class="header-smart-menu">
+    						<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">Search</a>
+    					</nav>
+    				-->
 					</ul>
 				</div>
 			</div>
@@ -140,7 +155,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/c/" style="font-size: 20px;">c</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/network/" style="font-size: 13.33px;">network</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/spider/" style="font-size: 10px;">spider</a> <a href="/tags/theme/" style="font-size: 10px;">theme</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博客/" style="font-size: 16.67px;">博客</a>
+						<a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/c/" style="font-size: 16.67px;">c</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/network/" style="font-size: 13.33px;">network</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/spider/" style="font-size: 10px;">spider</a> <a href="/tags/theme/" style="font-size: 10px;">theme</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a>
 					</div>
 				</section>
 				
@@ -305,12 +320,12 @@
     </script>
     
         <div class="article-meta">
-            <a href="/2017/03/15/记录一次NetworkManager与interfaces冲突的解决过程/" class="article-date">
-  	<time datetime="2017-03-15T04:39:12.436Z" itemprop="datePublished">2017-03-15</time>
+            <a href="/2017/03/16/记录一次NetworkManager与interfaces冲突的解决过程/" class="article-date">
+  	<time datetime="2017-03-16T05:47:42.001Z" itemprop="datePublished">2017-03-16</time>
 </a>
 
-<a href="/2017/03/15/记录一次NetworkManager与interfaces冲突的解决过程/" class="article-date">
-  	<time datetime="2017-03-15T04:39:12.436Z" itemprop="datePublished">2017-03-15</time>
+<a href="/2017/03/16/记录一次NetworkManager与interfaces冲突的解决过程/" class="article-date">
+  	<time datetime="2017-03-16T05:47:42.001Z" itemprop="datePublished">2017-03-16</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkRed">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -349,7 +364,7 @@
 
                                                         
                                                             <p class="article-more-link">
-                                                                <a  href="/2017/03/15/记录一次NetworkManager与interfaces冲突的解决过程/#more">More >></a>
+                                                                <a  href="/2017/03/16/记录一次NetworkManager与interfaces冲突的解决过程/#more">More >></a>
                                                             </p>
                                                             
                                                                 <div class="clearfix"></div>
@@ -384,12 +399,12 @@
     </script>
     
         <div class="article-meta">
-            <a href="/2017/03/15/hello-world/" class="article-date">
-  	<time datetime="2017-03-15T04:39:12.374Z" itemprop="datePublished">2017-03-15</time>
+            <a href="/2017/03/16/hello-world/" class="article-date">
+  	<time datetime="2017-03-16T05:47:41.915Z" itemprop="datePublished">2017-03-16</time>
 </a>
 
-<a href="/2017/03/15/hello-world/" class="article-date">
-  	<time datetime="2017-03-15T04:39:12.374Z" itemprop="datePublished">2017-03-15</time>
+<a href="/2017/03/16/hello-world/" class="article-date">
+  	<time datetime="2017-03-16T05:47:41.915Z" itemprop="datePublished">2017-03-16</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkRed">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -408,7 +423,7 @@
                                 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/15/hello-world/">Hello World</a>
+      <a class="article-title" href="/2017/03/16/hello-world/">Hello World</a>
     </h1>
   
 
@@ -492,7 +507,7 @@
 -->
 
   
-    <article id="post-Linux-Command" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-单个git工具配置多个代码托管账号" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -506,12 +521,12 @@
     </script>
     
         <div class="article-meta">
-            <a href="/2017/03/14/Linux-Command/" class="article-date">
-  	<time datetime="2017-03-14T05:29:14.000Z" itemprop="datePublished">2017-03-14</time>
+            <a href="/2017/03/16/单个git工具配置多个代码托管账号/" class="article-date">
+  	<time datetime="2017-03-16T01:36:45.000Z" itemprop="datePublished">2017-03-16</time>
 </a>
 
-<a href="/2017/03/14/Linux-Command/" class="article-date">
-  	<time datetime="2017-03-14T05:29:14.000Z" itemprop="datePublished">2017-03-14</time>
+<a href="/2017/03/16/单个git工具配置多个代码托管账号/" class="article-date">
+  	<time datetime="2017-03-16T01:36:45.000Z" itemprop="datePublished">2017-03-16</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkRed">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -530,193 +545,7 @@
                                 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/14/Linux-Command/">Linux-Command</a>
-    </h1>
-  
-
-
-                            </header>
-                            
-                                    
-
-                                        <div class="article-entry" itemprop="articleBody">
-                                           <!--
-                                            
-
-                                            
-                                            -->
-                                            
-                                                     <p><h2><center>Linux Command</center></h2></p>
-<p><font color=red>查找相同的文件：</font><br/><br>首先要下载fdupes工具:<br/><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install fdupes</div><div class="line"># yum install fdupes</div><div class="line"># dnf install fdupes //fedora22之后</div></pre></td></tr></table></figure></p>
-<p><br/><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fdupes directory/  查找目录下相同的文件</div><div class="line">fdupes directory/ -r -d 递归查找出重复名的文件，并且删除掉重复的，删除哪个文件可以根据编号确定，也可以设置范围，注意如果如果只是名字相同内容不同会导致误删。</div><div class="line">下面是别的参数：</div><div class="line">-S：显示重复文件的大小</div><div class="line">-f：忽略掉每个匹配集中的首个文件</div></pre></td></tr></table></figure></p>
-                                            
-                                        </div>
-
-                                        
-                                            <div class="article-info article-info-index">
-                                                
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux-Command/">Linux Command</a></li></ul>
-	</div>
-
-
-                                                    
-
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2017/03/14/Linux-Command/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
-            
-                    
-                                <!-- 多说评论框 start -->
-                                
-</article>
-
-<!--
-
--->
-<!--
-
--->
-
-  
-    <article id="post-css3学习1" class="article article-type-post" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
-        });
-    </script>
-    
-        <div class="article-meta">
-            <a href="/2017/03/13/css3学习1/" class="article-date">
-  	<time datetime="2017-03-13T10:42:32.000Z" itemprop="datePublished">2017-03-13</time>
-</a>
-
-<a href="/2017/03/13/css3学习1/" class="article-date">
-  	<time datetime="2017-03-13T10:42:32.000Z" itemprop="datePublished">2017-03-13</time>
-  	<span id="busuanzi_container_page_pv" style="color:DarkRed">
-      view <span id="busuanzi_value_page_pv"></span> times
-    </span>
-</a>
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-        </div>
-        
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/13/css3学习1/">css3学习1</a>
-    </h1>
-  
-
-
-                            </header>
-                            
-                                    
-
-                                        <div class="article-entry" itemprop="articleBody">
-                                           <!--
-                                            
-
-                                            
-                                            -->
-                                            
-                                                     <p><h2><center>CSS3学习1</center></h2><br><strong>imooc学习笔记</strong><br/><br>首先放出一张盒子模型：<br/><br><img src="http://phtot-1253289359.cosgz.myqcloud.com/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B.JPG" alt="盒子模型"></p>
-<p><font color="#8092ds">边框圆角效果border-radius</font><br/><br>比如：border-radius:10px;所有角都使用半径为10px的圆角<br/><br>boder-radius:5px 4px 3px 2px;四个半径值分别是左上角、右上角、右下角和左下角，顺时针顺序<br/><br>不仅可以使用px作为单位，也可以用百分比或者em，但是兼容性不好<br/></p>
-<p><font color="#8092ds">圆的效果</font></br/><br>实心上半圆：<br/><br>方法：把高度(height)设为宽度（width）的一半，并且只设置左上角和右上角的半径与元素的高度一致（大于也是可以的）。<br/><br>
-                                            
-                                        </div>
-
-                                        
-                                            <div class="article-info article-info-index">
-                                                
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css3/">css3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
-	</div>
-
-
-                                                    
-
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2017/03/13/css3学习1/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
-            
-                    
-                                <!-- 多说评论框 start -->
-                                
-</article>
-
-<!--
-
--->
-<!--
-
--->
-
-  
-    <article id="post-c中的void" class="article article-type-post" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
-        });
-    </script>
-    
-        <div class="article-meta">
-            <a href="/2017/03/13/c中的void/" class="article-date">
-  	<time datetime="2017-03-13T09:32:40.000Z" itemprop="datePublished">2017-03-13</time>
-</a>
-
-<a href="/2017/03/13/c中的void/" class="article-date">
-  	<time datetime="2017-03-13T09:32:40.000Z" itemprop="datePublished">2017-03-13</time>
-  	<span id="busuanzi_container_page_pv" style="color:DarkRed">
-      view <span id="busuanzi_value_page_pv"></span> times
-    </span>
-</a>
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-        </div>
-        
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/13/c中的void/">c中的void</a>
+      <a class="article-title" href="/2017/03/16/单个git工具配置多个代码托管账号/">单个git工具配置多个代码托管账号</a>
     </h1>
   
 
@@ -731,7 +560,7 @@
 
                                                     <p class="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">c中的void</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">单个git工具配置多个代码托管账号</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Default-github-user-A-mail-com-注意User项直接填git，不用填在github的用户名"><span class="toc-number"></span> <span class="toc-text">Default github user(A@mail.com),注意User项直接填git，不用填在github的用户名</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#second-user-B-mail-com"><span class="toc-number"></span> <span class="toc-text">second user(B@mail.com)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#建一个gitlab别名，新建的帐号使用这个别名做克隆和更新"><span class="toc-number"></span> <span class="toc-text">建一个gitlab别名，新建的帐号使用这个别名做克隆和更新</span></a>
 </div>
 <script>
     $(function(){
@@ -762,10 +591,29 @@
                                             
                                             -->
                                             
-                                                     <p></p><h2><center>c中的void</center></h2><br>假如我们定义了一个变量(比如int a)，然后在后面没有使用，那么在编译的时候就会显示warning，要消除这个warning，我们可以用这样的格式：a=a;但是现在更流行的写法是：(void)a;<br><br>void型指针可以指向任意类型数据，也可以用任意数据类型指针对void指针赋值，比如函数：void <em> memset(void</em>buffer,intc,size_tnum); 又比如:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">int *a;</div><div class="line">void *b;</div><div class="line">b=a;  //true</div><div class="line">a=b;  //error</div><div class="line">a=(int*)b; //true</div></pre></td></tr></table></figure><p></p>
-<p>ANSIC标准中不能对void指针进行算术运算，比如b++，但是在GNU中却可以，因为GNU会认为void<em>和char</em>一样<br><br>任何类型的指针都可以显式转换为void类型指针，且不会丢失数据<br><br>任何表达式均可转换为 void，但 void 类型的表达式不能强制转换为其他类型。 例如，带有 void 返回类型的函数不能将其返回值强制转换为另一类型。<br></p>
-<p>顺便提合法的类型强制转换：<br><br>|目标类型 |可能的源|<br>|整型     |整数类型或浮点类型，或者指向对象的指针|<br>浮点    任何算术类型<br>指向对象的指针或 (void <em>)    任何整数类型、(void </em>)、指向对象的指针或函数指针<br>函数指针    任何整数类型、指向对象的指针或函数指针<br>结构、联合或数组    无<br>Void 类型    任何类型</p>
-<p>最后要指明：如果函数没有返回值或参数，一定要声明为void类型函数或者形参<br></p>
+                                                     <p></p><h2><center>单个git工具配置多个代码托管账号</center></h2><br>最近在使用hexo的时候遇到了一个麻烦，本人平时用两台电脑，ubuntu和windows，在ubuntu上已经建立了一个hexo项目（基于github），然后想再windows上也能写hexo博客，但是这样就要反复地git pull。为了避免麻烦，可以使用oschina账号或者另外一个github账号也发布一个博客。但是在win上的git工具之前已经配置了github账号了，怎么设置多账号不冲突？<br><br>首先取消之前的全局配置:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global --unset user.name</div><div class="line">git config --global --unset user.email</div></pre></td></tr></table></figure><p></p>
+<p>ssh秘钥生成：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C &quot;email&quot;</div></pre></td></tr></table></figure></p>
+<p>添加ssh key：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-add -K ~/.ssh/id_rsa</div></pre></td></tr></table></figure></p>
+<p>删除key方法：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-add -D</div></pre></td></tr></table></figure></p>
+<p>查看key设置<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ssh-add -l</div><div class="line">```  </div><div class="line">新建ssh config文件：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>vim ~/.ssh/config</p>
+<p>vonfig文件格式：</p>
+<h1 id="Default-github-user-A-mail-com-注意User项直接填git，不用填在github的用户名"><a href="#Default-github-user-A-mail-com-注意User项直接填git，不用填在github的用户名" class="headerlink" title="Default github user(A@mail.com),注意User项直接填git，不用填在github的用户名"></a>Default github user(A@mail.com),注意User项直接填git，不用填在github的用户名</h1><p>Host A.github.com  #自定义<br> HostName github.com#固定<br> User git  #自定义<br> IdentityFile ~/.ssh/id_rsa_github_A</p>
+<h1 id="second-user-B-mail-com"><a href="#second-user-B-mail-com" class="headerlink" title="second user(B@mail.com)"></a>second user(B@mail.com)</h1><h1 id="建一个gitlab别名，新建的帐号使用这个别名做克隆和更新"><a href="#建一个gitlab别名，新建的帐号使用这个别名做克隆和更新" class="headerlink" title="建一个gitlab别名，新建的帐号使用这个别名做克隆和更新"></a>建一个gitlab别名，新建的帐号使用这个别名做克隆和更新</h1><p>Host A.github.com<br> HostName github.com<br> User git<br> IdentityFile ~/.ssh/id_rsa_github_B<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如果不按照格式设置，就会出现：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>ERROR: Permission to two/two.github.com.git denied to one.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;因为ssh 客户端是通过类似:</div><div class="line">git@github.com:one/one.github.com.git</div><div class="line">这样的 git 地址中的 User 和 Host 来识别使用哪个本地私钥的。&lt;br/&gt;</div><div class="line">&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;很明显，如果 User 和 Host 始终为 git 和 github.com，那么就只能使用一个私钥。&lt;br/&gt;</div><div class="line">&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;所以需要上面的方式配置，每个账号使用了自己的 Host，每个 Host 的域名做 CNAME 解析到 github.com，这样 ssh 在连接时就可以区别不同的账号了&lt;br/&gt;</div><div class="line">测试：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>ssh -T git@github.com        # 测试one ssh连接</p>
+<p>#Hi <em>*</em>! You’ve successfully authenticated, but GitHub does not provide shell access.<br>ssh -T git@two.github.com    # 测试two ssh连接</p>
+<p>#Hi <em>*</em>! You’ve successfully authenticated, but GitHub does not provide shell access.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">在各自账号中配置：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>git config user.name “name”            # <strong>name</strong> 例如 one<br>git config user.email “email”</p>
+<p>git config –list  #检测配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">也可以：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>git remote add github A.github.com(输入的是config文件的Host选项) git@github.com:username/project.git<br>repo init -u ssh://A@github.com -b branch</p>
+<p>#push的时候到对应的host<br>git push A.github.com master<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如果push的时候遇到：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>warning: push.default is unset; its implicit value is changing in Git 2.0 from ‘matching’ to ‘simple’. To squelch this messageand maintain the current behavior after the default changes, use…<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">推荐使用：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>git config –global push.default simple<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">假如clone没有问题，push的时候总是报错:&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>error: The requested URL returned error: 403 while accessing xxx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">解决：&lt;br/&gt;</div><div class="line">修改 repo/.git/config 里面的url，把https地址替换为ssh就好了&lt;br/&gt;</div><div class="line">比如：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>url=<a href="https://MichaelDrogalis@github.com/derekerdmann/lunch_call.git" target="_blank" rel="external">https://MichaelDrogalis@github.com/derekerdmann/lunch_call.git</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">替换为：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>url=ssh://git@github.com/derekerdmann/lunch_call.git<br>```</p>
+<p>参考：<br><br><a href="http://tmyam.github.io/blog/2014/05/07/duo-githubzhang-hu-she-zhi/" target="_blank" rel="external">http://tmyam.github.io/blog/2014/05/07/duo-githubzhang-hu-she-zhi/</a><br><br><a href="http://memoryboxes.github.io/blog/2014/12/07/duo-ge-gitzhang-hao-zhi-jian-de-qie-huan/" target="_blank" rel="external">http://memoryboxes.github.io/blog/2014/12/07/duo-ge-gitzhang-hao-zhi-jian-de-qie-huan/</a><br><br><a href="http://www.imooc.com/article/7419" target="_blank" rel="external">http://www.imooc.com/article/7419</a><br><br><a href="http://yyblog.mocoer.com/2014/08/25/%E5%A4%9Agithub%E8%B4%A6%E5%8F%B7SSH%20key%E5%88%87%E6%8D%A2%E4%BD%BF%E7%94%A8/" target="_blank" rel="external">http://yyblog.mocoer.com/2014/08/25/%E5%A4%9Agithub%E8%B4%A6%E5%8F%B7SSH%20key%E5%88%87%E6%8D%A2%E4%BD%BF%E7%94%A8/</a><br></p>
 
                                             
                                         </div>
@@ -774,7 +622,7 @@
                                             <div class="article-info article-info-index">
                                                 
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
 	</div>
 
 
@@ -799,7 +647,7 @@
 -->
 
   
-    <article id="post-网络设备及协议" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-hexo多仓库部署以及DNS分流" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -813,12 +661,12 @@
     </script>
     
         <div class="article-meta">
-            <a href="/2017/03/13/网络设备及协议/" class="article-date">
-  	<time datetime="2017-03-13T08:54:32.000Z" itemprop="datePublished">2017-03-13</time>
+            <a href="/2017/03/16/hexo多仓库部署以及DNS分流/" class="article-date">
+  	<time datetime="2017-03-16T01:08:56.000Z" itemprop="datePublished">2017-03-16</time>
 </a>
 
-<a href="/2017/03/13/网络设备及协议/" class="article-date">
-  	<time datetime="2017-03-13T08:54:32.000Z" itemprop="datePublished">2017-03-13</time>
+<a href="/2017/03/16/hexo多仓库部署以及DNS分流/" class="article-date">
+  	<time datetime="2017-03-16T01:08:56.000Z" itemprop="datePublished">2017-03-16</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkRed">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -837,7 +685,143 @@
                                 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/13/网络设备及协议/">网络设备及协议</a>
+      <a class="article-title" href="/2017/03/16/hexo多仓库部署以及DNS分流/">hexo多仓库部署以及DNS分流</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+                                           <!--
+                                            
+
+                                                    <p class="toc-button">目录</p>
+<div id="toc" class="toc-article" style="display:none;">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">hexo多仓库部署以及DNS分流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">DNS分流</span></a></li></ol></li></ol>
+</div>
+<script>
+    $(function(){
+
+        var width = document.body.scrollWidth;
+        if (width <=550) {
+             $(".toc-button").css("display","none");
+        }
+        $(".toc-button").hover(function(){
+            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
+            $(".toc-article").css({
+                top:top +"px"
+            });
+            $("#toc").show(1000,function(){});
+           // $("#toc").animate({width:500;},3000);
+        },function(){
+
+        });
+        $(".toc-article").hover(function(){
+
+        },function(){
+            $("#toc").hide(1000,function(){});
+        });
+    })
+</script>
+
+                                                  
+                                            
+                                            -->
+                                            
+                                                     <p></p><h2><center>hexo多仓库部署以及DNS分流</center></h2><br><a href="http://www.xyzardq.com/2016/11/14/Hexo%E5%A4%9Arepositories%E9%83%A8%E7%BD%B2%E5%8F%8ADNS%E5%88%86%E6%B5%81/" target="_blank" rel="external">参考原文</a><br><br><p></p>
+<p><hr><br><br><br>hexo可以搭配github page搭建博客，但是github在国内的访问速度有限，我们可以考虑将hexo项目同时部署到oschina或者coding这些国内代码托管平台，通过DNSPod分流访问。<br><br>要发布到代码托管平台，首先安装组件:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git –save</div></pre></td></tr></table></figure></p>
+<p>在根目录配置文件下修改deploy,格式：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: &lt;repository url&gt;</div><div class="line">  branch: [branch]</div><div class="line">  message: [message]</div></pre></td></tr></table></figure></p>
+<p>参数描述：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">repo 	库(Repository)地址</div><div class="line">branch 	分支名称。如果您使用的是 GitHub 或 GitCafe 的话，程序会尝试自动检测</div><div class="line">message 	自定义提交信息 (默认为 Site updated: &#123;&#123; now(’YYYY-MM-DD HH:mm:ss’) &#125;&#125;)</div></pre></td></tr></table></figure></p>
+<p>如果是发布到多个平台：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">- type: git</div><div class="line">  repo: &lt;repository url&gt;,[branch]</div><div class="line">- type: git</div><div class="line">  repo: &lt;repository url&gt;,[branch]</div></pre></td></tr></table></figure></p>
+<p>其中，repositories（仓库）的地址有两种形式：<br>第一种是https，类似<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://github.com/xyzardq/xyzardq.github.io.git</div></pre></td></tr></table></figure></p>
+<p>第二种是SSH，类似<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git@github.com:xyzardq/xyzardq.github.io.git</div></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;这两种仓库地址有什么区别呢？https是在部署时直接通过https协议push到对应的repositories，所以在push的时候需要输入仓库所对应的代码托管平台的账号密码。而SSH是在部署时用云端的公匙解锁本地的私匙，如果对应就直接push到对应的repositories，从而不用输入账户密码。本人比较推荐用SSH，毕竟不用输入密码比较方便。<br></p>
+<p></p><h3><center>DNS分流</center></h3><br>注册DNSPod：<a href="https://www.dnspod.cn/" target="_blank" rel="external">DNSPod</a><br><br>&ensp;&ensp;&ensp;&ensp;现在，我们已经把Blog部署到了两个以上的平台上，那么，怎样才能根据访客不同的线路类型解析到不同的page上呢？这时就需要域名的DNS解析分流了。据我所知，目前DNSPod和cloudxds都支持DNS分流。DNSPod的免费版就支持DNS解析分流，但是缺点是免费版显性转址需要网站正常代理满30天….30天过去黄花菜都凉了，不过CNAME不受此限制。cloudxds的免费版号称DNSPod的收费版，但是缺点是没备案的域名用不了…所以如果是没备案的域名只能使用DNSPod了。下面以DNSpod为例。<br><br><p></p>
+<p><font color="darkgreen" size="4">添加CNAME记录</font></p>
+<p><ul></ul></p>
+<p><li>添加要解析的域名</li><br>ps:填写的域名不要带www前缀</p>
+<p><li>添加CNAME记录</li><br>由于我们要进行DNS分流解析，所以一般来说需要添加两条以上的CNAME记录，下面以分为国外和国内两条线路为例<br><br>ps:除了国外和国内，DNSPod还提供电信移动联通等运营商和谷歌百度等搜索引擎的线路提供<br><br>修改NS记录<br></p>
+<p><font color="darkgreen" size="4">什么是NS记录？</font><br></p>
+<pre><code>NS记录（name server）即域名服务器记录，用于指定该域名由哪个 DNS 服务器进行域名解析。注册域名时，总会有默认的 NS 记录。
+</code></pre><p><br><br>ps:如果是在DNSPod注册的域名，请跳过此步。<br></p>
+<p><ul><br>    <li>记下DNSPod的域名服务器</li><br>    DNSPod的域名服务器存储在控制台的DNS记录中，默认为<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">f1g1ns1.dnspod.net</div><div class="line">f1g1ns2.dnspod.net</div></pre></td></tr></table></figure></ul></p>
+<p>   <li>修改所用域名注册商的域名服务器</li><br>    登录所用域名的域名注册商，进入DNS管理，将域名服务器（有的注册商为DNS记录中的NS记录）修改为DNSPod的域名服务器<br></p>
+<p>   <li>测试DNS解析是否生效</li><br>    打开<a href="http://tool.chinaz.com/dns/" target="_blank" rel="external">Dns检测|Dns查询- 站长工具</a>，输入你的域名，选择CNAME类型，检测。如果国内国外的响应IP分别为你设置的两个记录值，则DNS分流设置成功<br><br> <br><br><br><br><br>另附上参考：<br><br><a href="http://ppting.me/2015/02/08/gitcafe/" target="_blank" rel="external">同时将博客部署在Github和Gitcafe上，并通过DNSPOD分流</a><br><a href="http://www.cnblog.me/2015/04/26/dnspod/" target="_blank" rel="external">使用 DNSPod 解决 GoDaddy 域名解析不稳定的问题</a></p>
+
+                                            
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
+	</div>
+
+
+                                                    
+
+                                                        
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                                <!-- 多说评论框 start -->
+                                
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+  
+    <article id="post-Linux创建共享目录" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2017/03/16/Linux创建共享目录/" class="article-date">
+  	<time datetime="2017-03-15T16:10:00.000Z" itemprop="datePublished">2017-03-16</time>
+</a>
+
+<a href="/2017/03/16/Linux创建共享目录/" class="article-date">
+  	<time datetime="2017-03-15T16:10:00.000Z" itemprop="datePublished">2017-03-16</time>
+  	<span id="busuanzi_container_page_pv" style="color:DarkRed">
+      view <span id="busuanzi_value_page_pv"></span> times
+    </span>
+</a>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/Linux创建共享目录/">Linux创建共享目录</a>
     </h1>
   
 
@@ -853,13 +837,8 @@
                                             
                                             -->
                                             
-                                                     <p><h2><center>网络设备及协议</center></h2><br>MAC地址分类：<br/></p>
-<p><font color=red>单播MAC地址：</font>单播MAC地址唯一标识以太网上的一个终端，该地址固化在硬件(如网卡)内部。<br/></p>
-<p><font color=red>组播MAC地址：</font>首字节最后一位为1(通常以0x01开头)的MAC地址，标志一组设备。<br/></p>
-<p><font color=red>广播MAC地址：</font>48位全1的MAC地址，标志本网段内所有设备。<br/><br>网络中按照大字节序传输报文(即先传输高字节)，而字节内先传输低位比特。因此，若发送的首位比特为0就是单播，否则为组播或广播。<br/><br/><br>MAC地址按生存期也可分为：<br/></p>
-<p><font color=red>动态MAC地址：</font>交换机在网络中通过数据帧学习到，有老化时间，MAC地址和端口的对应关系会随着设备所连的交换机的端口的变化而变化。交换机关电重启后会消失，需重新学习。<br/></p>
-<p><font color=red>静态MAC地址：</font>通过配置产生，不会被老化，MAC地址和端口的对应关系始终不变，但交换机关电重启后也会消失，需重新配置。<br/></p>
-<p><font color=red>永久MAC地址：</font>通过配置产生，不会被老化，MAC地址和端口的对应关系始终不变，且交换机关电重启后也不会消失。<br/><br>根据OSI模型，从下到上进行阐述：<br/><br>
+                                                     <p><h2><center>Linux创建共享目录</center></h2><br>如果你是管理员，想给其他人针对某个目录的权限，那么就要划定一个有一定权限的用户组和该目录绑定<br/><br>先创建目录和用户组:<br/><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo mkdir -p /var/www/reports/</div><div class="line">$ sudo groupadd project</div></pre></td></tr></table></figure></p>
+<p>将对目录 /var/www/reports/ 有写权限的用户添加到 project 组中<br/><br>
                                             
                                         </div>
 
@@ -867,7 +846,7 @@
                                             <div class="article-info article-info-index">
                                                 
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
 	</div>
 
 
@@ -875,7 +854,99 @@
 
                                                         
                                                             <p class="article-more-link">
-                                                                <a  href="/2017/03/13/网络设备及协议/#more">More >></a>
+                                                                <a  href="/2017/03/16/Linux创建共享目录/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                                <!-- 多说评论框 start -->
+                                
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
+
+  
+    <article id="post-django之mvc" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2017/03/15/django之mvc/" class="article-date">
+  	<time datetime="2017-03-15T15:05:57.000Z" itemprop="datePublished">2017-03-15</time>
+</a>
+
+<a href="/2017/03/15/django之mvc/" class="article-date">
+  	<time datetime="2017-03-15T15:05:57.000Z" itemprop="datePublished">2017-03-15</time>
+  	<span id="busuanzi_container_page_pv" style="color:DarkRed">
+      view <span id="busuanzi_value_page_pv"></span> times
+    </span>
+</a>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/15/django之mvc/">django之mvc</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+                                           <!--
+                                            
+
+                                            
+                                            -->
+                                            
+                                                     <p><h2><center>django之mvc</center></h2><br>推荐：<a href="http://morningchen.com/tags/Django/">http://morningchen.com/tags/Django/</a><br/></p>
+<p><hr/><br>MVC(Model View Controller 模型-视图-控制器)是一种web架构模型，将业务逻辑、模型数据、用户界面分离，前端开发只要负责页面部分，后端开发只要负责后台管理和数据库。<br/><br>model:将客观实物抽象为对象，由类产生多种方法。<br/><br>view:视图，呈现的内容基于model，也负责收集用户输入。<br/><br>controller：model和view之间的媒介。<br/><br>
+                                            
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/">django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+
+                                                    
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2017/03/15/django之mvc/#more">More >></a>
                                                             </p>
                                                             
                                                                 <div class="clearfix"></div>
@@ -898,7 +969,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -920,7 +991,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 simon
+    		&copy; <!--2017 simon -->
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten<br/>Designed by <a href="https://github.com/Kiritor/hexo-theme-yilia-l" target="_blank">Kiritor's gitbub</a>
@@ -934,6 +1005,12 @@
 
   _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
 </script>
+
+        <div class="theme-info">
+          <div class="powered-by"></div>
+          <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
+        </div>
+
   </div>
 </footer>
 -->
@@ -985,7 +1062,7 @@ MathJax.Hub.Queue(function() {
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 simon
+    		&copy; <!--2017 simon -->
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten<br/>Designed by <a href="https://github.com/Kiritor/hexo-theme-yilia-l" target="_blank">Kiritor's gitbub</a>
@@ -999,6 +1076,12 @@ MathJax.Hub.Queue(function() {
 
   _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
 </script>
+
+        <div class="theme-info">
+          <div class="powered-by"></div>
+          <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
+        </div>
+
   </div>
 </footer>
 
@@ -1023,7 +1106,7 @@ MathJax.Hub.Queue(function() {
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 simon
+    		&copy; <!--2017 simon -->
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten<br/>Designed by <a href="https://github.com/Kiritor/hexo-theme-yilia-l" target="_blank">Kiritor's gitbub</a>
@@ -1037,6 +1120,12 @@ MathJax.Hub.Queue(function() {
 
   _st('install','m5RW4BUQrJ_r-CYKAksH','2.0.0');
 </script>
+
+        <div class="theme-info">
+          <div class="powered-by"></div>
+          <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
+        </div>
+
   </div>
 </footer>
 

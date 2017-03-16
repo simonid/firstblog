@@ -17,9 +17,9 @@
   
   <entry>
     <title></title>
-    <link href="https://simonid.github.io/2017/03/15/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1NetworkManager%E4%B8%8Einterfaces%E5%86%B2%E7%AA%81%E7%9A%84%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/"/>
-    <id>https://simonid.github.io/2017/03/15/记录一次NetworkManager与interfaces冲突的解决过程/</id>
-    <published>2017-03-15T04:39:12.436Z</published>
+    <link href="https://simonid.github.io/2017/03/16/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1NetworkManager%E4%B8%8Einterfaces%E5%86%B2%E7%AA%81%E7%9A%84%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/"/>
+    <id>https://simonid.github.io/2017/03/16/记录一次NetworkManager与interfaces冲突的解决过程/</id>
+    <published>2017-03-16T05:47:42.001Z</published>
     <updated>2017-03-08T05:19:48.000Z</updated>
     
     <content type="html"><![CDATA[<p>&nbsp;</p><h3>记录一次NetworkManager与interfaces冲突的解决</h3><br><br><br>&emsp;主机是ubuntu14.04，之前改过/etc/network/interfaces的配置内容（设置了静态ip），然后发现图形界面上的网络设置失效了，而且因为修改了interfaces之后还不能连接网络，ifconfig的时候不显示wlan0和eth0的信息，反而多了一个tun0-00。下面是一些解决的步骤：<p></p>
@@ -71,9 +71,9 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://simonid.github.io/2017/03/15/hello-world/"/>
-    <id>https://simonid.github.io/2017/03/15/hello-world/</id>
-    <published>2017-03-15T04:39:12.374Z</published>
+    <link href="https://simonid.github.io/2017/03/16/hello-world/"/>
+    <id>https://simonid.github.io/2017/03/16/hello-world/</id>
+    <published>2017-03-16T05:47:41.915Z</published>
     <updated>2017-01-16T06:15:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
@@ -93,6 +93,206 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>单个git工具配置多个代码托管账号</title>
+    <link href="https://simonid.github.io/2017/03/16/%E5%8D%95%E4%B8%AAgit%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AA%E4%BB%A3%E7%A0%81%E6%89%98%E7%AE%A1%E8%B4%A6%E5%8F%B7/"/>
+    <id>https://simonid.github.io/2017/03/16/单个git工具配置多个代码托管账号/</id>
+    <published>2017-03-16T01:36:45.000Z</published>
+    <updated>2017-03-16T05:40:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h2><center>单个git工具配置多个代码托管账号</center></h2><br>最近在使用hexo的时候遇到了一个麻烦，本人平时用两台电脑，ubuntu和windows，在ubuntu上已经建立了一个hexo项目（基于github），然后想再windows上也能写hexo博客，但是这样就要反复地git pull。为了避免麻烦，可以使用oschina账号或者另外一个github账号也发布一个博客。但是在win上的git工具之前已经配置了github账号了，怎么设置多账号不冲突？<br><br>首先取消之前的全局配置:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global --unset user.name</div><div class="line">git config --global --unset user.email</div></pre></td></tr></table></figure><p></p>
+<p>ssh秘钥生成：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C &quot;email&quot;</div></pre></td></tr></table></figure></p>
+<p>添加ssh key：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-add -K ~/.ssh/id_rsa</div></pre></td></tr></table></figure></p>
+<p>删除key方法：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-add -D</div></pre></td></tr></table></figure></p>
+<p>查看key设置<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ssh-add -l</div><div class="line">```  </div><div class="line">新建ssh config文件：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>vim ~/.ssh/config</p>
+<p>vonfig文件格式：</p>
+<h1 id="Default-github-user-A-mail-com-注意User项直接填git，不用填在github的用户名"><a href="#Default-github-user-A-mail-com-注意User项直接填git，不用填在github的用户名" class="headerlink" title="Default github user(A@mail.com),注意User项直接填git，不用填在github的用户名"></a>Default github user(A@mail.com),注意User项直接填git，不用填在github的用户名</h1><p>Host A.github.com  #自定义<br> HostName github.com#固定<br> User git  #自定义<br> IdentityFile ~/.ssh/id_rsa_github_A</p>
+<h1 id="second-user-B-mail-com"><a href="#second-user-B-mail-com" class="headerlink" title="second user(B@mail.com)"></a>second user(B@mail.com)</h1><h1 id="建一个gitlab别名，新建的帐号使用这个别名做克隆和更新"><a href="#建一个gitlab别名，新建的帐号使用这个别名做克隆和更新" class="headerlink" title="建一个gitlab别名，新建的帐号使用这个别名做克隆和更新"></a>建一个gitlab别名，新建的帐号使用这个别名做克隆和更新</h1><p>Host A.github.com<br> HostName github.com<br> User git<br> IdentityFile ~/.ssh/id_rsa_github_B<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如果不按照格式设置，就会出现：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>ERROR: Permission to two/two.github.com.git denied to one.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;因为ssh 客户端是通过类似:</div><div class="line">git@github.com:one/one.github.com.git</div><div class="line">这样的 git 地址中的 User 和 Host 来识别使用哪个本地私钥的。&lt;br/&gt;</div><div class="line">&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;很明显，如果 User 和 Host 始终为 git 和 github.com，那么就只能使用一个私钥。&lt;br/&gt;</div><div class="line">&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;所以需要上面的方式配置，每个账号使用了自己的 Host，每个 Host 的域名做 CNAME 解析到 github.com，这样 ssh 在连接时就可以区别不同的账号了&lt;br/&gt;</div><div class="line">测试：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>ssh -T git@github.com        # 测试one ssh连接</p>
+<p>#Hi <em>*</em>! You’ve successfully authenticated, but GitHub does not provide shell access.<br>ssh -T git@two.github.com    # 测试two ssh连接</p>
+<p>#Hi <em>*</em>! You’ve successfully authenticated, but GitHub does not provide shell access.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">在各自账号中配置：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>git config user.name “name”            # <strong>name</strong> 例如 one<br>git config user.email “email”</p>
+<p>git config –list  #检测配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">也可以：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>git remote add github A.github.com(输入的是config文件的Host选项) git@github.com:username/project.git<br>repo init -u ssh://A@github.com -b branch</p>
+<p>#push的时候到对应的host<br>git push A.github.com master<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如果push的时候遇到：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>warning: push.default is unset; its implicit value is changing in Git 2.0 from ‘matching’ to ‘simple’. To squelch this messageand maintain the current behavior after the default changes, use…<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">推荐使用：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>git config –global push.default simple<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">假如clone没有问题，push的时候总是报错:&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>error: The requested URL returned error: 403 while accessing xxx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">解决：&lt;br/&gt;</div><div class="line">修改 repo/.git/config 里面的url，把https地址替换为ssh就好了&lt;br/&gt;</div><div class="line">比如：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>url=<a href="https://MichaelDrogalis@github.com/derekerdmann/lunch_call.git" target="_blank" rel="external">https://MichaelDrogalis@github.com/derekerdmann/lunch_call.git</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">替换为：&lt;br/&gt;</div></pre></td></tr></table></figure></p>
+<p>url=ssh://git@github.com/derekerdmann/lunch_call.git<br>```</p>
+<p>参考：<br><br><a href="http://tmyam.github.io/blog/2014/05/07/duo-githubzhang-hu-she-zhi/" target="_blank" rel="external">http://tmyam.github.io/blog/2014/05/07/duo-githubzhang-hu-she-zhi/</a><br><br><a href="http://memoryboxes.github.io/blog/2014/12/07/duo-ge-gitzhang-hao-zhi-jian-de-qie-huan/" target="_blank" rel="external">http://memoryboxes.github.io/blog/2014/12/07/duo-ge-gitzhang-hao-zhi-jian-de-qie-huan/</a><br><br><a href="http://www.imooc.com/article/7419" target="_blank" rel="external">http://www.imooc.com/article/7419</a><br><br><a href="http://yyblog.mocoer.com/2014/08/25/%E5%A4%9Agithub%E8%B4%A6%E5%8F%B7SSH%20key%E5%88%87%E6%8D%A2%E4%BD%BF%E7%94%A8/" target="_blank" rel="external">http://yyblog.mocoer.com/2014/08/25/%E5%A4%9Agithub%E8%B4%A6%E5%8F%B7SSH%20key%E5%88%87%E6%8D%A2%E4%BD%BF%E7%94%A8/</a><br></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;/p&gt;&lt;h2&gt;&lt;center&gt;单个git工具配置多个代码托管账号&lt;/center&gt;&lt;/h2&gt;&lt;br&gt;最近在使用hexo的时候遇到了一个麻烦，本人平时用两台电脑，ubuntu和windows，在ubuntu上已经建立了一个hexo项目（基于github），然后想再windo
+    
+    </summary>
+    
+    
+      <category term="git" scheme="https://simonid.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo多仓库部署以及DNS分流</title>
+    <link href="https://simonid.github.io/2017/03/16/hexo%E5%A4%9A%E4%BB%93%E5%BA%93%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8ADNS%E5%88%86%E6%B5%81/"/>
+    <id>https://simonid.github.io/2017/03/16/hexo多仓库部署以及DNS分流/</id>
+    <published>2017-03-16T01:08:56.000Z</published>
+    <updated>2017-03-16T01:27:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h2><center>hexo多仓库部署以及DNS分流</center></h2><br><a href="http://www.xyzardq.com/2016/11/14/Hexo%E5%A4%9Arepositories%E9%83%A8%E7%BD%B2%E5%8F%8ADNS%E5%88%86%E6%B5%81/" target="_blank" rel="external">参考原文</a><br><br><p></p>
+<p><hr><br><br><br>hexo可以搭配github page搭建博客，但是github在国内的访问速度有限，我们可以考虑将hexo项目同时部署到oschina或者coding这些国内代码托管平台，通过DNSPod分流访问。<br><br>要发布到代码托管平台，首先安装组件:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git –save</div></pre></td></tr></table></figure></p>
+<p>在根目录配置文件下修改deploy,格式：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: &lt;repository url&gt;</div><div class="line">  branch: [branch]</div><div class="line">  message: [message]</div></pre></td></tr></table></figure></p>
+<p>参数描述：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">repo 	库(Repository)地址</div><div class="line">branch 	分支名称。如果您使用的是 GitHub 或 GitCafe 的话，程序会尝试自动检测</div><div class="line">message 	自定义提交信息 (默认为 Site updated: &#123;&#123; now(’YYYY-MM-DD HH:mm:ss’) &#125;&#125;)</div></pre></td></tr></table></figure></p>
+<p>如果是发布到多个平台：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">- type: git</div><div class="line">  repo: &lt;repository url&gt;,[branch]</div><div class="line">- type: git</div><div class="line">  repo: &lt;repository url&gt;,[branch]</div></pre></td></tr></table></figure></p>
+<p>其中，repositories（仓库）的地址有两种形式：<br>第一种是https，类似<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://github.com/xyzardq/xyzardq.github.io.git</div></pre></td></tr></table></figure></p>
+<p>第二种是SSH，类似<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git@github.com:xyzardq/xyzardq.github.io.git</div></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;这两种仓库地址有什么区别呢？https是在部署时直接通过https协议push到对应的repositories，所以在push的时候需要输入仓库所对应的代码托管平台的账号密码。而SSH是在部署时用云端的公匙解锁本地的私匙，如果对应就直接push到对应的repositories，从而不用输入账户密码。本人比较推荐用SSH，毕竟不用输入密码比较方便。<br></p>
+<p></p><h3><center>DNS分流</center></h3><br>注册DNSPod：<a href="https://www.dnspod.cn/" target="_blank" rel="external">DNSPod</a><br><br>&ensp;&ensp;&ensp;&ensp;现在，我们已经把Blog部署到了两个以上的平台上，那么，怎样才能根据访客不同的线路类型解析到不同的page上呢？这时就需要域名的DNS解析分流了。据我所知，目前DNSPod和cloudxds都支持DNS分流。DNSPod的免费版就支持DNS解析分流，但是缺点是免费版显性转址需要网站正常代理满30天….30天过去黄花菜都凉了，不过CNAME不受此限制。cloudxds的免费版号称DNSPod的收费版，但是缺点是没备案的域名用不了…所以如果是没备案的域名只能使用DNSPod了。下面以DNSpod为例。<br><br><p></p>
+<p><font color="darkgreen" size="4">添加CNAME记录</font></p>
+<p><ul></ul></p>
+<p><li>添加要解析的域名</li><br>ps:填写的域名不要带www前缀</p>
+<p><li>添加CNAME记录</li><br>由于我们要进行DNS分流解析，所以一般来说需要添加两条以上的CNAME记录，下面以分为国外和国内两条线路为例<br><br>ps:除了国外和国内，DNSPod还提供电信移动联通等运营商和谷歌百度等搜索引擎的线路提供<br><br>修改NS记录<br></p>
+<p><font color="darkgreen" size="4">什么是NS记录？</font><br></p>
+<pre><code>NS记录（name server）即域名服务器记录，用于指定该域名由哪个 DNS 服务器进行域名解析。注册域名时，总会有默认的 NS 记录。
+</code></pre><p><br><br>ps:如果是在DNSPod注册的域名，请跳过此步。<br></p>
+<p><ul><br>    <li>记下DNSPod的域名服务器</li><br>    DNSPod的域名服务器存储在控制台的DNS记录中，默认为<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">f1g1ns1.dnspod.net</div><div class="line">f1g1ns2.dnspod.net</div></pre></td></tr></table></figure></ul></p>
+<p>   <li>修改所用域名注册商的域名服务器</li><br>    登录所用域名的域名注册商，进入DNS管理，将域名服务器（有的注册商为DNS记录中的NS记录）修改为DNSPod的域名服务器<br></p>
+<p>   <li>测试DNS解析是否生效</li><br>    打开<a href="http://tool.chinaz.com/dns/" target="_blank" rel="external">Dns检测|Dns查询- 站长工具</a>，输入你的域名，选择CNAME类型，检测。如果国内国外的响应IP分别为你设置的两个记录值，则DNS分流设置成功<br><br> <br><br><br><br><br>另附上参考：<br><br><a href="http://ppting.me/2015/02/08/gitcafe/" target="_blank" rel="external">同时将博客部署在Github和Gitcafe上，并通过DNSPOD分流</a><br><a href="http://www.cnblog.me/2015/04/26/dnspod/" target="_blank" rel="external">使用 DNSPod 解决 GoDaddy 域名解析不稳定的问题</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;/p&gt;&lt;h2&gt;&lt;center&gt;hexo多仓库部署以及DNS分流&lt;/center&gt;&lt;/h2&gt;&lt;br&gt;&lt;a href=&quot;http://www.xyzardq.com/2016/11/14/Hexo%E5%A4%9Arepositories%E9%83%A8%E7%BD%B2%
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="https://simonid.github.io/tags/hexo/"/>
+    
+      <category term="博客" scheme="https://simonid.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux创建共享目录</title>
+    <link href="https://simonid.github.io/2017/03/16/Linux%E5%88%9B%E5%BB%BA%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/"/>
+    <id>https://simonid.github.io/2017/03/16/Linux创建共享目录/</id>
+    <published>2017-03-15T16:10:00.000Z</published>
+    <updated>2017-03-15T16:17:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h2><center>Linux创建共享目录</center></h2><br>如果你是管理员，想给其他人针对某个目录的权限，那么就要划定一个有一定权限的用户组和该目录绑定<br><br>先创建目录和用户组:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo mkdir -p /var/www/reports/</div><div class="line">$ sudo groupadd project</div></pre></td></tr></table></figure><p></p>
+<p>将对目录 /var/www/reports/ 有写权限的用户添加到 project 组中<br><br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo usermod -a -G project tecmint</div></pre></td></tr></table></figure></p>
+<p>上面命令使用到的标志和参数是：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-a – 将用户添加到增补组中。</div><div class="line">-G – 指定组名。</div><div class="line">project – 组名。</div><div class="line">tecmint – 已有的用户名。</div></pre></td></tr></table></figure></p>
+<p>递归权限赋予:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo chgrp -R project /var/www/reports/</div><div class="line">$ sudo chmod -R 2775 /var/www/reports/</div></pre></td></tr></table></figure></p>
+<p>解释下上面 chmod 命令中的 2775：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">2 - 打开 setGID 位，意味着新创建的子文件继承与目录相同的组，新创建的子目录继承父目录的 setGID 位。</div><div class="line">7 - 为所有者提供 rwx 权限。</div><div class="line">7 - 给组 rwx 权限。</div><div class="line">5 - 为其他人提供 rx 权限。</div></pre></td></tr></table></figure></p>
+<p>可以使用下面的命令创建更多的系统用户并将它们添加到目录组中：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo useradd -m -c &quot;Aaron Kili&quot; -s/bin/bash -G project aaronkilik</div><div class="line">$ sudo useradd -m -c &quot;John Doo&quot; -s/bin/bash -G project john</div><div class="line">$ sudo useradd -m -c &quot;Ravi Saive&quot; -s/bin/bash -G project ravi</div></pre></td></tr></table></figure></p>
+<p>接着创建每个用户存储他们项目报告的子目录<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo mkdir -p /var/www/reports/aaronkilik_reports</div><div class="line">$ sudo mkdir -p /var/www/reports/johndoo_reports</div><div class="line">$ sudo mkdir -p /var/www/reports/ravi_reports</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;h2&gt;&lt;center&gt;Linux创建共享目录&lt;/center&gt;&lt;/h2&gt;&lt;br&gt;如果你是管理员，想给其他人针对某个目录的权限，那么就要划定一个有一定权限的用户组和该目录绑定&lt;br/&gt;&lt;br&gt;先创建目录和用户组:&lt;br/&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ sudo mkdir -p /var/www/reports/&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$ sudo groupadd project&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;将对目录 /var/www/reports/ 有写权限的用户添加到 project 组中&lt;br/&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://simonid.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>django之mvc</title>
+    <link href="https://simonid.github.io/2017/03/15/django%E4%B9%8Bmvc/"/>
+    <id>https://simonid.github.io/2017/03/15/django之mvc/</id>
+    <published>2017-03-15T15:05:57.000Z</published>
+    <updated>2017-03-15T15:53:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h2><center>django之mvc</center></h2><br>推荐：<a href="http://morningchen.com/tags/Django/" target="_blank" rel="external">http://morningchen.com/tags/Django/</a><br><p></p>
+<p><hr><br>MVC(Model View Controller 模型-视图-控制器)是一种web架构模型，将业务逻辑、模型数据、用户界面分离，前端开发只要负责页面部分，后端开发只要负责后台管理和数据库。<br><br>model:将客观实物抽象为对象，由类产生多种方法。<br><br>view:视图，呈现的内容基于model，也负责收集用户输入。<br><br>controller：model和view之间的媒介。<br><br><a id="more"></a><br>MVC是单向的，过程：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">浏览器发起请求</div><div class="line">controller和model交互获取数据</div><div class="line">controller调用view</div><div class="line">view渲染数据返回</div></pre></td></tr></table></figure></p>
+<p>开发web需要的组件：<br></p>
+<pre><code>数据库的对象关系映射（ORM,Object-Relation Maping）&lt;br/&gt;
+动态内容管理的模板系统&lt;br/&gt;
+丰富自动化的管理界面&lt;br/&gt;
+</code></pre><p>模型图：<br><br><img src="http://photo1-1253196505.cosgz.myqcloud.com/photo/mvc%E6%A8%A1%E5%9E%8B.png?sign=L7kmnGC91ys7AlJ8eUI4ABC09SlhPTEyNTMxOTY1MDUmaz1BS0lESFVaUzkwUU5CZjRRbjlFdjA3QktPV2RueXZ6c2F3blcmZT0xNDkyMTg0OTIxJnQ9MTQ4OTU5MjkyMSZyPTg1NTU2NjY3NCZmPS9waG90by9tdmMlRTYlQTglQTElRTUlOUUlOEIucG5nJmI9cGhvdG8x" alt="mvc"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">优点：</div><div class="line"></div><div class="line">    可以为一个模型在运行的同时建立和使用多个视图</div><div class="line">    视图与控制器的可插拔性</div><div class="line">    模型的可移植性</div><div class="line">    潜在的框架结构</div><div class="line"></div><div class="line">缺点：</div><div class="line"></div><div class="line">    增加了系统结构和实现的复杂性</div><div class="line">    视图与控制器连接过于紧密</div><div class="line">    视图对模型数据的低效率访问</div><div class="line">    高级界面工具不支持MVC模式</div></pre></td></tr></table></figure></p>
+<p>Django框架中的 MVC实现方式：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">    当URL被请求 ➜ 调用指定的Python方法 ➜ 通过业务逻辑(model)处理 ➜ 经过模板(template) ➜ 呈现页面(view)</div><div class="line"></div><div class="line">这种实现方式在Django中称为 MVT(Model-View-Template)</div></pre></td></tr></table></figure></p>
+<p><img src="http://photo1-1253196505.cosgz.myqcloud.com/photo/django-mvc.png?sign=xb99fWUduf6Fl2z68sTFfCskKb9hPTEyNTMxOTY1MDUmaz1BS0lESFVaUzkwUU5CZjRRbjlFdjA3QktPV2RueXZ6c2F3blcmZT0xNDkyMTg1MDg2JnQ9MTQ4OTU5MzA4NiZyPTE0OTk0MTIzNDAmZj0vcGhvdG8vZGphbmdvLW12Yy5wbmcmYj1waG90bzE=" alt="django-mvc"></p>
+<p>参考链接:<a href="http://morningchen.com/2015/04/08/Django-MVC/" target="_blank" rel="external">http://morningchen.com/2015/04/08/Django-MVC/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;h2&gt;&lt;center&gt;django之mvc&lt;/center&gt;&lt;/h2&gt;&lt;br&gt;推荐：&lt;a href=&quot;http://morningchen.com/tags/Django/&quot;&gt;http://morningchen.com/tags/Django/&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;hr/&gt;&lt;br&gt;MVC(Model View Controller 模型-视图-控制器)是一种web架构模型，将业务逻辑、模型数据、用户界面分离，前端开发只要负责页面部分，后端开发只要负责后台管理和数据库。&lt;br/&gt;&lt;br&gt;model:将客观实物抽象为对象，由类产生多种方法。&lt;br/&gt;&lt;br&gt;view:视图，呈现的内容基于model，也负责收集用户输入。&lt;br/&gt;&lt;br&gt;controller：model和view之间的媒介。&lt;br/&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://simonid.github.io/tags/python/"/>
+    
+      <category term="django" scheme="https://simonid.github.io/tags/django/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo主题定制2</title>
+    <link href="https://simonid.github.io/2017/03/15/hexo%E4%B8%BB%E9%A2%98%E5%AE%9A%E5%88%B62/"/>
+    <id>https://simonid.github.io/2017/03/15/hexo主题定制2/</id>
+    <published>2017-03-15T13:17:57.000Z</published>
+    <updated>2017-03-15T15:52:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h2><center>hexo主题定制2</center></h2><p></p>
+<p><font color="darkgreen" size="5">博主推荐：</font><br><br><a href="http://moxfive.xyz" target="_blank" rel="external">http://moxfive.xyz</a><br><br><a href="http://gaomf.cn" target="_blank" rel="external">http://gaomf.cn</a><br><br><a href="http://www.xyzardq.com" target="_blank" rel="external">http://www.xyzardq.com</a><br></p>
+<p><hr><br><br><br>主题介绍：<br><br>Yelee:<br><br><a href="http://moxfive.coding.me/yelee/" target="_blank" rel="external">http://moxfive.coding.me/yelee/</a><br></p>
+<p><hr><br><br></p>
+<p><font color="red" size="4">设置代码高亮</font><br><br>在反引号后面紧跟着语言名称就可以了，比如c语言<br><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="built_in">printf</span>(<span class="string">"hello word\n"</span>);</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在反引号后面加上c<br></p>
+<p><font color="red" size="4">添加单独页面，比如自我介绍</font><br><br>&ensp;&ensp;首先在根目录下的public/categories目录下找到相关目录，然后再添加md文件，在到主题目录下找到配置文件，在其中的menu下自定义选项，注意路径一定要正确<br><br><a id="more"></a></p>
+<p><font color="red" size="4">自定义侧边栏自我介绍</font><br><br>&ensp;&ensp;相关文件在left-col.ejs下，比如我要添加两段文字,可以：<br><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;hgroup&gt;</div><div class="line">		  &lt;h1 class="header-author"&gt;&lt;a href="/" class="alluraregular"&gt;&lt;%=theme.author%&gt;&lt;/a&gt;&lt;/h1&gt;</div><div class="line">		&lt;/hgroup&gt;</div><div class="line"></div><div class="line">		&lt;p class="header-subtitle"&gt;纵有疾风起 | 人生不言弃&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>相关的样式文件是main.styl<br></p>
+<p><font color="red" size="4">自定义标签</font><br><br>相关样式文件是tagcloud.styl<br></p>
+<p><font color="red" size="4">添加RSS插件</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-feed --sava</div></pre></td></tr></table></figure></p>
+<p>然后到主题目录下的配置文件中的subnav选项下新增选项，比如：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">subnav:</div><div class="line">  rss:&quot;/atom.xml&quot;</div></pre></td></tr></table></figure></p>
+<p>hexo g之后可以在public下看到新增的atom.xml<br></p>
+<p><font color="red" size="4">新增目录</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new page ... :新增目录</div></pre></td></tr></table></figure></p>
+<p>在/themes/yilia/layout/_partial/article.ejs里修改。将下面代码放在&lt;%- post.content %&gt;之上<br><br>这一段内容参考自：<a href="http://www.xyzardq.com/2016/11/04/Hexo%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95/" target="_blank" rel="external">参考</a><br><br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;% <span class="keyword">if</span>(post.toc == <span class="literal">true</span>)&#123; %&gt;</div><div class="line">&lt;div id="toc" class="toc-article"&gt;</div><div class="line">  &lt;strong class="toc-title"&gt;文章目录&lt;/strong&gt;</div><div class="line">&lt;%- toc(post.content, &#123;list_number: false&#125;) %&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure></p>
+<p>这其中加了一个判断，默认是不加目录的（当然你也可以改成post.toc == false，这样默认就是添加目录的情况啦），如果想在文章中使用目录的话，可以在 front-matter里加上 toc: true 即可. 像这样子：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">title: &quot;在Hexo中给文章加目录(Table Of Contents)&quot;</div><div class="line">date: 2015-07-15 22:40:42</div><div class="line">tags: [Hexo]</div><div class="line">toc: true</div><div class="line">---</div></pre></td></tr></table></figure></p>
+<p>修改目录样式：<br><br>/themes/yilia/source/css/_partial/article.styl中的末尾加上<br><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.toc-article</span> &#123;</div><div class="line">    <span class="attribute">background</span>: <span class="number">#eee</span>;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> .<span class="number">5em</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">1em</span></div><div class="line">&#125;</div><div class="line"><span class="selector-class">.toc-article</span> <span class="selector-tag">strong</span> &#123;</div><div class="line">    <span class="attribute">padding</span>: .<span class="number">3em</span> <span class="number">0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#toc</span> &#123;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">1.6em</span>;</div><div class="line">    <span class="attribute">font-size</span>: .<span class="number">8em</span>;</div><div class="line">    <span class="attribute">float</span>: right</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#toc</span> <span class="selector-class">.toc</span> &#123;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span></div><div class="line">&#125;</div><div class="line"><span class="selector-id">#toc</span> <span class="selector-class">.toc</span> <span class="selector-tag">li</span> &#123;</div><div class="line">    <span class="attribute">list-style-type</span>: none</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#toc</span> <span class="selector-tag">ol</span> &#123;</div><div class="line">    <span class="attribute">margin-left</span>: <span class="number">0</span></div><div class="line">&#125;</div><div class="line"><span class="selector-id">#toc</span> <span class="selector-class">.toc-child</span> &#123;</div><div class="line">    <span class="attribute">padding-left</span>: <span class="number">1.5em</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;第一段的toc-article指定了目录整个<code>&lt;div&gt;</code>的背景色、边框色、倒角半径、各种间距以及最大的宽度。注意这里最好指定目录的最大宽度，我将其设为了28%，也就是文章正文那个框的宽度的28%，也可以设为一个固定的长度，比如在笔记本电脑上16em就是个不错的宽度，但为了能适配各种不同尺寸的屏幕，最好还是设置为百分比。如果不指定最大宽度，遇到比较长的标题时，生成的目录会非常难看。这个最大宽度的设置是我在网上其他添加目录的方法中没有见到的。<br><br>&ensp;&ensp;&ensp;&ensp;第二段的toc-title指的就是“文章目录”那四个字，这四个字要比其他字大一些，将其字号设为其他字的120%。<br><br>&ensp;&ensp;&ensp;&ensp;第三段的#toc.toc指定了目录列表的一些细节，将font-size设为0.9em会让目录的字比文章的字稍小一些。最后的.toc-child指定了二级目录的缩进量。<br><br>&ensp;&ensp;&ensp;&ensp;再次生成页面，应该已经可以显示比较美观的目录<br></p>
+<p><font color="red" size="4">常见错误解决：</font><br><br><a href="http://www.xyzardq.com/2016/11/14/Hexo%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_blank" rel="external">参考</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">FATAL (unknown path) [Line 7, Column 533]</div><div class="line">  Error: Unable to call `now`, which is undefined or falsey Template render error: (unknown path) [Line 7, Column 533]</div></pre></td></tr></table></figure></p>
+<p>错误原因：<br><br>由于文章中有类似now()的结构，Hexo编译时误认为是now函数，结果找不到函数就报错了<br><br>解决：<br><br>将now( )的小括号通过<code>&amp;#40;</code> <code>&amp;#41;</code>进行转换。<br></p>
+<p><font color="orange">部分插件加载失败：</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ERROR Plugin load failed:hexo-generator-json-content</div></pre></td></tr></table></figure></p>
+<p>解决：升级nodejs<br></p>
+<p><font color="orange">hexo d报错：</font><br><br>终极解决方案<br><br>1.删除根目录下的.deploy_git文件夹<br><br>2.在根目录运行hexo clean<br><br>3.修改根目录下的_config.yml后运行hexo deploy部署到云端<br></p>
+<p><font color="orange">hexo g错误:</font><br><br>个人认为最大原因是配置文件出错<br><br>另附参考：<br><br><a href="http://www.voidcn.com/blog/chwshuang/article/p-6178796.html" target="_blank" rel="external">http://www.voidcn.com/blog/chwshuang/article/p-6178796.html</a><br><br><a href="https://xuanwo.org/2014/08/14/hexo-usual-problem/" target="_blank" rel="external">https://xuanwo.org/2014/08/14/hexo-usual-problem/</a><br></p>
+<p><font color="red"><br>添加站点小图标<br></font><br>主题目录下/source中添加图片<br></p>
+<p><font color="red">添加文章目录</font><br><br>配置中启用：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">toc:</div><div class="line">  on: true</div><div class="line">  list_number: true  #开启标题前序号</div><div class="line">  max_depth: 3  #目录最大级数，可选1-6</div><div class="line">  nowrap: false  #标题不换行</div></pre></td></tr></table></figure></p>
+<p>如果要在某个文章中关闭目录，那么在md文件开头加上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">toc ：false  #关闭目录</div><div class="line">toc_list_number: false  #隐藏目录序号</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;h2&gt;&lt;center&gt;hexo主题定制2&lt;/center&gt;&lt;/h2&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=darkgreen size=5&gt;博主推荐：&lt;/font&gt;&lt;br/&gt;&lt;br&gt;&lt;a href=&quot;http://moxfive.xyz&quot;&gt;http://moxfive.xyz&lt;/a&gt;&lt;br/&gt;&lt;br&gt;&lt;a href=&quot;http://gaomf.cn&quot;&gt;http://gaomf.cn&lt;/a&gt;&lt;br/&gt;&lt;br&gt;&lt;a href=&quot;http://www.xyzardq.com&quot;&gt;http://www.xyzardq.com&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;hr/&gt;&lt;br&gt;&lt;br/&gt;&lt;br&gt;主题介绍：&lt;br/&gt;&lt;br&gt;Yelee:&lt;br/&gt;&lt;br&gt;&lt;a href=&quot;http://moxfive.coding.me/yelee/&quot;&gt;http://moxfive.coding.me/yelee/&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;hr/&gt;&lt;br&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=red size=4&gt;设置代码高亮&lt;/font&gt;&lt;br/&gt;&lt;br&gt;在反引号后面紧跟着语言名称就可以了，比如c语言&lt;br/&gt;&lt;br&gt;&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;hello word\n&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;在反引号后面加上c&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=red size=4&gt;添加单独页面，比如自我介绍&lt;/font&gt;&lt;br/&gt;&lt;br&gt;&amp;ensp;&amp;ensp;首先在根目录下的public/categories目录下找到相关目录，然后再添加md文件，在到主题目录下找到配置文件，在其中的menu下自定义选项，注意路径一定要正确&lt;/br&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="https://simonid.github.io/tags/hexo/"/>
+    
+      <category term="博客" scheme="https://simonid.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
@@ -576,12 +776,12 @@
     <link href="https://simonid.github.io/2017/03/08/HEXO%E4%B8%BB%E9%A2%98%E5%AE%9A%E5%88%B6/"/>
     <id>https://simonid.github.io/2017/03/08/HEXO主题定制/</id>
     <published>2017-03-08T11:06:40.000Z</published>
-    <updated>2017-03-08T16:02:25.000Z</updated>
+    <updated>2017-03-15T13:17:19.000Z</updated>
     
     <content type="html"><![CDATA[<p></p><h2><center>hexo主题定制</center></h2><p></p>
 <p><hr></p>
 <p><font size="3"><em><b>后续也会更新…</b></em></font></p>
-<p><hr><br><br><br>其实也就是在网上找的一些定制hexo主题的链接，废话不多说，直接放出来：<br><br>通过这篇文章先大致了解Hexo的布局<a href="http://www.ituring.com.cn/article/199325" target="_blank" rel="external">初步了解Hexo站点布局</a><br><br><br><br>Landscape主题定制：<br><br><a href="http://blog.sunnyxx.com/2014/03/07/hexo_customize/" target="_blank" rel="external"><font size="4" color="#8B008B">hexo私人定制</font></a><br><br><a href="http://hialex.cn/2014/05/18/%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84hexo%E4%B8%BB%E9%A2%98/" target="_blank" rel="external"><font size="4" color="#8b008b">定制自己的hexo主题</font></a><br><br><a href="http://www.codertian.com/2016/03/14/change-landscape-theme-by-yourself/" target="_blank" rel="external"><font size="4" color="#8b008b">【实用技能】教你定制Hexo的landscape打造自己的主题</font></a><br><a id="more"></a><br><a href="http://hanhailong.com/2015/09/17/Hexo%E4%B8%BB%E9%A2%98-%E5%9C%A8%E5%8D%9A%E5%AE%A2%E5%B7%A6%E4%B8%8A%E8%A7%92%E6%B7%BB%E5%8A%A0ForkMeOnGithub%E5%8A%9F%E8%83%BD/" target="_blank" rel="external"><font size="4" color="#8b008b">Hexo主题-在博客左上角添加ForkMeOnGithub功能</font></a></p>
+<p><hr><br><br><br>其实也就是在网上找的一些定制hexo主题的链接，废话不多说，直接放出来：<br><br>通过这篇文章先大致了解Hexo的布局<a href="http://www.ituring.com.cn/article/199325" target="_blank" rel="external">初步了解Hexo站点布局</a><br><br><br><br>Landscape主题定制：<br><br><a href="http://blog.sunnyxx.com/2014/03/07/hexo_customize/" target="_blank" rel="external"><font size="4" color="#8B008B">hexo私人定制</font></a><br><br><a href="http://hialex.cn/2014/05/18/%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84hexo%E4%B8%BB%E9%A2%98/" target="_blank" rel="external"><font size="4" color="#8b008b">定制自己的hexo主题</font></a><br><br><br><a href="http://www.codertian.com/2016/03/14/change-landscape-theme-by-yourself/" target="_blank" rel="external"><font size="4" color="#8b008b">【实用技能】教你定制Hexo的landscape打造自己的主题</font></a><br><a id="more"></a><br><a href="http://hanhailong.com/2015/09/17/Hexo%E4%B8%BB%E9%A2%98-%E5%9C%A8%E5%8D%9A%E5%AE%A2%E5%B7%A6%E4%B8%8A%E8%A7%92%E6%B7%BB%E5%8A%A0ForkMeOnGithub%E5%8A%9F%E8%83%BD/" target="_blank" rel="external"><font size="4" color="#8b008b">Hexo主题-在博客左上角添加ForkMeOnGithub功能</font></a><br><br><a href="http://www.yehbeats.com/2015/04/08/hexo-search/" target="_blank" rel="external"><font size="4" color="#8b008b">Yilia主题添加站内搜索功能-swiftype</font></a><br><br><a href="http://yifeng.studio/2016/09/10/Hexo-search-baidutongji-highlight/" target="_blank" rel="external"><font size="4" color="#8b008b">站内搜索(swiftpye)、百度统计、代码高亮</font> </a><br><br><a href="http://hahack.com/codes/local-search-engine-for-hexo/" target="_blank" rel="external"><font size="4" color="#8b008b">站内搜索-很全</font></a><br><br><a href="http://moxfive.xyz/2016/05/31/hexo-local-search/" target="_blank" rel="external"><font size="4" color="#8b008b">本地站内搜索-json解析(继承自前文,存在不足)</font></a><br><br><a href="http://gaomf.cn/2016/10/10/%E4%B8%BAHexo%E5%8D%9A%E5%AE%A2Yilia%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/" target="_blank" rel="external"><font size="4" color="#8b008b">站内搜索-针对前文进一步优化</font></a><br><br><a href="http://devlu.me/2016/01/23/Hexo%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96%E9%85%8D%E7%BD%AE%E4%B9%8B-%E4%B8%BA%E8%87%AA%E5%B7%B1%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2/" target="_blank" rel="external"><font size="4" color="#8b008b">站内搜索-google平台</font></a><br><br><a href="http://frankorz.com/2016/09/30/Hexo-patch/" target="_blank" rel="external"><font size="4" color="#8b008b">博客插件-字数统计、网易云音乐、更新时间</font></a><br><br><a href="http://www.voidking.com/2015/05/31/deve-hexo-theme-optimize/" target="_blank" rel="external"><font size="4" color="#8b008b">主题优化</font></a><br><br><a href="http://morningchen.com/2015/07/15/Table-Of-Contents-for-hexo/" target="_blank" rel="external"><font size="4" color="#8b008b">在Hexo中给文章加目录</font></a><br></p>
 ]]></content>
     
     <summary type="html">
@@ -589,7 +789,7 @@
       &lt;p&gt;&lt;h2&gt;&lt;center&gt;hexo主题定制&lt;/center&gt;&lt;/h2&gt;&lt;/p&gt;
 &lt;p&gt;&lt;hr/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;font size=3&gt;&lt;em&gt;&lt;b&gt;后续也会更新…&lt;/b&gt;&lt;/em&gt;&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;hr/&gt;&lt;br&gt;&lt;br/&gt;&lt;br&gt;其实也就是在网上找的一些定制hexo主题的链接，废话不多说，直接放出来：&lt;br/&gt;&lt;br&gt;通过这篇文章先大致了解Hexo的布局&lt;a href=&quot;http://www.ituring.com.cn/article/199325&quot;&gt;初步了解Hexo站点布局&lt;/a&gt;&lt;br/&gt;&lt;br&gt;&lt;br/&gt;&lt;br&gt;Landscape主题定制：&lt;br/&gt;&lt;br&gt;&lt;a href=&quot;http://blog.sunnyxx.com/2014/03/07/hexo_customize/&quot;&gt;&lt;font size=4 color=#8B008B&gt;hexo私人定制&lt;/font&gt;&lt;/a&gt;&lt;br/&gt;&lt;br&gt;&lt;a href=&quot;http://hialex.cn/2014/05/18/%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84hexo%E4%B8%BB%E9%A2%98/&quot;&gt;&lt;font size=4 color=#8b008b&gt;定制自己的hexo主题&lt;/font&gt;&lt;/a&gt;&lt;br&gt;&lt;/br/&gt;&lt;br&gt;&lt;a href=&quot;http://www.codertian.com/2016/03/14/change-landscape-theme-by-yourself/&quot;&gt;&lt;font size=4 color=#8b008b&gt;【实用技能】教你定制Hexo的landscape打造自己的主题&lt;/font&gt;&lt;/a&gt;&lt;br&gt;
+&lt;p&gt;&lt;hr/&gt;&lt;br&gt;&lt;br/&gt;&lt;br&gt;其实也就是在网上找的一些定制hexo主题的链接，废话不多说，直接放出来：&lt;br/&gt;&lt;br&gt;通过这篇文章先大致了解Hexo的布局&lt;a href=&quot;http://www.ituring.com.cn/article/199325&quot;&gt;初步了解Hexo站点布局&lt;/a&gt;&lt;br/&gt;&lt;br&gt;&lt;br/&gt;&lt;br&gt;Landscape主题定制：&lt;br/&gt;&lt;br&gt;&lt;a href=&quot;http://blog.sunnyxx.com/2014/03/07/hexo_customize/&quot;&gt;&lt;font size=4 color=#8B008B&gt;hexo私人定制&lt;/font&gt;&lt;/a&gt;&lt;br/&gt;&lt;br&gt;&lt;a href=&quot;http://hialex.cn/2014/05/18/%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84hexo%E4%B8%BB%E9%A2%98/&quot;&gt;&lt;font size=4 color=#8b008b&gt;定制自己的hexo主题&lt;/font&gt;&lt;/a&gt;&lt;br&gt;&lt;br/&gt;&lt;br&gt;&lt;a href=&quot;http://www.codertian.com/2016/03/14/change-landscape-theme-by-yourself/&quot;&gt;&lt;font size=4 color=#8b008b&gt;【实用技能】教你定制Hexo的landscape打造自己的主题&lt;/font&gt;&lt;/a&gt;&lt;br&gt;
     
     </summary>
     
@@ -620,233 +820,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Use_MarkDown</title>
-    <link href="https://simonid.github.io/2017/01/17/Use-MarkDown/"/>
-    <id>https://simonid.github.io/2017/01/17/Use-MarkDown/</id>
-    <published>2017-01-17T08:55:55.000Z</published>
-    <updated>2017-03-08T05:22:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<font size="4" face="黑体" color="#8B008B"><strong><strong></strong></strong></font><br><font size="3" face="黑体" color="#8B008B"></font>
-
-<center><h1>MarkDown常用技巧</h1></center><br>可参考:<br><br><a href="http://www.markdown.cn/" target="_blank" rel="external"><font size="4">markdown中文网</font></a><br><br><a href="https://www.zhihu.com/question/19963642" target="_blank" rel="external">知乎：markdown是什么</a><br><br><br><a href="http://blog.csdn.net/column/details/markdown.html" target="_blank" rel="external">CSDN markdown专栏</a><br><strong><em>
-</em></strong><br>MarkDown作者Aaron Swartz:<br><br><br><center>![MarkDown作者] (“<a href="https://pic4.zhimg.com/606e14127233ca0a935032b19b5df3a7_b.jpg" target="_blank" rel="external">https://pic4.zhimg.com/606e14127233ca0a935032b19b5df3a7_b.jpg</a>“)</center>
-
-<p><a href="http://www.rememberaaronsw.com/memories/" target="_blank" rel="external">纪念斯沃茨的网站(markdown编写)</a></p>
-<p>###标题<br>标题共有6级，用<strong><font size="4" face="黑体" color="#8B008B">#</font></strong>表示，后面接内容，<strong><font size="4" face="黑体" color="#8B008B">#</font></strong>越多代表级别越高，尺寸越小</p>
-<p>###加粗，斜体<br>在需要加粗的文字两端加入<strong><font size="3" face="黑体" color="#8B008B">`</font></strong>加粗文字<strong>`</strong><br>或者<font size="3" face="黑体" color="#8B008B"><strong><code>_加粗文字_</code></strong></font><br>如果要输出斜体效果，那么就是单个的<font size="4" face="黑体" color="#8B008B"><strong><code>*</code></strong></font>或者是单个的<font size="4" face="黑体" color="#8B008B"><strong><code>_</code></strong></font><br>而且，加粗和斜体标识最好都是放在<font size="4" face="黑体" color="#8B008B"><strong><code>&lt;font&gt;</code></strong></font>内<br><a id="more"></a></p>
-<p>###使排版更有层次<br>比如你需要下面的结果<br><br>1. 第一节</p>
-<ul>
-<li>第二节(你不用敲 “2”，自动就有了）<ul>
-<li>第一小节（推荐每层次缩进四个空格）<ul>
-<li>小小节 1</li>
-<li>小小节 2</li>
-</ul>
-</li>
-<li>第二小节</li>
-</ul>
-</li>
-</ul>
-<p>那么就像下面那样输入：<br></p>
-<ol>
-<li>第一节</li>
-</ol>
-<ul>
-<li>第二节(你不用敲 “2”，自动就有了）`<ul>
-<li>第一小节（推荐每层次缩进四个空格）<ul>
-<li>小小节 1</li>
-<li>小小节 2</li>
-</ul>
-</li>
-<li>第二小节</li>
-</ul>
-</li>
-</ul>
-<p><br><br>换行后的<strong><font size="4" face="黑体" color="#8B008B">*</font></strong>和前面持平的一行的一个元素效果相同，比如第一行的1.。第二行如果缩进与第一行持平，那么保持这种结构持续下去显示2.。假如要和前面的效果不同，那么就输入一个<strong><font size="3" face="黑体" color="#8B008B">tab</font></strong>不和前面持平<br><br>更好的方法：</p>
-<font size="4" face="黑体" color="#8B008B"><strong><br><code>&lt;ol&gt;</code><br><br><code>&lt;li&gt;</code>有序列表第一项<code>&lt;/li&gt;</code><br><br><code>&lt;li&gt;</code>有序列表第二项<code>&lt;/li&gt;</code><br><br><code>&lt;li&gt;</code>有序列表第三项<code>&lt;/li&gt;</code><br><br><code>&lt;/ol&gt;</code><br><br><code>&lt;ul&gt;</code>
-</strong></font><br><br>输出效果：<br><ol><br><li>有序列表第一项</li><br><li>有序列表第二项</li><br><li>有序列表第三项</li><br></ol><br>又比如：<br><font size="4" face="黑体" color="#8B008B"><strong><br><br><code>&lt;li&gt;&lt;p&gt;这是一个列表项&lt;/p&gt;</code><br><br><code>&lt;p&gt;这是第一列表项中的第二个段落&lt;/p&gt;&lt;/li&gt;</code><br><br><code>&lt;li&gt;&lt;p&gt;这是列表的另一个项&lt;/p&gt;&lt;/li&gt;</code><br><br><code>&lt;/ul&gt;</code>
-</strong></font><br><br><br>输出效果：<br><ul><br><li><p>这是一个列表项</p><br><p>这是第一列表项中的第二个段落</p></li><br><li><p>这是列表的另一个项目</p></li><br></ul><br><br>###居中:<br>用<strong><font size="4" face="黑体" color="#8B008B"><code>&lt;center&gt;</code></font></strong>标签扩起来<br>###换行：<br>&emsp;方法1：连续两个以上空格+回车<br><br>&emsp;方法2：使用html语言换行标签:<strong><font size="4" face="黑体" color="#8B008B"><code>&lt;br&gt;</code></font> </strong>（假如要输出<strong><font size="4" face="黑体" color="#8B008B"><code>&lt;br&gt;</code></font> </strong>这样的文字，那么在左右用<code>`` </code>扩起来）<br><br><font size="4" face="黑体" color="#8B008B"><strong><code>&lt;br&gt;</code></strong></font> 符号要在行首输入<br><br><br>####首行缩进两个字符：(每个表示一个空格，连续使用两个)<br>半方大的空白<font size="4" face="黑体" color="#8B008B"><strong><code>&amp;ensp;</code></strong></font>或<font size="4" face="黑体" color="#8B008B"><strong><code>&amp;#8194;</code></strong></font><br><br><br>全方大的空白<font size="4" face="黑体" color="#8B008B"><strong><code>&amp;emsp;</code></strong></font>或<font size="4" face="黑体" color="#8B008B"><strong><code>&amp;#8195;</code></strong></font><br><br><br>不断行的空白格<font size="4" face="黑体" color="#8B008B"><strong><code>&amp;nbsp;</code></strong></font>或<font size="4" face="黑体" color="#8B008B"><strong><code>&amp;#160;</code></strong></font>
-
-<p>###字体颜色、大小、字型</p>
-<p><code>&lt;font face=&quot;黑体&quot;&gt;我是黑体字&lt;/font&gt;</code> <br><br><code>&lt;font face=&quot;微软雅黑&quot;&gt;我是微软雅黑&lt;/font&gt;</code><br><br><code>&lt;font face=&quot;STCAIYUN&quot;&gt;我是华文彩云&lt;/font&gt;</code><br><br><code>&lt;font color=#0099ff size=7 face=&quot;黑体&quot;&gt;color=#0099ff size=72 face=&quot;黑体&quot;&lt;/font&gt;</code><br><br><code>&lt;font color=#00ffff size=72&gt;color=#00ffff&lt;/font&gt;</code><br><br><code>&lt;font color=gray size=72&gt;color=gray&lt;/font&gt;</code></p>
-<p><td><table><tr><td bgcolor="AliceBlue">也可以把颜色代号换成颜色名称</td></tr></table><br><br></td></p>
-<p><font color="#000099">字体效果：</font><br><br><font face="黑体">我是黑体</font><br><br><font face="微软雅黑">我是微软雅黑</font><br><br><font face="华文彩云">我是华文彩云</font><br><br></p>
-<p>###背景颜色：<br><strong><font size="4" face="黑体" color="#8B008B"><code>&lt;td&gt;&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=Chartreuse&gt;Chartreuse&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</code></font></strong><br><br></p>
-<p><td><table><tr><td bgcolor="AliceBlue">也可以把颜色名称换成颜色代号</td></tr></table><br><br></td></p>
-<p><font color="#00099">颜色效果：</font></p>
-<hr>
-<p><br><table class="table table-bordered table-striped table-condensed"><br> <tr><br>    <td><font color="#F0F8FF"><code>#F0F8FF</code></font></td><br>    <td><font color="#FAEBD7"><code>#FAEBD7</code></font></td><br>    <td><font color="#00FFFF"><code>#00FFFF</code></font></td><br>    <td><font color="#7FFFD4"><code>#7FFFD4</code></font></td><br>    <td><font color="#F0FFFF"><code>#F0FFFF</code></font></td><br>    <td><font color="#F5F5DC"><code>#F5F5DC</code></font></td><br>    <td><font color="#FFE4C4"><code>#FFE4C4</code></font></td><br>    <td><font color="#FFEBCD"><code>#FFEBCD</code></font></td><br>    <td><font color="#0000FF"><code>#0000FF</code></font></td><br>    <td><font color="#8A2BE2"><code>#8A2BE2</code></font></td><br>    <td><font color="#A52A2A"><code>#A52A2A</code></font></td><br> </tr><br> <tr><br>    <td><table><tr><td bgcolor="AliceBlue">AliceBlue</td></tr></table><br>    </td><td><table><tr><td bgcolor="AntiqueWhite">AntiqueWhite</td></tr></table><br>    </td><td><table><tr><td bgcolor="Aqua">Aqua</td></tr></table><br>    </td><td><table><tr><td bgcolor="Aquamarine">Aquamarine</td></tr></table><br>    </td><td><table><tr><td bgcolor="Azure">Azure</td></tr></table><br>    </td><td><table><tr><td bgcolor="Beige">Beige</td></tr></table><br>    </td><td><table><tr><td bgcolor="Bisque">Bisque</td></tr></table><br>    </td><td><table><tr><td bgcolor="BlanchedAlmond">BlanchedAlmond</td></tr></table><br>    </td><td><table><tr><td bgcolor="Blue">Blue</td></tr></table><br>    </td><td><table><tr><td bgcolor="BlueViolet">BlueViolet</td></tr></table><br>    </td><td><table><tr><td bgcolor="Brown">Brown</td></tr></table><br></td></tr></table></p>
-<p><tr><br>    <td><font color="#DEB887"><code>#DEB887</code></font></td><br>    <td><font color="#5F9EA0"><code>#5F9EA0</code></font></td><br>    <td><font color="#7FFF00"><code>#7FFF00</code></font></td><br>    <td><font color="#D2691E"><code>#D2691E</code></font></td><br>    <td><font color="#FF7F50"><code>#FF7F50</code></font></td><br>    <td><font color="#6495ED"><code>#6495ED</code></font></td><br>    <td><font color="#FFF8DC"><code>#FFF8DC</code></font></td><br>    <td><font color="#DC143C"><code>#DC143C</code></font></td><br>    <td><font color="#00FFFF"><code>#00FFFF</code></font></td><br>    <td><font color="#00008B"><code>#00008B</code></font></td><br>    <td><font color="#008B8B"><code>#008B8B</code></font></td><br> </tr><br> <tr><br>    <td><table><tr><td bgcolor="BurlyWood">BurlyWood</td></tr></table><br>    </td><td><table><tr><td bgcolor="CadetBlue">CadetBlue</td></tr></table><br>    </td><td><table><tr><td bgcolor="Chartreuse">Chartreuse</td></tr></table><br>    </td><td><table><tr><td bgcolor="Chocolate">Chocolate</td></tr></table><br>    </td><td><table><tr><td bgcolor="Coral">Coral</td></tr></table><br>    </td><td><table><tr><td bgcolor="CornflowerBlue">CornflowerBlue</td></tr></table><br>    </td><td><table><tr><td bgcolor="Cornsilk">Cornsilk</td></tr></table><br>    </td><td><table><tr><td bgcolor="Crimson">Crimson</td></tr></table><br>    </td><td><table><tr><td bgcolor="Cyan">Cyan</td></tr></table><br>    </td><td><table><tr><td bgcolor="DarkBlue">DarkBlue</td></tr></table><br>    </td><td><table><tr><td bgcolor="DarkCyan">DarkCyan</td></tr></table><br></td></tr><br></p>
-<hr>
-<p><br>假如要在<code>`` </code>扩起来的字符当中输入内嵌符号而且不要转义，还是要用<code>`` </code>扩起来<br>一般情况下，当<code>`` </code>成对出现的时候，要在反引号两边在加一对反引号，并且外边的要和里面的保持一个空格<br></p>
-<p>###代码区块<br>代码区块的建立是在每行加上4个空格或者一个制表符（如同写代码一样）。如<br>普通段落：<br><br>void main()<br><br>{<br><br>printf(“Hello, Markdown.”);<br><br>}</p>
-<pre><code>void main()
-{
-    printf(&quot;Hello, Markdown.&quot;);
-} 
-</code></pre><p>也可以用<font size="6" face="黑体" color="#8B008B">**` <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">&lt;br&gt;</div><div class="line">或者也可以使用&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**`&lt;pre&gt;&lt;code&gt;代码段&lt;/code&gt;&lt;/pre&gt;`**&lt;/font&gt;</div><div class="line"></div><div class="line">###分割线</div><div class="line">最常使用的分割线用3个或以上的`*`,还可以用`-`和`_`</div><div class="line">******</div><div class="line">###链接</div><div class="line">链接分作下列形式</div><div class="line">####1.行内式</div><div class="line">&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**`[名称](链接)`**&lt;/font&gt;</div><div class="line">&lt;br&gt;比如：[百度](https://www.baidu.com)</div><div class="line">####2.参考式</div><div class="line">&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**`[名称1][1]`**&lt;/font&gt;</div><div class="line">&lt;br&gt;&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**`[名称2][2]`**&lt;/font&gt;</div><div class="line">&lt;br&gt;&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**`[1]:链接1`**&lt;/font&gt;</div><div class="line">&lt;br&gt;&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**`[2]:链接2`**&lt;/font&gt;</div><div class="line">&lt;br&gt;比如：[百度][1]</div><div class="line">[1]:https://www.baidu.com</div><div class="line">####3.自动链接式</div><div class="line">&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**</div><div class="line">`&lt;a href=&quot;http://example.com/&quot;&gt;http://example.com/&lt;/a&gt;`</div><div class="line">**&lt;/font&gt;</div><div class="line">&lt;br&gt;效果就是：</div><div class="line">&lt;a href=&quot;http://example.com/&quot;&gt;http://example.com/&lt;/a&gt;</div><div class="line">###图片</div><div class="line">&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**`![Alt text](/path/to/img.jpg)`**&lt;/font&gt;</div><div class="line"></div><div class="line">&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**`![Alt text](/path/to/img.jpg &quot;Optional title&quot;)`**&lt;/font&gt;</div><div class="line"></div><div class="line">一个感叹号!开头；</div><div class="line">其后紧跟一对中括号，中括号内存放图片的alt`属性；</div><div class="line">其后紧跟一对小括号，小括号内存放图片的URL或路径，及可选的用双引号或单引号或小括号括起来的图片title</div><div class="line">这里 &quot;id&quot; 是图片引用标识。图片引用定义的语法与链接定义完全相同：</div><div class="line">&lt;br&gt;</div><div class="line">####插入外链接图片：</div><div class="line">&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;**</div><div class="line">`![说明]:(url/to/image)`</div><div class="line">**&lt;/font&gt;</div><div class="line">###表格</div><div class="line">制作表格有两种方法:</div><div class="line">####1.html原生表格</div></pre></td></tr></table></figure></font></p>
-<p><table><br> <tr><br>     <td>时间</td><br>     <td>地点</td><br>     <td>人物</td><br> </tr><br>  <tr><br>     <td>1.1</td><br>     <td>深圳</td><br>     <td>马化腾</td><br> </tr><br>  <tr><br>     <td>1.2</td><br>     <td>北京</td><br>     <td>雷军</td><br> </tr><br></table><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;br&gt;</div><div class="line">&lt;div class=&quot;row&quot;&gt;</div><div class="line">    &lt;div class=&quot;span4&quot;&gt;</div><div class="line">        &lt;table&gt;</div><div class="line">            &lt;tr&gt;</div><div class="line"> 	&lt;td&gt;时间&lt;/td&gt;</div><div class="line"> 	&lt;td&gt;地点&lt;/td&gt;</div><div class="line"> 	&lt;td&gt;人物&lt;/td&gt;</div><div class="line"> &lt;/tr&gt;</div><div class="line">  &lt;tr&gt;</div><div class="line"> 	&lt;td&gt;1.1&lt;/td&gt;</div><div class="line"> 	&lt;td&gt;深圳&lt;/td&gt;</div><div class="line"> 	&lt;td&gt;马化腾&lt;/td&gt;</div><div class="line"> &lt;/tr&gt;</div><div class="line">  &lt;tr&gt;</div><div class="line"> 	&lt;td&gt;1.2&lt;/td&gt;</div><div class="line"> 	&lt;td&gt;北京&lt;/td&gt;</div><div class="line"> 	&lt;td&gt;雷军&lt;/td&gt;</div><div class="line"> &lt;/tr&gt;</div><div class="line">        &lt;/table&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;</div></pre></td></tr></table></figure></p>
-<p><div class="row"><br>    <div class="span4"><br>        <table><br>            …<br>        </table><br>    </div><br></div><br>```<br><br>如果想占更多或更少的宽度，把<font size="4" face="黑体" color="#8B008B">span4</font>修改为其他值，如<font size="4" face="黑体" color="#8B008B">span6</font>（总宽度是<font size="4" face="黑体" color="#8B008B">span8</font>，按比例算下就行）<br><br></p>
-<p>####2.markdown原生表格<br>或者像下面那样:<br><code>`&lt;br&gt;</code>|水果|价格|数量|<br><code>&lt;br&gt;</code>|:-|:-:|-:|<br><code>&lt;br&gt;</code>|香蕉|$1|5|<br><code>&lt;br&gt;</code>|苹果|$1|6|<br><code>&lt;br&gt;</code>|草莓|$1|7|<br>`<br><br><br><br><br>效果：<br><br></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">水果</th>
-<th style="text-align:center">价格</th>
-<th style="text-align:right">数量</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">香蕉</td>
-<td style="text-align:center">$1</td>
-<td style="text-align:right">5</td>
-</tr>
-<tr>
-<td style="text-align:left">苹果</td>
-<td style="text-align:center">$1</td>
-<td style="text-align:right">6</td>
-</tr>
-<tr>
-<td style="text-align:left">草莓</td>
-<td style="text-align:center">$1</td>
-<td style="text-align:right">7</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<p>又比如下面的效果：</p>
-<table>
-<thead>
-<tr>
-<th>函数名称</th>
-<th>说明</th>
-<th>ID</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>help()</code></td>
-<td>展示帮助窗口</td>
-</tr>
-<tr>
-<td><code>delete()</code></td>
-<td><strong>删除文件</strong></td>
-<td>2</td>
-</tr>
-<tr>
-<td><code>copy()</code></td>
-<td><em>复制文件</em></td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-<p>实现方式:<br><code>`&lt;br&gt;</code>| 函数名称 | 说明 | ID|<br><code>&lt;br&gt;</code>| ——–| ——– ||<br><code>&lt;br&gt;</code>| <code>help()</code> | 展示帮助窗口 |<br><code>&lt;br&gt;</code>| <code>delete()</code> | <strong>删除文件</strong> |2|<br><code>&lt;br&gt;</code>| <code>copy()</code>  | <em>复制文件</em> | 3|<br>`<br><br></p>
-<p>可以看出，实际上表格的输入不一定要是对称的，并且首行一定是加粗，作者也可以在表格内自定义表格内容的文字效果</p>
-<p>另外，如果需要表头跟内容不一样，可以将<font size="4" face="黑体" color="#8B008B"><strong><code>&lt;td&gt;</code>表头内容<code>&lt;/td&gt;</code></strong></font>换成<font size="4" face="黑体" color="#8B008B"><strong><code>&lt;th&gt;</code>表头内容<code>&lt;/th&gt;</code></strong></font>。</p>
-<p>如果表格内文需要换行，可以在要换行的内容后加入</p>
-<p><font size="4" face="黑体" color="#8B008B"><strong><code>&lt;br&gt;</code></strong></font>，后面的内容就会跑到下一行。</p>
-<p>如果有跨行或者跨列的单元格，可用<font size="4" face="黑体" color="#8B008B"><strong><code>&lt;th colspan=&quot;跨列数&quot;&gt;内容&lt;/th&gt;</code></strong></font>。<br>跨行则是用rowspan=”跨行数”。</p>
-<p>如果要调整某一列的宽度，可使用：<font size="4" face="黑体" color="#8B008B"><strong><code>&lt;th width=&quot;宽度值或百分比&quot;&gt;表头内容&lt;/th&gt;</code></strong></font>。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;&lt;strong&gt;&lt;strong&gt;&lt;/font&gt;&lt;br&gt;&lt;font size=3 face=&quot;黑体&quot; color=#8B008B&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/font&gt;
-
-&lt;center&gt;&lt;h1&gt;MarkDown常用技巧&lt;/h1&gt;&lt;/center&gt;&lt;br&gt;可参考:&lt;br&gt;&lt;br&gt;&lt;a href=&quot;http://www.markdown.cn/&quot;&gt;&lt;font size=4&gt;markdown中文网&lt;/font&gt;&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://www.zhihu.com/question/19963642&quot;&gt;知乎：markdown是什么&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/column/details/markdown.html&quot;&gt;CSDN markdown专栏&lt;/a&gt;&lt;br&gt;&lt;strong&gt;&lt;em&gt;
-&lt;/em&gt;&lt;/strong&gt;&lt;br&gt;MarkDown作者Aaron Swartz:&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;center&gt;![MarkDown作者] (“&lt;a href=&quot;https://pic4.zhimg.com/606e14127233ca0a935032b19b5df3a7_b.jpg&quot;&gt;https://pic4.zhimg.com/606e14127233ca0a935032b19b5df3a7_b.jpg&lt;/a&gt;“)&lt;/center&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.rememberaaronsw.com/memories/&quot;&gt;纪念斯沃茨的网站(markdown编写)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;###标题&lt;br&gt;标题共有6级，用&lt;strong&gt;&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;#&lt;/font&gt;&lt;/strong&gt;表示，后面接内容，&lt;strong&gt;&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;#&lt;/font&gt;&lt;/strong&gt;越多代表级别越高，尺寸越小&lt;/p&gt;
-&lt;p&gt;###加粗，斜体&lt;br&gt;在需要加粗的文字两端加入&lt;strong&gt;&lt;font size=3 face=&quot;黑体&quot; color=#8B008B&gt;`&lt;/strong&gt;加粗文字&lt;strong&gt;`&lt;/font&gt;&lt;/strong&gt;&lt;br&gt;或者&lt;font size=3 face=&quot;黑体&quot; color=#8B008B&gt;&lt;strong&gt;&lt;code&gt;_加粗文字_&lt;/code&gt;&lt;/strong&gt;&lt;/font&gt;&lt;br&gt;如果要输出斜体效果，那么就是单个的&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;&lt;strong&gt;&lt;code&gt;*&lt;/code&gt;&lt;/strong&gt;&lt;/font&gt;或者是单个的&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;&lt;strong&gt;&lt;code&gt;_&lt;/code&gt;&lt;/strong&gt;&lt;/font&gt;&lt;br&gt;而且，加粗和斜体标识最好都是放在&lt;font size=4 face=&quot;黑体&quot; color=#8B008B&gt;&lt;strong&gt;&lt;code&gt;&amp;lt;font&amp;gt;&lt;/code&gt;&lt;/strong&gt;&lt;/font&gt;内&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="MarkDown" scheme="https://simonid.github.io/tags/MarkDown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo与github搭建个人博客</title>
-    <link href="https://simonid.github.io/2017/01/17/hexo%E4%B8%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://simonid.github.io/2017/01/17/hexo与github搭建个人博客/</id>
-    <published>2017-01-17T08:08:08.000Z</published>
-    <updated>2017-03-08T05:21:42.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><center><font face="黑体" color="#0000ff" size="10">HEXO与Github.io搭建个人博客</font></center></p>
-<p>###HEXO搭建<br>&nbsp;&nbsp;&nbsp;&nbsp;HEXO是基于Node.JS的一款简单快速的博客框架，能够支持多线程，支持markdown，可以将生成的静态网页发布到github.io以及coding上。<br>要使用搭建HEXO博客，先安装hexo<br>1.安装node.js</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>sudo apt-get install -y python-software-properties software-properties-common<br>sudo add-apt-repository ppa:chris-lea/node.js<br>sudo apt-get update<br>sudo apt-get install nodejs<br></font></td></tr></table><br>2.安装npm<br>&nbsp;&nbsp;&nbsp;&nbsp;npm全名：Node Package Manager，是Nodejs的包管理器。<br>ubuntu16.04LTS自带nodejs和npm，但是版本较低，假如要安装最新的，先移除自带的。</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>sudo apt-get remove nodejs &amp;&amp; sudo apt-get remove npm<br></font></td></tr></table><br>再清理依赖包：</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>sudo apt-get  autoremove<br></font></td></tr></table><br><br><br>官网上下载nodejs：</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>cd /opt &amp;&amp; wget <a href="https://nodejs.org/dist/v4.4.5/node-v4.4.5-linux-x64.tar.xz" target="_blank" rel="external">https://nodejs.org/dist/v4.4.5/node-v4.4.5-linux-x64.tar.xz</a><br>xz -d node-v4.4.5-linux-x64.tar.xz &amp;&amp; tar vxf node-v4.4.5-linux-x64.tar<br></font></td></tr></table><br><a id="more"></a><br>让任意目录可以访问，先配置环境变量</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>sudo vim /etc/profile<br></font></td></tr></table><br>文件最后加上</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>export PATH=$PATH:/opt/node-v4.4.5-linux-x64/bin<br></font></td></tr></table><br>也可以通过软链接，使得任意目录可访问<br>将node和npm链接到系统默认的PATH目录下的一个，软链接方式如下</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>ln -s /home/simon/node-v4.4.5-linux-x64/bin/node /usr/local/bin/node<br>ln -s /home/simon/node-v4.4.5-linux-x64/bin/npm /usr/local/bin/npm<br></font></td></tr></table><br>同步文件配置：</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>source /etc/profile<br></font></td></tr></table><br>查看版本：</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>node –version &amp;&amp; npm –version<br></font></td></tr></table><br>3.安装hexo<br>国外站点网速较慢，建议换成淘宝站点</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>npm install -g npm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a><br>npm –version<br></font></td></tr></table><br>接下来安装hexo-cli<br>切换到一个合适的目录下</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>npm install -g hexo-cli<br></font></td></tr></table><br>下载完毕之后可以检测一下：<br>hexo –version<br>4.配置<br>hexo本地文件在安装插件的时候，最好都是用root身份执行，不然经常遇到一些问题<br>初始化本地路径</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>cd /home/simon/hexo &amp;&amp; hexo init<br></font></td></tr></table><br>生成node_modules</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>npm install<br></font></td></tr></table><br>生成本地博客</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>hexo g<br><br>hexo server<br></font></td></tr></table><br>在浏览器下输入<font color="#0000ff"><a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></font>，成功的话就生成hexo的标准界面</p>
-<p>###部署到github<br>&nbsp;&nbsp;&nbsp;&nbsp;新建一个repository，例如web（网上说要把名字设置成your_github_name.github.io这种格式，否则会404，但是我没有采用，也能生成）<br>修改hexo根目录下的_config.yml，新增关联仓库<br>deploy:<br>  type: git<br>  repository: <a href="https://github.com/simonid/web.git" target="_blank" rel="external">https://github.com/simonid/web.git</a><br>  branch: master<br>注意了，变量名之前要有两个空格，参数值前要有一个空格，通过:分割<br>假如格式不对，不能被识别，比如：<br>You should configure deployment settings in _config.yml first!</p>
-<p>Available deployer plugins:<br>  git</p>
-<p>这样的错误<br>或者：FATAL remote: Repository not found.<br>完成之后，到github上完成部署<br>在项目的setting项找到Github Pages，生成项目<br>回到终端<br></p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>hexo deploy<br></font></td></tr></table><br>如果报错说缺少deployer：npm install hexo-deployer-git –save<br>打开 <a href="https://simonid.github.io/web/">https://simonid.github.io/web/</a> 就可以看到效果，同时自己的github项目也会有文件更新<br>注：中途可能遇到github的配置问题，请尝试用ssh<br>ssh-keygen -C “username@email.com” -t rsa</p>
-<p>Note: “username@email.com”需要更换成你在Github上注册的Email地址或者是Username<br>这样会在家目录生成一个公钥文件夹.ssh，其中id_rsa.pub是Github需要的SSH公钥文件。复制后粘贴到github上<br>hexo简写命令格式：</p>
-<p><table><tr><td bgcolor="blanchedAlmond"><font color="#dc143c"><br>hexo g == hexo generate(生成静态网页)<br><br><br><br>hexo d == hexo deploy（部署）<br><br><br><br>hexo s == hexo server（测试）<br><br><br><br>hexo n xxx （new article）<br><br><br><br>hexo clean<br><br><br><br>hexo help<br></font></td></tr></table><br>&nbsp;&nbsp;&nbsp;&nbsp;还有其他选项：<br>init 创建一个hexo项目<br>migrate 从其他系统向hexo迁移<br>version 查看hexo的版本<br>–config参数，指定配置文件，代替默认的_config.yml<br>–debug参数，调试模式，输出所有日志信息<br>–safe参数，安全模式，禁用所有的插件和脚本<br>–silent参数，无日志输出模式<br>hexo有许多的主题和插件，可以通过npm、git工具来进行下载，放在theme下<br>hexo根目录的目录及文件说明：</p>
-<pre><code>scaffolds 脚手架，也就是一个工具模板
-scripts 写文件的js，扩展hexo的功能
-source 存放博客正文内容
-source/_drafts 草稿箱
-source/_posts 文件箱
-themes 存放皮肤的目录
-themes/landscape 默认的皮肤
-_config.yml 全局的配置文件
-db.json 静态常量
-</code></pre><p>_posts目录：Hexo是一个静态博客框架，因此没有数据库。文章内容都是以文本文件方式进行存储的，直接存储在_posts的目录。Hexo天生集成了markdown，我们可以直接使用markdown语法格式写博客，例如:hello-world.md。新增加一篇文章，就在_posts目录，新建一个xxx.md的文件。</p>
-<p>themes目录：是存放皮肤的，包括一套Javascript+CSS样式和基于EJS的模板设置。通过在themes目录下，新建一个子目录，就可以创建一套新的皮肤，当然我们也可以直接在landscape上面修改。</p>
-<p>###全局配置</p>
-<p>_config.yml是全局的配置文件：很多的网站配置都在这个文件中定义。</p>
-<pre><code>站点信息: 定义标题，作者，语言
-URL: URL访问路径
-文件目录: 正文的存储目录
-写博客配置：文章标题，文章类型，外部链接等
-目录和标签：默认分类，分类图，标签图
-归档设置：归档的类型
-服务器设置：IP，访问端口，日志输出
-时间和日期格式： 时间显示格式，日期显示格式
-分页设置：每页显示数量
-评论：外挂的Disqus评论系统
-插件和皮肤：换皮肤，安装插件
-Markdown语言：markdown的标准
-CSS的stylus格式：是否允许压缩
-部署配置：github发布
-</code></pre><p><a href="http://www.tuicool.com/articles/y6JJV3Z" target="_blank" rel="external"><font color="#DC143C">最详细的资料</font><br></a><br><br><br><a href="http://www.cnblogs.com/purediy/archive/2013/03/07/2948892.html" target="_blank" rel="external">其他资料1</a><br><br><br><a href="http://www.aichengxu.com/other/10706481.htm" target="_blank" rel="external">其他资料2</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;center&gt;&lt;font face=&quot;黑体&quot; color=#0000ff size=10&gt;HEXO与Github.io搭建个人博客&lt;/font&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;###HEXO搭建&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;HEXO是基于Node.JS的一款简单快速的博客框架，能够支持多线程，支持markdown，可以将生成的静态网页发布到github.io以及coding上。&lt;br&gt;要使用搭建HEXO博客，先安装hexo&lt;br&gt;1.安装node.js&lt;/p&gt;
-&lt;p&gt;&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=blanchedAlmond&gt;&lt;font color=#dc143c&gt;&lt;br&gt;sudo apt-get install -y python-software-properties software-properties-common&lt;br&gt;sudo add-apt-repository ppa:chris-lea/node.js&lt;br&gt;sudo apt-get update&lt;br&gt;sudo apt-get install nodejs&lt;br&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;2.安装npm&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;npm全名：Node Package Manager，是Nodejs的包管理器。&lt;br&gt;ubuntu16.04LTS自带nodejs和npm，但是版本较低，假如要安装最新的，先移除自带的。&lt;/p&gt;
-&lt;p&gt;&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=blanchedAlmond&gt;&lt;font color=#dc143c&gt;&lt;br&gt;sudo apt-get remove nodejs &amp;amp;&amp;amp; sudo apt-get remove npm&lt;br&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;再清理依赖包：&lt;/p&gt;
-&lt;p&gt;&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=blanchedAlmond&gt;&lt;font color=#dc143c&gt;&lt;br&gt;sudo apt-get  autoremove&lt;br&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;&lt;br/&gt;&lt;br&gt;官网上下载nodejs：&lt;/p&gt;
-&lt;p&gt;&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=blanchedAlmond&gt;&lt;font color=#dc143c&gt;&lt;br&gt;cd /opt &amp;amp;&amp;amp; wget &lt;a href=&quot;https://nodejs.org/dist/v4.4.5/node-v4.4.5-linux-x64.tar.xz&quot;&gt;https://nodejs.org/dist/v4.4.5/node-v4.4.5-linux-x64.tar.xz&lt;/a&gt;&lt;br&gt;xz -d node-v4.4.5-linux-x64.tar.xz &amp;amp;&amp;amp; tar vxf node-v4.4.5-linux-x64.tar&lt;br&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="博客" scheme="https://simonid.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-      <category term="hexo" scheme="https://simonid.github.io/tags/hexo/"/>
-    
-      <category term="博客" scheme="https://simonid.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
