@@ -155,7 +155,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/c/" style="font-size: 16.67px;">c</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/network/" style="font-size: 13.33px;">network</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/spider/" style="font-size: 10px;">spider</a> <a href="/tags/theme/" style="font-size: 10px;">theme</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a>
+						<a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/c/" style="font-size: 17.5px;">c</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/network/" style="font-size: 12.5px;">network</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/spider/" style="font-size: 10px;">spider</a> <a href="/tags/theme/" style="font-size: 10px;">theme</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a> <a href="/tags/资料/" style="font-size: 10px;">资料</a>
 					</div>
 				</section>
 				
@@ -304,6 +304,99 @@
 
 
 
+
+  
+    <article id="post-桥接与二层转发的概念" class="article article-type-post" itemscope itemprop="blogPost">
+    <script>
+        $("html").niceScroll({
+            cursorcolor: "#2a2929",
+            cursoropacitymax: 1,
+            touchbehavior: false,
+            cursorwidth: "6px",
+            cursorborder: "5",
+            cursorborderradius: "0px",
+            autohidemode: true
+        });
+    </script>
+    
+        <div class="article-meta">
+            <a href="/2017/03/13/桥接与二层转发的概念/" class="article-date">
+  	<time datetime="2017-03-13T08:51:07.000Z" itemprop="datePublished">2017-03-13</time>
+</a>
+
+<a href="/2017/03/13/桥接与二层转发的概念/" class="article-date">
+  	<time datetime="2017-03-13T08:51:07.000Z" itemprop="datePublished">2017-03-13</time>
+  	<span id="busuanzi_container_page_pv" style="color:DarkRed">
+      view <span id="busuanzi_value_page_pv"></span> times
+    </span>
+</a>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        </div>
+        
+            <div class="article-inner">
+                
+                    <input type="hidden" class="isFancy" />
+                    
+                        
+                            <header class="article-header">
+                                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/13/桥接与二层转发的概念/">桥接与二层转发的概念</a>
+    </h1>
+  
+
+
+                            </header>
+                            
+                                    
+
+                                        <div class="article-entry" itemprop="articleBody">
+                                           <!--
+                                            
+
+                                            
+                                            -->
+                                            
+                                                     <p><h2><center>桥接和二层转发的概念</center></h2></p>
+<p><font color=#8943ds size=4><strong>二层转发：</strong></font><br/><br>&ensp;&ensp;在链路层中，根据报文的目的MAC地址来对报文进行转发，由于数据链路层位于osi模型中的第二层，所以就称为二层转发。在二层转发中，不用对报文的头部做任何修改，但是在三层转发则是根据报文的IP地址来进行转发，同时要对报文的二层头部进行修改。<br/><br>&ensp;&ensp;实现机制：<br/><br>学习线程和报文转发线程，二层转发只和mac地址有关，和IP无关。<br/></p>
+<p><font color=#8943ds size=4><strong>桥接的概念:</strong></font><br/><br>&ensp;&ensp;把两台处于同一网段的设备通过网桥(实质就是交换机)连接在一起，网桥是一个二层转发的设备，通俗地说就是根据目的MAC地址把一台设备上的报文原封不动转发到对应的另外一台设备，网桥在整个转发过程中是透明的。<br/><br>
+                                            
+                                        </div>
+
+                                        
+                                            <div class="article-info article-info-index">
+                                                
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li></ul>
+	</div>
+
+
+                                                    
+
+                                                        
+                                                            <p class="article-more-link">
+                                                                <a  href="/2017/03/13/桥接与二层转发的概念/#more">More >></a>
+                                                            </p>
+                                                            
+                                                                <div class="clearfix"></div>
+                                            </div>
+                                            
+            </div>
+            
+                    
+                                <!-- 多说评论框 start -->
+                                
+</article>
+
+<!--
+
+-->
+<!--
+
+-->
 
   
     <article id="post-c中的预处理" class="article article-type-post" itemscope itemprop="blogPost">
@@ -750,97 +843,6 @@
                                                         
                                                             <p class="article-more-link">
                                                                 <a  href="/2017/03/09/了解hexo主题的布局/#more">More >></a>
-                                                            </p>
-                                                            
-                                                                <div class="clearfix"></div>
-                                            </div>
-                                            
-            </div>
-            
-                    
-                                <!-- 多说评论框 start -->
-                                
-</article>
-
-<!--
-
--->
-<!--
-
--->
-
-  
-    <article id="sublime-Sublime Text开发环境搭建" class="article article-type-sublime" itemscope itemprop="blogPost">
-    <script>
-        $("html").niceScroll({
-            cursorcolor: "#2a2929",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "6px",
-            cursorborder: "5",
-            cursorborderradius: "0px",
-            autohidemode: true
-        });
-    </script>
-    
-        <div class="article-meta">
-            <a href="/2017/03/08/Sublime Text开发环境搭建/" class="article-date">
-  	<time datetime="2017-03-08T12:36:25.000Z" itemprop="datePublished">2017-03-08</time>
-</a>
-
-<a href="/2017/03/08/Sublime Text开发环境搭建/" class="article-date">
-  	<time datetime="2017-03-08T12:36:25.000Z" itemprop="datePublished">2017-03-08</time>
-  	<span id="busuanzi_container_page_pv" style="color:DarkRed">
-      view <span id="busuanzi_value_page_pv"></span> times
-    </span>
-</a>
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-        </div>
-        
-            <div class="article-inner">
-                
-                    <input type="hidden" class="isFancy" />
-                    
-                        
-                            <header class="article-header">
-                                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/08/Sublime Text开发环境搭建/">Text开发环境搭建</a>
-    </h1>
-  
-
-
-                            </header>
-                            
-                                    
-
-                                        <div class="article-entry" itemprop="articleBody">
-                                           <!--
-                                            
-
-                                            
-                                            -->
-                                            
-                                                     <p><h3><center>Sublime Text开发环境搭建</center></h3><br>&nbsp;&nbsp;&emsp;Sublime text是一个很强的跨平台编辑器，如果你只认为它和普通编辑器一样那就误解了，实际上，它有很多丰富的插件，我们可以通过拓展插件的方法来搭建一个非常完备的开发环境。甚至，很多时候，它可以替代IDE的很多工作（好多IDE真的是内存杀手，尽管它们有很多功能）。<br/><br/><br>官网：<a href="http://www.sublimetext.com/">http://www.sublimetext.com/</a><br/><br>&nbsp;&nbsp;&emsp;安装插件之前，我们要先安装package control包管理器：<br>依次点开<b>view-&gt;show control</b>(快捷键 Ctrl+`),在控制台下输入:<br/><br/><br>
-                                            
-                                        </div>
-
-                                        
-                                            <div class="article-info article-info-index">
-                                                
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/">tool</a></li></ul>
-	</div>
-
-
-                                                    
-
-                                                        
-                                                            <p class="article-more-link">
-                                                                <a  href="/2017/03/08/Sublime Text开发环境搭建/#more">More >></a>
                                                             </p>
                                                             
                                                                 <div class="clearfix"></div>
