@@ -9,10 +9,10 @@
   <meta name="description" content="&amp;nbsp;记录一次NetworkManager与interfaces冲突的解决&amp;emsp;主机是ubuntu14.04，之前改过/etc/network/interfaces的配置内容（设置了静态ip），然后发现图形界面上的网络设置失效了，而且因为修改了interfaces之后还不能连接网络，ifconfig的时候不显示wlan0和eth0的信息，反而多了一个tun0-00。下面是一些解决的步骤">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://simonid.github.io/2017/03/16/记录一次NetworkManager与interfaces冲突的解决过程/index.html">
+<meta property="og:url" content="https://simonid.github.io/2017/03/20/记录一次NetworkManager与interfaces冲突的解决过程/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="&amp;nbsp;记录一次NetworkManager与interfaces冲突的解决&amp;emsp;主机是ubuntu14.04，之前改过/etc/network/interfaces的配置内容（设置了静态ip），然后发现图形界面上的网络设置失效了，而且因为修改了interfaces之后还不能连接网络，ifconfig的时候不显示wlan0和eth0的信息，反而多了一个tun0-00。下面是一些解决的步骤">
-<meta property="og:updated_time" content="2017-03-08T05:19:48.000Z">
+<meta property="og:updated_time" content="2017-03-20T09:48:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
 <meta name="twitter:description" content="&amp;nbsp;记录一次NetworkManager与interfaces冲突的解决&amp;emsp;主机是ubuntu14.04，之前改过/etc/network/interfaces的配置内容（设置了静态ip），然后发现图形界面上的网络设置失效了，而且因为修改了interfaces之后还不能连接网络，ifconfig的时候不显示wlan0和eth0的信息，反而多了一个tun0-00。下面是一些解决的步骤">
@@ -159,7 +159,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/c/" style="font-size: 16.67px;">c</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/network/" style="font-size: 13.33px;">network</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/spider/" style="font-size: 10px;">spider</a> <a href="/tags/theme/" style="font-size: 10px;">theme</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a>
+						<a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/c/" style="font-size: 16.67px;">c</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/network/" style="font-size: 13.33px;">network</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/spider/" style="font-size: 10px;">spider</a> <a href="/tags/theme/" style="font-size: 10px;">theme</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a> <a href="/tags/资料/" style="font-size: 10px;">资料</a>
 					</div>
 				</section>
 				
@@ -244,12 +244,12 @@
     </script>
     
         <div class="article-meta">
-            <a href="/2017/03/16/记录一次NetworkManager与interfaces冲突的解决过程/" class="article-date">
-  	<time datetime="2017-03-16T05:47:42.001Z" itemprop="datePublished">2017-03-16</time>
+            <a href="/2017/03/20/记录一次NetworkManager与interfaces冲突的解决过程/" class="article-date">
+  	<time datetime="2017-03-20T09:55:20.367Z" itemprop="datePublished">2017-03-20</time>
 </a>
 
-<a href="/2017/03/16/记录一次NetworkManager与interfaces冲突的解决过程/" class="article-date">
-  	<time datetime="2017-03-16T05:47:42.001Z" itemprop="datePublished">2017-03-16</time>
+<a href="/2017/03/20/记录一次NetworkManager与interfaces冲突的解决过程/" class="article-date">
+  	<time datetime="2017-03-20T09:55:20.367Z" itemprop="datePublished">2017-03-20</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkRed">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -271,7 +271,7 @@
 
                                                     <p class="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">记录一次NetworkManager与interfaces冲突的解决</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">记录一次NetworkManager与interfaces冲突的解决</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">network-manager和/etc/network/interfaces的关系</span></a></li></ol></li></ol>
 </div>
 <script>
     $(function(){
@@ -324,11 +324,22 @@
 <p>然后还有/etc/xdg/autostart/nm-applet.desktop：</p>
 <font color="#0099ff"><br>[Desktop Entry]<br><br>Name=Network<br><br>Comment=Manage your network connections<br><br>Icon=nm-device-wireless<br><br>Exec=nm-applet<br><br>Terminal=false<br><br>Type=Application<br><br>NoDisplay=true<br><br>NotShowIn=KDE;<br><br>X-GNOME-Bugzilla-Bugzilla=GNOME<br><br>X-GNOME-Bugzilla-Product=NetworkManager<br><br>X-GNOME-Bugzilla-Component=nm-applet<br><br>X-GNOME-UsesNotifications=true<br><br>AutostartCondition=GNOME3 unless-session gnome<br><br>X-Ubuntu-Gettext-Domain=nm-applet<br><br></font><br>网上有种说法：<a href="http://blog.csdn.net/cor\_twi/article/details/43836681" target="_blank" rel="external">http://blog.csdn.net/cor\_twi/article/details/43836681</a><br><br>但是按照这种做法没有用<br><br>如果要用图形界面，到/etc/NetworkManager/nm-system-settings.conf下，把<br><br>[ifupdown]<br><br>managed=false（应该是修改了interfaces之后自动改成false的）<br><br>中的false改成true<br><br>&emsp;上述的方法能够重新使用有线和无线，但是也有留下不少的问题没有解决，比如开机的时候就要比平时等多2–3分钟（猜测是修改了配置之后通过NetworkManager管理网络的话是不会保留上一次工作的网络信息，然后导致本次开机重新加载），而且要通过图形界面配置网络的话，要在开机的时候输入：<br><br>sudo service network-manager restart<br><br>而且，此时的图形控制栏是缺少了一些功能的，比如关闭wifi，比如vpn配置，假如要关闭wifi，就通过sudo ifdown wlan0。<br><br>假如是要配置vpn，也可以通过命令行实现，下面有两个方法：<br><br>方法1：<br><br>sudo pptpsetup –create testvpn –server 123.45.67.88 –username kk –password fku –encrypt –start<br><br>&emsp;–create 后的是创建的连接名称，可以为任意名称; –server 后接的是vpn服务器的IP; –username 是用户名 –password 是密码，在这也可以没这个参数，命令稍后会自动询问。这样可以保证账号安全 –encrypt 是表示需要加密，不必指定加密方式，命令会读取配置文件中的加密方式 –start 是表示创建连接完后马上连接，如果你不想连，就不写<br><br>连接：sudo pon vpnname<br><br>查看状态：plog<br><br>断开：sudo poff<br><br>方法2：<br><br>连接：<br><br>~$ sudo nmcli -p c up id VPN-Green<br><br>断开连接：<br><br>~$ sudo nmcli -p c down id VPN-Green<br><br>修改/etc/NetworkManagersystem-connections/VPN-Green<br><br><font color="#FF7F50"><br>password-flags=0<br><br>[vpn-secrets]<br><br>password=<strong><em>*</em></strong><br><br>[connection]<br><br>id=VPN-Green （名字）<br><br>uuid=9b17f157-fb28-42bf-b092-d3e4a56682f1<br><br>type=vpn<br><br>permissions=user:tomcat:;<br><br>autoconnect=false<br><br>timestamp=1444354237<br><br>[vpn]<br><br>service-type=org.freedesktop.NetworkManager.pptp<br><br>gateway=a.sggjsq.com<br><br>require-mppe=yes<br><br>user=<strong><em>*</em></strong><br><br>password-flags=0<br><br>[vpn-secrets]<br><br>password=<strong><em>*</em></strong><br><br>[ipv4]<br><br>method=auto<br><br></font>
 
-<p>参考：<a href="http://int32bit.me/2016/04/18/Linux%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E6%80%BB%E7%BB%93/" target="_blank" rel="external">http://int32bit.me/2016/04/18/Linux%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E6%80%BB%E7%BB%93/</a></p>
+<p></p><h4>network-manager和/etc/network/interfaces的关系</h4><br>当系统内没有第三方网络管理工具（比如network-manager），那么就会默认使用interfaces配置文件的内容。<br><br>当系统安装network-manager(桌面版默认安装)之后，network-manager默认接管系统网络配置，用network-manager的配置参数设置。<br><br>如果用户安装network-manager后自己手动修改interfaces参数，network-manager就会自动停止对系统网络管理，改用interfaces配置。<br>重启network-manager接管：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">sudo service network-manager stop                                        #停止 nm 服务</div><div class="line">sudo  rm/var/lib/NetworkManager/NetworkManager.state       #移除 nm 的状态文件</div><div class="line">sudo vim /etc/NetworkManager/nm-system-settings.conf</div><div class="line">## 里面有一行：managed=true</div><div class="line">## 如果你手工改过 /etc/network/interfaces ，nm 会自己把这行改成：managed=false</div><div class="line">## 将 false 修改成 true</div></pre></td></tr></table></figure><p></p>
+<p>然后重新配置interfaces文件，恢复到默认：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">auto lo</div><div class="line">iface lo inet loopback</div></pre></td></tr></table></figure></p>
+<p>同时删除删除/etc/resolv.conf，最后<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service network-manager start</div></pre></td></tr></table></figure></p>
+<p>到这里基本完成了问题，但是你会发现，当重启nm之后，图标的一些选项内容变成不可选了，那么要怎么办呢？我们只要找到nm-applet服务并开启就可以了。ALT+F2查找nm-applet，点击开启，并加入自启动（rpm系是systemctl enable NetworkManager命令）。<br><br>可是问题又来了，启动这个服务之后和前面的共存了，也就是说左面上同时出现了两个网络图标（假如你一直再开启一个服务又会多出来一个，如果你关闭nm服务，nm-applet也会消失，开启nm后nm-applet又会出现多个），怎么去掉这些多余的nm-applet呢？<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pkill nm-applet</div><div class="line">sudo /etc/init.d/dbus restart #设置单个进程</div><div class="line">nm-applet --sm-disable或者快捷键开启</div></pre></td></tr></table></figure></p>
+<p>更新network-Manager：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">从PPA更新network-manager</div><div class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BC8EBFE8</div><div class="line">在/etc/apt/sources.list最后加上</div><div class="line">deb http://ppa.launchpad.net/network-manager/trunk/ubuntu karmic main</div><div class="line">deb-src http://ppa.launchpad.net/network-manager/trunk/ubuntu karmic main</div><div class="line">sudo aptitude update</div><div class="line">sudo aptitude safe-upgrade</div></pre></td></tr></table></figure></p>
+<p>Server版本<br><br>在Ubuntu Server版本中，因为只存有命令行模式，所以要想进行网络参数设置，只能通过修改配置文件 /etc/network/interfaces 。具体设置方法如下：<br><br>(1) Ubuntu Server 修改 IP地址<br><br>打开 /etc/network/interfaces：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/network/interfaces</div></pre></td></tr></table></figure></p>
+<p>加入以下语句：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">auto eth0</div><div class="line">iface eth0 inet static</div><div class="line">    addressxxx.xxx.xxx.xxx      #IP地址</div><div class="line">    netmask xxx.xxx.xxx.xxx #子网掩码</div><div class="line">    gateway xxx.xxx.xxx.xxx #网关</div></pre></td></tr></table></figure></p>
+<p>(2) Ubuntu Server 修改 DNS<br><br>打开 /etc/resolv.conf<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/resolv.conf</div></pre></td></tr></table></figure></p>
+<p>改为如下内容：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">search localdomain #如果本Server为DNS服务器，可以加上这一句，如果不是，可以不加</div><div class="line">nameserver 172.16.3.4 #希望修改成的DNS</div><div class="line">nameserver 172.16.3.3 #希望修改成的DNS</div></pre></td></tr></table></figure></p>
+<p>(3) Ubuntu Server 重启网络<br><br>在rc.local里加入这个重启网络配置的命令：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo /etc/init.d/networking restart</div></pre></td></tr></table></figure></p>
+<p>更多ubuntu网络设置：<a href="https://wiki.ubuntu.com.cn/%E8%81%94%E7%BD%91#Network_Manager.EF.BC.88GNOME.EF.BC.89" target="_blank" rel="external">https://wiki.ubuntu.com.cn/%E8%81%94%E7%BD%91#Network_Manager.EF.BC.88GNOME.EF.BC.89</a><br><br><br>参考：<br><a href="http://blog.csdn.net/xinling1588/article/details/7037294" target="_blank" rel="external">http://blog.csdn.net/xinling1588/article/details/7037294</a></p>
+<p><a href="http://int32bit.me/2016/04/18/Linux%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E6%80%BB%E7%BB%93/" target="_blank" rel="external">http://int32bit.me/2016/04/18/Linux%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E6%80%BB%E7%BB%93/</a></p>
 <p><a href="https://linux.cn/article-4015-1.html" target="_blank" rel="external">https://linux.cn/article-4015-1.html</a></p>
 <p><a href="http://blog.chinaunix.net/uid-108431-id-4096909.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-108431-id-4096909.html</a></p>
 <p>vpn设置和命令：<a href="http://blog.sina.com.cn/s/blog_630d9b440100fjpu.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_630d9b440100fjpu.html</a></p>
-<p>（参照上面三个完成）</p>
+<p>（参照上面完成）</p>
 <p><a href="http://wiki.ubuntu.org.cn/UbuntuManual:%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE\#.E9.85.8D.E7.BD.AE.E6.97.A0.E7.BA.BF.E7.BD.91.E5.8D.A1.28Wi-Fi.29.E6.8E.A5.E5.8F.A3" target="_blank" rel="external">http://wiki.ubuntu.org.cn/UbuntuManual:%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE\#.E9.85.8D.E7.BD.AE.E6.97.A0.E7.BA.BF.E7.BD.91.E5.8D.A1.28Wi-Fi.29.E6.8E.A5.E5.8F.A3</a></p>
 <p><a href="https://wiki.debian.org/zh\_CN/NetworkConfiguration" target="_blank" rel="external">https://wiki.debian.org/zh\_CN/NetworkConfiguration</a></p>
 <p><a href="http://www.cnblogs.com/xuanfengling/p/3410551.html" target="_blank" rel="external">http://www.cnblogs.com/xuanfengling/p/3410551.html</a></p>
@@ -362,7 +373,7 @@
 <nav id="article-nav">
   
   
-    <a href="/2017/03/16/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/20/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Hello World</div>
       <strong class="article-nav-caption">></strong>
     </a>
@@ -373,7 +384,7 @@
                             
                                 <!-- 多说评论框 start -->
                                 
-                                    <div class="ds-thread" data-thread-key="post-记录一次NetworkManager与interfaces冲突的解决过程" data-title="" data-url="https://simonid.github.io/2017/03/16/记录一次NetworkManager与interfaces冲突的解决过程/"></div>
+                                    <div class="ds-thread" data-thread-key="post-记录一次NetworkManager与interfaces冲突的解决过程" data-title="" data-url="https://simonid.github.io/2017/03/20/记录一次NetworkManager与interfaces冲突的解决过程/"></div>
                                     <!-- 多说评论框 end -->
                                     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
                                     <script type="text/javascript">

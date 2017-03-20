@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://simonid.github.io/"/>
-  <updated>2017-03-08T05:19:48.000Z</updated>
+  <updated>2017-03-20T09:48:58.000Z</updated>
   <id>https://simonid.github.io/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title></title>
-    <link href="https://simonid.github.io/2017/03/17/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1NetworkManager%E4%B8%8Einterfaces%E5%86%B2%E7%AA%81%E7%9A%84%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/"/>
-    <id>https://simonid.github.io/2017/03/17/记录一次NetworkManager与interfaces冲突的解决过程/</id>
-    <published>2017-03-17T12:07:02.702Z</published>
-    <updated>2017-03-08T05:19:48.000Z</updated>
+    <link href="https://simonid.github.io/2017/03/20/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1NetworkManager%E4%B8%8Einterfaces%E5%86%B2%E7%AA%81%E7%9A%84%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/"/>
+    <id>https://simonid.github.io/2017/03/20/记录一次NetworkManager与interfaces冲突的解决过程/</id>
+    <published>2017-03-20T09:55:20.367Z</published>
+    <updated>2017-03-20T09:48:58.000Z</updated>
     
     <content type="html"><![CDATA[<p>&nbsp;</p><h3>记录一次NetworkManager与interfaces冲突的解决</h3><br><br><br>&emsp;主机是ubuntu14.04，之前改过/etc/network/interfaces的配置内容（设置了静态ip），然后发现图形界面上的网络设置失效了，而且因为修改了interfaces之后还不能连接网络，ifconfig的时候不显示wlan0和eth0的信息，反而多了一个tun0-00。下面是一些解决的步骤：<p></p>
 <p>&emsp;首先，重新编辑interfaces文件和/etc/resolv.conf文件，使他们恢复默认设置，然后重启，失败。先解决eth0的问题吧。网线接上电脑，手动开启eth0：</p>
@@ -44,11 +44,22 @@
 <p>然后还有/etc/xdg/autostart/nm-applet.desktop：</p>
 <font color="#0099ff"><br>[Desktop Entry]<br><br>Name=Network<br><br>Comment=Manage your network connections<br><br>Icon=nm-device-wireless<br><br>Exec=nm-applet<br><br>Terminal=false<br><br>Type=Application<br><br>NoDisplay=true<br><br>NotShowIn=KDE;<br><br>X-GNOME-Bugzilla-Bugzilla=GNOME<br><br>X-GNOME-Bugzilla-Product=NetworkManager<br><br>X-GNOME-Bugzilla-Component=nm-applet<br><br>X-GNOME-UsesNotifications=true<br><br>AutostartCondition=GNOME3 unless-session gnome<br><br>X-Ubuntu-Gettext-Domain=nm-applet<br><br></font><br>网上有种说法：<a href="http://blog.csdn.net/cor\_twi/article/details/43836681" target="_blank" rel="external">http://blog.csdn.net/cor\_twi/article/details/43836681</a><br><br>但是按照这种做法没有用<br><br>如果要用图形界面，到/etc/NetworkManager/nm-system-settings.conf下，把<br><br>[ifupdown]<br><br>managed=false（应该是修改了interfaces之后自动改成false的）<br><br>中的false改成true<br><br>&emsp;上述的方法能够重新使用有线和无线，但是也有留下不少的问题没有解决，比如开机的时候就要比平时等多2–3分钟（猜测是修改了配置之后通过NetworkManager管理网络的话是不会保留上一次工作的网络信息，然后导致本次开机重新加载），而且要通过图形界面配置网络的话，要在开机的时候输入：<br><br>sudo service network-manager restart<br><br>而且，此时的图形控制栏是缺少了一些功能的，比如关闭wifi，比如vpn配置，假如要关闭wifi，就通过sudo ifdown wlan0。<br><br>假如是要配置vpn，也可以通过命令行实现，下面有两个方法：<br><br>方法1：<br><br>sudo pptpsetup –create testvpn –server 123.45.67.88 –username kk –password fku –encrypt –start<br><br>&emsp;–create 后的是创建的连接名称，可以为任意名称; –server 后接的是vpn服务器的IP; –username 是用户名 –password 是密码，在这也可以没这个参数，命令稍后会自动询问。这样可以保证账号安全 –encrypt 是表示需要加密，不必指定加密方式，命令会读取配置文件中的加密方式 –start 是表示创建连接完后马上连接，如果你不想连，就不写<br><br>连接：sudo pon vpnname<br><br>查看状态：plog<br><br>断开：sudo poff<br><br>方法2：<br><br>连接：<br><br>~$ sudo nmcli -p c up id VPN-Green<br><br>断开连接：<br><br>~$ sudo nmcli -p c down id VPN-Green<br><br>修改/etc/NetworkManagersystem-connections/VPN-Green<br><br><font color="#FF7F50"><br>password-flags=0<br><br>[vpn-secrets]<br><br>password=<strong><em>*</em></strong><br><br>[connection]<br><br>id=VPN-Green （名字）<br><br>uuid=9b17f157-fb28-42bf-b092-d3e4a56682f1<br><br>type=vpn<br><br>permissions=user:tomcat:;<br><br>autoconnect=false<br><br>timestamp=1444354237<br><br>[vpn]<br><br>service-type=org.freedesktop.NetworkManager.pptp<br><br>gateway=a.sggjsq.com<br><br>require-mppe=yes<br><br>user=<strong><em>*</em></strong><br><br>password-flags=0<br><br>[vpn-secrets]<br><br>password=<strong><em>*</em></strong><br><br>[ipv4]<br><br>method=auto<br><br></font>
 
-<p>参考：<a href="http://int32bit.me/2016/04/18/Linux%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E6%80%BB%E7%BB%93/" target="_blank" rel="external">http://int32bit.me/2016/04/18/Linux%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E6%80%BB%E7%BB%93/</a></p>
+<p></p><h4>network-manager和/etc/network/interfaces的关系</h4><br>当系统内没有第三方网络管理工具（比如network-manager），那么就会默认使用interfaces配置文件的内容。<br><br>当系统安装network-manager(桌面版默认安装)之后，network-manager默认接管系统网络配置，用network-manager的配置参数设置。<br><br>如果用户安装network-manager后自己手动修改interfaces参数，network-manager就会自动停止对系统网络管理，改用interfaces配置。<br>重启network-manager接管：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">sudo service network-manager stop                                        #停止 nm 服务</div><div class="line">sudo  rm/var/lib/NetworkManager/NetworkManager.state       #移除 nm 的状态文件</div><div class="line">sudo vim /etc/NetworkManager/nm-system-settings.conf</div><div class="line">## 里面有一行：managed=true</div><div class="line">## 如果你手工改过 /etc/network/interfaces ，nm 会自己把这行改成：managed=false</div><div class="line">## 将 false 修改成 true</div></pre></td></tr></table></figure><p></p>
+<p>然后重新配置interfaces文件，恢复到默认：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">auto lo</div><div class="line">iface lo inet loopback</div></pre></td></tr></table></figure></p>
+<p>同时删除删除/etc/resolv.conf，最后<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service network-manager start</div></pre></td></tr></table></figure></p>
+<p>到这里基本完成了问题，但是你会发现，当重启nm之后，图标的一些选项内容变成不可选了，那么要怎么办呢？我们只要找到nm-applet服务并开启就可以了。ALT+F2查找nm-applet，点击开启，并加入自启动（rpm系是systemctl enable NetworkManager命令）。<br><br>可是问题又来了，启动这个服务之后和前面的共存了，也就是说左面上同时出现了两个网络图标（假如你一直再开启一个服务又会多出来一个，如果你关闭nm服务，nm-applet也会消失，开启nm后nm-applet又会出现多个），怎么去掉这些多余的nm-applet呢？<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pkill nm-applet</div><div class="line">sudo /etc/init.d/dbus restart #设置单个进程</div><div class="line">nm-applet --sm-disable或者快捷键开启</div></pre></td></tr></table></figure></p>
+<p>更新network-Manager：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">从PPA更新network-manager</div><div class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BC8EBFE8</div><div class="line">在/etc/apt/sources.list最后加上</div><div class="line">deb http://ppa.launchpad.net/network-manager/trunk/ubuntu karmic main</div><div class="line">deb-src http://ppa.launchpad.net/network-manager/trunk/ubuntu karmic main</div><div class="line">sudo aptitude update</div><div class="line">sudo aptitude safe-upgrade</div></pre></td></tr></table></figure></p>
+<p>Server版本<br><br>在Ubuntu Server版本中，因为只存有命令行模式，所以要想进行网络参数设置，只能通过修改配置文件 /etc/network/interfaces 。具体设置方法如下：<br><br>(1) Ubuntu Server 修改 IP地址<br><br>打开 /etc/network/interfaces：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/network/interfaces</div></pre></td></tr></table></figure></p>
+<p>加入以下语句：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">auto eth0</div><div class="line">iface eth0 inet static</div><div class="line">    addressxxx.xxx.xxx.xxx      #IP地址</div><div class="line">    netmask xxx.xxx.xxx.xxx #子网掩码</div><div class="line">    gateway xxx.xxx.xxx.xxx #网关</div></pre></td></tr></table></figure></p>
+<p>(2) Ubuntu Server 修改 DNS<br><br>打开 /etc/resolv.conf<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/resolv.conf</div></pre></td></tr></table></figure></p>
+<p>改为如下内容：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">search localdomain #如果本Server为DNS服务器，可以加上这一句，如果不是，可以不加</div><div class="line">nameserver 172.16.3.4 #希望修改成的DNS</div><div class="line">nameserver 172.16.3.3 #希望修改成的DNS</div></pre></td></tr></table></figure></p>
+<p>(3) Ubuntu Server 重启网络<br><br>在rc.local里加入这个重启网络配置的命令：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo /etc/init.d/networking restart</div></pre></td></tr></table></figure></p>
+<p>更多ubuntu网络设置：<a href="https://wiki.ubuntu.com.cn/%E8%81%94%E7%BD%91#Network_Manager.EF.BC.88GNOME.EF.BC.89" target="_blank" rel="external">https://wiki.ubuntu.com.cn/%E8%81%94%E7%BD%91#Network_Manager.EF.BC.88GNOME.EF.BC.89</a><br><br><br>参考：<br><a href="http://blog.csdn.net/xinling1588/article/details/7037294" target="_blank" rel="external">http://blog.csdn.net/xinling1588/article/details/7037294</a></p>
+<p><a href="http://int32bit.me/2016/04/18/Linux%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E6%80%BB%E7%BB%93/" target="_blank" rel="external">http://int32bit.me/2016/04/18/Linux%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E6%80%BB%E7%BB%93/</a></p>
 <p><a href="https://linux.cn/article-4015-1.html" target="_blank" rel="external">https://linux.cn/article-4015-1.html</a></p>
 <p><a href="http://blog.chinaunix.net/uid-108431-id-4096909.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-108431-id-4096909.html</a></p>
 <p>vpn设置和命令：<a href="http://blog.sina.com.cn/s/blog_630d9b440100fjpu.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_630d9b440100fjpu.html</a></p>
-<p>（参照上面三个完成）</p>
+<p>（参照上面完成）</p>
 <p><a href="http://wiki.ubuntu.org.cn/UbuntuManual:%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE\#.E9.85.8D.E7.BD.AE.E6.97.A0.E7.BA.BF.E7.BD.91.E5.8D.A1.28Wi-Fi.29.E6.8E.A5.E5.8F.A3" target="_blank" rel="external">http://wiki.ubuntu.org.cn/UbuntuManual:%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE\#.E9.85.8D.E7.BD.AE.E6.97.A0.E7.BA.BF.E7.BD.91.E5.8D.A1.28Wi-Fi.29.E6.8E.A5.E5.8F.A3</a></p>
 <p><a href="https://wiki.debian.org/zh\_CN/NetworkConfiguration" target="_blank" rel="external">https://wiki.debian.org/zh\_CN/NetworkConfiguration</a></p>
 <p><a href="http://www.cnblogs.com/xuanfengling/p/3410551.html" target="_blank" rel="external">http://www.cnblogs.com/xuanfengling/p/3410551.html</a></p>
@@ -71,9 +82,9 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://simonid.github.io/2017/03/17/hello-world/"/>
-    <id>https://simonid.github.io/2017/03/17/hello-world/</id>
-    <published>2017-03-17T12:07:02.631Z</published>
+    <link href="https://simonid.github.io/2017/03/20/hello-world/"/>
+    <id>https://simonid.github.io/2017/03/20/hello-world/</id>
+    <published>2017-03-20T09:55:20.301Z</published>
     <updated>2017-01-16T06:15:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
@@ -93,6 +104,47 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>Linux添加启动脚本</title>
+    <link href="https://simonid.github.io/2017/03/20/Linux%E6%B7%BB%E5%8A%A0%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/"/>
+    <id>https://simonid.github.io/2017/03/20/Linux添加启动脚本/</id>
+    <published>2017-03-20T08:59:29.000Z</published>
+    <updated>2017-03-20T09:45:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本人使用的是ubuntu14.04<br></p>
+<p></p><h3>deb系</h3><p></p>
+<p></p><h4>脚本方式</h4><br>&ensp;&ensp;&ensp;首先在/etc/init.d下新建一段脚本，假设名为demo.sh，赋予执行权限：chmod a+x,g+x demo.sh。<br><p></p>
+<p><font color="red" size="4">方法1：</font><br><br>&ensp;&ensp;&ensp;假如要将这段脚本设置为自启动脚本，那么我们可以将其软链接到/etc/rcX.d目录下，比如ln -s /etc/init.d/demo.sh  /etc/rc3.d/S100demo,<br>这里的100是指启动的优先级，假如我们要设置不启动，就设置为K100demo。rc3.d是完全多用户模式<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">rc0.d: 停机，eeprom OpenBoot状态,可以进入硬件维护模式,或关闭机器。</div><div class="line">rc1.d: 单用户模式，可以对系统进行软件维护</div><div class="line">rc2.d: 多用户模式，启动网络工作站服务。 (最后会启动dtlogin允许图形界面工作站)</div><div class="line">rc3.d: 多用户模式，启动网络服务器模式</div><div class="line">rc4.d: 安全模式</div><div class="line">rc6.d: 重启</div></pre></td></tr></table></figure></p>
+<p><font color="red" size="4">方法2：</font><br><br>&ensp;&ensp;&ensp;还是前面那段脚本内容，可以将它添加到/etc/init.d/rc.local文件内，加到语句：exit 0 前面才行。<br></p>
+<p><font color="red" size="4">方法3：</font><br><br>&ensp;&ensp;&ensp;类似方法1，将/etc/init.d/demo.sh赋予执行权限之后，执行：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo update-rc.d demo.sh default 100  #自启动优先级为100</div></pre></td></tr></table></figure></p>
+<p>如果要卸载启动脚本：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo update-rc.d -f demo.sh remove</div></pre></td></tr></table></figure></p>
+<p><font color="red" size="5">脚本之外的自启动方法</font><br></p>
+<p><font color="red" size="4">方法1：</font><br><br>安装和执行rcconf：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install rcconf</div><div class="line">sudo rcconf</div></pre></td></tr></table></figure></p>
+<p>还有功能更齐全的sysv-rc-conf:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install sysc-rc-conf</div><div class="line">sysv-rc-conf  #运行设置</div></pre></td></tr></table></figure></p>
+<p><hr><br><hr></p>
+<p></p><h3>rpm系</h3><p></p>
+<p></p><h4>脚本方式</h4><p></p>
+<p><font color="darkorange">deb系的脚本方式都适用于rpm</font>,不过rpm系还有拓展方式：<br></p>
+<p><font color="red">方法1：</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">（1）chkconfig --level [0123456] [service name] [on|off]</div><div class="line"></div><div class="line">   chkconfig --level 23 dhcp3-server off ----设定dhcp server服务在level2,3下关闭.</div><div class="line"></div><div class="line">（2）chkconfig --list 查看服务的自动开启状态</div><div class="line"></div><div class="line">（3）chkconfig --add 增加一个服务给chkconfig来管理,但是该服务必须在/etc/init.d内。</div></pre></td></tr></table></figure></p>
+<p><font color="red">方法2：</font><br><br>&ensp;&ensp;通过systemctl方式自启动，比如我们要设置network-manager自启：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl enable NetworkManager</div></pre></td></tr></table></figure></p>
+<p>更多方法参考：<a href="http://blog.csdn.net/fu_wayne/article/details/38018825" target="_blank" rel="external">http://blog.csdn.net/fu_wayne/article/details/38018825</a><br></p>
+<p><font color="darkgreen">顺便提一下bash启动脚本：</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">    /etc/profile  </div><div class="line">    /etc/bashrc  </div><div class="line">    ~/.bash_profile  </div><div class="line">    ~/.bashrc  </div><div class="line">    ~/.bash_logout  </div><div class="line">/etc/profile 和 ~/.bash_profile 是在启动一个交互登陆shell的时候被调用。</div><div class="line"></div><div class="line">/etc/bashrc 和 ~/.bashrc 是在一个交互的非登陆shell启动的时候被调用。</div><div class="line"></div><div class="line">~/.bash_logout 在用户注销登陆的时候被读取</div><div class="line"></div><div class="line">用户登录时，bash先自动执行系统管理员建立的全局登录script ： </div><div class="line">     /ect/profile </div><div class="line">   然后bash在用户起始目录下按顺序查找三个特殊文件中的一个： </div><div class="line">     /.bash_profile、 </div><div class="line">     /.bash_login、 </div><div class="line">     /.profile， </div><div class="line">   但只执行最先找到的一个。因此，只需根据实际需要在上述文件中加入命令就可以实现用户登录时自动运行某些程序</div></pre></td></tr></table></figure></p>
+<p>参考：<br><a href="http://jiangzhi2013.blog.51cto.com/7150666/1293877" target="_blank" rel="external">http://jiangzhi2013.blog.51cto.com/7150666/1293877</a><br><br><a href="http://astute11.blog.51cto.com/4404646/1315587" target="_blank" rel="external">http://astute11.blog.51cto.com/4404646/1315587</a><br><br><a href="https://www.ibm.com/developerworks/cn/linux/kernel/startup/index.html" target="_blank" rel="external">深入地理解linux启动</a><br><br><a href="https://www.ibm.com/developerworks/cn/linux/1407_liuming_init2/" target="_blank" rel="external">浅析 Linux 初始化 init 系统，第 2 部分: UpStart</a><br></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本人使用的是ubuntu14.04&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;deb系&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h4&gt;脚本方式&lt;/h4&gt;&lt;br&gt;&amp;ensp;&amp;ensp;&amp;ensp;首先在/etc/init.d下新建一段脚本，假设名为demo.sh，赋予执行权限：
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://simonid.github.io/tags/Linux/"/>
     
   </entry>
   
@@ -799,37 +851,6 @@
     
     
       <category term="tool" scheme="https://simonid.github.io/tags/tool/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HEXO主题定制</title>
-    <link href="https://simonid.github.io/2017/03/08/HEXO%E4%B8%BB%E9%A2%98%E5%AE%9A%E5%88%B6/"/>
-    <id>https://simonid.github.io/2017/03/08/HEXO主题定制/</id>
-    <published>2017-03-08T11:06:40.000Z</published>
-    <updated>2017-03-15T13:17:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<p></p><h2><center>hexo主题定制</center></h2><p></p>
-<p><hr></p>
-<p><font size="3"><em><b>后续也会更新…</b></em></font></p>
-<p><hr><br><br><br>其实也就是在网上找的一些定制hexo主题的链接，废话不多说，直接放出来：<br><br>通过这篇文章先大致了解Hexo的布局<a href="http://www.ituring.com.cn/article/199325" target="_blank" rel="external">初步了解Hexo站点布局</a><br><br><br><br>Landscape主题定制：<br><br><a href="http://blog.sunnyxx.com/2014/03/07/hexo_customize/" target="_blank" rel="external"><font size="4" color="#8B008B">hexo私人定制</font></a><br><br><a href="http://hialex.cn/2014/05/18/%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84hexo%E4%B8%BB%E9%A2%98/" target="_blank" rel="external"><font size="4" color="#8b008b">定制自己的hexo主题</font></a><br><br><br><a href="http://www.codertian.com/2016/03/14/change-landscape-theme-by-yourself/" target="_blank" rel="external"><font size="4" color="#8b008b">【实用技能】教你定制Hexo的landscape打造自己的主题</font></a><br><a id="more"></a><br><a href="http://hanhailong.com/2015/09/17/Hexo%E4%B8%BB%E9%A2%98-%E5%9C%A8%E5%8D%9A%E5%AE%A2%E5%B7%A6%E4%B8%8A%E8%A7%92%E6%B7%BB%E5%8A%A0ForkMeOnGithub%E5%8A%9F%E8%83%BD/" target="_blank" rel="external"><font size="4" color="#8b008b">Hexo主题-在博客左上角添加ForkMeOnGithub功能</font></a><br><br><a href="http://www.yehbeats.com/2015/04/08/hexo-search/" target="_blank" rel="external"><font size="4" color="#8b008b">Yilia主题添加站内搜索功能-swiftype</font></a><br><br><a href="http://yifeng.studio/2016/09/10/Hexo-search-baidutongji-highlight/" target="_blank" rel="external"><font size="4" color="#8b008b">站内搜索(swiftpye)、百度统计、代码高亮</font> </a><br><br><a href="http://hahack.com/codes/local-search-engine-for-hexo/" target="_blank" rel="external"><font size="4" color="#8b008b">站内搜索-很全</font></a><br><br><a href="http://moxfive.xyz/2016/05/31/hexo-local-search/" target="_blank" rel="external"><font size="4" color="#8b008b">本地站内搜索-json解析(继承自前文,存在不足)</font></a><br><br><a href="http://gaomf.cn/2016/10/10/%E4%B8%BAHexo%E5%8D%9A%E5%AE%A2Yilia%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/" target="_blank" rel="external"><font size="4" color="#8b008b">站内搜索-针对前文进一步优化</font></a><br><br><a href="http://devlu.me/2016/01/23/Hexo%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96%E9%85%8D%E7%BD%AE%E4%B9%8B-%E4%B8%BA%E8%87%AA%E5%B7%B1%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2/" target="_blank" rel="external"><font size="4" color="#8b008b">站内搜索-google平台</font></a><br><br><a href="http://frankorz.com/2016/09/30/Hexo-patch/" target="_blank" rel="external"><font size="4" color="#8b008b">博客插件-字数统计、网易云音乐、更新时间</font></a><br><br><a href="http://www.voidking.com/2015/05/31/deve-hexo-theme-optimize/" target="_blank" rel="external"><font size="4" color="#8b008b">主题优化</font></a><br><br><a href="http://morningchen.com/2015/07/15/Table-Of-Contents-for-hexo/" target="_blank" rel="external"><font size="4" color="#8b008b">在Hexo中给文章加目录</font></a><br></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;h2&gt;&lt;center&gt;hexo主题定制&lt;/center&gt;&lt;/h2&gt;&lt;/p&gt;
-&lt;p&gt;&lt;hr/&gt;&lt;/p&gt;
-&lt;p&gt;&lt;font size=3&gt;&lt;em&gt;&lt;b&gt;后续也会更新…&lt;/b&gt;&lt;/em&gt;&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;hr/&gt;&lt;br&gt;&lt;br/&gt;&lt;br&gt;其实也就是在网上找的一些定制hexo主题的链接，废话不多说，直接放出来：&lt;br/&gt;&lt;br&gt;通过这篇文章先大致了解Hexo的布局&lt;a href=&quot;http://www.ituring.com.cn/article/199325&quot;&gt;初步了解Hexo站点布局&lt;/a&gt;&lt;br/&gt;&lt;br&gt;&lt;br/&gt;&lt;br&gt;Landscape主题定制：&lt;br/&gt;&lt;br&gt;&lt;a href=&quot;http://blog.sunnyxx.com/2014/03/07/hexo_customize/&quot;&gt;&lt;font size=4 color=#8B008B&gt;hexo私人定制&lt;/font&gt;&lt;/a&gt;&lt;br/&gt;&lt;br&gt;&lt;a href=&quot;http://hialex.cn/2014/05/18/%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84hexo%E4%B8%BB%E9%A2%98/&quot;&gt;&lt;font size=4 color=#8b008b&gt;定制自己的hexo主题&lt;/font&gt;&lt;/a&gt;&lt;br&gt;&lt;br/&gt;&lt;br&gt;&lt;a href=&quot;http://www.codertian.com/2016/03/14/change-landscape-theme-by-yourself/&quot;&gt;&lt;font size=4 color=#8b008b&gt;【实用技能】教你定制Hexo的landscape打造自己的主题&lt;/font&gt;&lt;/a&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="博客" scheme="https://simonid.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-      <category term="hexo" scheme="https://simonid.github.io/tags/hexo/"/>
-    
-      <category term="博客" scheme="https://simonid.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   

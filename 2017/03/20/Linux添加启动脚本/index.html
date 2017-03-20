@@ -4,21 +4,27 @@
   <meta charset="utf-8">
   <meta name="baidu-site-verification" content="6fea7fc7276fc383ec5b2080c662f076"/>
   
-  <title>Hello World | Hexo</title>
+  <title>Linux添加启动脚本 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="本人使用的是ubuntu14.04
+deb系
+脚本方式&amp;ensp;&amp;ensp;&amp;ensp;首先在/etc/init.d下新建一段脚本，假设名为demo.sh，赋予执行权限：chmod a+x,g+x demo.sh。
+方法1：&amp;ensp;&amp;ensp;&amp;ensp;假如要将这段脚本设置为自启动脚本，那么我们可以将其软链接到/etc/rcX.d目录下，比如ln -s /etc/init.d/demo.s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://simonid.github.io/2017/03/16/hello-world/index.html">
+<meta property="og:title" content="Linux添加启动脚本">
+<meta property="og:url" content="https://simonid.github.io/2017/03/20/Linux添加启动脚本/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2017-01-16T06:15:42.000Z">
+<meta property="og:description" content="本人使用的是ubuntu14.04
+deb系
+脚本方式&amp;ensp;&amp;ensp;&amp;ensp;首先在/etc/init.d下新建一段脚本，假设名为demo.sh，赋予执行权限：chmod a+x,g+x demo.sh。
+方法1：&amp;ensp;&amp;ensp;&amp;ensp;假如要将这段脚本设置为自启动脚本，那么我们可以将其软链接到/etc/rcX.d目录下，比如ln -s /etc/init.d/demo.s">
+<meta property="og:updated_time" content="2017-03-20T09:45:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="Linux添加启动脚本">
+<meta name="twitter:description" content="本人使用的是ubuntu14.04
+deb系
+脚本方式&amp;ensp;&amp;ensp;&amp;ensp;首先在/etc/init.d下新建一段脚本，假设名为demo.sh，赋予执行权限：chmod a+x,g+x demo.sh。
+方法1：&amp;ensp;&amp;ensp;&amp;ensp;假如要将这段脚本设置为自启动脚本，那么我们可以将其软链接到/etc/rcX.d目录下，比如ln -s /etc/init.d/demo.s">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -162,7 +168,7 @@ Quick">
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/c/" style="font-size: 16.67px;">c</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/network/" style="font-size: 13.33px;">network</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/spider/" style="font-size: 10px;">spider</a> <a href="/tags/theme/" style="font-size: 10px;">theme</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a>
+						<a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/c/" style="font-size: 16.67px;">c</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/network/" style="font-size: 13.33px;">network</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/spider/" style="font-size: 10px;">spider</a> <a href="/tags/theme/" style="font-size: 10px;">theme</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博客/" style="font-size: 20px;">博客</a> <a href="/tags/资料/" style="font-size: 10px;">资料</a>
 					</div>
 				</section>
 				
@@ -233,7 +239,7 @@ Quick">
 </div>
 
 	  
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Linux添加启动脚本" class="article article-type-post" itemscope itemprop="blogPost">
     <script>
         $("html").niceScroll({
             cursorcolor: "#2a2929",
@@ -247,12 +253,12 @@ Quick">
     </script>
     
         <div class="article-meta">
-            <a href="/2017/03/16/hello-world/" class="article-date">
-  	<time datetime="2017-03-16T05:47:41.915Z" itemprop="datePublished">2017-03-16</time>
+            <a href="/2017/03/20/Linux添加启动脚本/" class="article-date">
+  	<time datetime="2017-03-20T08:59:29.000Z" itemprop="datePublished">2017-03-20</time>
 </a>
 
-<a href="/2017/03/16/hello-world/" class="article-date">
-  	<time datetime="2017-03-16T05:47:41.915Z" itemprop="datePublished">2017-03-16</time>
+<a href="/2017/03/20/Linux添加启动脚本/" class="article-date">
+  	<time datetime="2017-03-20T08:59:29.000Z" itemprop="datePublished">2017-03-20</time>
   	<span id="busuanzi_container_page_pv" style="color:DarkRed">
       view <span id="busuanzi_value_page_pv"></span> times
     </span>
@@ -271,7 +277,7 @@ Quick">
                                 
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      Linux添加启动脚本
     </h1>
   
 
@@ -280,6 +286,10 @@ Quick">
                             
                                 <div class="article-info article-info-post">
                                     
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+	</div>
+
 
                                         
 
@@ -294,7 +304,7 @@ Quick">
 
                                                     <p class="toc-button">目录</p>
 <div id="toc" class="toc-article" style="display:none;">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">deb系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">脚本方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">rpm系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">脚本方式</span></a></li></ol></li></ol>
 </div>
 <script>
     $(function(){
@@ -325,15 +335,25 @@ Quick">
                                             
                                             -->
                                             
-                                                     <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+                                                     <p>本人使用的是ubuntu14.04<br></p>
+<p></p><h3>deb系</h3><p></p>
+<p></p><h4>脚本方式</h4><br>&ensp;&ensp;&ensp;首先在/etc/init.d下新建一段脚本，假设名为demo.sh，赋予执行权限：chmod a+x,g+x demo.sh。<br><p></p>
+<p><font color="red" size="4">方法1：</font><br><br>&ensp;&ensp;&ensp;假如要将这段脚本设置为自启动脚本，那么我们可以将其软链接到/etc/rcX.d目录下，比如ln -s /etc/init.d/demo.sh  /etc/rc3.d/S100demo,<br>这里的100是指启动的优先级，假如我们要设置不启动，就设置为K100demo。rc3.d是完全多用户模式<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">rc0.d: 停机，eeprom OpenBoot状态,可以进入硬件维护模式,或关闭机器。</div><div class="line">rc1.d: 单用户模式，可以对系统进行软件维护</div><div class="line">rc2.d: 多用户模式，启动网络工作站服务。 (最后会启动dtlogin允许图形界面工作站)</div><div class="line">rc3.d: 多用户模式，启动网络服务器模式</div><div class="line">rc4.d: 安全模式</div><div class="line">rc6.d: 重启</div></pre></td></tr></table></figure></p>
+<p><font color="red" size="4">方法2：</font><br><br>&ensp;&ensp;&ensp;还是前面那段脚本内容，可以将它添加到/etc/init.d/rc.local文件内，加到语句：exit 0 前面才行。<br></p>
+<p><font color="red" size="4">方法3：</font><br><br>&ensp;&ensp;&ensp;类似方法1，将/etc/init.d/demo.sh赋予执行权限之后，执行：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo update-rc.d demo.sh default 100  #自启动优先级为100</div></pre></td></tr></table></figure></p>
+<p>如果要卸载启动脚本：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo update-rc.d -f demo.sh remove</div></pre></td></tr></table></figure></p>
+<p><font color="red" size="5">脚本之外的自启动方法</font><br></p>
+<p><font color="red" size="4">方法1：</font><br><br>安装和执行rcconf：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install rcconf</div><div class="line">sudo rcconf</div></pre></td></tr></table></figure></p>
+<p>还有功能更齐全的sysv-rc-conf:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install sysc-rc-conf</div><div class="line">sysv-rc-conf  #运行设置</div></pre></td></tr></table></figure></p>
+<p><hr><br><hr></p>
+<p></p><h3>rpm系</h3><p></p>
+<p></p><h4>脚本方式</h4><p></p>
+<p><font color="darkorange">deb系的脚本方式都适用于rpm</font>,不过rpm系还有拓展方式：<br></p>
+<p><font color="red">方法1：</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">（1）chkconfig --level [0123456] [service name] [on|off]</div><div class="line"></div><div class="line">   chkconfig --level 23 dhcp3-server off ----设定dhcp server服务在level2,3下关闭.</div><div class="line"></div><div class="line">（2）chkconfig --list 查看服务的自动开启状态</div><div class="line"></div><div class="line">（3）chkconfig --add 增加一个服务给chkconfig来管理,但是该服务必须在/etc/init.d内。</div></pre></td></tr></table></figure></p>
+<p><font color="red">方法2：</font><br><br>&ensp;&ensp;通过systemctl方式自启动，比如我们要设置network-manager自启：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl enable NetworkManager</div></pre></td></tr></table></figure></p>
+<p>更多方法参考：<a href="http://blog.csdn.net/fu_wayne/article/details/38018825" target="_blank" rel="external">http://blog.csdn.net/fu_wayne/article/details/38018825</a><br></p>
+<p><font color="darkgreen">顺便提一下bash启动脚本：</font><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">    /etc/profile  </div><div class="line">    /etc/bashrc  </div><div class="line">    ~/.bash_profile  </div><div class="line">    ~/.bashrc  </div><div class="line">    ~/.bash_logout  </div><div class="line">/etc/profile 和 ~/.bash_profile 是在启动一个交互登陆shell的时候被调用。</div><div class="line"></div><div class="line">/etc/bashrc 和 ~/.bashrc 是在一个交互的非登陆shell启动的时候被调用。</div><div class="line"></div><div class="line">~/.bash_logout 在用户注销登陆的时候被读取</div><div class="line"></div><div class="line">用户登录时，bash先自动执行系统管理员建立的全局登录script ： </div><div class="line">     /ect/profile </div><div class="line">   然后bash在用户起始目录下按顺序查找三个特殊文件中的一个： </div><div class="line">     /.bash_profile、 </div><div class="line">     /.bash_login、 </div><div class="line">     /.profile， </div><div class="line">   但只执行最先找到的一个。因此，只需根据实际需要在上述文件中加入命令就可以实现用户登录时自动运行某些程序</div></pre></td></tr></table></figure></p>
+<p>参考：<br><a href="http://jiangzhi2013.blog.51cto.com/7150666/1293877" target="_blank" rel="external">http://jiangzhi2013.blog.51cto.com/7150666/1293877</a><br><br><a href="http://astute11.blog.51cto.com/4404646/1315587" target="_blank" rel="external">http://astute11.blog.51cto.com/4404646/1315587</a><br><br><a href="https://www.ibm.com/developerworks/cn/linux/kernel/startup/index.html" target="_blank" rel="external">深入地理解linux启动</a><br><br><a href="https://www.ibm.com/developerworks/cn/linux/1407_liuming_init2/" target="_blank" rel="external">浅析 Linux 初始化 init 系统，第 2 部分: UpStart</a><br></p>
 
                                             
                                         </div>
@@ -361,18 +381,18 @@ Quick">
                         
 <nav id="article-nav">
   
-    <a href="/2017/03/16/记录一次NetworkManager与interfaces冲突的解决过程/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/20/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          (no title)
+          Hello World
         
       </div>
     </a>
   
   
-    <a href="/2017/03/16/单个git工具配置多个代码托管账号/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">单个git工具配置多个代码托管账号</div>
+    <a href="/2017/03/17/Linux资料链接/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux资料链接</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -382,7 +402,7 @@ Quick">
                             
                                 <!-- 多说评论框 start -->
                                 
-                                    <div class="ds-thread" data-thread-key="post-hello-world" data-title="Hello World" data-url="https://simonid.github.io/2017/03/16/hello-world/"></div>
+                                    <div class="ds-thread" data-thread-key="post-Linux添加启动脚本" data-title="Linux添加启动脚本" data-url="https://simonid.github.io/2017/03/20/Linux添加启动脚本/"></div>
                                     <!-- 多说评论框 end -->
                                     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
                                     <script type="text/javascript">
